@@ -1,0 +1,609 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		17C9CF242A27E12F004BCCC2 /* EasyBuyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C9CF232A27E12F004BCCC2 /* EasyBuyApp.swift */; };
+		17C9CF262A27E12F004BCCC2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C9CF252A27E12F004BCCC2 /* ContentView.swift */; };
+		17C9CF282A27E132004BCCC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17C9CF272A27E132004BCCC2 /* Assets.xcassets */; };
+		17C9CF2B2A27E132004BCCC2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17C9CF2A2A27E132004BCCC2 /* Preview Assets.xcassets */; };
+		17C9CF2D2A27E132004BCCC2 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C9CF2C2A27E132004BCCC2 /* Persistence.swift */; };
+		17C9CF302A27E132004BCCC2 /* EasyBuy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 17C9CF2E2A27E132004BCCC2 /* EasyBuy.xcdatamodeld */; };
+		17C9CF3A2A27E133004BCCC2 /* EasyBuyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C9CF392A27E133004BCCC2 /* EasyBuyTests.swift */; };
+		17C9CF442A27E133004BCCC2 /* EasyBuyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C9CF432A27E133004BCCC2 /* EasyBuyUITests.swift */; };
+		17C9CF462A27E133004BCCC2 /* EasyBuyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C9CF452A27E133004BCCC2 /* EasyBuyUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		17C9CF362A27E133004BCCC2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 17C9CF182A27E12F004BCCC2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 17C9CF1F2A27E12F004BCCC2;
+			remoteInfo = EasyBuy;
+		};
+		17C9CF402A27E133004BCCC2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 17C9CF182A27E12F004BCCC2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 17C9CF1F2A27E12F004BCCC2;
+			remoteInfo = EasyBuy;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		17C9CF202A27E12F004BCCC2 /* EasyBuy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyBuy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		17C9CF232A27E12F004BCCC2 /* EasyBuyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyBuyApp.swift; sourceTree = "<group>"; };
+		17C9CF252A27E12F004BCCC2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		17C9CF272A27E132004BCCC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		17C9CF2A2A27E132004BCCC2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		17C9CF2C2A27E132004BCCC2 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		17C9CF2F2A27E132004BCCC2 /* EasyBuy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EasyBuy.xcdatamodel; sourceTree = "<group>"; };
+		17C9CF352A27E133004BCCC2 /* EasyBuyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EasyBuyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		17C9CF392A27E133004BCCC2 /* EasyBuyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyBuyTests.swift; sourceTree = "<group>"; };
+		17C9CF3F2A27E133004BCCC2 /* EasyBuyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EasyBuyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		17C9CF432A27E133004BCCC2 /* EasyBuyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyBuyUITests.swift; sourceTree = "<group>"; };
+		17C9CF452A27E133004BCCC2 /* EasyBuyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyBuyUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		17C9CF1D2A27E12F004BCCC2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17C9CF322A27E133004BCCC2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17C9CF3C2A27E133004BCCC2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		17C9CF172A27E12F004BCCC2 = {
+			isa = PBXGroup;
+			children = (
+				17C9CF222A27E12F004BCCC2 /* EasyBuy */,
+				17C9CF382A27E133004BCCC2 /* EasyBuyTests */,
+				17C9CF422A27E133004BCCC2 /* EasyBuyUITests */,
+				17C9CF212A27E12F004BCCC2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		17C9CF212A27E12F004BCCC2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				17C9CF202A27E12F004BCCC2 /* EasyBuy.app */,
+				17C9CF352A27E133004BCCC2 /* EasyBuyTests.xctest */,
+				17C9CF3F2A27E133004BCCC2 /* EasyBuyUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		17C9CF222A27E12F004BCCC2 /* EasyBuy */ = {
+			isa = PBXGroup;
+			children = (
+				17C9CF232A27E12F004BCCC2 /* EasyBuyApp.swift */,
+				17C9CF252A27E12F004BCCC2 /* ContentView.swift */,
+				17C9CF272A27E132004BCCC2 /* Assets.xcassets */,
+				17C9CF2C2A27E132004BCCC2 /* Persistence.swift */,
+				17C9CF2E2A27E132004BCCC2 /* EasyBuy.xcdatamodeld */,
+				17C9CF292A27E132004BCCC2 /* Preview Content */,
+			);
+			path = EasyBuy;
+			sourceTree = "<group>";
+		};
+		17C9CF292A27E132004BCCC2 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				17C9CF2A2A27E132004BCCC2 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		17C9CF382A27E133004BCCC2 /* EasyBuyTests */ = {
+			isa = PBXGroup;
+			children = (
+				17C9CF392A27E133004BCCC2 /* EasyBuyTests.swift */,
+			);
+			path = EasyBuyTests;
+			sourceTree = "<group>";
+		};
+		17C9CF422A27E133004BCCC2 /* EasyBuyUITests */ = {
+			isa = PBXGroup;
+			children = (
+				17C9CF432A27E133004BCCC2 /* EasyBuyUITests.swift */,
+				17C9CF452A27E133004BCCC2 /* EasyBuyUITestsLaunchTests.swift */,
+			);
+			path = EasyBuyUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		17C9CF1F2A27E12F004BCCC2 /* EasyBuy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 17C9CF492A27E133004BCCC2 /* Build configuration list for PBXNativeTarget "EasyBuy" */;
+			buildPhases = (
+				17C9CF1C2A27E12F004BCCC2 /* Sources */,
+				17C9CF1D2A27E12F004BCCC2 /* Frameworks */,
+				17C9CF1E2A27E12F004BCCC2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EasyBuy;
+			productName = EasyBuy;
+			productReference = 17C9CF202A27E12F004BCCC2 /* EasyBuy.app */;
+			productType = "com.apple.product-type.application";
+		};
+		17C9CF342A27E133004BCCC2 /* EasyBuyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 17C9CF4C2A27E133004BCCC2 /* Build configuration list for PBXNativeTarget "EasyBuyTests" */;
+			buildPhases = (
+				17C9CF312A27E133004BCCC2 /* Sources */,
+				17C9CF322A27E133004BCCC2 /* Frameworks */,
+				17C9CF332A27E133004BCCC2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				17C9CF372A27E133004BCCC2 /* PBXTargetDependency */,
+			);
+			name = EasyBuyTests;
+			productName = EasyBuyTests;
+			productReference = 17C9CF352A27E133004BCCC2 /* EasyBuyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		17C9CF3E2A27E133004BCCC2 /* EasyBuyUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 17C9CF4F2A27E133004BCCC2 /* Build configuration list for PBXNativeTarget "EasyBuyUITests" */;
+			buildPhases = (
+				17C9CF3B2A27E133004BCCC2 /* Sources */,
+				17C9CF3C2A27E133004BCCC2 /* Frameworks */,
+				17C9CF3D2A27E133004BCCC2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				17C9CF412A27E133004BCCC2 /* PBXTargetDependency */,
+			);
+			name = EasyBuyUITests;
+			productName = EasyBuyUITests;
+			productReference = 17C9CF3F2A27E133004BCCC2 /* EasyBuyUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		17C9CF182A27E12F004BCCC2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					17C9CF1F2A27E12F004BCCC2 = {
+						CreatedOnToolsVersion = 14.2;
+					};
+					17C9CF342A27E133004BCCC2 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 17C9CF1F2A27E12F004BCCC2;
+					};
+					17C9CF3E2A27E133004BCCC2 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 17C9CF1F2A27E12F004BCCC2;
+					};
+				};
+			};
+			buildConfigurationList = 17C9CF1B2A27E12F004BCCC2 /* Build configuration list for PBXProject "EasyBuy" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 17C9CF172A27E12F004BCCC2;
+			productRefGroup = 17C9CF212A27E12F004BCCC2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				17C9CF1F2A27E12F004BCCC2 /* EasyBuy */,
+				17C9CF342A27E133004BCCC2 /* EasyBuyTests */,
+				17C9CF3E2A27E133004BCCC2 /* EasyBuyUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		17C9CF1E2A27E12F004BCCC2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17C9CF2B2A27E132004BCCC2 /* Preview Assets.xcassets in Resources */,
+				17C9CF282A27E132004BCCC2 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17C9CF332A27E133004BCCC2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17C9CF3D2A27E133004BCCC2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		17C9CF1C2A27E12F004BCCC2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17C9CF2D2A27E132004BCCC2 /* Persistence.swift in Sources */,
+				17C9CF262A27E12F004BCCC2 /* ContentView.swift in Sources */,
+				17C9CF302A27E132004BCCC2 /* EasyBuy.xcdatamodeld in Sources */,
+				17C9CF242A27E12F004BCCC2 /* EasyBuyApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17C9CF312A27E133004BCCC2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17C9CF3A2A27E133004BCCC2 /* EasyBuyTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17C9CF3B2A27E133004BCCC2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17C9CF442A27E133004BCCC2 /* EasyBuyUITests.swift in Sources */,
+				17C9CF462A27E133004BCCC2 /* EasyBuyUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		17C9CF372A27E133004BCCC2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 17C9CF1F2A27E12F004BCCC2 /* EasyBuy */;
+			targetProxy = 17C9CF362A27E133004BCCC2 /* PBXContainerItemProxy */;
+		};
+		17C9CF412A27E133004BCCC2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 17C9CF1F2A27E12F004BCCC2 /* EasyBuy */;
+			targetProxy = 17C9CF402A27E133004BCCC2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		17C9CF472A27E133004BCCC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		17C9CF482A27E133004BCCC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		17C9CF4A2A27E133004BCCC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"EasyBuy/Preview Content\"";
+				DEVELOPMENT_TEAM = CV64V222GG;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.EasyBuy;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		17C9CF4B2A27E133004BCCC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"EasyBuy/Preview Content\"";
+				DEVELOPMENT_TEAM = CV64V222GG;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.EasyBuy;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		17C9CF4D2A27E133004BCCC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CV64V222GG;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.EasyBuyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EasyBuy.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EasyBuy";
+			};
+			name = Debug;
+		};
+		17C9CF4E2A27E133004BCCC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CV64V222GG;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.EasyBuyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EasyBuy.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EasyBuy";
+			};
+			name = Release;
+		};
+		17C9CF502A27E133004BCCC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CV64V222GG;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.EasyBuyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = EasyBuy;
+			};
+			name = Debug;
+		};
+		17C9CF512A27E133004BCCC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CV64V222GG;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.EasyBuyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = EasyBuy;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		17C9CF1B2A27E12F004BCCC2 /* Build configuration list for PBXProject "EasyBuy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				17C9CF472A27E133004BCCC2 /* Debug */,
+				17C9CF482A27E133004BCCC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		17C9CF492A27E133004BCCC2 /* Build configuration list for PBXNativeTarget "EasyBuy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				17C9CF4A2A27E133004BCCC2 /* Debug */,
+				17C9CF4B2A27E133004BCCC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		17C9CF4C2A27E133004BCCC2 /* Build configuration list for PBXNativeTarget "EasyBuyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				17C9CF4D2A27E133004BCCC2 /* Debug */,
+				17C9CF4E2A27E133004BCCC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		17C9CF4F2A27E133004BCCC2 /* Build configuration list for PBXNativeTarget "EasyBuyUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				17C9CF502A27E133004BCCC2 /* Debug */,
+				17C9CF512A27E133004BCCC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		17C9CF2E2A27E132004BCCC2 /* EasyBuy.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				17C9CF2F2A27E132004BCCC2 /* EasyBuy.xcdatamodel */,
+			);
+			currentVersion = 17C9CF2F2A27E132004BCCC2 /* EasyBuy.xcdatamodel */;
+			path = EasyBuy.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 17C9CF182A27E12F004BCCC2 /* Project object */;
+}
