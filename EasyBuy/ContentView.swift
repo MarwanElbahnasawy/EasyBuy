@@ -7,10 +7,18 @@
 
 import SwiftUI
 import CoreData
+import Combine
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
+    //For Network checking
+    @StateObject var networkReachability = NetworkReachability()
+    @State private var showSnackbar = false
+    private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    private var cancellable: AnyCancellable?
+    
+    
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
         animation: .default)
@@ -39,6 +47,27 @@ struct ContentView: View {
                 }
             }
             Text("Select an item")
+        }
+        //For Network Connectivity
+        .overlay(
+            Group {
+                if showSnackbar {
+                    VStack {
+                        Spacer()
+                        Text("No internet connection")
+                            .padding()
+                            .background(Color.red)
+                            .foregroundColor(.white)
+                            .cornerRadius(8)
+                    }
+                    .padding()
+                }
+            },
+            alignment: .bottom
+        )
+        // For Network Connectivity
+        .onReceive(timer) { _ in
+            showSnackbar = !networkReachability.reachable
         }
     }
 

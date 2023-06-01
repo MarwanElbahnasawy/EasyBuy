@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		171B14D42A2891B900851C67 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 171B14D32A2891B900851C67 /* Lottie */; };
+		171B14D92A28996C00851C67 /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171B14D82A28996C00851C67 /* NetworkReachability.swift */; };
+		171B14DC2A28A23E00851C67 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 171B14DB2A28A23E00851C67 /* Kingfisher */; };
+		171B14DF2A28A34200851C67 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 171B14DE2A28A34200851C67 /* Alamofire */; };
 		17C9CF242A27E12F004BCCC2 /* EasyBuyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C9CF232A27E12F004BCCC2 /* EasyBuyApp.swift */; };
 		17C9CF262A27E12F004BCCC2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C9CF252A27E12F004BCCC2 /* ContentView.swift */; };
 		17C9CF282A27E132004BCCC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17C9CF272A27E132004BCCC2 /* Assets.xcassets */; };
@@ -16,6 +20,10 @@
 		17C9CF3A2A27E133004BCCC2 /* EasyBuyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C9CF392A27E133004BCCC2 /* EasyBuyTests.swift */; };
 		17C9CF442A27E133004BCCC2 /* EasyBuyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C9CF432A27E133004BCCC2 /* EasyBuyUITests.swift */; };
 		17C9CF462A27E133004BCCC2 /* EasyBuyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C9CF452A27E133004BCCC2 /* EasyBuyUITestsLaunchTests.swift */; };
+		17C9CF7F2A27E1D3004BCCC2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C9CF7E2A27E1D3004BCCC2 /* Constants.swift */; };
+		46A13FDEE83F4DDB4720C12B /* Pods_EasyBuy_EasyBuyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3507BF2A68414E5293DF9AD /* Pods_EasyBuy_EasyBuyUITests.framework */; };
+		571213AB5A290D8C60576AA3 /* Pods_EasyBuy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C03094883316ABB45E3A79E7 /* Pods_EasyBuy.framework */; };
+		A8360D013A4F802E529FC832 /* Pods_EasyBuyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DFEA8E6555F657DAB22A79E /* Pods_EasyBuyTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		097FF13FBA537AE765A4B491 /* Pods-EasyBuy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyBuy.release.xcconfig"; path = "Target Support Files/Pods-EasyBuy/Pods-EasyBuy.release.xcconfig"; sourceTree = "<group>"; };
+		171B14D82A28996C00851C67 /* NetworkReachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReachability.swift; sourceTree = "<group>"; };
 		17C9CF202A27E12F004BCCC2 /* EasyBuy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyBuy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17C9CF232A27E12F004BCCC2 /* EasyBuyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyBuyApp.swift; sourceTree = "<group>"; };
 		17C9CF252A27E12F004BCCC2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -48,6 +58,15 @@
 		17C9CF3F2A27E133004BCCC2 /* EasyBuyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EasyBuyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		17C9CF432A27E133004BCCC2 /* EasyBuyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyBuyUITests.swift; sourceTree = "<group>"; };
 		17C9CF452A27E133004BCCC2 /* EasyBuyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyBuyUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		17C9CF7E2A27E1D3004BCCC2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		1BB6EB9E9012D54B0A8065EA /* Pods-EasyBuy-EasyBuyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyBuy-EasyBuyUITests.debug.xcconfig"; path = "Target Support Files/Pods-EasyBuy-EasyBuyUITests/Pods-EasyBuy-EasyBuyUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		3DFEA8E6555F657DAB22A79E /* Pods_EasyBuyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EasyBuyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		57381625E4BE77ECA2BF6311 /* Pods-EasyBuyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyBuyTests.release.xcconfig"; path = "Target Support Files/Pods-EasyBuyTests/Pods-EasyBuyTests.release.xcconfig"; sourceTree = "<group>"; };
+		83BDA726C11A8D3B396FD0AB /* Pods-EasyBuyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyBuyTests.debug.xcconfig"; path = "Target Support Files/Pods-EasyBuyTests/Pods-EasyBuyTests.debug.xcconfig"; sourceTree = "<group>"; };
+		9FDB15B709C744CC1801AEF5 /* Pods-EasyBuy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyBuy.debug.xcconfig"; path = "Target Support Files/Pods-EasyBuy/Pods-EasyBuy.debug.xcconfig"; sourceTree = "<group>"; };
+		C03094883316ABB45E3A79E7 /* Pods_EasyBuy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EasyBuy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3507BF2A68414E5293DF9AD /* Pods_EasyBuy_EasyBuyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EasyBuy_EasyBuyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB74FE586EB4F9F505BC47A9 /* Pods-EasyBuy-EasyBuyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyBuy-EasyBuyUITests.release.xcconfig"; path = "Target Support Files/Pods-EasyBuy-EasyBuyUITests/Pods-EasyBuy-EasyBuyUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +74,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				171B14DF2A28A34200851C67 /* Alamofire in Frameworks */,
+				171B14DC2A28A23E00851C67 /* Kingfisher in Frameworks */,
+				571213AB5A290D8C60576AA3 /* Pods_EasyBuy.framework in Frameworks */,
+				171B14D42A2891B900851C67 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8360D013A4F802E529FC832 /* Pods_EasyBuyTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46A13FDEE83F4DDB4720C12B /* Pods_EasyBuy_EasyBuyUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +107,8 @@
 				17C9CF382A27E133004BCCC2 /* EasyBuyTests */,
 				17C9CF422A27E133004BCCC2 /* EasyBuyUITests */,
 				17C9CF212A27E12F004BCCC2 /* Products */,
+				27E8F915B031A4E8F1ADAD4F /* Pods */,
+				F259314D8E7785EE5BB0F563 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -100,10 +127,9 @@
 			children = (
 				17C9CF232A27E12F004BCCC2 /* EasyBuyApp.swift */,
 				17C9CF252A27E12F004BCCC2 /* ContentView.swift */,
-				17C9CF272A27E132004BCCC2 /* Assets.xcassets */,
-				17C9CF2C2A27E132004BCCC2 /* Persistence.swift */,
-				17C9CF2E2A27E132004BCCC2 /* EasyBuy.xcdatamodeld */,
-				17C9CF292A27E132004BCCC2 /* Preview Content */,
+				17C9CF7A2A27E186004BCCC2 /* App */,
+				17C9CF802A27E28C004BCCC2 /* Data */,
+				17C9CF852A27E3AB004BCCC2 /* Presentation */,
 			);
 			path = EasyBuy;
 			sourceTree = "<group>";
@@ -133,6 +159,416 @@
 			path = EasyBuyUITests;
 			sourceTree = "<group>";
 		};
+		17C9CF522A27E179004BCCC2 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				17C9CF532A27E179004BCCC2 /* ViewModels */,
+				17C9CF542A27E179004BCCC2 /* Models */,
+				17C9CF552A27E179004BCCC2 /* Views */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		17C9CF532A27E179004BCCC2 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		17C9CF542A27E179004BCCC2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		17C9CF552A27E179004BCCC2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		17C9CF562A27E179004BCCC2 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				17C9CF572A27E179004BCCC2 /* ViewModels */,
+				17C9CF582A27E179004BCCC2 /* Models */,
+				17C9CF592A27E179004BCCC2 /* Views */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		17C9CF572A27E179004BCCC2 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		17C9CF582A27E179004BCCC2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		17C9CF592A27E179004BCCC2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		17C9CF5A2A27E17A004BCCC2 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				17C9CF5B2A27E17A004BCCC2 /* ViewModels */,
+				17C9CF5C2A27E17A004BCCC2 /* Models */,
+				17C9CF5D2A27E17A004BCCC2 /* Views */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		17C9CF5B2A27E17A004BCCC2 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		17C9CF5C2A27E17A004BCCC2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		17C9CF5D2A27E17A004BCCC2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		17C9CF5E2A27E17A004BCCC2 /* ProductDetails */ = {
+			isa = PBXGroup;
+			children = (
+				17C9CF5F2A27E17A004BCCC2 /* ViewModels */,
+				17C9CF602A27E17A004BCCC2 /* Models */,
+				17C9CF612A27E17A004BCCC2 /* Views */,
+			);
+			path = ProductDetails;
+			sourceTree = "<group>";
+		};
+		17C9CF5F2A27E17A004BCCC2 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		17C9CF602A27E17A004BCCC2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		17C9CF612A27E17A004BCCC2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		17C9CF622A27E17A004BCCC2 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				17C9CF632A27E17A004BCCC2 /* ViewModels */,
+				17C9CF642A27E17A004BCCC2 /* Models */,
+				17C9CF652A27E17A004BCCC2 /* Views */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		17C9CF632A27E17A004BCCC2 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		17C9CF642A27E17A004BCCC2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		17C9CF652A27E17A004BCCC2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		17C9CF662A27E17B004BCCC2 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				17C9CF672A27E17B004BCCC2 /* ViewModels */,
+				17C9CF682A27E17B004BCCC2 /* Models */,
+				17C9CF692A27E17B004BCCC2 /* Views */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		17C9CF672A27E17B004BCCC2 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		17C9CF682A27E17B004BCCC2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		17C9CF692A27E17B004BCCC2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		17C9CF6A2A27E17B004BCCC2 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				17C9CF6B2A27E17B004BCCC2 /* ViewModels */,
+				17C9CF6C2A27E17B004BCCC2 /* Models */,
+				17C9CF6D2A27E17B004BCCC2 /* Views */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		17C9CF6B2A27E17B004BCCC2 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		17C9CF6C2A27E17B004BCCC2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		17C9CF6D2A27E17B004BCCC2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		17C9CF6E2A27E17B004BCCC2 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				17C9CF6F2A27E17B004BCCC2 /* ViewModels */,
+				17C9CF702A27E17B004BCCC2 /* Models */,
+				17C9CF712A27E17B004BCCC2 /* Views */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		17C9CF6F2A27E17B004BCCC2 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		17C9CF702A27E17B004BCCC2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		17C9CF712A27E17B004BCCC2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		17C9CF722A27E17B004BCCC2 /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				17C9CF732A27E17B004BCCC2 /* ViewModels */,
+				17C9CF742A27E17B004BCCC2 /* Models */,
+				17C9CF752A27E17B004BCCC2 /* Views */,
+			);
+			path = Payment;
+			sourceTree = "<group>";
+		};
+		17C9CF732A27E17B004BCCC2 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		17C9CF742A27E17B004BCCC2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		17C9CF752A27E17B004BCCC2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		17C9CF762A27E17C004BCCC2 /* ShoppingCart */ = {
+			isa = PBXGroup;
+			children = (
+				17C9CF772A27E17C004BCCC2 /* ViewModels */,
+				17C9CF782A27E17C004BCCC2 /* Models */,
+				17C9CF792A27E17C004BCCC2 /* Views */,
+			);
+			path = ShoppingCart;
+			sourceTree = "<group>";
+		};
+		17C9CF772A27E17C004BCCC2 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		17C9CF782A27E17C004BCCC2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		17C9CF792A27E17C004BCCC2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		17C9CF7A2A27E186004BCCC2 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				17C9CF7D2A27E1C3004BCCC2 /* Assets */,
+				17C9CF7C2A27E1BA004BCCC2 /* Utils */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		17C9CF7C2A27E1BA004BCCC2 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				17C9CF7E2A27E1D3004BCCC2 /* Constants.swift */,
+				171B14D82A28996C00851C67 /* NetworkReachability.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		17C9CF7D2A27E1C3004BCCC2 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				17C9CF272A27E132004BCCC2 /* Assets.xcassets */,
+				17C9CF292A27E132004BCCC2 /* Preview Content */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		17C9CF802A27E28C004BCCC2 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				17C9CF832A27E2AD004BCCC2 /* Local */,
+				17C9CF822A27E2A7004BCCC2 /* Remote */,
+				17C9CF842A27E356004BCCC2 /* Models */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		17C9CF822A27E2A7004BCCC2 /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		17C9CF832A27E2AD004BCCC2 /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				17C9CF2C2A27E132004BCCC2 /* Persistence.swift */,
+				17C9CF2E2A27E132004BCCC2 /* EasyBuy.xcdatamodeld */,
+			);
+			path = Local;
+			sourceTree = "<group>";
+		};
+		17C9CF842A27E356004BCCC2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		17C9CF852A27E3AB004BCCC2 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				17C9CF662A27E17B004BCCC2 /* Onboarding */,
+				17C9CF5A2A27E17A004BCCC2 /* Home */,
+				17C9CF562A27E179004BCCC2 /* Categories */,
+				17C9CF6A2A27E17B004BCCC2 /* Account */,
+				17C9CF522A27E179004BCCC2 /* Authentication */,
+				17C9CF5E2A27E17A004BCCC2 /* ProductDetails */,
+				17C9CF6E2A27E17B004BCCC2 /* Favorites */,
+				17C9CF762A27E17C004BCCC2 /* ShoppingCart */,
+				17C9CF722A27E17B004BCCC2 /* Payment */,
+				17C9CF622A27E17A004BCCC2 /* Settings */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		27E8F915B031A4E8F1ADAD4F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9FDB15B709C744CC1801AEF5 /* Pods-EasyBuy.debug.xcconfig */,
+				097FF13FBA537AE765A4B491 /* Pods-EasyBuy.release.xcconfig */,
+				1BB6EB9E9012D54B0A8065EA /* Pods-EasyBuy-EasyBuyUITests.debug.xcconfig */,
+				FB74FE586EB4F9F505BC47A9 /* Pods-EasyBuy-EasyBuyUITests.release.xcconfig */,
+				83BDA726C11A8D3B396FD0AB /* Pods-EasyBuyTests.debug.xcconfig */,
+				57381625E4BE77ECA2BF6311 /* Pods-EasyBuyTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		F259314D8E7785EE5BB0F563 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C03094883316ABB45E3A79E7 /* Pods_EasyBuy.framework */,
+				D3507BF2A68414E5293DF9AD /* Pods_EasyBuy_EasyBuyUITests.framework */,
+				3DFEA8E6555F657DAB22A79E /* Pods_EasyBuyTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -140,15 +576,22 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 17C9CF492A27E133004BCCC2 /* Build configuration list for PBXNativeTarget "EasyBuy" */;
 			buildPhases = (
+				D09BFE695844ABF4112159D2 /* [CP] Check Pods Manifest.lock */,
 				17C9CF1C2A27E12F004BCCC2 /* Sources */,
 				17C9CF1D2A27E12F004BCCC2 /* Frameworks */,
 				17C9CF1E2A27E12F004BCCC2 /* Resources */,
+				A72D909D26B750C4565D0868 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = EasyBuy;
+			packageProductDependencies = (
+				171B14D32A2891B900851C67 /* Lottie */,
+				171B14DB2A28A23E00851C67 /* Kingfisher */,
+				171B14DE2A28A34200851C67 /* Alamofire */,
+			);
 			productName = EasyBuy;
 			productReference = 17C9CF202A27E12F004BCCC2 /* EasyBuy.app */;
 			productType = "com.apple.product-type.application";
@@ -157,6 +600,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 17C9CF4C2A27E133004BCCC2 /* Build configuration list for PBXNativeTarget "EasyBuyTests" */;
 			buildPhases = (
+				9C14D142273BDD27FB6FB853 /* [CP] Check Pods Manifest.lock */,
 				17C9CF312A27E133004BCCC2 /* Sources */,
 				17C9CF322A27E133004BCCC2 /* Frameworks */,
 				17C9CF332A27E133004BCCC2 /* Resources */,
@@ -175,9 +619,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 17C9CF4F2A27E133004BCCC2 /* Build configuration list for PBXNativeTarget "EasyBuyUITests" */;
 			buildPhases = (
+				6B8DADBC560C94CF015B8CFE /* [CP] Check Pods Manifest.lock */,
 				17C9CF3B2A27E133004BCCC2 /* Sources */,
 				17C9CF3C2A27E133004BCCC2 /* Frameworks */,
 				17C9CF3D2A27E133004BCCC2 /* Resources */,
+				E52AD63CE84B9392B0090BE1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -221,6 +667,11 @@
 				Base,
 			);
 			mainGroup = 17C9CF172A27E12F004BCCC2;
+			packageReferences = (
+				171B14D22A2891B900851C67 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				171B14DA2A28A23E00851C67 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				171B14DD2A28A34200851C67 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 17C9CF212A27E12F004BCCC2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -258,15 +709,120 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		6B8DADBC560C94CF015B8CFE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-EasyBuy-EasyBuyUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9C14D142273BDD27FB6FB853 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-EasyBuyTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A72D909D26B750C4565D0868 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EasyBuy/Pods-EasyBuy-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EasyBuy/Pods-EasyBuy-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EasyBuy/Pods-EasyBuy-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D09BFE695844ABF4112159D2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-EasyBuy-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E52AD63CE84B9392B0090BE1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EasyBuy-EasyBuyUITests/Pods-EasyBuy-EasyBuyUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EasyBuy-EasyBuyUITests/Pods-EasyBuy-EasyBuyUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EasyBuy-EasyBuyUITests/Pods-EasyBuy-EasyBuyUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		17C9CF1C2A27E12F004BCCC2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17C9CF7F2A27E1D3004BCCC2 /* Constants.swift in Sources */,
 				17C9CF2D2A27E132004BCCC2 /* Persistence.swift in Sources */,
 				17C9CF262A27E12F004BCCC2 /* ContentView.swift in Sources */,
 				17C9CF302A27E132004BCCC2 /* EasyBuy.xcdatamodeld in Sources */,
 				17C9CF242A27E12F004BCCC2 /* EasyBuyApp.swift in Sources */,
+				171B14D92A28996C00851C67 /* NetworkReachability.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,7 +909,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -407,7 +963,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -419,12 +975,13 @@
 		};
 		17C9CF4A2A27E133004BCCC2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9FDB15B709C744CC1801AEF5 /* Pods-EasyBuy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"EasyBuy/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"EasyBuy/App/Assets/Preview Content\"";
 				DEVELOPMENT_TEAM = CV64V222GG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -438,7 +995,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.EasyBuy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.EasyBuyy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -448,12 +1005,13 @@
 		};
 		17C9CF4B2A27E133004BCCC2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 097FF13FBA537AE765A4B491 /* Pods-EasyBuy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"EasyBuy/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"EasyBuy/App/Assets/Preview Content\"";
 				DEVELOPMENT_TEAM = CV64V222GG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -467,7 +1025,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.EasyBuy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.EasyBuyy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -477,6 +1035,7 @@
 		};
 		17C9CF4D2A27E133004BCCC2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 83BDA726C11A8D3B396FD0AB /* Pods-EasyBuyTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -497,6 +1056,7 @@
 		};
 		17C9CF4E2A27E133004BCCC2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 57381625E4BE77ECA2BF6311 /* Pods-EasyBuyTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -517,6 +1077,7 @@
 		};
 		17C9CF502A27E133004BCCC2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1BB6EB9E9012D54B0A8065EA /* Pods-EasyBuy-EasyBuyUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -535,6 +1096,7 @@
 		};
 		17C9CF512A27E133004BCCC2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB74FE586EB4F9F505BC47A9 /* Pods-EasyBuy-EasyBuyUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -591,6 +1153,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		171B14D22A2891B900851C67 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+		171B14DA2A28A23E00851C67 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+		171B14DD2A28A34200851C67 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		171B14D32A2891B900851C67 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 171B14D22A2891B900851C67 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+		171B14DB2A28A23E00851C67 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 171B14DA2A28A23E00851C67 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		171B14DE2A28A34200851C67 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 171B14DD2A28A34200851C67 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		17C9CF2E2A27E132004BCCC2 /* EasyBuy.xcdatamodeld */ = {
