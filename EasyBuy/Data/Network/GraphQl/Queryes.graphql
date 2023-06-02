@@ -1,0 +1,23 @@
+//
+//  Queryes.graphql.swift
+//  EasyBuy
+//
+//  Created by moamen ali gomaa on 02/06/2023.
+//
+
+query getCollections{
+  collections(first: 2) {
+    edges {
+      node {
+        id
+        products(first: 5) {
+          edges {
+            node {
+              id
+            }
+          }
+        }
+      }
+    }
+  }
+}
