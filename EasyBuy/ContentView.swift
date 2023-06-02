@@ -35,7 +35,16 @@ struct ContentView: View {
                     }
                 }
                 .onDelete(perform: deleteItems)
-            }
+            }.onAppear(perform: {
+                NetworkManager.shared.queryGraphQLRequest(query:GetProductsQuery(first: 3) , responseModel: Root.self, completion: { result in
+                    switch result {
+                    case .success(let success):
+                        print("product name : \(success.products.edges[0].node.title)")
+                    case .failure(let failure):
+                        print(failure)
+                    }
+                })
+            })
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()

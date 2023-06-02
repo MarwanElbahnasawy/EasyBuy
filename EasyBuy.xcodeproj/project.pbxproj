@@ -26,8 +26,10 @@
 		17C9CF7F2A27E1D3004BCCC2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C9CF7E2A27E1D3004BCCC2 /* Constants.swift */; };
 		3F02F2A62A29E83E00FDE52E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F02F2A52A29E83E00FDE52E /* NetworkManager.swift */; };
 		3F02F2A82A29EA1A00FDE52E /* NetworkInterceptorProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F02F2A72A29EA1A00FDE52E /* NetworkInterceptorProvider.swift */; };
-		3F02F2AB2A29EBCE00FDE52E /* Queryes.graphql in Sources */ = {isa = PBXBuildFile; fileRef = 3F02F2AA2A29EBCE00FDE52E /* Queryes.graphql */; };
-		3F02F2AD2A29EC1400FDE52E /* Mutations.graphql in Sources */ = {isa = PBXBuildFile; fileRef = 3F02F2AC2A29EC1400FDE52E /* Mutations.graphql */; };
+		3F02F2AB2A29EBCE00FDE52E /* querys.graphql in Sources */ = {isa = PBXBuildFile; fileRef = 3F02F2AA2A29EBCE00FDE52E /* querys.graphql */; };
+		3F02F2AD2A29EC1400FDE52E /* mutations.graphql in Sources */ = {isa = PBXBuildFile; fileRef = 3F02F2AC2A29EC1400FDE52E /* mutations.graphql */; };
+		3F02F2B12A29EFEA00FDE52E /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F02F2B02A29EFE900FDE52E /* API.swift */; };
+		3F02F2B42A29F44700FDE52E /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 3F02F2B32A29F44700FDE52E /* loading.json */; };
 		46A13FDEE83F4DDB4720C12B /* Pods_EasyBuy_EasyBuyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3507BF2A68414E5293DF9AD /* Pods_EasyBuy_EasyBuyUITests.framework */; };
 		571213AB5A290D8C60576AA3 /* Pods_EasyBuy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C03094883316ABB45E3A79E7 /* Pods_EasyBuy.framework */; };
 		A8360D013A4F802E529FC832 /* Pods_EasyBuyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DFEA8E6555F657DAB22A79E /* Pods_EasyBuyTests.framework */; };
@@ -73,9 +75,11 @@
 		3DFEA8E6555F657DAB22A79E /* Pods_EasyBuyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EasyBuyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F02F2A52A29E83E00FDE52E /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		3F02F2A72A29EA1A00FDE52E /* NetworkInterceptorProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkInterceptorProvider.swift; sourceTree = "<group>"; };
-		3F02F2AA2A29EBCE00FDE52E /* Queryes.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Queryes.graphql; sourceTree = "<group>"; };
-		3F02F2AC2A29EC1400FDE52E /* Mutations.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Mutations.graphql; sourceTree = "<group>"; };
+		3F02F2AA2A29EBCE00FDE52E /* querys.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = querys.graphql; sourceTree = "<group>"; };
+		3F02F2AC2A29EC1400FDE52E /* mutations.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = mutations.graphql; sourceTree = "<group>"; };
 		3F02F2AE2A29EC4C00FDE52E /* schema.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
+		3F02F2B02A29EFE900FDE52E /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		3F02F2B32A29F44700FDE52E /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		57381625E4BE77ECA2BF6311 /* Pods-EasyBuyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyBuyTests.release.xcconfig"; path = "Target Support Files/Pods-EasyBuyTests/Pods-EasyBuyTests.release.xcconfig"; sourceTree = "<group>"; };
 		83BDA726C11A8D3B396FD0AB /* Pods-EasyBuyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyBuyTests.debug.xcconfig"; path = "Target Support Files/Pods-EasyBuyTests/Pods-EasyBuyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9FDB15B709C744CC1801AEF5 /* Pods-EasyBuy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyBuy.debug.xcconfig"; path = "Target Support Files/Pods-EasyBuy/Pods-EasyBuy.debug.xcconfig"; sourceTree = "<group>"; };
@@ -236,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				17C9CF272A27E132004BCCC2 /* Assets.xcassets */,
+				3F02F2B22A29F35A00FDE52E /* LottieFiles */,
 				17C9CF292A27E132004BCCC2 /* Preview Content */,
 			);
 			path = Assets;
@@ -287,11 +292,20 @@
 		3F02F2A92A29EB9600FDE52E /* GraphQl */ = {
 			isa = PBXGroup;
 			children = (
-				3F02F2AA2A29EBCE00FDE52E /* Queryes.graphql */,
-				3F02F2AC2A29EC1400FDE52E /* Mutations.graphql */,
+				3F02F2B02A29EFE900FDE52E /* API.swift */,
 				3F02F2AE2A29EC4C00FDE52E /* schema.json */,
+				3F02F2AA2A29EBCE00FDE52E /* querys.graphql */,
+				3F02F2AC2A29EC1400FDE52E /* mutations.graphql */,
 			);
 			path = GraphQl;
+			sourceTree = "<group>";
+		};
+		3F02F2B22A29F35A00FDE52E /* LottieFiles */ = {
+			isa = PBXGroup;
+			children = (
+				3F02F2B32A29F44700FDE52E /* loading.json */,
+			);
+			path = LottieFiles;
 			sourceTree = "<group>";
 		};
 		F259314D8E7785EE5BB0F563 /* Frameworks */ = {
@@ -426,6 +440,7 @@
 			files = (
 				17C9CF2B2A27E132004BCCC2 /* Preview Assets.xcassets in Resources */,
 				17C9CF282A27E132004BCCC2 /* Assets.xcassets in Resources */,
+				3F02F2B42A29F44700FDE52E /* loading.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,7 +463,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		3F02F2AF2A29EC8400FDE52E /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputFileListPaths = (
@@ -459,7 +474,7 @@
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nSCRIPT_PATH=\"${PODS_ROOT}/Apollo/scripts\"\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/*.graphql --localSchemaFile=\"schema.json\" API.swift\n\n";
 		};
@@ -571,11 +586,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				17C9CF7F2A27E1D3004BCCC2 /* Constants.swift in Sources */,
-				3F02F2AD2A29EC1400FDE52E /* Mutations.graphql in Sources */,
+				3F02F2AD2A29EC1400FDE52E /* mutations.graphql in Sources */,
 				171B151E2A28FCCF00851C67 /* HomeViewModel.swift in Sources */,
 				17C9CF2D2A27E132004BCCC2 /* Persistence.swift in Sources */,
-				3F02F2AB2A29EBCE00FDE52E /* Queryes.graphql in Sources */,
+				3F02F2AB2A29EBCE00FDE52E /* querys.graphql in Sources */,
 				17C9CF262A27E12F004BCCC2 /* ContentView.swift in Sources */,
+				3F02F2B12A29EFEA00FDE52E /* API.swift in Sources */,
 				171B15192A28FC9200851C67 /* Models.swift in Sources */,
 				3F02F2A62A29E83E00FDE52E /* NetworkManager.swift in Sources */,
 				17C9CF302A27E132004BCCC2 /* EasyBuy.xcdatamodeld in Sources */,
