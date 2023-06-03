@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		146520162A2BA479006EC2CA /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146520152A2BA479006EC2CA /* Onboarding.swift */; };
+		146520182A2BA4AB006EC2CA /* Intro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146520172A2BA4AA006EC2CA /* Intro.swift */; };
 		1486EB842A2B9F870029212B /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1486EB7F2A2B9F870029212B /* OpenSans-SemiBold.ttf */; };
 		1486EB852A2B9F870029212B /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1486EB802A2B9F870029212B /* OpenSans-Light.ttf */; };
 		1486EB862A2B9F870029212B /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1486EB812A2B9F870029212B /* OpenSans-ExtraBold.ttf */; };
@@ -94,6 +96,8 @@
 
 /* Begin PBXFileReference section */
 		097FF13FBA537AE765A4B491 /* Pods-EasyBuy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyBuy.release.xcconfig"; path = "Target Support Files/Pods-EasyBuy/Pods-EasyBuy.release.xcconfig"; sourceTree = "<group>"; };
+		146520152A2BA479006EC2CA /* Onboarding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
+		146520172A2BA4AA006EC2CA /* Intro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Intro.swift; sourceTree = "<group>"; };
 		1486EB7F2A2B9F870029212B /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
 		1486EB802A2B9F870029212B /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		1486EB812A2B9F870029212B /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
@@ -216,6 +220,7 @@
 			children = (
 				1486EB8C2A2B9FF40029212B /* jsons */,
 				1486EB912A2B9FF40029212B /* Model.swift */,
+				146520172A2BA4AA006EC2CA /* Intro.swift */,
 				1486EB922A2B9FF40029212B /* OrderModel.swift */,
 				1486EB932A2B9FF40029212B /* Products.swift */,
 				1486EB942A2B9FF40029212B /* CoverImageModel.swift */,
@@ -295,6 +300,7 @@
 		171B151B2A28FCB900851C67 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				146520152A2BA479006EC2CA /* Onboarding.swift */,
 				14F9B2822A2B9B25009C2611 /* BaseView.swift */,
 				1486EB892A2B9FB30029212B /* Home.swift */,
 				1486EB8B2A2B9FF40029212B /* model */,
@@ -821,6 +827,7 @@
 				EBC8D0EC2A2AAF1A006DACFD /* ProductDetailsView.swift in Sources */,
 				17C9CF302A27E132004BCCC2 /* EasyBuy.xcdatamodeld in Sources */,
 				1486EBA52A2BA0F10029212B /* CodableBundleExtension.swift in Sources */,
+				146520182A2BA4AB006EC2CA /* Intro.swift in Sources */,
 				14F9B2702A2B9733009C2611 /* RatingBlock.swift in Sources */,
 				14F9B2742A2B9783009C2611 /* LogoView.swift in Sources */,
 				14F9B2642A2B949B009C2611 /* LineView.swift in Sources */,
@@ -836,6 +843,7 @@
 				14F9B2722A2B9760009C2611 /* SectionView.swift in Sources */,
 				14F9B2682A2B9514009C2611 /* ProductCell.swift in Sources */,
 				14F9B2832A2B9B25009C2611 /* BaseView.swift in Sources */,
+				146520162A2BA479006EC2CA /* Onboarding.swift in Sources */,
 				171B14D92A28996C00851C67 /* NetworkReachability.swift in Sources */,
 				1486EB9A2A2B9FF40029212B /* OrderModel.swift in Sources */,
 				171B15172A28FC7F00851C67 /* NetworkService.swift in Sources */,
