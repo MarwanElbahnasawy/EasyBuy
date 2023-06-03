@@ -15,6 +15,7 @@
 		14F9B26E2A2B96D7009C2611 /* CategoryGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F9B26D2A2B96D7009C2611 /* CategoryGridView.swift */; };
 		14F9B2702A2B9733009C2611 /* RatingBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F9B26F2A2B9733009C2611 /* RatingBlock.swift */; };
 		14F9B2722A2B9760009C2611 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F9B2712A2B9760009C2611 /* SectionView.swift */; };
+		14F9B2742A2B9783009C2611 /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F9B2732A2B9783009C2611 /* LogoView.swift */; };
 		171B14D42A2891B900851C67 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 171B14D32A2891B900851C67 /* Lottie */; };
 		171B14D92A28996C00851C67 /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171B14D82A28996C00851C67 /* NetworkReachability.swift */; };
 		171B14DC2A28A23E00851C67 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 171B14DB2A28A23E00851C67 /* Kingfisher */; };
@@ -76,6 +77,7 @@
 		14F9B26D2A2B96D7009C2611 /* CategoryGridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryGridView.swift; sourceTree = "<group>"; };
 		14F9B26F2A2B9733009C2611 /* RatingBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingBlock.swift; sourceTree = "<group>"; };
 		14F9B2712A2B9760009C2611 /* SectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
+		14F9B2732A2B9783009C2611 /* LogoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
 		171B14D82A28996C00851C67 /* NetworkReachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReachability.swift; sourceTree = "<group>"; };
 		171B15162A28FC7F00851C67 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		171B15182A28FC9200851C67 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 		14F9B2602A2B943F009C2611 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				14F9B2732A2B9783009C2611 /* LogoView.swift */,
 				14F9B2712A2B9760009C2611 /* SectionView.swift */,
 				14F9B26F2A2B9733009C2611 /* RatingBlock.swift */,
 				14F9B26D2A2B96D7009C2611 /* CategoryGridView.swift */,
@@ -693,6 +696,7 @@
 				EBC8D0EC2A2AAF1A006DACFD /* ProductDetailsView.swift in Sources */,
 				17C9CF302A27E132004BCCC2 /* EasyBuy.xcdatamodeld in Sources */,
 				14F9B2702A2B9733009C2611 /* RatingBlock.swift in Sources */,
+				14F9B2742A2B9783009C2611 /* LogoView.swift in Sources */,
 				14F9B2642A2B949B009C2611 /* LineView.swift in Sources */,
 				EBC8D0EA2A2AAE0C006DACFD /* ProductDetailsViewModel.swift in Sources */,
 				3F02F2A82A29EA1A00FDE52E /* NetworkInterceptorProvider.swift in Sources */,
