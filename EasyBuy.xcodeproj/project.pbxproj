@@ -20,6 +20,7 @@
 		14F9B2782A2B97BF009C2611 /* CustomCurveShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F9B2772A2B97BF009C2611 /* CustomCurveShape.swift */; };
 		14F9B27A2A2B97DF009C2611 /* MotionAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F9B2792A2B97DF009C2611 /* MotionAnimationView.swift */; };
 		14F9B27C2A2B980B009C2611 /* CoverImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F9B27B2A2B980B009C2611 /* CoverImageView.swift */; };
+		14F9B27E2A2B9832009C2611 /* Tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F9B27D2A2B9831009C2611 /* Tags.swift */; };
 		171B14D42A2891B900851C67 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 171B14D32A2891B900851C67 /* Lottie */; };
 		171B14D92A28996C00851C67 /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171B14D82A28996C00851C67 /* NetworkReachability.swift */; };
 		171B14DC2A28A23E00851C67 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 171B14DB2A28A23E00851C67 /* Kingfisher */; };
@@ -86,6 +87,7 @@
 		14F9B2772A2B97BF009C2611 /* CustomCurveShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCurveShape.swift; sourceTree = "<group>"; };
 		14F9B2792A2B97DF009C2611 /* MotionAnimationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionAnimationView.swift; sourceTree = "<group>"; };
 		14F9B27B2A2B980B009C2611 /* CoverImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoverImageView.swift; sourceTree = "<group>"; };
+		14F9B27D2A2B9831009C2611 /* Tags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tags.swift; sourceTree = "<group>"; };
 		171B14D82A28996C00851C67 /* NetworkReachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReachability.swift; sourceTree = "<group>"; };
 		171B15162A28FC7F00851C67 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		171B15182A28FC9200851C67 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 		14F9B2602A2B943F009C2611 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				14F9B27D2A2B9831009C2611 /* Tags.swift */,
 				14F9B27B2A2B980B009C2611 /* CoverImageView.swift */,
 				14F9B2792A2B97DF009C2611 /* MotionAnimationView.swift */,
 				14F9B2772A2B97BF009C2611 /* CustomCurveShape.swift */,
@@ -700,6 +703,7 @@
 				EB90A6182A2B383B00295296 /* CreateCustomer.swift in Sources */,
 				EBC8D0E42A2AA930006DACFD /* ProductDetails.swift in Sources */,
 				171B151E2A28FCCF00851C67 /* HomeViewModel.swift in Sources */,
+				14F9B27E2A2B9832009C2611 /* Tags.swift in Sources */,
 				17C9CF2D2A27E132004BCCC2 /* Persistence.swift in Sources */,
 				14F9B2782A2B97BF009C2611 /* CustomCurveShape.swift in Sources */,
 				3F02F2AB2A29EBCE00FDE52E /* querys.graphql in Sources */,
