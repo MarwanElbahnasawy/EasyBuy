@@ -23,14 +23,14 @@ struct Home: View {
                         .foregroundColor(.gray)
                 }.padding(.leading, 15)
                 Spacer()
-                Button(action: {
-                    
-                }) {
-                    Text("VIEW ALL")
-                        .font(.custom(Constants.AppFont.semiBoldFont, size: 12))
-                       .foregroundColor(Color("Red"))
-                        .padding(.trailing, 15)
-                }
+//                Button(action: {
+//
+//                }) {
+//                    Text("VIEW ALL")
+//                        .font(.custom(Constants.AppFont.semiBoldFont, size: 12))
+//                       .foregroundColor(Color("Red"))
+//                        .padding(.trailing, 15)
+//                }
             }
             
             LazyVGrid(columns: gridLayout, spacing: 15, content: {
@@ -57,19 +57,10 @@ struct Home: View {
                     VStack(spacing: 0) {
                         HStack{
                             NavigationBarView()
-                            Button(action: {
-                            }, label: {
-                                ZStack {
-                                    Image(systemName: "cart")
-                                        .font(.title)
-                                        .foregroundColor(.black)
-                                    
-                                    Circle()
-                                        .fill(Color.red)
-                                        .frame(width: 14, height: 14, alignment: .center)
-                                        .offset(x: 13, y: -10)
-                                }
-                            }) //: BUTTON
+                            Image("personplaceholder")
+                            .resizable()
+                                .frame(width: 35, height: 35)
+                                .foregroundColor(.black)  //: Image
                         }
                         .padding(.horizontal, 15)
                         .padding(.bottom)
