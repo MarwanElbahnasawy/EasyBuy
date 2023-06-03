@@ -38,12 +38,12 @@ struct productImage: Codable , Identifiable{
 
 // MARK: - Option
 
-struct Option: Codable , Identifiable{
-    var id, product_id: Int?
-    var name: String?
-    var position: Int?
-    var values: [String]?
-}
+//struct Option: Codable , Identifiable{
+//    var id, product_id: Int?
+//    var name: String?
+//    var position: Int?
+//    var values: [String]?
+//}
 
 // MARK: - Variant
 
@@ -74,10 +74,10 @@ struct PresentmentPrice: Codable {
 
 // MARK: - Price
 
-struct Price : Codable {
-    var price : String?
-    var amount, currency_code: String?
-}
+//struct Price : Codable {
+//    var price : String?
+//    var amount, currency_code: String?
+//}
 
 
 
