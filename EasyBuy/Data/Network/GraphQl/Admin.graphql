@@ -1,0 +1,43 @@
+
+query getAllDiicountCodes($first: Int){
+  codeDiscountNodes(first: $first) {
+    nodes {
+      id
+      codeDiscount {
+        ... on DiscountCodeBasic {
+          title
+          summary
+          codeCount
+          usageLimit
+          status
+          customerGets{
+              items{
+                  __typename
+              }
+              value{
+                  __typename
+              }
+          }
+          codes(first: $first){
+              nodes{
+                  code
+                  id
+              }
+          }
+        }
+      }
+    }
+  }
+}
+
+mutation discountCodeBasicCreateForSpecificUser($basicCodeDiscount: DiscountCodeBasicInput!) {
+  discountCodeBasicCreate(basicCodeDiscount: $basicCodeDiscount) {
+    codeDiscountNode {
+      id
+    }
+    userErrors {
+      field
+      message
+    }
+  }
+}

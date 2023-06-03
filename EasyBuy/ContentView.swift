@@ -35,9 +35,8 @@ struct ContentView: View {
                     }
                 }
                 .onDelete(perform: deleteItems)
-            }
-            .onAppear(perform: {
-                NetworkManager.shared.performGraphQLRequest(mutation: CustomerAccessTokenCreateMutation(input: CustomerAccessTokenCreateInput(email: "marwan@gmail.com", password: "123456")), responseModel: CustomerAccessTokenCreateData.self, completion: { result in
+            }.onAppear(perform: {
+                NetworkManager.getInstance(requestType: .storeFront).performGraphQLRequest(mutation: CustomerCreateMutation(input: CustomerCreateInput(firstName: "John", lastName: "Doe", email: "test@example.com", phone: "+15145659229", password: "password")), responseModel: CustomerCreateData.self, completion: { result in
                     switch result {
                     case .success(let response):
                         if let token = response.customerAccessTokenCreate?.customerAccessToken {
