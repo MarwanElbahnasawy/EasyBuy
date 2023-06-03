@@ -198,10 +198,6 @@
 		17C9CF222A27E12F004BCCC2 /* EasyBuy */ = {
 			isa = PBXGroup;
 			children = (
-				3F02F2B02A29EFE900FDE52E /* API.swift */,
-				3F02F2AE2A29EC4C00FDE52E /* schema.json */,
-				3F02F2AA2A29EBCE00FDE52E /* querys.graphql */,
-				3F02F2AC2A29EC1400FDE52E /* mutations.graphql */,
 				17C9CF232A27E12F004BCCC2 /* EasyBuyApp.swift */,
 				17C9CF252A27E12F004BCCC2 /* ContentView.swift */,
 				17C9CF7A2A27E186004BCCC2 /* App */,
@@ -300,18 +296,11 @@
 		3F02F2A42A29E7E800FDE52E /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				3F02F2A92A29EB9600FDE52E /* GraphQl */,
+				EB95F9DA2A2B5EF8007C7177 /* GraphQl */,
 				3F02F2A52A29E83E00FDE52E /* NetworkManager.swift */,
 				3F02F2A72A29EA1A00FDE52E /* NetworkInterceptorProvider.swift */,
 			);
 			path = Network;
-			sourceTree = "<group>";
-		};
-		3F02F2A92A29EB9600FDE52E /* GraphQl */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = GraphQl;
 			sourceTree = "<group>";
 		};
 		3F02F2B22A29F35A00FDE52E /* LottieFiles */ = {
@@ -329,6 +318,17 @@
 				EB90A6192A2B384F00295296 /* CreateCustomerResponse.swift */,
 			);
 			path = Auth;
+			sourceTree = "<group>";
+		};
+		EB95F9DA2A2B5EF8007C7177 /* GraphQl */ = {
+			isa = PBXGroup;
+			children = (
+				3F02F2B02A29EFE900FDE52E /* API.swift */,
+				3F02F2AE2A29EC4C00FDE52E /* schema.json */,
+				3F02F2AA2A29EBCE00FDE52E /* querys.graphql */,
+				3F02F2AC2A29EC1400FDE52E /* mutations.graphql */,
+			);
+			path = GraphQl;
 			sourceTree = "<group>";
 		};
 		EBC8D0E52A2AAC22006DACFD /* ProductDetails */ = {
