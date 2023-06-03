@@ -31,6 +31,7 @@
 		3F02F2B12A29EFEA00FDE52E /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F02F2B02A29EFE900FDE52E /* API.swift */; };
 		3F02F2B42A29F44700FDE52E /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 3F02F2B32A29F44700FDE52E /* loading.json */; };
 		3F02F2C42A2BCECA00FDE52E /* schemaAdmin.json in Resources */ = {isa = PBXBuildFile; fileRef = 3F02F2C32A2BCEC900FDE52E /* schemaAdmin.json */; };
+		3F02F2C62A2BD1BE00FDE52E /* DiscountCodesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F02F2C52A2BD1BE00FDE52E /* DiscountCodesModel.swift */; };
 		46A13FDEE83F4DDB4720C12B /* Pods_EasyBuy_EasyBuyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3507BF2A68414E5293DF9AD /* Pods_EasyBuy_EasyBuyUITests.framework */; };
 		571213AB5A290D8C60576AA3 /* Pods_EasyBuy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C03094883316ABB45E3A79E7 /* Pods_EasyBuy.framework */; };
 		A8360D013A4F802E529FC832 /* Pods_EasyBuyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DFEA8E6555F657DAB22A79E /* Pods_EasyBuyTests.framework */; };
@@ -88,6 +89,7 @@
 		3F02F2B02A29EFE900FDE52E /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		3F02F2B32A29F44700FDE52E /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		3F02F2C32A2BCEC900FDE52E /* schemaAdmin.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schemaAdmin.json; sourceTree = "<group>"; };
+		3F02F2C52A2BD1BE00FDE52E /* DiscountCodesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountCodesModel.swift; sourceTree = "<group>"; };
 		57381625E4BE77ECA2BF6311 /* Pods-EasyBuyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyBuyTests.release.xcconfig"; path = "Target Support Files/Pods-EasyBuyTests/Pods-EasyBuyTests.release.xcconfig"; sourceTree = "<group>"; };
 		83BDA726C11A8D3B396FD0AB /* Pods-EasyBuyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyBuyTests.debug.xcconfig"; path = "Target Support Files/Pods-EasyBuyTests/Pods-EasyBuyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9FDB15B709C744CC1801AEF5 /* Pods-EasyBuy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyBuy.debug.xcconfig"; path = "Target Support Files/Pods-EasyBuy/Pods-EasyBuy.debug.xcconfig"; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				171B15182A28FC9200851C67 /* Models.swift */,
+				3F02F2C52A2BD1BE00FDE52E /* DiscountCodesModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -387,6 +390,7 @@
 			buildConfigurationList = 17C9CF492A27E133004BCCC2 /* Build configuration list for PBXNativeTarget "EasyBuy" */;
 			buildPhases = (
 				D09BFE695844ABF4112159D2 /* [CP] Check Pods Manifest.lock */,
+				3F02F2C72A2BD27100FDE52E /* ShellScript */,
 				3F02F2AF2A29EC8400FDE52E /* ShellScript */,
 				17C9CF1C2A27E12F004BCCC2 /* Sources */,
 				17C9CF1D2A27E12F004BCCC2 /* Frameworks */,
@@ -525,7 +529,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		3F02F2AF2A29EC8400FDE52E /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
+			buildActionMask = 12;
 			files = (
 			);
 			inputFileListPaths = (
@@ -536,9 +540,26 @@
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nSCRIPT_PATH=\"${PODS_ROOT}/Apollo/scripts\"\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/*.graphql --localSchemaFile=\"schema.json\" API.swift\n\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nSCRIPT_PATH=\"${PODS_ROOT}/Apollo/scripts\"\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/StoreFront.graphql --localSchemaFile=\"schema.json\" API.swift\n\n";
+		};
+		3F02F2C72A2BD27100FDE52E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nSCRIPT_PATH=\"${PODS_ROOT}/Apollo/scripts\"\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/Admin.graphql --localSchemaFile=\"schemaAdmin.json\" API.swift\n\n";
 		};
 		6B8DADBC560C94CF015B8CFE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -659,6 +680,7 @@
 				17C9CF262A27E12F004BCCC2 /* ContentView.swift in Sources */,
 				3F02F2B12A29EFEA00FDE52E /* API.swift in Sources */,
 				171B15192A28FC9200851C67 /* Models.swift in Sources */,
+				3F02F2C62A2BD1BE00FDE52E /* DiscountCodesModel.swift in Sources */,
 				3F02F2A62A29E83E00FDE52E /* NetworkManager.swift in Sources */,
 				EBC8D0EC2A2AAF1A006DACFD /* ProductDetailsView.swift in Sources */,
 				17C9CF302A27E132004BCCC2 /* EasyBuy.xcdatamodeld in Sources */,

@@ -11,10 +11,12 @@ import Foundation
 class TokenInterceptor: ApolloInterceptor {
     
     let token: String?
-    
-    init(token: String) {
-        self.token = token
-    }
+      let requestType: RequestType
+      
+      init(token: String, requestType: RequestType) {
+          self.token = token
+          self.requestType = requestType
+      }
     
     enum TokenError: Error {
         case noToken
@@ -28,7 +30,13 @@ class TokenInterceptor: ApolloInterceptor {
         response: HTTPResponse<Operation>?,
         completion: @escaping (Result<GraphQLResult<Operation.Data>, Error>) -> Void) {
             
-            request.addHeader(name: NetworkConstants.keyStoreFrontAccessToken, value: NetworkConstants.valueStoreFrontAccessToken)
+            switch requestType {
+                   case .admin:
+                       request.addHeader(name: NetworkConstants.keyAccessToken, value: NetworkConstants.valueAccessToken)
+                   case .storeFront:
+                       request.addHeader(name: NetworkConstants.keyStoreFrontAccessToken, value: NetworkConstants.valueStoreFrontAccessToken)
+                   }
+
             request.addHeader(name: NetworkConstants.keyContentType, value: NetworkConstants.valueContentType)
             chain.proceedAsync(request: request,
                                response: response,
@@ -61,22 +69,37 @@ struct NetworkInterceptorProvider: InterceptorProvider {
 
   private let store: ApolloStore
   private let client: URLSessionClient
+    private let requestType: RequestType
 
     init(store: ApolloStore,
-         client: URLSessionClient) {
+         client: URLSessionClient,requestType: RequestType) {
     self.store = store
     self.client = client
+    self.requestType = requestType
   }
 
   func interceptors<Operation: GraphQLOperation>(for operation: Operation) -> [ApolloInterceptor] {
-    return [
-      CacheReadInterceptor(store: self.store),
-      TokenInterceptor(token: NetworkConstants.valueStoreFrontAccessToken),
-      NetworkFetchInterceptor(client: self.client),
-      ResponseCodeInterceptor(),
-      JSONResponseParsingInterceptor(cacheKeyForObject: self.store.cacheKeyForObject),
-      AutomaticPersistedQueryInterceptor(),
-      CacheWriteInterceptor(store: self.store)
-    ]
+      switch requestType {
+          case .admin:
+              return [
+                CacheReadInterceptor(store: self.store),
+                TokenInterceptor(token: NetworkConstants.valueAccessToken, requestType: requestType),
+                NetworkFetchInterceptor(client: self.client),
+                ResponseCodeInterceptor(),
+                JSONResponseParsingInterceptor(cacheKeyForObject: self.store.cacheKeyForObject),
+                AutomaticPersistedQueryInterceptor(),
+                CacheWriteInterceptor(store: self.store)
+              ]
+          case .storeFront:
+              return [
+                CacheReadInterceptor(store: self.store),
+                TokenInterceptor(token: NetworkConstants.valueStoreFrontAccessToken, requestType: requestType),
+                NetworkFetchInterceptor(client: self.client),
+                ResponseCodeInterceptor(),
+                JSONResponseParsingInterceptor(cacheKeyForObject: self.store.cacheKeyForObject),
+                AutomaticPersistedQueryInterceptor(),
+                CacheWriteInterceptor(store: self.store)
+              ]
+          }
   }
 }
