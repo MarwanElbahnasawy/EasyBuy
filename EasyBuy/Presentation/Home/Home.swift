@@ -77,7 +77,7 @@ struct Home: View {
                                     .padding(.leading , 10)
                                 
                                 CoverImageView()
-                                    .frame(height: 300)
+                                    .frame(height: 200)
                                     .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                                 CategoryGridView(brands: viewModel.brands?.smart_collections ?? [])
                                 TrendingView()

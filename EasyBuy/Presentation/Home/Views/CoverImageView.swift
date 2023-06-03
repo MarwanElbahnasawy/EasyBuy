@@ -8,22 +8,22 @@
 import SwiftUI
 
 struct CoverImageView: View {
-  // MARK: - PROPERTIES
-  
-  let coverImages: [CoverImage] = Bundle.main.decode("covers.json")
-  
-  // MARK: - BODY
-  
-  var body: some View {
-    TabView {
-      ForEach(coverImages) { item in
-        Image(item.name)
-          .resizable()
-          .scaledToFill()
-      } //: LOOP
-    } //: TAB
-    .tabViewStyle(PageTabViewStyle())
-  }
+    // MARK: - PROPERTIES
+    
+    let coverImages: [CoverImage] = Bundle.main.decode("covers.json")
+    
+    // MARK: - BODY
+    
+    var body: some View {
+        ScrollView(.horizontal, showsIndicators: false, content: {
+            LazyHGrid(rows: Array(repeating: GridItem(.flexible(), spacing: rowSpacing), count: 1), alignment: .center, spacing: 15, pinnedViews: [], content: {
+                ForEach(coverImages) { item in
+                    image(CoverImage: item)
+                }
+            })
+
+        }).padding(.leading,10)
+    }
 }
 
 // MARK: - PREVIEW

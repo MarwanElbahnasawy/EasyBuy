@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct CoverImage: Codable, Identifiable {
-  let id: Int
-  let name: String
+    var id: Int
+    var name: String
+    var title: String
+    var des: String
+    var code: String
+    
 }
