@@ -1,3 +1,10 @@
+//
+//  Order.swift
+//  EasyBuy
+//
+//  Created by mo_fathy on 01/06/2023.
+//
+
 import Foundation
 
 struct ResOrder: Codable {

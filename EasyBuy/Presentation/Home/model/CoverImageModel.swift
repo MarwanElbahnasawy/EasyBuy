@@ -1,7 +1,8 @@
 //
-//  Created by Robert Petras
-//  SwiftUI Masterclass ♥ Better Apps. Less Code.
-//  https://swiftuimasterclass.com
+//  CoverImage.swift
+//  EasyBuy
+//
+//  Created by mo_fathy on 01/06/2023.
 //
 
 import SwiftUI
