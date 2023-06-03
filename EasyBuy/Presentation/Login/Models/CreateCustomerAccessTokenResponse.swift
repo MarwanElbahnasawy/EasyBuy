@@ -19,7 +19,6 @@ struct CustomerAccessTokenCreate: Codable {
 // MARK: - CustomerAccessToken
 struct CustomerAccessToken: Codable {
     let accessToken: String?
-    let expiresAt: Date?
 }
 
 // MARK: - CustomerUserError

@@ -13,7 +13,7 @@ struct EasyBuyApp: App {
 
     var body: some Scene {
         WindowGroup {
-            RegisterationView()
+            LoginView()
 //            ContentView()
 //                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
