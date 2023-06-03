@@ -1,4 +1,9 @@
-
+//
+//  Model.swift
+//  EasyBuy
+//
+//  Created by mo_fathy on 02/06/2023.
+//
 
 import SwiftUI
 
