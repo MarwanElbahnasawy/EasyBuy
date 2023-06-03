@@ -1,0 +1,28 @@
+
+
+query getProducts($first: Int) {
+  products(first: $first) {
+    edges {
+      cursor
+      node {
+        title
+      }
+    }
+  }
+}
+
+mutation CustomerCreate($input: CustomerCreateInput!) {
+  customerCreate(input: $input) {
+    customer {
+      id
+      displayName
+      email
+      phone
+    }
+    customerUserErrors {
+      code
+      field
+      message
+    }
+  }
+}
