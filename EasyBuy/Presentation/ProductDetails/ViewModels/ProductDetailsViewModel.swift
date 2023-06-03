@@ -12,7 +12,7 @@ class ProductViewModel: ObservableObject {
     func fetchProductDetails() {
         guard let productId = productId else { return }
         let query = ProductQueryQuery(productId: productId, imageFirst: 10, variantsFirst: 10)
-        NetworkManager.shared.queryGraphQLRequest(query: query, responseModel: DataClass.self) { [weak self] result in
+        NetworkManager.getInstance(requestType: .storeFront).queryGraphQLRequest(query: query, responseModel: DataClass.self) { [weak self] result in
             switch result {
             case .success(let data):
                 self?.product = data

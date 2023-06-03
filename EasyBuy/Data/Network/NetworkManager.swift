@@ -18,13 +18,32 @@ protocol NetworkManagerProtocol {
 
 final class NetworkManager: NetworkManagerProtocol {
     
-    static let shared: NetworkManager = .init()
+    var requestType: RequestType = .storeFront
+
+    static var shared: NetworkManager?
+
+    private init(requestType: RequestType) {
+        self.requestType = requestType
+    }
+    static func getInstance(requestType: RequestType)-> NetworkManager{
+        if shared == nil {
+            shared = NetworkManager(requestType: requestType)
+        }
+        return shared!
+       
+    }
     
     private lazy var _service: ApolloClient = {
         let store = ApolloStore()
         let client = URLSessionClient()
-        let provider = NetworkInterceptorProvider(store: store, client: client)
-        let url = URL(string: NetworkConstants.baseUrl)!
+        let provider = NetworkInterceptorProvider(store: store, client: client,requestType: requestType)
+          var url : URL
+          switch requestType {
+          case .admin:
+              url = URL(string: NetworkConstants.baseUrlAdmin)!
+          case .storeFront:
+              url = URL(string: NetworkConstants.baseUrl)!
+          }
         
         let requestChainTransport = RequestChainNetworkTransport(interceptorProvider: provider,endpointURL: url)
         
@@ -40,7 +59,7 @@ final class NetworkManager: NetworkManagerProtocol {
     func queryGraphQLRequest<T, K>(query: T, responseModel: K.Type, completion: @escaping ((Result<K, Error>) -> Void)) where T : Apollo.GraphQLQuery, K : Decodable, K : Encodable {
          
 
-         NetworkManager.shared.service.fetch(query: query) { result in
+        NetworkManager.getInstance(requestType: requestType).service.fetch(query: query) { result in
              
              switch result {
              case .success(let apolloResponse):
@@ -59,7 +78,7 @@ final class NetworkManager: NetworkManagerProtocol {
      }
     func performGraphQLRequest<T, K>(mutation: T, responseModel: K.Type, completion: @escaping ((Result<K, Error>) -> Void)) where T : Apollo.GraphQLMutation, K : Decodable, K : Encodable {
         
-        NetworkManager.shared.service.perform(mutation: mutation) { result in
+        NetworkManager.getInstance(requestType: requestType).service.perform(mutation: mutation) { result in
             switch result {
             case .success(let apolloResponse):
                 do {
@@ -74,4 +93,8 @@ final class NetworkManager: NetworkManagerProtocol {
             }
         }
     }
+}
+enum RequestType{
+    case admin
+    case storeFront
 }

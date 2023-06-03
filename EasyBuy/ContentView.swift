@@ -36,7 +36,7 @@ struct ContentView: View {
                 }
                 .onDelete(perform: deleteItems)
             }.onAppear(perform: {
-                NetworkManager.shared.performGraphQLRequest(mutation: CustomerCreateMutation(input: CustomerCreateInput(firstName: "John", lastName: "Doe", email: "test@example.com", phone: "+15145659229", password: "password")), responseModel: CustomerCreateData.self, completion: { result in
+                NetworkManager.getInstance(requestType: .storeFront).performGraphQLRequest(mutation: CustomerCreateMutation(input: CustomerCreateInput(firstName: "John", lastName: "Doe", email: "test@example.com", phone: "+15145659229", password: "password")), responseModel: CustomerCreateData.self, completion: { result in
                     switch result {
                     case .success(let response):
                         if let customer = response.customerCreate?.customer {
