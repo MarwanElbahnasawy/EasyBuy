@@ -1,8 +1,8 @@
 //
 //  BaseViewModel.swift
-//  Uray
+//  EasyBuy
 //
-//  Created by Shameem Reza on 11/3/22.
+//  Created by mo_fathy on 03/06/2023.
 //
 
 import SwiftUI

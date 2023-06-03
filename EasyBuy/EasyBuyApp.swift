@@ -11,6 +11,7 @@ import SwiftUI
 struct EasyBuyApp: App {
     let persistenceController = PersistenceController.shared
     @AppStorage("isOnboarding") var isOnboarding: Bool = true
+    @AppStorage("barIsShow") var barIsShow: Bool = true
     var body: some Scene {
         WindowGroup {
             if isOnboarding {

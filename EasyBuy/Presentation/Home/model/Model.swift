@@ -8,7 +8,7 @@
 import Foundation
 
 struct SmartCollections: Codable {
-    var smart_collections : [Brand]
+    var smart_collections : [Brand]?
 }
 
 struct Brand: Codable {

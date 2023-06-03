@@ -301,8 +301,6 @@
 			isa = PBXGroup;
 			children = (
 				146520152A2BA479006EC2CA /* Onboarding.swift */,
-				14F9B2822A2B9B25009C2611 /* BaseView.swift */,
-				1486EB892A2B9FB30029212B /* Home.swift */,
 				1486EB8B2A2B9FF40029212B /* model */,
 				14F9B2602A2B943F009C2611 /* Views */,
 				171B151C2A28FCC100851C67 /* ViewModels */,
@@ -313,7 +311,9 @@
 		171B151C2A28FCC100851C67 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				14F9B2822A2B9B25009C2611 /* BaseView.swift */,
 				14F9B2842A2B9B38009C2611 /* BaseViewModel.swift */,
+				1486EB892A2B9FB30029212B /* Home.swift */,
 				171B151D2A28FCCF00851C67 /* HomeViewModel.swift */,
 			);
 			path = ViewModels;

@@ -8,10 +8,7 @@
 import SwiftUI
 
 struct Home: View {
- 
-    var brands: SmartCollections = Bundle.main.decode("brand.json")
-   
-    var items: ResProducts = Bundle.main.decode("products.json")
+   var viewModel = HomeViewModel()
   // MARK: - Func
     
     fileprivate func TrendingView() -> some View {
@@ -37,9 +34,8 @@ struct Home: View {
             }
             
             LazyVGrid(columns: gridLayout, spacing: 15, content: {
-                ForEach(items.products ) { product in
+                ForEach(viewModel.items?.products ?? [] ) { product in
                  ProductCell(product: product)
-                //    ProductItem(product: product)
               } //: LOOP
             }) //: GRID
             .padding(15)
@@ -50,49 +46,56 @@ struct Home: View {
   // MARK: - BODY
   
     var body: some View {
-        NavigationView{
+        
             ZStack {
-                
-                VStack(spacing: 0) {
-                    HStack{
-                        NavigationBarView()
-                        Button(action: {}, label: {
-                          ZStack {
-                            Image(systemName: "cart")
-                              .font(.title)
-                              .foregroundColor(.black)
-                            
-                            Circle()
-                              .fill(Color.red)
-                              .frame(width: 14, height: 14, alignment: .center)
-                              .offset(x: 13, y: -10)
-                          }
-                        }) //: BUTTON
+                if(viewModel.isLoading){
+                    VStack(spacing: 0) {
+                        
                     }
+                    
+                }else{
+                    VStack(spacing: 0) {
+                        HStack{
+                            NavigationBarView()
+                            Button(action: {
+                            }, label: {
+                                ZStack {
+                                    Image(systemName: "cart")
+                                        .font(.title)
+                                        .foregroundColor(.black)
+                                    
+                                    Circle()
+                                        .fill(Color.red)
+                                        .frame(width: 14, height: 14, alignment: .center)
+                                        .offset(x: 13, y: -10)
+                                }
+                            }) //: BUTTON
+                        }
                         .padding(.horizontal, 15)
                         .padding(.bottom)
                         .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top)
                         .shadow(color: Color.black.opacity(0.05), radius: 5, x: 0, y: 5)
-                    
-                    ScrollView(.vertical, showsIndicators: false, content: {
-                        VStack(spacing: 5) {
-                            CoverImageView()
-                                .frame(height: 300)
-                                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                            CategoryGridView(brands: brands.smart_collections)
-                            TrendingView()
-                            
-                        } //: VSTACK
                         
-                    }) //: SCROLL
-                    
-                } //: VSTACK
-                
+                        ScrollView(.vertical, showsIndicators: false, content: {
+                            VStack(spacing: 5) {
+                                CoverImageView()
+                                    .frame(height: 300)
+                                    .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                                CategoryGridView(brands: viewModel.brands?.smart_collections ?? [])
+                                TrendingView()
+                                
+                            } //: VSTACK
+                            
+                        }) //: SCROLL
+                        
+                    } //: VSTACK
+                }
                 
             } //: ZSTACK
             .ignoresSafeArea(.all, edges: .top)
             .padding(.bottom, 65)
-        }
+           
+        
     }
 }
 
