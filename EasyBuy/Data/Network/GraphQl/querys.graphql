@@ -15,3 +15,42 @@ query getCollections{
     }
   }
 }
+
+query ProductQuery($productId: ID, $imageFirst: Int, $variantsFirst: Int) {
+  product(id: $productId) {
+    id
+    title
+    description
+    productType
+    vendor
+    options {
+      name
+      values
+    }
+    variants(first: $variantsFirst) {
+      edges {
+        node {
+          id
+          title
+          price {
+            amount
+            currencyCode
+          }
+          availableForSale
+        }
+      }
+    }
+    featuredImage {
+      id
+      url
+    }
+    images(first: $imageFirst) {
+      edges {
+        node {
+          id
+          url
+        }
+      }
+    }
+  }
+}

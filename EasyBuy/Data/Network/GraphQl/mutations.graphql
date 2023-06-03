@@ -10,3 +10,19 @@ query getProducts($first: Int) {
     }
   }
 }
+
+mutation CustomerCreate($input: CustomerCreateInput!) {
+  customerCreate(input: $input) {
+    customer {
+      id
+      displayName
+      email
+      phone
+    }
+    customerUserErrors {
+      code
+      field
+      message
+    }
+  }
+}

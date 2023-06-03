@@ -36,12 +36,16 @@ struct ContentView: View {
                 }
                 .onDelete(perform: deleteItems)
             }.onAppear(perform: {
-                NetworkManager.shared.queryGraphQLRequest(query:GetProductsQuery(first: 3) , responseModel: Root.self, completion: { result in
+                NetworkManager.shared.performGraphQLRequest(mutation: CustomerCreateMutation(input: CustomerCreateInput(firstName: "John", lastName: "Doe", email: "test@example.com", phone: "+15145659229", password: "password")), responseModel: CustomerCreateData.self, completion: { result in
                     switch result {
-                    case .success(let success):
-                        print("product name : \(success.products.edges[0].node.title)")
-                    case .failure(let failure):
-                        print(failure)
+                    case .success(let response):
+                        if let customer = response.customerCreate?.customer {
+                            print("New customer created with ID: \(customer.id ?? "N/A"), email: \(customer.email ?? "N/A")")
+                        } else if let errors = response.customerCreate?.customerUserErrors {
+                            print("Failed to create customer due to errors: \(errors)")
+                        }
+                    case .failure(let error):
+                        print("Failed to create customer due to error: \(error)")
                     }
                 })
             })
