@@ -19,18 +19,11 @@ struct Home: View {
                         .font(.custom(Constants.AppFont.boldFont, size: 18))
                         .padding(.bottom, -1)
                     Text("You have never seen it before")
-                       .font(.custom(Constants.AppFont.semiBoldFont, size: 11))
+                       .font(.custom(Constants.AppFont.boldFont, size: 11))
                         .foregroundColor(.gray)
                 }.padding(.leading, 15)
                 Spacer()
-//                Button(action: {
-//
-//                }) {
-//                    Text("VIEW ALL")
-//                        .font(.custom(Constants.AppFont.semiBoldFont, size: 12))
-//                       .foregroundColor(Color("Red"))
-//                        .padding(.trailing, 15)
-//                }
+
             }
             
             LazyVGrid(columns: gridLayout, spacing: 15, content: {
@@ -69,6 +62,20 @@ struct Home: View {
                         
                         ScrollView(.vertical, showsIndicators: false, content: {
                             VStack(spacing: 5) {
+                                
+                                HStack {
+                                    VStack(alignment: .leading) {
+                                        Text("Welcome,")
+                                            .font(.custom(Constants.AppFont.extraBoldFont, size: 30))
+                                            .padding(.bottom, 2)
+                                        Text("Our EasyBuy App")
+                                           .font(.custom(Constants.AppFont.semiBoldFont, size: 25))
+                                            .foregroundColor(.gray)
+                                    }.padding(.leading, 15)
+                                    Spacer()
+                                }.padding(.bottom , 5)
+                                    .padding(.leading , 10)
+                                
                                 CoverImageView()
                                     .frame(height: 300)
                                     .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))

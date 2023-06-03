@@ -19,6 +19,7 @@ struct NavigationBarView: View {
       Button(action: {}, label: {
         Image(systemName: "magnifyingglass")
           .font(.title)
+          .foregroundColor(Color.black)
       }) //: BUTTON
       
       Spacer()
