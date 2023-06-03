@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		146520162A2BA479006EC2CA /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146520152A2BA479006EC2CA /* Onboarding.swift */; };
 		146520182A2BA4AB006EC2CA /* Intro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146520172A2BA4AA006EC2CA /* Intro.swift */; };
+		1465201A2A2BBA61006EC2CA /* BrandProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146520192A2BBA61006EC2CA /* BrandProducts.swift */; };
 		1486EB842A2B9F870029212B /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1486EB7F2A2B9F870029212B /* OpenSans-SemiBold.ttf */; };
 		1486EB852A2B9F870029212B /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1486EB802A2B9F870029212B /* OpenSans-Light.ttf */; };
 		1486EB862A2B9F870029212B /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1486EB812A2B9F870029212B /* OpenSans-ExtraBold.ttf */; };
@@ -100,6 +101,7 @@
 		097FF13FBA537AE765A4B491 /* Pods-EasyBuy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyBuy.release.xcconfig"; path = "Target Support Files/Pods-EasyBuy/Pods-EasyBuy.release.xcconfig"; sourceTree = "<group>"; };
 		146520152A2BA479006EC2CA /* Onboarding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		146520172A2BA4AA006EC2CA /* Intro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Intro.swift; sourceTree = "<group>"; };
+		146520192A2BBA61006EC2CA /* BrandProducts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandProducts.swift; sourceTree = "<group>"; };
 		1486EB7F2A2B9F870029212B /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
 		1486EB802A2B9F870029212B /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		1486EB812A2B9F870029212B /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
@@ -306,6 +308,9 @@
 			isa = PBXGroup;
 			children = (
 				146520152A2BA479006EC2CA /* Onboarding.swift */,
+				146520192A2BBA61006EC2CA /* BrandProducts.swift */,
+				1486EB892A2B9FB30029212B /* Home.swift */,
+				14F9B2822A2B9B25009C2611 /* BaseView.swift */,
 				1486EB8B2A2B9FF40029212B /* model */,
 				14F9B2602A2B943F009C2611 /* Views */,
 				171B151C2A28FCC100851C67 /* ViewModels */,
@@ -316,9 +321,7 @@
 		171B151C2A28FCC100851C67 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				14F9B2822A2B9B25009C2611 /* BaseView.swift */,
 				14F9B2842A2B9B38009C2611 /* BaseViewModel.swift */,
-				1486EB892A2B9FB30029212B /* Home.swift */,
 				171B151D2A28FCCF00851C67 /* HomeViewModel.swift */,
 			);
 			path = ViewModels;
@@ -835,6 +838,7 @@
 				3F02F2AD2A29EC1400FDE52E /* Admin.graphql in Sources */,
 				EBC8D0EE2A2AB68A006DACFD /* SwiftUIView.swift in Sources */,
 				EB90A6182A2B383B00295296 /* CreateCustomer.swift in Sources */,
+				1465201A2A2BBA61006EC2CA /* BrandProducts.swift in Sources */,
 				1486EBA22A2BA0F10029212B /* View + partialSheet.swift in Sources */,
 				EBC8D0E42A2AA930006DACFD /* ProductDetails.swift in Sources */,
 				171B151E2A28FCCF00851C67 /* HomeViewModel.swift in Sources */,
