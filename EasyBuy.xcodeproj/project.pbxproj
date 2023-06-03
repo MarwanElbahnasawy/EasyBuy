@@ -19,6 +19,7 @@
 		14F9B2762A2B97A1009C2611 /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F9B2752A2B97A1009C2611 /* NavigationBarView.swift */; };
 		14F9B2782A2B97BF009C2611 /* CustomCurveShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F9B2772A2B97BF009C2611 /* CustomCurveShape.swift */; };
 		14F9B27A2A2B97DF009C2611 /* MotionAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F9B2792A2B97DF009C2611 /* MotionAnimationView.swift */; };
+		14F9B27C2A2B980B009C2611 /* CoverImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F9B27B2A2B980B009C2611 /* CoverImageView.swift */; };
 		171B14D42A2891B900851C67 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 171B14D32A2891B900851C67 /* Lottie */; };
 		171B14D92A28996C00851C67 /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171B14D82A28996C00851C67 /* NetworkReachability.swift */; };
 		171B14DC2A28A23E00851C67 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 171B14DB2A28A23E00851C67 /* Kingfisher */; };
@@ -84,6 +85,7 @@
 		14F9B2752A2B97A1009C2611 /* NavigationBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBarView.swift; sourceTree = "<group>"; };
 		14F9B2772A2B97BF009C2611 /* CustomCurveShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCurveShape.swift; sourceTree = "<group>"; };
 		14F9B2792A2B97DF009C2611 /* MotionAnimationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionAnimationView.swift; sourceTree = "<group>"; };
+		14F9B27B2A2B980B009C2611 /* CoverImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoverImageView.swift; sourceTree = "<group>"; };
 		171B14D82A28996C00851C67 /* NetworkReachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReachability.swift; sourceTree = "<group>"; };
 		171B15162A28FC7F00851C67 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		171B15182A28FC9200851C67 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 		14F9B2602A2B943F009C2611 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				14F9B27B2A2B980B009C2611 /* CoverImageView.swift */,
 				14F9B2792A2B97DF009C2611 /* MotionAnimationView.swift */,
 				14F9B2772A2B97BF009C2611 /* CustomCurveShape.swift */,
 				14F9B2752A2B97A1009C2611 /* NavigationBarView.swift */,
@@ -715,6 +718,7 @@
 				14F9B26E2A2B96D7009C2611 /* CategoryGridView.swift in Sources */,
 				17C9CF242A27E12F004BCCC2 /* EasyBuyApp.swift in Sources */,
 				14F9B2662A2B94DD009C2611 /* TitleView.swift in Sources */,
+				14F9B27C2A2B980B009C2611 /* CoverImageView.swift in Sources */,
 				14F9B2722A2B9760009C2611 /* SectionView.swift in Sources */,
 				14F9B2682A2B9514009C2611 /* ProductCell.swift in Sources */,
 				171B14D92A28996C00851C67 /* NetworkReachability.swift in Sources */,
