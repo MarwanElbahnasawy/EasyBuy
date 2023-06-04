@@ -9,7 +9,8 @@ import Foundation
 class HomeViewModel: ObservableObject {
     @Published var brands: [Brand]?
     @Published var items: [Product]?
-    @Published var isLoading: Bool = false
+    @Published var lottieFile = "loading"
+    @Published var isLoading: Bool = true
     init(){
      
     }

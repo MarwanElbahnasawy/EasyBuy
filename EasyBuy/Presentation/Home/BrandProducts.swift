@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct BrandProducts: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @ObservedObject var viewModel:BrandViewModel = BrandViewModel()
     var body: some View {
         NavigationView{
-        ZStack {
-           
-          
+        VStack {
+
                 if(viewModel.isLoading){
                     
                 }else{
@@ -27,7 +27,7 @@ struct BrandProducts: View {
                     }
                 }
             }
-            }
+        }
        
         .onAppear(){
                 viewModel.fetchBrand()

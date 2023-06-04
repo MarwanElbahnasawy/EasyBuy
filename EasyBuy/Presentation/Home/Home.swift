@@ -43,7 +43,8 @@ struct Home: View {
             ZStack {
                 if(viewModel.isLoading){
                     VStack(spacing: 0) {
-                        
+                        LottieView(lottieFile: viewModel.lottieFile)
+                            .frame(width: 300, height: 300)
                     }
                     
                 }else{

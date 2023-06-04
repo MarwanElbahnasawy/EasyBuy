@@ -14,14 +14,19 @@ struct EasyBuyApp: App {
     @AppStorage("barIsShow") var barIsShow: Bool = true
     var body: some Scene {
         WindowGroup {
+            NavigationView{
+                            if isOnboarding {
+                              Onboarding()
+                            } else {
+                                
+                                BaseView()
+                                
+                            }
+            }
          //  SwiftUIView()
          //   Category()
-            
-            if isOnboarding {
-              Onboarding()
-            } else {
-                BaseView()
-            }
+      //  Home()
+
       }
     }
 }

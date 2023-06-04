@@ -364,13 +364,8 @@
 		17C9CF222A27E12F004BCCC2 /* EasyBuy */ = {
 			isa = PBXGroup;
 			children = (
-				17C9CF232A27E12F004BCCC2 /* EasyBuyApp.swift */,
-				3F02F2B02A29EFE900FDE52E /* API.swift */,
-				3F02F2C32A2BCEC900FDE52E /* schemaAdmin.json */,
-				3F02F2AE2A29EC4C00FDE52E /* schema.json */,
 				3F02F2AA2A29EBCE00FDE52E /* StoreFront.graphql */,
 				3F02F2AC2A29EC1400FDE52E /* Admin.graphql */,
-				17C9CF252A27E12F004BCCC2 /* ContentView.swift */,
 				17C9CF7A2A27E186004BCCC2 /* App */,
 				17C9CF802A27E28C004BCCC2 /* Data */,
 				171B151A2A28FC9900851C67 /* Presentation */,
@@ -496,6 +491,11 @@
 		EB95F9DA2A2B5EF8007C7177 /* GraphQl */ = {
 			isa = PBXGroup;
 			children = (
+				17C9CF232A27E12F004BCCC2 /* EasyBuyApp.swift */,
+				17C9CF252A27E12F004BCCC2 /* ContentView.swift */,
+				3F02F2B02A29EFE900FDE52E /* API.swift */,
+				3F02F2C32A2BCEC900FDE52E /* schemaAdmin.json */,
+				3F02F2AE2A29EC4C00FDE52E /* schema.json */,
 			);
 			path = GraphQl;
 			sourceTree = "<group>";
@@ -701,7 +701,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		3F02F2AF2A29EC8400FDE52E /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
+			buildActionMask = 8;
 			files = (
 			);
 			inputFileListPaths = (
@@ -712,13 +712,13 @@
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nSCRIPT_PATH=\"${PODS_ROOT}/Apollo/scripts\"\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/StoreFront.graphql --localSchemaFile=\"schema.json\" API.swift\n\n";
 		};
 		3F02F2C72A2BD27100FDE52E /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputFileListPaths = (
@@ -729,7 +729,7 @@
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nSCRIPT_PATH=\"${PODS_ROOT}/Apollo/scripts\"\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/Admin.graphql --localSchemaFile=\"schemaAdmin.json\" API.swift\n\n";
 		};
@@ -1056,7 +1056,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"EasyBuy/App/Assets/Preview Content\"";
-				DEVELOPMENT_TEAM = CV64V222GG;
+				DEVELOPMENT_TEAM = PARRY5PM9L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -1069,7 +1069,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.EasyBuyy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.EasyBuyy.fathy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1086,7 +1086,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"EasyBuy/App/Assets/Preview Content\"";
-				DEVELOPMENT_TEAM = CV64V222GG;
+				DEVELOPMENT_TEAM = PARRY5PM9L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -1099,7 +1099,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.EasyBuyy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.EasyBuyy.fathy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

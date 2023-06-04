@@ -2,14 +2,14 @@ import SwiftUI
 
 struct BaseView: View {
     @StateObject var baseData = BaseViewModel()
-    @AppStorage("barIsShow") var barIsShow: Bool = true
+    @AppStorage("barIsShow") var barIsShow: Bool = false
     // MARK: - HIDE TAB BAR
     init() {
         UITabBar.appearance().isHidden = true
     }
     
     var body: some View {
-        NavigationView{
+       
             TabView(selection: $baseData.currentTab) {
                 Home()
                     .environmentObject(baseData)
@@ -77,7 +77,7 @@ struct BaseView: View {
                 , alignment: .bottom
             )
             
-        }
+        
     }
         @ViewBuilder
         func TabButton(Tab: Tab)-> some View {
