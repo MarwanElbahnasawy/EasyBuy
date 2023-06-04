@@ -10,10 +10,13 @@ import SwiftUI
 struct BrandProducts: View {
     @ObservedObject var viewModel = BrandViewModel()
     var body: some View {
+        NavigationView{
         ZStack {
-            if(viewModel.isLoading){
-        
-            }else{
+           
+          
+                if(viewModel.isLoading){
+                    
+                }else{
                     VStack(spacing: 0) {
                         HStack{
                             let brand = "\(viewModel.brand ?? "adidas") PRODUCTS"
@@ -23,7 +26,10 @@ struct BrandProducts: View {
                         ProductCatalog(products:viewModel.items?.products ?? [])
                     }
                 }
-            }.onAppear(){
+            }
+            }
+       
+        .onAppear(){
                 viewModel.fetchBrand()
             }
             //ZStack
