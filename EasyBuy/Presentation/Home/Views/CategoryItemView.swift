@@ -15,7 +15,7 @@ struct CategoryItemView: View {
   
   var body: some View {
       HStack(alignment: .center, spacing: 6) {
-          KingFisherImageView(url: brand.image?.src ?? "https://theperfectroundgolf.com/wp-content/uploads/2022/04/placeholder.png",placeholder: "")
+          KingFisherImageView(url: brand.image?.url ?? "https://theperfectroundgolf.com/wp-content/uploads/2022/04/placeholder.png",placeholder: "")
 
           .resizable()
           .scaledToFit()

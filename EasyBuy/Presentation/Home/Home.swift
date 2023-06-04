@@ -79,7 +79,7 @@ struct Home: View {
                                 CoverImageView()
                                     .frame(height: 200)
                                     .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                                CategoryGridView(brands: viewModel.brands?.smart_collections ?? [])
+                                CategoryGridView(brands: viewModel.brands ?? [])
                                 TrendingView()
                                 
                             } //: VSTACK

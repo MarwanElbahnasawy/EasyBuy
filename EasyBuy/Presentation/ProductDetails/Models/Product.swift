@@ -28,7 +28,8 @@ struct DataClass: Codable {
 // MARK: - Product
 struct Product: Codable ,Identifiable {
     var id, title, description, productType: String?
-    var tags,vendor: String?
+    var vendor: String?
+    var tags: [String]?
     var options: [Option]?
     var variants: Variants?
     var featuredImage: FeaturedImage?

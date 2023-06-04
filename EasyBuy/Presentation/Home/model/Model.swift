@@ -7,18 +7,26 @@
 
 import Foundation
 
+// MARK: - DataClass
 struct SmartCollections: Codable {
-    var smart_collections : [Brand]?
+    var collections: Collections?
 }
 
+// MARK: - Collections
+struct Collections: Codable {
+    var nodes: [Brand]?
+}
+
+// MARK: - Brand
 struct Brand: Codable {
-    var title: String?
-    var id: Int?
-    var image : BrandImage?
+    var id: String?
+    var image: Image_Brand?
+    var handle, title: String?
 }
 
-struct BrandImage : Codable {
-    var src : String?
+// MARK: - Image
+struct Image_Brand: Codable {
+    var url: String?
 }
 
  

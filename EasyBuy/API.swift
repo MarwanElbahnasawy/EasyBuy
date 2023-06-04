@@ -2201,6 +2201,230 @@ public final class ProductQueryQuery: GraphQLQuery {
   }
 }
 
+public final class CollectionsQuery: GraphQLQuery {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    query Collections($first: Int) {
+      collections(first: $first) {
+        __typename
+        nodes {
+          __typename
+          id
+          image {
+            __typename
+            url
+          }
+          handle
+          title
+        }
+      }
+    }
+    """
+
+  public let operationName: String = "Collections"
+
+  public var first: Int?
+
+  public init(first: Int? = nil) {
+    self.first = first
+  }
+
+  public var variables: GraphQLMap? {
+    return ["first": first]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["QueryRoot"]
+
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("collections", arguments: ["first": GraphQLVariable("first")], type: .nonNull(.object(Collection.selections))),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(collections: Collection) {
+      self.init(unsafeResultMap: ["__typename": "QueryRoot", "collections": collections.resultMap])
+    }
+
+    /// List of the shop’s collections.
+    public var collections: Collection {
+      get {
+        return Collection(unsafeResultMap: resultMap["collections"]! as! ResultMap)
+      }
+      set {
+        resultMap.updateValue(newValue.resultMap, forKey: "collections")
+      }
+    }
+
+    public struct Collection: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["CollectionConnection"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("nodes", type: .nonNull(.list(.nonNull(.object(Node.selections))))),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(nodes: [Node]) {
+        self.init(unsafeResultMap: ["__typename": "CollectionConnection", "nodes": nodes.map { (value: Node) -> ResultMap in value.resultMap }])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      /// A list of the nodes contained in CollectionEdge.
+      public var nodes: [Node] {
+        get {
+          return (resultMap["nodes"] as! [ResultMap]).map { (value: ResultMap) -> Node in Node(unsafeResultMap: value) }
+        }
+        set {
+          resultMap.updateValue(newValue.map { (value: Node) -> ResultMap in value.resultMap }, forKey: "nodes")
+        }
+      }
+
+      public struct Node: GraphQLSelectionSet {
+        public static let possibleTypes: [String] = ["Collection"]
+
+        public static var selections: [GraphQLSelection] {
+          return [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+            GraphQLField("image", type: .object(Image.selections)),
+            GraphQLField("handle", type: .nonNull(.scalar(String.self))),
+            GraphQLField("title", type: .nonNull(.scalar(String.self))),
+          ]
+        }
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(id: GraphQLID, image: Image? = nil, handle: String, title: String) {
+          self.init(unsafeResultMap: ["__typename": "Collection", "id": id, "image": image.flatMap { (value: Image) -> ResultMap in value.resultMap }, "handle": handle, "title": title])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        /// A globally-unique ID.
+        public var id: GraphQLID {
+          get {
+            return resultMap["id"]! as! GraphQLID
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "id")
+          }
+        }
+
+        /// Image associated with the collection.
+        public var image: Image? {
+          get {
+            return (resultMap["image"] as? ResultMap).flatMap { Image(unsafeResultMap: $0) }
+          }
+          set {
+            resultMap.updateValue(newValue?.resultMap, forKey: "image")
+          }
+        }
+
+        /// A human-friendly unique string for the collection automatically generated from its title.
+        /// Limit of 255 characters.
+        public var handle: String {
+          get {
+            return resultMap["handle"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "handle")
+          }
+        }
+
+        /// The collection’s name. Limit of 255 characters.
+        public var title: String {
+          get {
+            return resultMap["title"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "title")
+          }
+        }
+
+        public struct Image: GraphQLSelectionSet {
+          public static let possibleTypes: [String] = ["Image"]
+
+          public static var selections: [GraphQLSelection] {
+            return [
+              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLField("url", type: .nonNull(.scalar(String.self))),
+            ]
+          }
+
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public init(url: String) {
+            self.init(unsafeResultMap: ["__typename": "Image", "url": url])
+          }
+
+          public var __typename: String {
+            get {
+              return resultMap["__typename"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          /// The location of the image as a URL.
+          /// 
+          /// If no transform options are specified, then the original image will be preserved including any pre-applied transforms.
+          /// 
+          /// All transformation options are considered "best-effort". Any transformation that the original image type doesn't support will be ignored.
+          /// 
+          /// If you need multiple variations of the same image, then you can use [GraphQL aliases](https://graphql.org/learn/queries/#aliases).
+          public var url: String {
+            get {
+              return resultMap["url"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "url")
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 public final class ProductsQuery: GraphQLQuery {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition: String =
@@ -2212,6 +2436,7 @@ public final class ProductsQuery: GraphQLQuery {
           __typename
           id
           title
+          tags
           description
           productType
           vendor
@@ -2350,6 +2575,7 @@ public final class ProductsQuery: GraphQLQuery {
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
             GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
             GraphQLField("title", type: .nonNull(.scalar(String.self))),
+            GraphQLField("tags", type: .nonNull(.list(.nonNull(.scalar(String.self))))),
             GraphQLField("description", type: .nonNull(.scalar(String.self))),
             GraphQLField("productType", type: .nonNull(.scalar(String.self))),
             GraphQLField("vendor", type: .nonNull(.scalar(String.self))),
@@ -2366,8 +2592,8 @@ public final class ProductsQuery: GraphQLQuery {
           self.resultMap = unsafeResultMap
         }
 
-        public init(id: GraphQLID, title: String, description: String, productType: String, vendor: String, options: [Option], variants: Variant, featuredImage: FeaturedImage? = nil, images: Image) {
-          self.init(unsafeResultMap: ["__typename": "Product", "id": id, "title": title, "description": description, "productType": productType, "vendor": vendor, "options": options.map { (value: Option) -> ResultMap in value.resultMap }, "variants": variants.resultMap, "featuredImage": featuredImage.flatMap { (value: FeaturedImage) -> ResultMap in value.resultMap }, "images": images.resultMap])
+        public init(id: GraphQLID, title: String, tags: [String], description: String, productType: String, vendor: String, options: [Option], variants: Variant, featuredImage: FeaturedImage? = nil, images: Image) {
+          self.init(unsafeResultMap: ["__typename": "Product", "id": id, "title": title, "tags": tags, "description": description, "productType": productType, "vendor": vendor, "options": options.map { (value: Option) -> ResultMap in value.resultMap }, "variants": variants.resultMap, "featuredImage": featuredImage.flatMap { (value: FeaturedImage) -> ResultMap in value.resultMap }, "images": images.resultMap])
         }
 
         public var __typename: String {
@@ -2396,6 +2622,17 @@ public final class ProductsQuery: GraphQLQuery {
           }
           set {
             resultMap.updateValue(newValue, forKey: "title")
+          }
+        }
+
+        /// A comma separated list of tags that have been added to the product.
+        /// Additional access scope required for private apps: unauthenticated_read_product_tags.
+        public var tags: [String] {
+          get {
+            return resultMap["tags"]! as! [String]
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "tags")
           }
         }
 

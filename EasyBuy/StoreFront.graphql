@@ -55,11 +55,25 @@ query ProductQuery($productId: ID, $imageFirst: Int, $variantsFirst: Int) {
   }
 }
 
+query Collections($first: Int) {
+  collections(first: $first) {
+    nodes {
+      id
+      image {
+        url
+      }
+      handle
+      title
+    }
+  }
+}
+
 query Products($first: Int, $imageFirst: Int, $variantsFirst: Int) {
   products(first: $first) {
     nodes {
     id
     title
+    tags
     description
     productType
     vendor
