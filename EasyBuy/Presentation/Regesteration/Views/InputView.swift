@@ -21,6 +21,8 @@ struct InputView: View {
                     .font(.system(size: 14))
                     .autocapitalization(.none)
             }
+            
+            Divider()
         }
     }
 }

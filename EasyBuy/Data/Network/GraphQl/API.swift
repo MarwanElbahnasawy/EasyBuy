@@ -2908,3 +2908,111 @@ public final class CustomerAccessTokenCreateMutation: GraphQLMutation {
     }
   }
 }
+
+public final class CustomerQuery: GraphQLQuery {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    query Customer($customerAccessToken: String!) {
+      customer(customerAccessToken: $customerAccessToken) {
+        __typename
+        displayName
+        email
+      }
+    }
+    """
+
+  public let operationName: String = "Customer"
+
+  public var customerAccessToken: String
+
+  public init(customerAccessToken: String) {
+    self.customerAccessToken = customerAccessToken
+  }
+
+  public var variables: GraphQLMap? {
+    return ["customerAccessToken": customerAccessToken]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["QueryRoot"]
+
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("customer", arguments: ["customerAccessToken": GraphQLVariable("customerAccessToken")], type: .object(Customer.selections)),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(customer: Customer? = nil) {
+      self.init(unsafeResultMap: ["__typename": "QueryRoot", "customer": customer.flatMap { (value: Customer) -> ResultMap in value.resultMap }])
+    }
+
+    /// The customer associated with the given access token. Tokens are obtained by using the
+    /// [`customerAccessTokenCreate` mutation](https://shopify.dev/docs/api/storefront/latest/mutations/customerAccessTokenCreate).
+    public var customer: Customer? {
+      get {
+        return (resultMap["customer"] as? ResultMap).flatMap { Customer(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "customer")
+      }
+    }
+
+    public struct Customer: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["Customer"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("displayName", type: .nonNull(.scalar(String.self))),
+          GraphQLField("email", type: .scalar(String.self)),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(displayName: String, email: String? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Customer", "displayName": displayName, "email": email])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      /// The customer’s name, email or phone number.
+      public var displayName: String {
+        get {
+          return resultMap["displayName"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "displayName")
+        }
+      }
+
+      /// The customer’s email address.
+      public var email: String? {
+        get {
+          return resultMap["email"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "email")
+        }
+      }
+    }
+  }
+}

@@ -59,7 +59,6 @@ struct LoginView: View {
                             .fontWeight(.bold)
                     }
                 }
-                
             }
         }
     }

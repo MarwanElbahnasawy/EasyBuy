@@ -94,3 +94,10 @@ mutation CustomerAccessTokenCreate($input: CustomerAccessTokenCreateInput!) {
     }
   }
 }
+
+query Customer($customerAccessToken: String!) {
+  customer(customerAccessToken: $customerAccessToken) {
+    displayName
+    email
+  }
+}

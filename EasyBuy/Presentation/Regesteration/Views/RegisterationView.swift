@@ -95,22 +95,27 @@ struct RegisterationView: View {
                 .font(.system(size: 14))
             }
         }
+        .onAppear {
+            let token = UserDefaults.standard.string(forKey: "accessToken")
+            
+            print(token ?? "")
+        }
     }
     
     func createNewCustomer() {
         NetworkManager.getInstance(requestType: .storeFront).performGraphQLRequest(mutation: CustomerCreateMutation(input: CustomerCreateInput(firstName: phoneNumber, lastName: firstName, email: lastName, phone: email, password: password)), responseModel: CustomerCreateData.self, completion: { result in
-                switch result {
-                case .success(let response):
-                    if let customer = response.customerCreate?.customer {
-                        print("New customer created with ID: \(customer.id ?? "N/A")")
-                    } else {
-                        print("Failed to create customer")
-                    }
-                case .failure(let error):
-                    print("Failed to create customer due to error: \(error.localizedDescription)")
+            switch result {
+            case .success(let response):
+                if let customer = response.customerCreate?.customer {
+                    print("New customer created with ID: \(customer.id ?? "N/A")")
+                } else {
+                    print("Failed to create customer")
                 }
-            })
-        }
+            case .failure(let error):
+                print("Failed to create customer due to error: \(error.localizedDescription)")
+            }
+        })
+    }
     
     
 }
