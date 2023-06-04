@@ -15,11 +15,13 @@ struct EasyBuyApp: App {
     var body: some Scene {
         WindowGroup {
          //  SwiftUIView()
-            if isOnboarding {
-              Onboarding()
-            } else {
-                BaseView()
-            }
+           Home()
+            
+//            if isOnboarding {
+//              Onboarding()
+//            } else {
+//                BaseView()
+//            }
       }
     }
 }

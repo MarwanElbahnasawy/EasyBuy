@@ -110,6 +110,51 @@ query Products($first: Int, $imageFirst: Int, $variantsFirst: Int) {
   }
 }
 
+query CollectionProducts($handle: String, $first: Int , $imageFirst: Int, $variantsFirst: Int ) {
+  collection(handle: $handle) {
+    description
+    products(first: $first) {
+      nodes {
+          id
+    title
+    tags
+    description
+    productType
+    vendor
+    options {
+      name
+      values
+    }
+    variants(first: $variantsFirst) {
+      edges {
+        node {
+          id
+          title
+          price {
+            amount
+            currencyCode
+          }
+          availableForSale
+        }
+      }
+    }
+    featuredImage {
+      id
+      url
+    }
+    images(first: $imageFirst) {
+      edges {
+        node {
+          id
+          url
+        }
+      }
+    }
+      }
+    }
+  }
+}
+
 mutation CustomerCreate($input: CustomerCreateInput!) {
   customerCreate(input: $input) {
     customer {

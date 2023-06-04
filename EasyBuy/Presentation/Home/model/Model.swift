@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - DataClass
-struct SmartCollections: Codable {
+struct Res_Collection: Codable {
     var collections: Collections?
 }
 
@@ -30,3 +30,15 @@ struct Image_Brand: Codable {
 }
 
  
+// MARK: - DataClass
+struct ResCollectionHandle: Codable {
+    var collection: Collection?
+}
+
+// MARK: - Collection
+struct Collection: Codable {
+    var description: String?
+    var products: Products?
+}
+
+

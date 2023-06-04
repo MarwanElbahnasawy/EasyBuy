@@ -18,7 +18,7 @@ struct SectionView: View {
     VStack(spacing: 0) {
       Spacer()
       
-      Text("Categories".uppercased())
+      Text("Brands".uppercased())
         .font(.footnote)
         .fontWeight(.bold)
         .foregroundColor(.white)
