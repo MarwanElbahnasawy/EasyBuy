@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct LoginView: View {
-//    @ObservedObject var loginViewModel = LoginViewModel()
+    @ObservedObject var loginViewModel = LoginViewModel()
 
     @State private var email = ""
     @State private var password = ""
@@ -70,13 +70,26 @@ struct LoginView: View {
             case .success(let response):
                 if let token = response.customerAccessTokenCreate?.customerAccessToken {
                     print("New token created: \(token.accessToken ?? "N/A")")
+                    // Save token to UserDefaults
+                    UserDefaults.standard.set(token.accessToken, forKey: "accessToken")
+                    // TODO: Navigate to next view
                 } else {
-                    print("Failed to create token")
+                    // Token not created
+                    showAlert(title: "Error", message: "The email or password you entered is incorrect.")
                 }
             case .failure(let error):
-                print("Failed to create token due to error: \(error)")
+                // Show GraphQL error
+                showAlert(title: "GraphQL Error", message: "\(error.localizedDescription)")
             }
         })
+    }
+    
+    func showAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        DispatchQueue.main.async {
+            UIApplication.shared.windows.first?.rootViewController?.present(alertController, animated: true, completion: nil)
+        }
     }
 }
 

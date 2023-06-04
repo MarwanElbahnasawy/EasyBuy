@@ -41,6 +41,7 @@ struct ContentView: View {
                     case .success(let response):
                         if let token = response.customerAccessTokenCreate?.customerAccessToken {
                             print("New customer created with ID: \(token.accessToken ?? "N/A")")
+                            UserDefaults.standard.set(token.accessToken, forKey: "accessToken")
                         } else if let errors = response.customerAccessTokenCreate?.customerAccessTokenError?.first?.message {
                             print("Failed to create customer due to errors: \(errors)")
                         }
