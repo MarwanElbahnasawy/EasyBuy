@@ -1,0 +1,328 @@
+{
+    "smart_collections": [
+        {
+            "id": 447912444196,
+            "handle": "adidas",
+            "title": "ADIDAS",
+            "updated_at": "2023-06-01T06:58:17-04:00",
+            "body_html": "Adidas collection",
+            "published_at": "2023-05-31T05:39:37-04:00",
+            "sort_order": "best-selling",
+            "template_suffix": null,
+            "disjunctive": false,
+            "rules": [
+                {
+                    "column": "title",
+                    "relation": "contains",
+                    "condition": "ADIDAS"
+                }
+            ],
+            "published_scope": "web",
+            "admin_graphql_api_id": "gid://shopify/Collection/447912444196",
+            "image": {
+                "created_at": "2023-05-31T05:39:37-04:00",
+                "alt": null,
+                "width": 1000,
+                "height": 676,
+                "src": "https://cdn.shopify.com/s/files/1/0767/8184/6820/collections/97a3b1227876bf099d279fd38290e567.jpg?v=1685525977"
+            }
+        },
+        {
+            "id": 447912542500,
+            "handle": "asics-tiger",
+            "title": "ASICS TIGER",
+            "updated_at": "2023-06-01T06:58:17-04:00",
+            "body_html": "Asics Tiger collection",
+            "published_at": "2023-05-31T05:39:40-04:00",
+            "sort_order": "best-selling",
+            "template_suffix": null,
+            "disjunctive": false,
+            "rules": [
+                {
+                    "column": "title",
+                    "relation": "contains",
+                    "condition": "ASICS TIGER"
+                }
+            ],
+            "published_scope": "web",
+            "admin_graphql_api_id": "gid://shopify/Collection/447912542500",
+            "image": {
+                "created_at": "2023-05-31T05:39:40-04:00",
+                "alt": null,
+                "width": 425,
+                "height": 220,
+                "src": "https://cdn.shopify.com/s/files/1/0767/8184/6820/collections/b351cead33b2b72e7177e70512530f09.jpg?v=1685525980"
+            }
+        },
+        {
+            "id": 447912509732,
+            "handle": "converse",
+            "title": "CONVERSE",
+            "updated_at": "2023-06-01T06:58:17-04:00",
+            "body_html": "Converse collection",
+            "published_at": "2023-05-31T05:39:39-04:00",
+            "sort_order": "best-selling",
+            "template_suffix": null,
+            "disjunctive": false,
+            "rules": [
+                {
+                    "column": "title",
+                    "relation": "contains",
+                    "condition": "CONVERSE"
+                }
+            ],
+            "published_scope": "web",
+            "admin_graphql_api_id": "gid://shopify/Collection/447912509732",
+            "image": {
+                "created_at": "2023-05-31T05:39:39-04:00",
+                "alt": null,
+                "width": 2000,
+                "height": 1231,
+                "src": "https://cdn.shopify.com/s/files/1/0767/8184/6820/collections/1651743658af793833e0a0d9cf6a9c5d.png?v=1685525979"
+            }
+        },
+        {
+            "id": 447912706340,
+            "handle": "dr-martens",
+            "title": "DR MARTENS",
+            "updated_at": "2023-06-01T06:58:17-04:00",
+            "body_html": "Dr Martens collection",
+            "published_at": "2023-05-31T05:39:45-04:00",
+            "sort_order": "best-selling",
+            "template_suffix": null,
+            "disjunctive": false,
+            "rules": [
+                {
+                    "column": "title",
+                    "relation": "contains",
+                    "condition": "DR MARTENS"
+                }
+            ],
+            "published_scope": "web",
+            "admin_graphql_api_id": "gid://shopify/Collection/447912706340",
+            "image": {
+                "created_at": "2023-05-31T05:39:45-04:00",
+                "alt": null,
+                "width": 220,
+                "height": 125,
+                "src": "https://cdn.shopify.com/s/files/1/0767/8184/6820/collections/a5f66d7e0c3e36ebbd2b7b632b2e4c47.jpg?v=1685525985"
+            }
+        },
+        {
+            "id": 447912804644,
+            "handle": "flex-fit",
+            "title": "FLEX FIT",
+            "updated_at": "2023-06-01T06:58:18-04:00",
+            "body_html": "Flex Fit collection",
+            "published_at": "2023-05-31T05:39:47-04:00",
+            "sort_order": "best-selling",
+            "template_suffix": null,
+            "disjunctive": false,
+            "rules": [
+                {
+                    "column": "title",
+                    "relation": "contains",
+                    "condition": "FLEX FIT"
+                }
+            ],
+            "published_scope": "web",
+            "admin_graphql_api_id": "gid://shopify/Collection/447912804644",
+            "image": {
+                "created_at": "2023-05-31T05:39:47-04:00",
+                "alt": null,
+                "width": 195,
+                "height": 195,
+                "src": "https://cdn.shopify.com/s/files/1/0767/8184/6820/collections/0c892d0c64bcd739e0a7d96f3d7d9afd.png?v=1685525987"
+            }
+        },
+        {
+            "id": 447912771876,
+            "handle": "herschel",
+            "title": "HERSCHEL",
+            "updated_at": "2023-06-01T06:58:17-04:00",
+            "body_html": "Herschel collection",
+            "published_at": "2023-05-31T05:39:46-04:00",
+            "sort_order": "best-selling",
+            "template_suffix": null,
+            "disjunctive": false,
+            "rules": [
+                {
+                    "column": "title",
+                    "relation": "contains",
+                    "condition": "HERSCHEL"
+                }
+            ],
+            "published_scope": "web",
+            "admin_graphql_api_id": "gid://shopify/Collection/447912771876",
+            "image": {
+                "created_at": "2023-05-31T05:39:46-04:00",
+                "alt": null,
+                "width": 250,
+                "height": 250,
+                "src": "https://cdn.shopify.com/s/files/1/0767/8184/6820/collections/7e6bb0fa16ee31d6537c58e4d9d453a8.png?v=1685525986"
+            }
+        },
+        {
+            "id": 447912476964,
+            "handle": "nike",
+            "title": "NIKE",
+            "updated_at": "2023-06-01T06:58:17-04:00",
+            "body_html": "Nike collection",
+            "published_at": "2023-05-31T05:39:38-04:00",
+            "sort_order": "best-selling",
+            "template_suffix": null,
+            "disjunctive": false,
+            "rules": [
+                {
+                    "column": "title",
+                    "relation": "contains",
+                    "condition": "NIKE"
+                }
+            ],
+            "published_scope": "web",
+            "admin_graphql_api_id": "gid://shopify/Collection/447912476964",
+            "image": {
+                "created_at": "2023-05-31T05:39:38-04:00",
+                "alt": null,
+                "width": 308,
+                "height": 164,
+                "src": "https://cdn.shopify.com/s/files/1/0767/8184/6820/collections/52e93c3a86b9b62e023e5977ab218302.png?v=1685525978"
+            }
+        },
+        {
+            "id": 447912575268,
+            "handle": "palladuim",
+            "title": "PALLADUIM",
+            "updated_at": "2023-06-01T06:58:17-04:00",
+            "body_html": "Palladium collection",
+            "published_at": "2023-05-31T05:39:41-04:00",
+            "sort_order": "best-selling",
+            "template_suffix": null,
+            "disjunctive": false,
+            "rules": [
+                {
+                    "column": "title",
+                    "relation": "contains",
+                    "condition": "PALLADIUM"
+                }
+            ],
+            "published_scope": "web",
+            "admin_graphql_api_id": "gid://shopify/Collection/447912575268",
+            "image": {
+                "created_at": "2023-05-31T05:39:41-04:00",
+                "alt": null,
+                "width": 195,
+                "height": 195,
+                "src": "https://cdn.shopify.com/s/files/1/0767/8184/6820/collections/8300014746383175003dc61767159d34.png?v=1685525981"
+            }
+        },
+        {
+            "id": 447912608036,
+            "handle": "puma",
+            "title": "PUMA",
+            "updated_at": "2023-06-01T06:58:17-04:00",
+            "body_html": "Puma collection",
+            "published_at": "2023-05-31T05:39:42-04:00",
+            "sort_order": "best-selling",
+            "template_suffix": null,
+            "disjunctive": false,
+            "rules": [
+                {
+                    "column": "title",
+                    "relation": "contains",
+                    "condition": "PUMA"
+                }
+            ],
+            "published_scope": "web",
+            "admin_graphql_api_id": "gid://shopify/Collection/447912608036",
+            "image": {
+                "created_at": "2023-05-31T05:39:42-04:00",
+                "alt": null,
+                "width": 730,
+                "height": 365,
+                "src": "https://cdn.shopify.com/s/files/1/0767/8184/6820/collections/ffcaaa66e8de92f803f3440640e9f676.jpg?v=1685525982"
+            }
+        },
+        {
+            "id": 447912640804,
+            "handle": "supra",
+            "title": "SUPRA",
+            "updated_at": "2023-06-01T06:58:17-04:00",
+            "body_html": "Supra collection",
+            "published_at": "2023-05-31T05:39:43-04:00",
+            "sort_order": "best-selling",
+            "template_suffix": null,
+            "disjunctive": false,
+            "rules": [
+                {
+                    "column": "title",
+                    "relation": "contains",
+                    "condition": "SUPRA"
+                }
+            ],
+            "published_scope": "web",
+            "admin_graphql_api_id": "gid://shopify/Collection/447912640804",
+            "image": {
+                "created_at": "2023-05-31T05:39:43-04:00",
+                "alt": null,
+                "width": 333,
+                "height": 250,
+                "src": "https://cdn.shopify.com/s/files/1/0767/8184/6820/collections/df080c448876c51c09b759c507db18c5.jpg?v=1685525983"
+            }
+        },
+        {
+            "id": 447912673572,
+            "handle": "timberland",
+            "title": "TIMBERLAND",
+            "updated_at": "2023-06-01T06:58:17-04:00",
+            "body_html": "Timberland collection",
+            "published_at": "2023-05-31T05:39:44-04:00",
+            "sort_order": "best-selling",
+            "template_suffix": null,
+            "disjunctive": false,
+            "rules": [
+                {
+                    "column": "title",
+                    "relation": "contains",
+                    "condition": "TIMBERLAND"
+                }
+            ],
+            "published_scope": "web",
+            "admin_graphql_api_id": "gid://shopify/Collection/447912673572",
+            "image": {
+                "created_at": "2023-05-31T05:39:44-04:00",
+                "alt": null,
+                "width": 700,
+                "height": 700,
+                "src": "https://cdn.shopify.com/s/files/1/0767/8184/6820/collections/de257d81c4c71c6a281b05f0e79b057c.jpg?v=1685525984"
+            }
+        },
+        {
+            "id": 447912411428,
+            "handle": "vans",
+            "title": "VANS",
+            "updated_at": "2023-06-01T06:58:17-04:00",
+            "body_html": "Vans collection",
+            "published_at": "2023-05-31T05:39:35-04:00",
+            "sort_order": "best-selling",
+            "template_suffix": null,
+            "disjunctive": false,
+            "rules": [
+                {
+                    "column": "title",
+                    "relation": "contains",
+                    "condition": "VANS"
+                }
+            ],
+            "published_scope": "web",
+            "admin_graphql_api_id": "gid://shopify/Collection/447912411428",
+            "image": {
+                "created_at": "2023-05-31T05:39:36-04:00",
+                "alt": null,
+                "width": 1610,
+                "height": 805,
+                "src": "https://cdn.shopify.com/s/files/1/0767/8184/6820/collections/a340ce89e0298e52c438ae79591e3284.jpg?v=1685525976"
+            }
+        }
+    ]
+}
