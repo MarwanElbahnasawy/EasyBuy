@@ -16,7 +16,10 @@ struct BaseView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(Color.black.opacity(0.04))
                     .tag(Tab.Home)
-                Text("Category")
+                Category()
+                    .environmentObject(baseData)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color.black.opacity(0.04))
                     .tag(Tab.Category)
                 
                 Text("Heart")
