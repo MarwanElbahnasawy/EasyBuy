@@ -2,12 +2,14 @@ import Foundation
 
 class RegestrationViewModel: ObservableObject {
     @Published var customer: CustomerCreateData?
-    
+    @Published var isActive = false
     func createCustomer(newCustomerInput: CustomerCreateInput) {
         NetworkManager.getInstance(requestType: .storeFront).performGraphQLRequest(mutation: CustomerCreateMutation(input: newCustomerInput), responseModel: CreateCustomerResponse.self, completion: { result in
             switch result {
             case .success(let response):
                 self.customer = response.data
+                self.isActive = true
+                UserDefaults.standard.set(response.data?.customerCreate?.customer?.id, forKey: "customerID")
             case .failure(let error):
                 print("Failed to create customer due to error: \(error.localizedDescription)")
             }

@@ -1,9 +1,6 @@
 import SwiftUI
 
 struct ProfileView: View {
-    
-    @ObservedObject var viewModel = ProfileViewModel()
-    
     var body: some View {
         List {
             Section {
@@ -17,16 +14,14 @@ struct ProfileView: View {
                         .clipShape(Circle())
                     
                     VStack {
-                        if let customer = viewModel.customer?.data?.customerDetails {
-                            Text(customer.displayName ?? "")
-                                .font(.subheadline)
-                                .fontWeight(.semibold)
-                                .padding(.top, 4)
-                            
-                            Text(customer.email ?? "")
-                                .font(.footnote)
-                                .foregroundColor(.gray)
-                        }
+                        Text("Name")
+                            .font(.subheadline)
+                            .fontWeight(.semibold)
+                            .padding(.top, 4)
+                        
+                        Text("Email")
+                            .font(.footnote)
+                            .foregroundColor(.gray)
                     }
                 }
             }
@@ -47,7 +42,7 @@ struct ProfileView: View {
             
             Section("Account") {
                 Button {
-                    // TODO: Remove the token of the customer until they sign in again
+                    
                 } label: {
                     SettingRowView(imageName: "arrow.left.circle.fill",
                                    title: "Personal Details",
@@ -55,7 +50,7 @@ struct ProfileView: View {
                 }
                 
                 Button {
-                    // TODO: Remove the token of the customer until they sign in again
+                    
                 } label: {
                     SettingRowView(imageName: "arrow.left.circle.fill",
                                    title: "My Orders",
@@ -63,16 +58,18 @@ struct ProfileView: View {
                 }
                 
                 Button {
-                    print("Delete account")
+                    
                 } label: {
-                    SettingRowView(imageName: "xmark.circle.fill",
+                    SettingRowView(imageName: "arrow.left.circle.fill",
                                    title: "Settings",
                                    tintColor: .black)
                 }
                 
                 
                 Button {
-                    // TODO: Remove the token of the customer until they sign in again
+                    UserDefaults.standard.removeObject(forKey: "accessToken")
+                    // TODO: Navigate to sign in view or home screen
+                    print("Navigate to sign in view or home screen")
                 } label: {
                     SettingRowView(imageName: "arrow.left.circle.fill",
                                    title: "Sign Out",
@@ -82,7 +79,7 @@ struct ProfileView: View {
             
             Section("Policy") {
                 Button {
-                    // TODO: Remove the token of the customer until they sign in again
+                    
                 } label: {
                     SettingRowView(imageName: "arrow.left.circle.fill",
                                    title: "FAQs",
@@ -90,7 +87,7 @@ struct ProfileView: View {
                 }
                 
                 Button {
-                    // TODO: Remove the token of the customer until they sign in again
+                    
                 } label: {
                     SettingRowView(imageName: "arrow.left.circle.fill",
                                    title: "About Us",
@@ -99,7 +96,12 @@ struct ProfileView: View {
             }
         }
         .onAppear(perform: {
-            viewModel.fetchCustomerDetails()
+            //            viewModel.fetchCustomerDetails()
+            let token = UserDefaults.standard.string(forKey: "accessToken")
+            print("current token is \(token ?? "")")
+            
+            let customerID = UserDefaults.standard.string(forKey: "customerID")
+            print("current token is \(customerID ?? "")")
         })
     }
 }

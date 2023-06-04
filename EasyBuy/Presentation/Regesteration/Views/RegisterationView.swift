@@ -3,6 +3,8 @@ import SwiftUI
 struct RegisterationView: View {
     @ObservedObject var regestrationViewModel = RegestrationViewModel()
     
+    @State private var isActive = false
+    
     @State private var email = ""
     @State private var firstName = ""
     @State private var lastName = ""
@@ -56,7 +58,17 @@ struct RegisterationView: View {
             
             // SignIn button
             Button(action: {
-                createNewCustomer()
+                regestrationViewModel.createCustomer(newCustomerInput: CustomerCreateInput(
+                    firstName: firstName,
+                    lastName: lastName,
+                    email: email,
+                    phone: phoneNumber,
+                    password: password))
+                
+                isActive = regestrationViewModel.isActive
+                NavigationLink(destination: LoginView(), isActive: $isActive) {
+                    EmptyView()
+                }
             }) {
                 HStack {
                     Text("CREATE ACCOUNT")
@@ -95,27 +107,27 @@ struct RegisterationView: View {
                 .font(.system(size: 14))
             }
         }
-        .onAppear {
-            let token = UserDefaults.standard.string(forKey: "accessToken")
-            
-            print(token ?? "")
-        }
     }
     
-    func createNewCustomer() {
-        NetworkManager.getInstance(requestType: .storeFront).performGraphQLRequest(mutation: CustomerCreateMutation(input: CustomerCreateInput(firstName: phoneNumber, lastName: firstName, email: lastName, phone: email, password: password)), responseModel: CustomerCreateData.self, completion: { result in
-            switch result {
-            case .success(let response):
-                if let customer = response.customerCreate?.customer {
-                    print("New customer created with ID: \(customer.id ?? "N/A")")
-                } else {
-                    print("Failed to create customer")
-                }
-            case .failure(let error):
-                print("Failed to create customer due to error: \(error.localizedDescription)")
-            }
-        })
-    }
+//    func createNewCustomer() {
+//        NetworkManager.getInstance(requestType: .storeFront).performGraphQLRequest(mutation: CustomerCreateMutation(input: CustomerCreateInput(firstName: phoneNumber, lastName: firstName, email: lastName, phone: email, password: password)), responseModel: CustomerCreateData.self, completion: { result in
+//            switch result {
+//            case .success(let response):
+//                if let customer = response.customerCreate?.customer {
+//                    print("New customer created with ID: \(customer.id ?? "N/A")")
+//                    // TODO: Navigate to Login
+//                    self.isActive = true
+//                    NavigationLink(destination: LoginView(), isActive: $isActive) {
+//                        EmptyView()
+//                    }
+//                } else {
+//                    print("Failed to create customer")
+//                }
+//            case .failure(let error):
+//                print("Failed to create customer due to error: \(error.localizedDescription)")
+//            }
+//        })
+//    }
     
     
 }
