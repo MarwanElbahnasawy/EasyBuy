@@ -71,7 +71,7 @@ func getTags(products: [Product])->[String]{
 func getType(products: [Product])->[String]{
     var tags :[String] = []
     products.forEach { Product in
-        if let product_type = Product.product_type{
+        if let product_type = Product.productType{
             tags.append(product_type )
         }
     }

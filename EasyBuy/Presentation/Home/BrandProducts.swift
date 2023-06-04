@@ -23,7 +23,7 @@ struct BrandProducts: View {
                             TitleView(title: brand)
                                 .font(.custom(Constants.AppFont.boldFont, size: 18))
                         }
-                        ProductCatalog(products:viewModel.items?.products ?? [])
+                      //  ProductCatalog(products:viewModel.items?.products ?? [])
                     }
                 }
             }

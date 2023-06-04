@@ -8,7 +8,7 @@
 import Foundation
 class HomeViewModel: ObservableObject {
     @Published var brands: SmartCollections?
-    @Published var items: ResProducts?
+    @Published var items: [Product]?
     @Published var isLoading: Bool = false
     init(){
      
@@ -16,17 +16,18 @@ class HomeViewModel: ObservableObject {
     
     func fetchBrands(){
         brands =  Bundle.main.decode("brand.json")
-        isLoading = false
-        NetworkManager.getInstance(requestType: .storeFront).queryGraphQLRequest(query:GetProductsQuery(first: 3) , responseModel: Root.self, completion: { result in
+       
+    
+    }
+    func fetchProducts(){
+        NetworkManager.getInstance(requestType: .storeFront).queryGraphQLRequest(query:ProductsQuery(first: 100,imageFirst: 5, variantsFirst: 5) , responseModel: DataClassProdcuts.self, completion: { result in
                             switch result {
                             case .success(let success):
-                                print("product name : \(success.products.edges.first?.node.title ?? "storefront")")
+                                self.items = success.products?.nodes
+                                self.isLoading = false
                             case .failure(let failure):
                                 print(failure)
                             }
                         })
-    }
-    func fetchProducts(){
-        items = Bundle.main.decode("products.json")
     }
 }

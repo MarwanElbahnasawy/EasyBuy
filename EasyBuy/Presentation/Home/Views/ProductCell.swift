@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ProductCell: View {
-    
     var product:Product
     var isFavorite : Bool = false
     fileprivate func FevoriteButton() -> some View {
@@ -22,39 +21,41 @@ struct ProductCell: View {
         }
         .cornerRadius(20)
         .opacity(0.9)
-        .shadow(color: Color.init("dddddd"), radius: 0.5, x: 0.3, y: 0.3)
+        .shadow(color: Color.gray, radius: 0.5, x: 0.3, y: 0.3)
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 4) {
-            KingFisherImageView(url: product.image?.src ?? "https://theperfectroundgolf.com/wp-content/uploads/2022/04/placeholder.png",placeholder: "")
-                .resizable()
-                .frame(width: UIScreen.main.bounds.width / 2 - 20, height: UIScreen.main.bounds.width / 2 - 20)
-                .scaledToFill()
-                .cornerRadius(10)
-//                .overlay(
-//                    FevoriteButton()
-//                        .padding([.top, .trailing], 5)
-//                    , alignment: .topTrailing
-//                )
-            Text(product.title ?? "title")
-                .font(Font.system(size: 15, weight: .regular, design: .rounded))
-            Text(product.product_type ?? "product type")
-                .font(.custom(Constants.AppFont.regularFont, size: 11))
-                .foregroundColor(Color.gray)
-                .padding([.horizontal], 5)
-            let price = "$\(product.variants![0].price!)"
-            Text(price)
-                .font(Font.system(size: 15, weight: .heavy, design: .rounded))
+        NavigationLink(destination:
+                        ProductDetailsView(viewModel: ProductViewModel(productId: nil), productId: product.id!)){
+            VStack(alignment: .leading, spacing: 4) {
+                KingFisherImageView(url: product.featuredImage?.url ?? "https://theperfectroundgolf.com/wp-content/uploads/2022/04/placeholder.png",placeholder: "")
+                    .resizable()
+                    .frame(width: UIScreen.main.bounds.width / 2 - 20, height: UIScreen.main.bounds.width / 2 - 20)
+                    .scaledToFill()
+                    .cornerRadius(10)
+                                .overlay(
+                                    FevoriteButton()
+                                        .padding([.top, .trailing], 5)
+                                    , alignment: .topTrailing
+                                )
+                Text(product.title ?? "title")
+                    .font(Font.system(size: 15, weight: .regular, design: .rounded))
+                Text(product.productType ?? "product type")
+                    .font(.custom(Constants.AppFont.regularFont, size: 11))
+                    .foregroundColor(Color.gray)
+                    .padding([.horizontal], 5)
+                let price = "$\(product.variants?.edges?.first?.node?.price?.amount! ?? "199")"
+                Text(price)
+                    .font(Font.system(size: 15, weight: .heavy, design: .rounded))
+            }
+            .aspectRatio(contentMode: .fit)
         }
-        .aspectRatio(contentMode: .fit)
-        
     }
 }
 
 struct ProductCell_Previews: PreviewProvider {
     
-    static var product:Product = Product()
+    static var product = Product()
     
     static var previews: some View {
         ProductCell(product: product)

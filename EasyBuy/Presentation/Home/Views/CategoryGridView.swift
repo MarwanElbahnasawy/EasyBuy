@@ -21,7 +21,7 @@ struct CategoryGridView: View {
                     ) {
                         ForEach(brands ,id:\.id) { brand in
                             NavigationLink {
-                                BrandProducts()
+                             //   BrandProducts()
                             } label: {
                                 CategoryItemView(brand: brand)
                             }

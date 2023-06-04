@@ -27,7 +27,7 @@ struct Home: View {
             }
             
             LazyVGrid(columns: gridLayout, spacing: 15, content: {
-                ForEach(viewModel.items?.products ?? [] ) { product in
+                ForEach(viewModel.items ?? [] ) { product in
                  ProductCell(product: product)
               } //: LOOP
             }) //: GRID

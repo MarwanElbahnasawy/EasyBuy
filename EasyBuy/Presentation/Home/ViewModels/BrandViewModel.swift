@@ -8,7 +8,7 @@
 import Foundation
 class BrandViewModel: ObservableObject {
     @Published var isLoading: Bool = true
-    @Published var items: ResProducts?
+   // @Published var items: ResProducts?
     var id : String?
     var brand : String?
  
@@ -16,7 +16,7 @@ class BrandViewModel: ObservableObject {
     func fetchBrand(){
         DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
             self.isLoading = false
-            self.items = Bundle.main.decode("products.json")
+        //    self.items = Bundle.main.decode("products.json")
         }
      
         

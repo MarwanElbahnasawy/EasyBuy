@@ -8,7 +8,7 @@ import SwiftUI
 
 struct ProductCatalog: View {
     
-     var products:[Product]
+    var products:[Product] = []
  
     var body: some View {
         
@@ -88,7 +88,7 @@ struct ProductCatalog: View {
 struct ProductCatalog_Previews: PreviewProvider {
  
     static var previews: some View {
-        @State var items: ResProducts = Bundle.main.decode("products.json")
-        ProductCatalog(products: items.products)
+      
+        ProductCatalog()
     }
 }

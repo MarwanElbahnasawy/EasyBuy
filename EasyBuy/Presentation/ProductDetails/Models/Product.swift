@@ -1,23 +1,38 @@
 import Foundation
 
-// MARK: - Product
+// MARK: - Welcome
+struct ProductsRoot: Codable {
+    var data: DataClassProdcuts?
+}
+
+// MARK: - DataClass
+struct DataClassProdcuts: Codable {
+    var products: Products?
+}
+
+// MARK: - Products
+struct Products: Codable {
+    var nodes: [Product]?
+}
+
+
 struct ProductDetails: Codable {
     let data: DataClass?
 }
 
 // MARK: - DataClass
 struct DataClass: Codable {
-    let product: ProductClass?
+    let product: Product?
 }
 
-// MARK: - ProductClass
-struct ProductClass: Codable {
-    let id, title, description, productType: String?
-    let vendor: String?
-    let options: [Option]?
-    let variants: Variants?
-    let featuredImage: FeaturedImage?
-    let images: Images?
+// MARK: - Product
+struct Product: Codable ,Identifiable {
+    var id, title, description, productType: String?
+    var tags,vendor: String?
+    var options: [Option]?
+    var variants: Variants?
+    var featuredImage: FeaturedImage?
+    var images: Images?
 }
 
 // MARK: - FeaturedImage

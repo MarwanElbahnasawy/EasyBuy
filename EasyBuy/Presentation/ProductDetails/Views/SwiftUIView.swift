@@ -19,7 +19,8 @@ struct SwiftUIView: View {
                     .imageScale(.large)
                     .foregroundColor(.accentColor)
                 Text("Hello, world!")
-                NavigationLink(destination: ProductDetailsView(viewModel: viewModel, productId: productId)) {
+                NavigationLink(destination:
+                                ProductDetailsView(viewModel: viewModel, productId: productId)) {
                     Text("Go to Detail Screen")
                 }
             }
