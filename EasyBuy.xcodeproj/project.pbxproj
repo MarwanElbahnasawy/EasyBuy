@@ -30,6 +30,8 @@
 		1486EBA32A2BA0F10029212B /* PartialSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1486EB9F2A2BA0F00029212B /* PartialSheet.swift */; };
 		1486EBA42A2BA0F10029212B /* ImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1486EBA02A2BA0F00029212B /* ImageViewExtension.swift */; };
 		1486EBA52A2BA0F10029212B /* CodableBundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1486EBA12A2BA0F00029212B /* CodableBundleExtension.swift */; };
+		14BC9B412A2CE69D00D7FD4B /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BC9B402A2CE69D00D7FD4B /* Category.swift */; };
+		14BC9B432A2CE6D300D7FD4B /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BC9B422A2CE6D300D7FD4B /* CategoryViewModel.swift */; };
 		14F9B2642A2B949B009C2611 /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F9B2632A2B949B009C2611 /* LineView.swift */; };
 		14F9B2662A2B94DD009C2611 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F9B2652A2B94DC009C2611 /* TitleView.swift */; };
 		14F9B2682A2B9514009C2611 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F9B2672A2B9514009C2611 /* ProductCell.swift */; };
@@ -123,6 +125,8 @@
 		1486EB9F2A2BA0F00029212B /* PartialSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartialSheet.swift; sourceTree = "<group>"; };
 		1486EBA02A2BA0F00029212B /* ImageViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewExtension.swift; sourceTree = "<group>"; };
 		1486EBA12A2BA0F00029212B /* CodableBundleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodableBundleExtension.swift; sourceTree = "<group>"; };
+		14BC9B402A2CE69D00D7FD4B /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		14BC9B422A2CE6D300D7FD4B /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 		14F9B2632A2B949B009C2611 /* LineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
 		14F9B2652A2B94DC009C2611 /* TitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		14F9B2672A2B9514009C2611 /* ProductCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
@@ -311,6 +315,8 @@
 			children = (
 				146520152A2BA479006EC2CA /* Onboarding.swift */,
 				146520192A2BBA61006EC2CA /* BrandProducts.swift */,
+				14BC9B402A2CE69D00D7FD4B /* Category.swift */,
+				14BC9B422A2CE6D300D7FD4B /* CategoryViewModel.swift */,
 				1486EB892A2B9FB30029212B /* Home.swift */,
 				14F9B2822A2B9B25009C2611 /* BaseView.swift */,
 				1486EB8B2A2B9FF40029212B /* model */,
@@ -852,12 +858,14 @@
 				148580192A2C061700D33591 /* BrandViewModel.swift in Sources */,
 				3F02F2AB2A29EBCE00FDE52E /* StoreFront.graphql in Sources */,
 				17C9CF262A27E12F004BCCC2 /* ContentView.swift in Sources */,
+				14BC9B412A2CE69D00D7FD4B /* Category.swift in Sources */,
 				3F02F2B12A29EFEA00FDE52E /* API.swift in Sources */,
 				1486EB9B2A2B9FF40029212B /* Products.swift in Sources */,
 				14F9B2762A2B97A1009C2611 /* NavigationBarView.swift in Sources */,
 				1486EB9C2A2B9FF40029212B /* CoverImageModel.swift in Sources */,
 				3F02F2AB2A29EBCE00FDE52E /* StoreFront.graphql in Sources */,
 				17C9CF262A27E12F004BCCC2 /* ContentView.swift in Sources */,
+				14BC9B432A2CE6D300D7FD4B /* CategoryViewModel.swift in Sources */,
 				3F02F2B12A29EFEA00FDE52E /* API.swift in Sources */,
 				3F02F2C62A2BD1BE00FDE52E /* DiscountCodesModel.swift in Sources */,
 				3F02F2A62A29E83E00FDE52E /* NetworkManager.swift in Sources */,

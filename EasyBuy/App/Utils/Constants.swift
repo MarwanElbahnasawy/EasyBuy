@@ -54,7 +54,7 @@ var gridLayout: [GridItem] {
   return Array(repeating: GridItem(.flexible(), spacing: rowSpacing), count: 2)
 }
 
-@available(iOS 16.0, *)
+
 func getTags(products: [Product])->[String]{
     var tags :[String] = ["men", "women", "kid"]
     products.forEach { Product in

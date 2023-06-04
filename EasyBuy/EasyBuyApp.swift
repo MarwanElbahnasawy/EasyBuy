@@ -15,7 +15,7 @@ struct EasyBuyApp: App {
     var body: some Scene {
         WindowGroup {
          //  SwiftUIView()
-           Home()
+            Category()
             
 //            if isOnboarding {
 //              Onboarding()
