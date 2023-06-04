@@ -2,7 +2,7 @@ import SwiftUI
 
 struct BaseView: View {
     @StateObject var baseData = BaseViewModel()
-    @AppStorage("barIsShow") var barIsShow: Bool = true
+    @AppStorage("barIsShow") var barIsShow: Bool = false
     // MARK: - HIDE TAB BAR
     init() {
         UITabBar.appearance().isHidden = true
@@ -24,7 +24,10 @@ struct BaseView: View {
                 
                 Text("Heart")
                     .tag(Tab.Heart)
-                Text("Person")
+                ProfileView()
+                    .environmentObject(baseData)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color.black.opacity(0.04))
                     .tag(Tab.Person)
             }
             
