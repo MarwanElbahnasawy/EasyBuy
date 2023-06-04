@@ -66,32 +66,7 @@ struct ProductDetailsView: View {
 
 struct DetailScreen_Previews: PreviewProvider {
     static var previews: some View {
-        ProductDetailsView(viewModel: ProductViewModel(productId: nil), productId: "gid://shopify/Product/8311139107123")
-    }
-}
-
-extension View {
-    func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
-        clipShape( RoundedCorner(radius: radius, corners: corners) )
-    }
-}
-
-struct RoundedCorner: Shape {
-    var radius: CGFloat = .infinity
-    var corners: UIRectCorner = .allCorners
-    
-    func path(in rect: CGRect) -> Path {
-        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
-        return Path(path.cgPath)
-    }
-}
-
-struct ColorDotView: View {
-    let color: Color
-    var body: some View {
-        color
-            .frame(width: 24, height: 24)
-            .clipShape(Circle())
+        ProductDetailsView(viewModel: ProductViewModel(productId: nil), productId: "gid://shopify/Product/8311139762483")
     }
 }
 
@@ -168,6 +143,28 @@ struct DescriptionView: View {
             Text(product?.product?.description ?? "")
                 .lineSpacing(8.0)
                 .opacity(0.6)
+            
+            Text("Sizes")
+                .fontWeight(.medium)
+                .padding(.vertical, 8)
+            
+            // TODO: Display all sizes
+            if let sizeOptions = product?.product?.options?.first(where: { $0.name == "Size" })?.values {
+                HStack {
+                    ForEach(sizeOptions, id: \.self) { sizeOption in
+                        Text(sizeOption)
+                            .foregroundColor(.black)
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 4)
+                            .background(Color.white)
+                            .clipShape(Circle())
+                            .overlay(
+                                Circle()
+                                    .stroke(Color.black, lineWidth: 1)
+                            )
+                    }
+                }
+            }
         }
         .padding()
         .padding(.top)
@@ -187,5 +184,21 @@ struct BackButton: View {
                 .background(Color.black)
                 .cornerRadius(8.0)
         }
+    }
+}
+
+extension View {
+    func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
+        clipShape( RoundedCorner(radius: radius, corners: corners) )
+    }
+}
+
+struct RoundedCorner: Shape {
+    var radius: CGFloat = .infinity
+    var corners: UIRectCorner = .allCorners
+    
+    func path(in rect: CGRect) -> Path {
+        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        return Path(path.cgPath)
     }
 }

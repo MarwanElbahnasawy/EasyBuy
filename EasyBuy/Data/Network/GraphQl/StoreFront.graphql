@@ -1,0 +1,103 @@
+
+query getCollections{
+  collections(first: 2) {
+    edges {
+      node {
+        id
+        products(first: 5) {
+          edges {
+            node {
+              id
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+query ProductQuery($productId: ID, $imageFirst: Int, $variantsFirst: Int) {
+  product(id: $productId) {
+    id
+    title
+    description
+    productType
+    vendor
+    options {
+      name
+      values
+    }
+    variants(first: $variantsFirst) {
+      edges {
+        node {
+          id
+          title
+          price {
+            amount
+            currencyCode
+          }
+          availableForSale
+        }
+      }
+    }
+    featuredImage {
+      id
+      url
+    }
+    images(first: $imageFirst) {
+      edges {
+        node {
+          id
+          url
+        }
+      }
+    }
+  }
+}
+query getProducts($first: Int) {
+  products(first: $first) {
+    edges {
+      cursor
+      node {
+        title
+      }
+    }
+  }
+}
+
+mutation CustomerCreate($input: CustomerCreateInput!) {
+  customerCreate(input: $input) {
+    customer {
+      id
+      displayName
+      email
+      phone
+    }
+    customerUserErrors {
+      code
+      field
+      message
+    }
+  }
+}
+
+mutation CustomerAccessTokenCreate($input: CustomerAccessTokenCreateInput!) {
+  customerAccessTokenCreate(input: $input) {
+    customerAccessToken {
+      accessToken
+      expiresAt
+    }
+    customerUserErrors {
+      code
+      field
+      message
+    }
+  }
+}
+
+query Customer($customerAccessToken: String!) {
+  customer(customerAccessToken: $customerAccessToken) {
+    displayName
+    email
+  }
+}
