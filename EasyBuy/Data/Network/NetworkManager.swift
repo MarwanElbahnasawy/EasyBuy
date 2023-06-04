@@ -18,9 +18,9 @@ protocol NetworkManagerProtocol {
 
 final class NetworkManager: NetworkManagerProtocol {
     
-    var requestType: RequestType = .storeFront
+    private var requestType: RequestType = .storeFront
 
-    static var shared: NetworkManager?
+    private static var shared: NetworkManager?
 
     private init(requestType: RequestType) {
         self.requestType = requestType
@@ -64,7 +64,7 @@ final class NetworkManager: NetworkManagerProtocol {
              switch result {
              case .success(let apolloResponse):
                     do {
-                        let data = try JSONSerialization.data(withJSONObject: apolloResponse.data!.jsonObject, options: .fragmentsAllowed)
+                        let data = try JSONSerialization.data(withJSONObject: apolloResponse.data?.jsonObject, options: .fragmentsAllowed)
                       let decode = try JSONDecoder().decode(responseModel, from: data)
                         completion(.success(decode))
                     }catch (let error) {
