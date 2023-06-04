@@ -24,7 +24,10 @@ struct BaseView: View {
                 
                 Text("Heart")
                     .tag(Tab.Heart)
-                Text("Person")
+                ProfileView()
+                    .environmentObject(baseData)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color.black.opacity(0.04))
                     .tag(Tab.Person)
             }
             
