@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct LoginView: View {
-    @ObservedObject var loginViewModel = LoginViewModel()
+//    @ObservedObject var loginViewModel = LoginViewModel()
 
     @State private var email = ""
     @State private var password = ""
@@ -65,34 +65,18 @@ struct LoginView: View {
     }
     
     func createAccessToken() {
-        
-        let newAccessTokenInput = CustomerAccessTokenCreateInput(email: email, password: password)
-        loginViewModel.createAccessToken(newAccessTokenInput: newAccessTokenInput)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            if let token = self.loginViewModel.token?.customerAccessTokenCreate?.customerAccessToken?.accessToken {
-                // Save token in UserDefaults
-                UserDefaults.standard.set(token, forKey: "accessToken")
-                
-                // Navigate to another view
-                navigateToSwiftUIView()
-            } else if let error = self.loginViewModel.token?.customerAccessTokenCreate?.customerAccessTokenError?.first?.message {
-                // Handle token creation errors
-                print("Error while creating access token: \(error)")
-            } else {
-                // Token creation failed
-                print("Failed to create access token")
+        NetworkManager.getInstance(requestType: .storeFront).performGraphQLRequest(mutation: CustomerAccessTokenCreateMutation(input: CustomerAccessTokenCreateInput(email: email, password: password)), responseModel: CustomerAccessTokenCreateData.self, completion: { result in
+            switch result {
+            case .success(let response):
+                if let token = response.customerAccessTokenCreate?.customerAccessToken {
+                    print("New token created: \(token.accessToken ?? "N/A")")
+                } else {
+                    print("Failed to create token")
+                }
+            case .failure(let error):
+                print("Failed to create token due to error: \(error)")
             }
-        }
-    }
-
-    func navigateToSwiftUIView() {
-        let view = SwiftUIView()
-        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
-            let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: view)
-            window.makeKeyAndVisible()
-        }
+        })
     }
 }
 

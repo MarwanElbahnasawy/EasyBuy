@@ -98,13 +98,20 @@ struct RegisterationView: View {
     }
     
     func createNewCustomer() {
-        let newCustomerInput = CustomerCreateInput(firstName: firstName,
-                                                   lastName: lastName,
-                                                   email: email,
-                                                   phone: phoneNumber,
-                                                   password: password)
-        regestrationViewModel.createCustomer(newCustomerInput: newCustomerInput)
-    }
+        NetworkManager.getInstance(requestType: .storeFront).performGraphQLRequest(mutation: CustomerCreateMutation(input: CustomerCreateInput(firstName: phoneNumber, lastName: firstName, email: lastName, phone: email, password: password)), responseModel: CustomerCreateData.self, completion: { result in
+                switch result {
+                case .success(let response):
+                    if let customer = response.customerCreate?.customer {
+                        print("New customer created with ID: \(customer.id ?? "N/A")")
+                    } else {
+                        print("Failed to create customer")
+                    }
+                case .failure(let error):
+                    print("Failed to create customer due to error: \(error.localizedDescription)")
+                }
+            })
+        }
+    
     
 }
 

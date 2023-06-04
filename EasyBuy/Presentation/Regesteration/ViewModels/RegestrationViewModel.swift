@@ -4,7 +4,7 @@ class RegestrationViewModel: ObservableObject {
     @Published var customer: CustomerCreateData?
     
     func createCustomer(newCustomerInput: CustomerCreateInput) {
-        NetworkManager.shared.performGraphQLRequest(mutation: CustomerCreateMutation(input: newCustomerInput), responseModel: CreateCustomerResponse.self, completion: { result in
+        NetworkManager.getInstance(requestType: .storeFront).performGraphQLRequest(mutation: CustomerCreateMutation(input: newCustomerInput), responseModel: CreateCustomerResponse.self, completion: { result in
             switch result {
             case .success(let response):
                 self.customer = response.data

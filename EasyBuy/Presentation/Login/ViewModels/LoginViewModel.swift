@@ -1,15 +1,15 @@
 import Foundation
 
 class LoginViewModel: ObservableObject {
-    @Published var token: CustomerAccessTokenCreateData?
+    @Published var token: CreateCustomerAccessTokenResponse?
 
     func createAccessToken(newAccessTokenInput: CustomerAccessTokenCreateInput) {
-        NetworkManager.shared.performGraphQLRequest(mutation: CustomerAccessTokenCreateMutation(input: newAccessTokenInput), responseModel: CreateCustomerAccessTokenResponse.self, completion: { result in
+        NetworkManager.getInstance(requestType: .storeFront).performGraphQLRequest(mutation: CustomerAccessTokenCreateMutation(input: newAccessTokenInput), responseModel: CreateCustomerAccessTokenResponse.self, completion: { result in
             switch result {
             case .success(let response):
-                self.token = response.data
+                self.token = response
             case .failure(let error):
-                print("Failed to create customer due to error: \(error.localizedDescription)")
+                print("Failed to create access token: \(error)")
             }
         })
     }

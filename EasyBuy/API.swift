@@ -4,239 +4,6 @@
 import Apollo
 import Foundation
 
-/// The input fields to create a new customer.
-public struct CustomerCreateInput: GraphQLMapConvertible {
-  public var graphQLMap: GraphQLMap
-
-  /// - Parameters:
-  ///   - firstName: The customer’s first name.
-  ///   - lastName: The customer’s last name.
-  ///   - email: The customer’s email.
-  ///   - phone: A unique phone number for the customer.
-  /// 
-  /// Formatted using E.164 standard. For example, _+16135551111_.
-  ///   - password: The login password used by the customer.
-  ///   - acceptsMarketing: Indicates whether the customer has consented to be sent marketing material via email.
-  public init(firstName: Swift.Optional<String?> = nil, lastName: Swift.Optional<String?> = nil, email: String, phone: Swift.Optional<String?> = nil, password: String, acceptsMarketing: Swift.Optional<Bool?> = nil) {
-    graphQLMap = ["firstName": firstName, "lastName": lastName, "email": email, "phone": phone, "password": password, "acceptsMarketing": acceptsMarketing]
-  }
-
-  /// The customer’s first name.
-  public var firstName: Swift.Optional<String?> {
-    get {
-      return graphQLMap["firstName"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
-    }
-    set {
-      graphQLMap.updateValue(newValue, forKey: "firstName")
-    }
-  }
-
-  /// The customer’s last name.
-  public var lastName: Swift.Optional<String?> {
-    get {
-      return graphQLMap["lastName"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
-    }
-    set {
-      graphQLMap.updateValue(newValue, forKey: "lastName")
-    }
-  }
-
-  /// The customer’s email.
-  public var email: String {
-    get {
-      return graphQLMap["email"] as! String
-    }
-    set {
-      graphQLMap.updateValue(newValue, forKey: "email")
-    }
-  }
-
-  /// A unique phone number for the customer.
-  /// 
-  /// Formatted using E.164 standard. For example, _+16135551111_.
-  public var phone: Swift.Optional<String?> {
-    get {
-      return graphQLMap["phone"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
-    }
-    set {
-      graphQLMap.updateValue(newValue, forKey: "phone")
-    }
-  }
-
-  /// The login password used by the customer.
-  public var password: String {
-    get {
-      return graphQLMap["password"] as! String
-    }
-    set {
-      graphQLMap.updateValue(newValue, forKey: "password")
-    }
-  }
-
-  /// Indicates whether the customer has consented to be sent marketing material via email.
-  public var acceptsMarketing: Swift.Optional<Bool?> {
-    get {
-      return graphQLMap["acceptsMarketing"] as? Swift.Optional<Bool?> ?? Swift.Optional<Bool?>.none
-    }
-    set {
-      graphQLMap.updateValue(newValue, forKey: "acceptsMarketing")
-    }
-  }
-}
-
-/// Possible error codes that can be returned by `CustomerUserError`.
-public enum CustomerErrorCode: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
-  public typealias RawValue = String
-  /// The input value is blank.
-  case blank
-  /// The input value is invalid.
-  case invalid
-  /// The input value is already taken.
-  case taken
-  /// The input value is too long.
-  case tooLong
-  /// The input value is too short.
-  case tooShort
-  /// Unidentified customer.
-  case unidentifiedCustomer
-  /// Customer is disabled.
-  case customerDisabled
-  /// Input password starts or ends with whitespace.
-  case passwordStartsOrEndsWithWhitespace
-  /// Input contains HTML tags.
-  case containsHtmlTags
-  /// Input contains URL.
-  case containsUrl
-  /// Invalid activation token.
-  case tokenInvalid
-  /// Customer already enabled.
-  case alreadyEnabled
-  /// Address does not exist.
-  case notFound
-  /// Input email contains an invalid domain name.
-  case badDomain
-  /// Multipass token is not valid.
-  case invalidMultipassRequest
-  /// Auto generated constant for unknown enum values
-  case __unknown(RawValue)
-
-  public init?(rawValue: RawValue) {
-    switch rawValue {
-      case "BLANK": self = .blank
-      case "INVALID": self = .invalid
-      case "TAKEN": self = .taken
-      case "TOO_LONG": self = .tooLong
-      case "TOO_SHORT": self = .tooShort
-      case "UNIDENTIFIED_CUSTOMER": self = .unidentifiedCustomer
-      case "CUSTOMER_DISABLED": self = .customerDisabled
-      case "PASSWORD_STARTS_OR_ENDS_WITH_WHITESPACE": self = .passwordStartsOrEndsWithWhitespace
-      case "CONTAINS_HTML_TAGS": self = .containsHtmlTags
-      case "CONTAINS_URL": self = .containsUrl
-      case "TOKEN_INVALID": self = .tokenInvalid
-      case "ALREADY_ENABLED": self = .alreadyEnabled
-      case "NOT_FOUND": self = .notFound
-      case "BAD_DOMAIN": self = .badDomain
-      case "INVALID_MULTIPASS_REQUEST": self = .invalidMultipassRequest
-      default: self = .__unknown(rawValue)
-    }
-  }
-
-  public var rawValue: RawValue {
-    switch self {
-      case .blank: return "BLANK"
-      case .invalid: return "INVALID"
-      case .taken: return "TAKEN"
-      case .tooLong: return "TOO_LONG"
-      case .tooShort: return "TOO_SHORT"
-      case .unidentifiedCustomer: return "UNIDENTIFIED_CUSTOMER"
-      case .customerDisabled: return "CUSTOMER_DISABLED"
-      case .passwordStartsOrEndsWithWhitespace: return "PASSWORD_STARTS_OR_ENDS_WITH_WHITESPACE"
-      case .containsHtmlTags: return "CONTAINS_HTML_TAGS"
-      case .containsUrl: return "CONTAINS_URL"
-      case .tokenInvalid: return "TOKEN_INVALID"
-      case .alreadyEnabled: return "ALREADY_ENABLED"
-      case .notFound: return "NOT_FOUND"
-      case .badDomain: return "BAD_DOMAIN"
-      case .invalidMultipassRequest: return "INVALID_MULTIPASS_REQUEST"
-      case .__unknown(let value): return value
-    }
-  }
-
-  public static func == (lhs: CustomerErrorCode, rhs: CustomerErrorCode) -> Bool {
-    switch (lhs, rhs) {
-      case (.blank, .blank): return true
-      case (.invalid, .invalid): return true
-      case (.taken, .taken): return true
-      case (.tooLong, .tooLong): return true
-      case (.tooShort, .tooShort): return true
-      case (.unidentifiedCustomer, .unidentifiedCustomer): return true
-      case (.customerDisabled, .customerDisabled): return true
-      case (.passwordStartsOrEndsWithWhitespace, .passwordStartsOrEndsWithWhitespace): return true
-      case (.containsHtmlTags, .containsHtmlTags): return true
-      case (.containsUrl, .containsUrl): return true
-      case (.tokenInvalid, .tokenInvalid): return true
-      case (.alreadyEnabled, .alreadyEnabled): return true
-      case (.notFound, .notFound): return true
-      case (.badDomain, .badDomain): return true
-      case (.invalidMultipassRequest, .invalidMultipassRequest): return true
-      case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
-      default: return false
-    }
-  }
-
-  public static var allCases: [CustomerErrorCode] {
-    return [
-      .blank,
-      .invalid,
-      .taken,
-      .tooLong,
-      .tooShort,
-      .unidentifiedCustomer,
-      .customerDisabled,
-      .passwordStartsOrEndsWithWhitespace,
-      .containsHtmlTags,
-      .containsUrl,
-      .tokenInvalid,
-      .alreadyEnabled,
-      .notFound,
-      .badDomain,
-      .invalidMultipassRequest,
-    ]
-  }
-}
-
-/// The input fields required to create a customer access token.
-public struct CustomerAccessTokenCreateInput: GraphQLMapConvertible {
-  public var graphQLMap: GraphQLMap
-
-  /// - Parameters:
-  ///   - email: The email associated to the customer.
-  ///   - password: The login password to be used by the customer.
-  public init(email: String, password: String) {
-    graphQLMap = ["email": email, "password": password]
-  }
-
-  /// The email associated to the customer.
-  public var email: String {
-    get {
-      return graphQLMap["email"] as! String
-    }
-    set {
-      graphQLMap.updateValue(newValue, forKey: "email")
-    }
-  }
-
-  /// The login password to be used by the customer.
-  public var password: String {
-    get {
-      return graphQLMap["password"] as! String
-    }
-    set {
-      graphQLMap.updateValue(newValue, forKey: "password")
-    }
-  }
-}
-
 /// The three-letter currency codes that represent the world currencies used in stores. These include standard ISO 4217 codes, legacy codes,
 /// and non-standard codes.
 public enum CurrencyCode: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
@@ -1439,232 +1206,34 @@ public enum CustomerErrorCode: RawRepresentable, Equatable, Hashable, CaseIterab
   }
 }
 
-public final class CustomerAccessTokenCreateMutation: GraphQLMutation {
-  /// The raw GraphQL definition of this operation.
-  public let operationDefinition: String =
-    """
-    mutation CustomerAccessTokenCreate($input: CustomerAccessTokenCreateInput!) {
-      customerAccessTokenCreate(input: $input) {
-        __typename
-        customerAccessToken {
-          __typename
-          accessToken
-          expiresAt
-        }
-        customerUserErrors {
-          __typename
-          code
-          field
-          message
-        }
-      }
-    }
-    """
+/// The input fields required to create a customer access token.
+public struct CustomerAccessTokenCreateInput: GraphQLMapConvertible {
+  public var graphQLMap: GraphQLMap
 
-  public let operationName: String = "CustomerAccessTokenCreate"
-
-  public var input: CustomerAccessTokenCreateInput
-
-  public init(input: CustomerAccessTokenCreateInput) {
-    self.input = input
+  /// - Parameters:
+  ///   - email: The email associated to the customer.
+  ///   - password: The login password to be used by the customer.
+  public init(email: String, password: String) {
+    graphQLMap = ["email": email, "password": password]
   }
 
-  public var variables: GraphQLMap? {
-    return ["input": input]
+  /// The email associated to the customer.
+  public var email: String {
+    get {
+      return graphQLMap["email"] as! String
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "email")
+    }
   }
 
-  public struct Data: GraphQLSelectionSet {
-    public static let possibleTypes: [String] = ["Mutation"]
-
-    public static var selections: [GraphQLSelection] {
-      return [
-        GraphQLField("customerAccessTokenCreate", arguments: ["input": GraphQLVariable("input")], type: .object(CustomerAccessTokenCreate.selections)),
-      ]
+  /// The login password to be used by the customer.
+  public var password: String {
+    get {
+      return graphQLMap["password"] as! String
     }
-
-    public private(set) var resultMap: ResultMap
-
-    public init(unsafeResultMap: ResultMap) {
-      self.resultMap = unsafeResultMap
-    }
-
-    public init(customerAccessTokenCreate: CustomerAccessTokenCreate? = nil) {
-      self.init(unsafeResultMap: ["__typename": "Mutation", "customerAccessTokenCreate": customerAccessTokenCreate.flatMap { (value: CustomerAccessTokenCreate) -> ResultMap in value.resultMap }])
-    }
-
-    /// Creates a customer access token.
-    /// The customer access token is required to modify the customer object in any way.
-    public var customerAccessTokenCreate: CustomerAccessTokenCreate? {
-      get {
-        return (resultMap["customerAccessTokenCreate"] as? ResultMap).flatMap { CustomerAccessTokenCreate(unsafeResultMap: $0) }
-      }
-      set {
-        resultMap.updateValue(newValue?.resultMap, forKey: "customerAccessTokenCreate")
-      }
-    }
-
-    public struct CustomerAccessTokenCreate: GraphQLSelectionSet {
-      public static let possibleTypes: [String] = ["CustomerAccessTokenCreatePayload"]
-
-      public static var selections: [GraphQLSelection] {
-        return [
-          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("customerAccessToken", type: .object(CustomerAccessToken.selections)),
-          GraphQLField("customerUserErrors", type: .nonNull(.list(.nonNull(.object(CustomerUserError.selections))))),
-        ]
-      }
-
-      public private(set) var resultMap: ResultMap
-
-      public init(unsafeResultMap: ResultMap) {
-        self.resultMap = unsafeResultMap
-      }
-
-      public init(customerAccessToken: CustomerAccessToken? = nil, customerUserErrors: [CustomerUserError]) {
-        self.init(unsafeResultMap: ["__typename": "CustomerAccessTokenCreatePayload", "customerAccessToken": customerAccessToken.flatMap { (value: CustomerAccessToken) -> ResultMap in value.resultMap }, "customerUserErrors": customerUserErrors.map { (value: CustomerUserError) -> ResultMap in value.resultMap }])
-      }
-
-      public var __typename: String {
-        get {
-          return resultMap["__typename"]! as! String
-        }
-        set {
-          resultMap.updateValue(newValue, forKey: "__typename")
-        }
-      }
-
-      /// The newly created customer access token object.
-      public var customerAccessToken: CustomerAccessToken? {
-        get {
-          return (resultMap["customerAccessToken"] as? ResultMap).flatMap { CustomerAccessToken(unsafeResultMap: $0) }
-        }
-        set {
-          resultMap.updateValue(newValue?.resultMap, forKey: "customerAccessToken")
-        }
-      }
-
-      /// The list of errors that occurred from executing the mutation.
-      public var customerUserErrors: [CustomerUserError] {
-        get {
-          return (resultMap["customerUserErrors"] as! [ResultMap]).map { (value: ResultMap) -> CustomerUserError in CustomerUserError(unsafeResultMap: value) }
-        }
-        set {
-          resultMap.updateValue(newValue.map { (value: CustomerUserError) -> ResultMap in value.resultMap }, forKey: "customerUserErrors")
-        }
-      }
-
-      public struct CustomerAccessToken: GraphQLSelectionSet {
-        public static let possibleTypes: [String] = ["CustomerAccessToken"]
-
-        public static var selections: [GraphQLSelection] {
-          return [
-            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("accessToken", type: .nonNull(.scalar(String.self))),
-            GraphQLField("expiresAt", type: .nonNull(.scalar(String.self))),
-          ]
-        }
-
-        public private(set) var resultMap: ResultMap
-
-        public init(unsafeResultMap: ResultMap) {
-          self.resultMap = unsafeResultMap
-        }
-
-        public init(accessToken: String, expiresAt: String) {
-          self.init(unsafeResultMap: ["__typename": "CustomerAccessToken", "accessToken": accessToken, "expiresAt": expiresAt])
-        }
-
-        public var __typename: String {
-          get {
-            return resultMap["__typename"]! as! String
-          }
-          set {
-            resultMap.updateValue(newValue, forKey: "__typename")
-          }
-        }
-
-        /// The customer’s access token.
-        public var accessToken: String {
-          get {
-            return resultMap["accessToken"]! as! String
-          }
-          set {
-            resultMap.updateValue(newValue, forKey: "accessToken")
-          }
-        }
-
-        /// The date and time when the customer access token expires.
-        public var expiresAt: String {
-          get {
-            return resultMap["expiresAt"]! as! String
-          }
-          set {
-            resultMap.updateValue(newValue, forKey: "expiresAt")
-          }
-        }
-      }
-
-      public struct CustomerUserError: GraphQLSelectionSet {
-        public static let possibleTypes: [String] = ["CustomerUserError"]
-
-        public static var selections: [GraphQLSelection] {
-          return [
-            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("code", type: .scalar(CustomerErrorCode.self)),
-            GraphQLField("field", type: .list(.nonNull(.scalar(String.self)))),
-            GraphQLField("message", type: .nonNull(.scalar(String.self))),
-          ]
-        }
-
-        public private(set) var resultMap: ResultMap
-
-        public init(unsafeResultMap: ResultMap) {
-          self.resultMap = unsafeResultMap
-        }
-
-        public init(code: CustomerErrorCode? = nil, field: [String]? = nil, message: String) {
-          self.init(unsafeResultMap: ["__typename": "CustomerUserError", "code": code, "field": field, "message": message])
-        }
-
-        public var __typename: String {
-          get {
-            return resultMap["__typename"]! as! String
-          }
-          set {
-            resultMap.updateValue(newValue, forKey: "__typename")
-          }
-        }
-
-        /// The error code.
-        public var code: CustomerErrorCode? {
-          get {
-            return resultMap["code"] as? CustomerErrorCode
-          }
-          set {
-            resultMap.updateValue(newValue, forKey: "code")
-          }
-        }
-
-        /// The path to the input field that caused the error.
-        public var field: [String]? {
-          get {
-            return resultMap["field"] as? [String]
-          }
-          set {
-            resultMap.updateValue(newValue, forKey: "field")
-          }
-        }
-
-        /// The error message.
-        public var message: String {
-          get {
-            return resultMap["message"]! as! String
-          }
-          set {
-            resultMap.updateValue(newValue, forKey: "message")
-          }
-        }
-      }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "password")
     }
   }
 }
@@ -3041,6 +2610,236 @@ public final class CustomerCreateMutation: GraphQLMutation {
           }
           set {
             resultMap.updateValue(newValue, forKey: "phone")
+          }
+        }
+      }
+
+      public struct CustomerUserError: GraphQLSelectionSet {
+        public static let possibleTypes: [String] = ["CustomerUserError"]
+
+        public static var selections: [GraphQLSelection] {
+          return [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("code", type: .scalar(CustomerErrorCode.self)),
+            GraphQLField("field", type: .list(.nonNull(.scalar(String.self)))),
+            GraphQLField("message", type: .nonNull(.scalar(String.self))),
+          ]
+        }
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(code: CustomerErrorCode? = nil, field: [String]? = nil, message: String) {
+          self.init(unsafeResultMap: ["__typename": "CustomerUserError", "code": code, "field": field, "message": message])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        /// The error code.
+        public var code: CustomerErrorCode? {
+          get {
+            return resultMap["code"] as? CustomerErrorCode
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "code")
+          }
+        }
+
+        /// The path to the input field that caused the error.
+        public var field: [String]? {
+          get {
+            return resultMap["field"] as? [String]
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "field")
+          }
+        }
+
+        /// The error message.
+        public var message: String {
+          get {
+            return resultMap["message"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "message")
+          }
+        }
+      }
+    }
+  }
+}
+
+public final class CustomerAccessTokenCreateMutation: GraphQLMutation {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    mutation CustomerAccessTokenCreate($input: CustomerAccessTokenCreateInput!) {
+      customerAccessTokenCreate(input: $input) {
+        __typename
+        customerAccessToken {
+          __typename
+          accessToken
+          expiresAt
+        }
+        customerUserErrors {
+          __typename
+          code
+          field
+          message
+        }
+      }
+    }
+    """
+
+  public let operationName: String = "CustomerAccessTokenCreate"
+
+  public var input: CustomerAccessTokenCreateInput
+
+  public init(input: CustomerAccessTokenCreateInput) {
+    self.input = input
+  }
+
+  public var variables: GraphQLMap? {
+    return ["input": input]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["Mutation"]
+
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("customerAccessTokenCreate", arguments: ["input": GraphQLVariable("input")], type: .object(CustomerAccessTokenCreate.selections)),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(customerAccessTokenCreate: CustomerAccessTokenCreate? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Mutation", "customerAccessTokenCreate": customerAccessTokenCreate.flatMap { (value: CustomerAccessTokenCreate) -> ResultMap in value.resultMap }])
+    }
+
+    /// Creates a customer access token.
+    /// The customer access token is required to modify the customer object in any way.
+    public var customerAccessTokenCreate: CustomerAccessTokenCreate? {
+      get {
+        return (resultMap["customerAccessTokenCreate"] as? ResultMap).flatMap { CustomerAccessTokenCreate(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "customerAccessTokenCreate")
+      }
+    }
+
+    public struct CustomerAccessTokenCreate: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["CustomerAccessTokenCreatePayload"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("customerAccessToken", type: .object(CustomerAccessToken.selections)),
+          GraphQLField("customerUserErrors", type: .nonNull(.list(.nonNull(.object(CustomerUserError.selections))))),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(customerAccessToken: CustomerAccessToken? = nil, customerUserErrors: [CustomerUserError]) {
+        self.init(unsafeResultMap: ["__typename": "CustomerAccessTokenCreatePayload", "customerAccessToken": customerAccessToken.flatMap { (value: CustomerAccessToken) -> ResultMap in value.resultMap }, "customerUserErrors": customerUserErrors.map { (value: CustomerUserError) -> ResultMap in value.resultMap }])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      /// The newly created customer access token object.
+      public var customerAccessToken: CustomerAccessToken? {
+        get {
+          return (resultMap["customerAccessToken"] as? ResultMap).flatMap { CustomerAccessToken(unsafeResultMap: $0) }
+        }
+        set {
+          resultMap.updateValue(newValue?.resultMap, forKey: "customerAccessToken")
+        }
+      }
+
+      /// The list of errors that occurred from executing the mutation.
+      public var customerUserErrors: [CustomerUserError] {
+        get {
+          return (resultMap["customerUserErrors"] as! [ResultMap]).map { (value: ResultMap) -> CustomerUserError in CustomerUserError(unsafeResultMap: value) }
+        }
+        set {
+          resultMap.updateValue(newValue.map { (value: CustomerUserError) -> ResultMap in value.resultMap }, forKey: "customerUserErrors")
+        }
+      }
+
+      public struct CustomerAccessToken: GraphQLSelectionSet {
+        public static let possibleTypes: [String] = ["CustomerAccessToken"]
+
+        public static var selections: [GraphQLSelection] {
+          return [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("accessToken", type: .nonNull(.scalar(String.self))),
+            GraphQLField("expiresAt", type: .nonNull(.scalar(String.self))),
+          ]
+        }
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(accessToken: String, expiresAt: String) {
+          self.init(unsafeResultMap: ["__typename": "CustomerAccessToken", "accessToken": accessToken, "expiresAt": expiresAt])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        /// The customer’s access token.
+        public var accessToken: String {
+          get {
+            return resultMap["accessToken"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "accessToken")
+          }
+        }
+
+        /// The date and time when the customer access token expires.
+        public var expiresAt: String {
+          get {
+            return resultMap["expiresAt"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "expiresAt")
           }
         }
       }
