@@ -8,28 +8,32 @@
 import SwiftUI
 
 struct BrandProducts: View {
-    var id : String
-    var brand : String
+    @ObservedObject var viewModel = BrandViewModel()
     var body: some View {
-        @State var items: ResProducts = Bundle.main.decode("products.json")
-        NavigationView{
-            ZStack {
-                VStack(spacing: 0) {
-                    HStack{
-                        let brand = "\(brand) PRODUCTS"
-                        TitleView(title: brand)
-                            .font(.custom(Constants.AppFont.boldFont, size: 18))
+        ZStack {
+            if(viewModel.isLoading){
+        
+            }else{
+                    VStack(spacing: 0) {
+                        HStack{
+                            let brand = "\(viewModel.brand ?? "adidas") PRODUCTS"
+                            TitleView(title: brand)
+                                .font(.custom(Constants.AppFont.boldFont, size: 18))
+                        }
+                        ProductCatalog(products:viewModel.items?.products ?? [])
                     }
-                    ProductCatalog(products:items.products)
                 }
-            }//ZStack
+            }.onAppear(){
+                viewModel.fetchBrand()
+            }
+            //ZStack
        
         }
-    }
+    
 }
 
 struct BrandProducts_Previews: PreviewProvider {
     static var previews: some View {
-        BrandProducts(id: "1", brand: "ADIDAS")
+        BrandProducts()
     }
 }

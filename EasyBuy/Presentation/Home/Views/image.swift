@@ -43,7 +43,7 @@ struct image: View {
                             .padding()
                             .background(Color.black)
                             .cornerRadius(25)
-                            .frame(width: 200, height: 50)
+                            .frame(width: 150, height: 50)
                     }.padding(.trailing,120)
                     Spacer()
                 }

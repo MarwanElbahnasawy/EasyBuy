@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct Home: View {
-   var viewModel = HomeViewModel()
+    @ObservedObject var viewModel = HomeViewModel()
   // MARK: - Func
     
     fileprivate func TrendingView() -> some View {
@@ -91,7 +91,10 @@ struct Home: View {
                 
             } //: ZSTACK
             .ignoresSafeArea(.all, edges: .top)
-            .padding(.bottom, 65)
+            .padding(.bottom, 65).onAppear(){
+                viewModel.fetchBrands()
+                viewModel.fetchProducts()
+            }
            
         
     }

@@ -9,10 +9,9 @@ import Foundation
 class HomeViewModel: ObservableObject {
     @Published var brands: SmartCollections?
     @Published var items: ResProducts?
-    @Published var isLoading: Bool = true
+    @Published var isLoading: Bool = false
     init(){
-        fetchBrands()
-        fetchProducts()
+     
     }
     
     func fetchBrands(){

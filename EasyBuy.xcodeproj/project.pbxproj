@@ -11,6 +11,7 @@
 		146520182A2BA4AB006EC2CA /* Intro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146520172A2BA4AA006EC2CA /* Intro.swift */; };
 		1465201A2A2BBA61006EC2CA /* BrandProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146520192A2BBA61006EC2CA /* BrandProducts.swift */; };
 		148580172A2BEE6800D33591 /* image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148580162A2BEE6800D33591 /* image.swift */; };
+		148580192A2C061700D33591 /* BrandViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148580182A2C061700D33591 /* BrandViewModel.swift */; };
 		1486EB842A2B9F870029212B /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1486EB7F2A2B9F870029212B /* OpenSans-SemiBold.ttf */; };
 		1486EB852A2B9F870029212B /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1486EB802A2B9F870029212B /* OpenSans-Light.ttf */; };
 		1486EB862A2B9F870029212B /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1486EB812A2B9F870029212B /* OpenSans-ExtraBold.ttf */; };
@@ -104,6 +105,7 @@
 		146520172A2BA4AA006EC2CA /* Intro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Intro.swift; sourceTree = "<group>"; };
 		146520192A2BBA61006EC2CA /* BrandProducts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandProducts.swift; sourceTree = "<group>"; };
 		148580162A2BEE6800D33591 /* image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = image.swift; sourceTree = "<group>"; };
+		148580182A2C061700D33591 /* BrandViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandViewModel.swift; sourceTree = "<group>"; };
 		1486EB7F2A2B9F870029212B /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
 		1486EB802A2B9F870029212B /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		1486EB812A2B9F870029212B /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
@@ -312,6 +314,7 @@
 			children = (
 				146520152A2BA479006EC2CA /* Onboarding.swift */,
 				146520192A2BBA61006EC2CA /* BrandProducts.swift */,
+				148580182A2C061700D33591 /* BrandViewModel.swift */,
 				1486EB892A2B9FB30029212B /* Home.swift */,
 				14F9B2822A2B9B25009C2611 /* BaseView.swift */,
 				1486EB8B2A2B9FF40029212B /* model */,
@@ -849,6 +852,7 @@
 				14F9B27E2A2B9832009C2611 /* Tags.swift in Sources */,
 				17C9CF2D2A27E132004BCCC2 /* Persistence.swift in Sources */,
 				14F9B2782A2B97BF009C2611 /* CustomCurveShape.swift in Sources */,
+				148580192A2C061700D33591 /* BrandViewModel.swift in Sources */,
 				3F02F2AB2A29EBCE00FDE52E /* StoreFront.graphql in Sources */,
 				17C9CF262A27E12F004BCCC2 /* ContentView.swift in Sources */,
 				3F02F2B12A29EFEA00FDE52E /* API.swift in Sources */,
