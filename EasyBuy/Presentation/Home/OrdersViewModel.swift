@@ -25,7 +25,7 @@ class OrdersViewModel: ObservableObject  {
     
     func setOrdderLine(orders : [Order]){
         if(orders.count > 2){
-            for i in 0...2 {
+            for i in 0...1 {
                 ordersInLine.append(orders[i])
             }
             
