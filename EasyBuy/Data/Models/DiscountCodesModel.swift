@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - DataClass
-struct DataDiscountCodes: Codable{
+struct DiscountCodes: Codable {
     let codeDiscountNodes: CodeDiscountNodes?
 }
 
@@ -18,7 +18,7 @@ struct CodeDiscountNodes: Codable {
 }
 
 // MARK: - CodeDiscountNodesNode
-struct CodeDiscountNodesNode: Codable,Identifiable {
+struct CodeDiscountNodesNode: Codable {
     let id: String?
     let codeDiscount: CodeDiscount?
 }

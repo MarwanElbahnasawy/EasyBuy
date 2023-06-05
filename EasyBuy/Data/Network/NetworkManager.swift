@@ -18,10 +18,10 @@ protocol NetworkManagerProtocol {
 
 final class NetworkManager: NetworkManagerProtocol {
     
-    private var requestType: RequestType = .storeFront
-
-    private static var shared: NetworkManager?
-
+    var requestType: RequestType = .storeFront
+    
+    static var shared: NetworkManager?
+    
     private init(requestType: RequestType) {
         self.requestType = requestType
     }

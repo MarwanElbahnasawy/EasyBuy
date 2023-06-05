@@ -1,5 +1,5 @@
 
-query GetAllDicountCodes($first: Int){
+query getAllDiicountCodes($first: Int){
   codeDiscountNodes(first: $first) {
     nodes {
       id
