@@ -9,10 +9,35 @@ import Foundation
 class OrdersViewModel: ObservableObject  {
     let resOrder : ResOrder = Bundle.main.decode("orders.json")
     @Published var orders : [Order] = []
-   
-    
+    @Published var successOrders : [Order] = []
+    @Published var processingOrders : [Order] = []
+    @Published var failureOrders : [Order] = []
+    @Published var ordersInLine : [Order] = []
     init() {
-        self.orders = resOrder.orders
+        fetchProducts()
     }
     
+    func fetchProducts(){
+        self.orders = resOrder.orders
+        setOrdderLine(orders: self.orders)
+        filterOrdder(orders: self.orders)
+    }
+    
+    func setOrdderLine(orders : [Order]){
+        if(orders.count > 2){
+            for i in 0...2 {
+                ordersInLine.append(orders[i])
+            }
+            
+        }else{
+            ordersInLine = orders
+        }
+    }
+
+    func filterOrdder(orders : [Order]){
+        successOrders = orders.filter { $0.fulfillments?.first?.status == "success" }
+        failureOrders = orders.filter { $0.fulfillments?.first?.status == "failure" }
+        processingOrders = orders.filter { $0.fulfillments?.first?.status == "Processing" }
+    }
 }
+
