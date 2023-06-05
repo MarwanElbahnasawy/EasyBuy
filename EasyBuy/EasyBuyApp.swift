@@ -16,12 +16,12 @@ struct EasyBuyApp: App {
         WindowGroup {
          //  SwiftUIView()
          //   Category()
-            
-            if isOnboarding {
-              Onboarding()
-            } else {
-                BaseView()
-            }
+            RegisterationView()
+//            if isOnboarding {
+//              Onboarding()
+//            } else {
+//                BaseView()
+//            }
       }
     }
 }
