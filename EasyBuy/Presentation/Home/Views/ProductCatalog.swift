@@ -76,8 +76,8 @@ struct ProductCatalog: View {
                 .padding()
             }
            
-            .navigationBarTitle("Catalog", displayMode: .inline)
-            .navigationBarHidden(true)
+           // .navigationBarTitle("Catalog", displayMode: .inline)
+           // .navigationBarHidden(true)
         }
         
         
