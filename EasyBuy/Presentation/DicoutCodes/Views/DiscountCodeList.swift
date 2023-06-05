@@ -12,11 +12,11 @@ struct DiscountCodesList: View {
     var body: some View {
         VStack{
             if #available(iOS 16.0, *) {
-                Text("Discounts Offer").frame(maxWidth: .infinity, alignment: .leading).padding(.leading,10).fontWeight(.bold).font(.headline)
+                Text("Discounts Offer").frame(maxWidth: .infinity, alignment: .leading).padding(.leading,10).fontWeight(.bold).font(Font.system(size: 22))
             }
             
             List(discountCodesViewModel.discountCodes?.codeDiscountNodes?.nodes ?? []){ discountCode in
-                DiscountCodeCell(discountCode: discountCode).listRowBackground(Color.clear)   .listRowSeparator(.hidden).clipped().cornerRadius(10)
+                DiscountCodeCell(discountCode: discountCode, cellViewModel: DiscountCodeViewModel(discountCode: discountCode)).listRowBackground(Color.clear)   .listRowSeparator(.hidden).clipped().cornerRadius(10)
 
             }.onAppear {
                 discountCodesViewModel.getDiscountCodes(first: 10)

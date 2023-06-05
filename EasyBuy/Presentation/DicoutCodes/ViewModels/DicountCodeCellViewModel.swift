@@ -12,13 +12,26 @@ class DiscountCodeViewModel : ObservableObject{
     var title: String
     var summury: String
     var code: String
+    @Published var isUsed: Bool = false
     init(discountCode: CodeDiscountNodesNode?) {
         self.discountCode = discountCode
         self.title = discountCode?.codeDiscount?.title ?? ""
         self.summury = discountCode?.codeDiscount?.summary ?? ""
-        self.code = "with code : \(discountCode?.codeDiscount?.codes?.nodes?.first?.code ?? "")"
+        self.code = discountCode?.codeDiscount?.codes?.nodes?.first?.code ?? ""
     }
-    
+    func isExist(id: String,customerCode: String){
+        FireBaseManager.shared.retriveCustomerDiscountCodes(id: id)?.getDocument {[weak self] snapshot, error in
+              guard let data = snapshot?.data() else {
+                      print("No data found")
+                  return
+              }
+            let discountCodes = data["discountCodes"] as? [String] ?? []
+            if discountCodes.contains(customerCode){
+                self?.isUsed = true
+                print("found")
+            }
+          }
+    }
     func getImageName() -> String {
         var image = ""
         if ((discountCode?.codeDiscount?.title!.contains("Shoes")) != nil){
@@ -35,8 +48,31 @@ class DiscountCodeViewModel : ObservableObject{
         }
         return image
     }
-    func saveCodeForCustomer(){
-        // save on fire store for costumer 1 to his discount codes
-        print("pressed")
+    
+    func saveCodeForCustomer(id: String,customerCode: String){
+        isUsed = true
+      FireBaseManager.shared.retriveCustomerDiscountCodes(id: id)?.getDocument { snapshot, error in
+            if let error = error {
+                print("Failed to fetch current user:", error)
+                return
+            }
+
+            guard let data = snapshot?.data() else {
+                    print("No data found")
+                FireBaseManager.shared.saveCustomerDiscountCodes(customerDiscountCodes: CustomerDiscountCodes(id: id, discountCodes: [customerCode]))
+                
+                return
+            }
+          
+    let id = data["id"] as? String ?? ""
+    var discountCodes = data["discountCodes"] as? [String] ?? []
+          if discountCodes.contains(customerCode) == false{
+              discountCodes.append(customerCode)
+              print(discountCodes)
+              let codes = CustomerDiscountCodes(id: id, discountCodes: discountCodes)
+              FireBaseManager.shared.saveCustomerDiscountCodes(customerDiscountCodes: codes)
+              print("pressed")
+          }
+        }
     }
 }

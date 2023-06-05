@@ -6,9 +6,7 @@
 //
 
 import SwiftUI
-
 import FirebaseCore
-
 class AppDelegate: NSObject, UIApplicationDelegate {
   func application(_ application: UIApplication,
                    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
@@ -26,7 +24,8 @@ struct EasyBuyApp: App {
         WindowGroup {
 //            ContentView()
 //                .environment(\.managedObjectContext, persistenceController.container.viewContext)
-            DiscountCodesList()
+//            DiscountCodesList()
+            CodesView()
         }
     }
 }

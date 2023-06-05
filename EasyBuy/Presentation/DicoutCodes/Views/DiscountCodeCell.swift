@@ -9,8 +9,7 @@ import SwiftUI
 
 struct DiscountCodeCell: View {
     @State var discountCode: CodeDiscountNodesNode?
-    var cellViewModel: DiscountCodeViewModel { return DiscountCodeViewModel(discountCode: discountCode)
-    }
+    @ObservedObject var cellViewModel: DiscountCodeViewModel
     @State var animationAmount = 1.0
     var body: some View {
         ZStack(alignment: .center) {
@@ -21,7 +20,7 @@ struct DiscountCodeCell: View {
                     LinearGradient(gradient: Gradient(colors: [Color.white.opacity(0.3), Color.clear]), startPoint: .leading, endPoint: .trailing)
                        
                 ) .cornerRadius(16)
-                .frame(height: 150)
+                .frame(height: 120)
                 .contentShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
             VStack(alignment: .leading) {
                 Text(cellViewModel.title )
@@ -32,26 +31,29 @@ struct DiscountCodeCell: View {
                     .font(Font.system(size: 14)).fontWeight(.regular)
                     .frame(maxWidth: .infinity, alignment: .leading).padding(.leading,20)
                 Spacer()
-                Text(cellViewModel.code)
+                Text("with code : \(cellViewModel.code)")
                     .font(Font.system(size: 12))
                     .foregroundColor(Color(UIColor.darkGray))
                     .fontWeight(.medium)
                     .frame(maxWidth: .infinity, alignment: .leading).padding(.leading,30)
                 Spacer()
-                Text("Get Now")
+                Text(cellViewModel.isUsed ? "Redemed" : "Get Now") .onAppear {
+                    print(cellViewModel.isUsed)
+                    cellViewModel.isExist(id: "gidshopifyCustomer6",customerCode: cellViewModel.code)
+                    self.animationAmount = 1.1
+                }
                     .padding(10)
-                    .background(Color.black)
+                    .background(cellViewModel.isUsed ?.gray : Color.black)
                     .foregroundColor(Color.white)
                     .cornerRadius(10)
                     .shadow(radius: 5)
-                    .scaleEffect(animationAmount)
-                    .animation(Animation.easeInOut(duration: 1).repeatForever(autoreverses: true), value: animationAmount)
-                    .onAppear {
-                        self.animationAmount = 1.1
-                    }
+                    .scaleEffect(cellViewModel.isUsed ? 1 : animationAmount)
+                    .animation( Animation.easeInOut(duration: 1).repeatForever(autoreverses: true), value: animationAmount)
+                   
                     .onTapGesture {
-                        cellViewModel.saveCodeForCustomer()
-                    }
+                        print("pressing....")
+                        cellViewModel.saveCodeForCustomer(id: "gidshopifyCustomer6", customerCode: cellViewModel.code)
+                    }.disabled(cellViewModel.isUsed)
                     
             
             }
@@ -62,7 +64,7 @@ struct DiscountCodeCell: View {
 
 struct DiscountCodeCell_Previews: PreviewProvider {
     static var previews: some View {
-        DiscountCodeCell(discountCode: nil)
+        DiscountCodeCell(discountCode: nil, cellViewModel: DiscountCodeViewModel(discountCode: nil))
     }
 }
 

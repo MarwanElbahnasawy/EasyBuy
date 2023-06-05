@@ -16,4 +16,5 @@ enum NetworkConstants{
     static let valueAccessToken = "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"
     static let keyContentType = "Content-Type"
     static let valueContentType = "application/json"
+    static let CustomerDiscountCodes = "CustomerDiscountCodes"
 }
