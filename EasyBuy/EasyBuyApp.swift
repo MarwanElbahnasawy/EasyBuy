@@ -23,9 +23,7 @@ struct EasyBuyApp: App {
                                 
                             }
             }
-         //  SwiftUIView()
-         //   Category()
-      //  Home()
+
 
       }
     }

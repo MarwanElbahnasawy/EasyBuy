@@ -174,7 +174,7 @@
 		3DFEA8E6555F657DAB22A79E /* Pods_EasyBuyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EasyBuyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F02F2A52A29E83E00FDE52E /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		3F02F2A72A29EA1A00FDE52E /* NetworkInterceptorProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkInterceptorProvider.swift; sourceTree = "<group>"; };
-		3F02F2AA2A29EBCE00FDE52E /* StoreFront.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = StoreFront.graphql; sourceTree = "<group>"; };
+		3F02F2AA2A29EBCE00FDE52E /* StoreFront.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; name = StoreFront.graphql; path = ../../../StoreFront.graphql; sourceTree = "<group>"; };
 		3F02F2AC2A29EC1400FDE52E /* Admin.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Admin.graphql; sourceTree = "<group>"; };
 		3F02F2AE2A29EC4C00FDE52E /* schema.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		3F02F2B02A29EFE900FDE52E /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -384,8 +384,8 @@
 		17C9CF222A27E12F004BCCC2 /* EasyBuy */ = {
 			isa = PBXGroup;
 			children = (
-				3F02F2AA2A29EBCE00FDE52E /* StoreFront.graphql */,
-				3F02F2AC2A29EC1400FDE52E /* Admin.graphql */,
+				17C9CF232A27E12F004BCCC2 /* EasyBuyApp.swift */,
+				17C9CF252A27E12F004BCCC2 /* ContentView.swift */,
 				17C9CF7A2A27E186004BCCC2 /* App */,
 				17C9CF802A27E28C004BCCC2 /* Data */,
 				171B151A2A28FC9900851C67 /* Presentation */,
@@ -546,8 +546,8 @@
 		EB95F9DA2A2B5EF8007C7177 /* GraphQl */ = {
 			isa = PBXGroup;
 			children = (
-				17C9CF232A27E12F004BCCC2 /* EasyBuyApp.swift */,
-				17C9CF252A27E12F004BCCC2 /* ContentView.swift */,
+				3F02F2AC2A29EC1400FDE52E /* Admin.graphql */,
+				3F02F2AA2A29EBCE00FDE52E /* StoreFront.graphql */,
 				3F02F2B02A29EFE900FDE52E /* API.swift */,
 				3F02F2C32A2BCEC900FDE52E /* schemaAdmin.json */,
 				3F02F2AE2A29EC4C00FDE52E /* schema.json */,
