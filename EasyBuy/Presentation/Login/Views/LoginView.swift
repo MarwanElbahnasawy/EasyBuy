@@ -2,7 +2,7 @@ import SwiftUI
 
 struct LoginView: View {
     @ObservedObject var loginViewModel = LoginViewModel()
-
+    @AppStorage("token") var token: String?
     @State private var signInSuccess = false
     @State var email = ""
     @State var password = ""
@@ -76,6 +76,7 @@ struct LoginView: View {
             .alert(isPresented: $signInSuccess) {
                 Alert(title: Text("Important message"), message: Text("Wear sunscreen"), dismissButton: .default(Text("Got it!")){
                 //    UIApplication.shared.windows.first?.rootViewController = UIHostingController(rootView: Home())
+                    token =  loginViewModel.tokenString
                 })
             }
         }

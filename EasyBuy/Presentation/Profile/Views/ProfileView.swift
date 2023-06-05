@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ProfileView: View {
     @State private var confirmingSignOut = false
-
+    @AppStorage("token") var token: String?
     var body: some View {
         List {
             Section {
@@ -104,7 +104,8 @@ struct ProfileView: View {
                       UserDefaults.standard.removeObject(forKey: "customerID")
 
                       // Navigate to NoAccountView
-                      UIApplication.shared.windows.first?.rootViewController = UIHostingController(rootView: Home())
+//                      UIApplication.shared.windows.first?.rootViewController = UIHostingController(rootView: Home())
+                token = ""
                   },
                   secondaryButton: .cancel())
         }
