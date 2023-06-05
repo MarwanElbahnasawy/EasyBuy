@@ -11,7 +11,7 @@ struct ResOrder: Codable {
     var orders: [Order]
 }
 
-struct Order: Codable {
+struct Order: Codable, Identifiable {
     var id: Int?
     var buyerAcceptsMarketing: Bool?
     var currentTotalPrice: String?

@@ -22,7 +22,7 @@ struct BaseView: View {
                     .background(Color.black.opacity(0.04))
                     .tag(Tab.Category)
                 
-                Text("Heart")
+                OrdersView()
                     .tag(Tab.Heart)
                 ProfileView()
                     .environmentObject(baseData)

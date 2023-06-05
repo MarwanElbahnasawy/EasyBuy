@@ -27,6 +27,7 @@ struct OrdersView: View {
     }
     
     var body: some View {
+        ZStack{
             VStack {
                 NavigationBarView()
                 Picker("", selection: $selectorIndex) {
@@ -40,36 +41,51 @@ struct OrdersView: View {
                 if selectorIndex == 0 {
                     ScrollView(.vertical, showsIndicators: false, content: {
                         VStack(spacing: 10) {
-                            ForEach(viewModel.orders.filter { $0.fulfillments?.first?.status == "success" }, id: \.id) { order in
-                                OrderRow(order: order, selectorIndex: self.selectorIndex)
-                                LineView()
+                            if(viewModel.successOrders.count == 0){
+                                NoProducts(type: "Orders")
+                            }else{
+                                ForEach(viewModel.successOrders, id: \.id) { order in
+                                    OrderRow(order: order, selectorIndex: self.selectorIndex)
+                                    LineView()
+                                }
                             }
                         }
                         .padding(.horizontal, 15)
+                        
                     })
                 } else if selectorIndex == 1 {
                     ScrollView(.vertical, showsIndicators: false, content: {
                         VStack(spacing: 10) {
-                            ForEach(viewModel.orders.filter { $0.fulfillments?.first?.status == "Processing" }, id: \.id) { order in
-                                OrderRow(order: order, selectorIndex: self.selectorIndex)
-                                LineView()
+                            if(viewModel.processingOrders.count == 0){
+                                NoProducts(type: "Orders")
+                            }else{
+                                ForEach(viewModel.processingOrders, id: \.id) { order in
+                                    OrderRow(order: order, selectorIndex: self.selectorIndex)
+                                    LineView()
+                                }
                             }
                         }
                         .padding(.horizontal, 15)
+                        
                     })
                 } else {
                     ScrollView(.vertical, showsIndicators: false, content: {
                         VStack(spacing: 10) {
-                            ForEach(viewModel.orders.filter { $0.fulfillments?.first?.status == "failure" }, id: \.id) { order in
-                                OrderRow(order: order, selectorIndex: self.selectorIndex)
-                                LineView()
+                            if(viewModel.failureOrders.count == 0){
+                                NoProducts(type: "Orders")
+                            }else{
+                                ForEach(viewModel.failureOrders, id: \.id) { order in
+                                    OrderRow(order: order, selectorIndex: self.selectorIndex)
+                                    LineView()
+                                }
                             }
                         }
                         .padding(.horizontal, 15)
                     })
                 }
-        }
-            .background(Color("ColorBackground") )
+            }
+        }.background(MotionAnimationView())
+        .navigationBarBackButtonHidden(true)
     }
 }
 
@@ -78,7 +94,7 @@ struct OrdersView: View {
 struct MyOrdersView_Previews: PreviewProvider {
     static var previews: some View {
         OrdersView()
-  }
+    }
 }
 
 
