@@ -49,7 +49,7 @@ struct Category: View {
                     VStack(spacing: 0) {
                         
                         LazyVGrid(columns: gridLayout, spacing: 15, content: {
-                            ForEach(viewModel.products ) { product in
+                            ForEach(viewModel.products.shuffled() ) { product in
                                 ProductCell(product: product)
                             } //: LOOP
                         }) //: GRID
