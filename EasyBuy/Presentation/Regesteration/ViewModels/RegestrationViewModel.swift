@@ -2,16 +2,22 @@ import Foundation
 
 class RegestrationViewModel: ObservableObject {
     @Published var customer: CustomerCreateData?
-    @Published var isActive = false
-    func createCustomer(newCustomerInput: CustomerCreateInput) {
-        NetworkManager.getInstance(requestType: .storeFront).performGraphQLRequest(mutation: CustomerCreateMutation(input: newCustomerInput), responseModel: CreateCustomerResponse.self, completion: { result in
+    
+    func createCustomer(newCustomerInput: CustomerCreateInput, completion: @escaping (Result<Void, Error>) -> Void) {
+        NetworkManager.getInstance(requestType: .storeFront).performGraphQLRequest(mutation: CustomerCreateMutation(input: newCustomerInput), responseModel: CustomerCreateData.self, completion: { result in
             switch result {
             case .success(let response):
-                self.customer = response.data
-                self.isActive = true
-                UserDefaults.standard.set(response.data?.customerCreate?.customer?.id, forKey: "customerID")
+                if let customerID = response.customerCreate?.customer?.id {
+                    print("Success to create account with ID: \(customerID)")
+                    UserDefaults.standard.set(customerID, forKey: "customerID")
+                    completion(.success(()))
+                } else {
+                    print("Failed to create account: Invalid credentials")
+                    completion(.failure(NSError(domain: "Invalid credentials", code: 400, userInfo: nil)))
+                }
             case .failure(let error):
-                print("Failed to create customer due to error: \(error.localizedDescription)")
+                print("Failed to create account: \(error)")
+                completion(.failure(error))
             }
         })
     }

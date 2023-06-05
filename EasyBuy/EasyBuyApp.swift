@@ -11,20 +11,21 @@ import SwiftUI
 struct EasyBuyApp: App {
     let persistenceController = PersistenceController.shared
     @AppStorage("isOnboarding") var isOnboarding: Bool = true
-    @AppStorage("barIsShow") var barIsShow: Bool = true
+    @AppStorage("token") var token: String = ""
+    // @AppStorage("barIsShow") var barIsShow: Bool = true
     var body: some Scene {
         WindowGroup {
             NavigationView{
-                            if isOnboarding {
-                              Onboarding()
-                            } else {
-                                
-                                BaseView()
-                                
-                            }
+                if isOnboarding {
+                    Onboarding()
+                } else {
+                    if token == ""{
+                        LoginView()
+                    }else{
+                        BaseView()
+                    }
+                }
             }
-
-
-      }
+        }
     }
 }
