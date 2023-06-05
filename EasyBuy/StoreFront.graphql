@@ -150,6 +150,12 @@ query CollectionProducts($handle: String, $first: Int , $imageFirst: Int, $varia
         }
       }
     }
+query getProducts($first: Int) {
+  products(first: $first) {
+    edges {
+      cursor
+      node {
+        title
       }
     }
   }
@@ -168,5 +174,26 @@ mutation CustomerCreate($input: CustomerCreateInput!) {
       field
       message
     }
+  }
+}
+
+mutation CustomerAccessTokenCreate($input: CustomerAccessTokenCreateInput!) {
+  customerAccessTokenCreate(input: $input) {
+    customerAccessToken {
+      accessToken
+      expiresAt
+    }
+    customerUserErrors {
+      code
+      field
+      message
+    }
+  }
+}
+
+query Customer($customerAccessToken: String!) {
+  customer(customerAccessToken: $customerAccessToken) {
+    displayName
+    email
   }
 }
