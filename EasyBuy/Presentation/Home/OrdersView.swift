@@ -40,7 +40,7 @@ struct OrdersView: View {
                 if selectorIndex == 0 {
                     ScrollView(.vertical, showsIndicators: false, content: {
                         VStack(spacing: 10) {
-                            ForEach(self.orders.filter { $0.fulfillments?.first?.status == "success" }, id: \.id) { order in
+                            ForEach(viewModel.orders.filter { $0.fulfillments?.first?.status == "success" }, id: \.id) { order in
                                 OrderRow(order: order, selectorIndex: self.selectorIndex)
                                 LineView()
                             }
@@ -50,7 +50,7 @@ struct OrdersView: View {
                 } else if selectorIndex == 1 {
                     ScrollView(.vertical, showsIndicators: false, content: {
                         VStack(spacing: 10) {
-                            ForEach(self.orders.filter { $0.fulfillments?.first?.status == "Processing" }, id: \.id) { order in
+                            ForEach(viewModel.orders.filter { $0.fulfillments?.first?.status == "Processing" }, id: \.id) { order in
                                 OrderRow(order: order, selectorIndex: self.selectorIndex)
                                 LineView()
                             }
@@ -60,7 +60,7 @@ struct OrdersView: View {
                 } else {
                     ScrollView(.vertical, showsIndicators: false, content: {
                         VStack(spacing: 10) {
-                            ForEach(self.orders.filter { $0.fulfillments?.first?.status == "failure" }, id: \.id) { order in
+                            ForEach(viewModel.orders.filter { $0.fulfillments?.first?.status == "failure" }, id: \.id) { order in
                                 OrderRow(order: order, selectorIndex: self.selectorIndex)
                                 LineView()
                             }
@@ -70,9 +70,6 @@ struct OrdersView: View {
                 }
         }
             .background(Color("ColorBackground") )
-            .onAppear(){
-           // orders = resOrder.orders
-        }
     }
 }
 
