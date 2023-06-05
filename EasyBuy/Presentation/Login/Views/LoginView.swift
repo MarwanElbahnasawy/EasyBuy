@@ -2,9 +2,10 @@ import SwiftUI
 
 struct LoginView: View {
     @ObservedObject var loginViewModel = LoginViewModel()
-
-    @State private var email = ""
-    @State private var password = ""
+    @AppStorage("token") var token: String?
+    @State private var signInSuccess = false
+    @State var email = ""
+    @State var password = ""
     
     var body: some View {
         NavigationView {
@@ -32,7 +33,19 @@ struct LoginView: View {
                 
                 // SignIn button
                 Button {
-                    loginViewModel.createAccessToken(newAccessTokenInput: CustomerAccessTokenCreateInput(email: email, password: password))
+                    loginViewModel.createAccessToken(newAccessTokenInput: CustomerAccessTokenCreateInput(email: email, password: password)) { result in
+                        switch result {
+                        case .success:
+                            // Token created successfully, perform navigation or other actions
+                            print("Token created successfully")
+                            signInSuccess = true
+                        case .failure(let error):
+                            // Show the alert when token don't have a value
+                            let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: .default))
+                            UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true)
+                        }
+                    }
                 } label: {
                     HStack {
                         Text("SIGN IN")
@@ -60,6 +73,13 @@ struct LoginView: View {
                     }
                 }
             }
+            .alert(isPresented: $signInSuccess) {
+                Alert(title: Text("Important message"), message: Text("Wear sunscreen"), dismissButton: .default(Text("Got it!")){
+                //    UIApplication.shared.windows.first?.rootViewController = UIHostingController(rootView: Home())
+                    token =  loginViewModel.tokenString
+                })
+            }
+        }
         }
     }
     
@@ -92,7 +112,7 @@ struct LoginView: View {
 //            UIApplication.shared.windows.first?.rootViewController?.present(alertController, animated: true, completion: nil)
 //        }
 //    }
-}
+
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {

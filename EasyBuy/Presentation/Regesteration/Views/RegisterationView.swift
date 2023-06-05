@@ -3,8 +3,7 @@ import SwiftUI
 struct RegisterationView: View {
     @ObservedObject var regestrationViewModel = RegestrationViewModel()
     
-    @State private var isActive = false
-    
+    @State private var signUpSuccess = false
     @State private var email = ""
     @State private var firstName = ""
     @State private var lastName = ""
@@ -63,12 +62,19 @@ struct RegisterationView: View {
                     lastName: lastName,
                     email: email,
                     phone: phoneNumber,
-                    password: password))
-                
-                isActive = regestrationViewModel.isActive
-                NavigationLink(destination: LoginView(), isActive: $isActive) {
-                    EmptyView()
-                }
+                    password: password)) { result in
+                        switch result {
+                        case .success:
+                            // Token created successfully, perform navigation or other actions
+                            print("Account created successfully")
+                            signUpSuccess = true
+                        case .failure(let error):
+                            // Show the alert when token don't have a value
+                            let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: .default))
+                            UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true)
+                        }
+                    }
             }) {
                 HStack {
                     Text("CREATE ACCOUNT")
@@ -107,6 +113,13 @@ struct RegisterationView: View {
                 .font(.system(size: 14))
             }
         }
+        .alert(isPresented: $signUpSuccess) {
+            Alert(title: Text("Important message"), message: Text("Wear sunscreen"), dismissButton: .default(Text("Got it!")){
+                UIApplication.shared.windows.first?.rootViewController = UIHostingController(rootView: LoginView(email: email,password: password))
+
+            })
+                }
+        }
     }
     
 //    func createNewCustomer() {
@@ -128,9 +141,6 @@ struct RegisterationView: View {
 //            }
 //        })
 //    }
-    
-    
-}
 
 struct RegisterationView_Previews: PreviewProvider {
     static var previews: some View {

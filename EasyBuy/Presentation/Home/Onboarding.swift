@@ -46,8 +46,6 @@ struct Onboarding: View {
                 
                 Button(action:{
                    isOnboarding = false
-                    
-                              
                 }, label: {
                     Text("Let's Start")
                         .fontWeight(.semibold)
