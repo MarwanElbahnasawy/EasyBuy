@@ -38,7 +38,7 @@ class DiscountCodeViewModel : ObservableObject{
         var image = ""
         switch adType {
         case .men:
-            image = "image cop"
+            image = "MEN"
         case .women:
             image = "image cop"
         case .all:
