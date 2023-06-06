@@ -13,11 +13,13 @@ class DiscountCodeViewModel : ObservableObject{
     var summury: String
     var code: String
     @Published var isUsed: Bool = false
-    init(discountCode: CodeDiscountNodesNode?) {
+    @Published var adType: AdType = .all
+    init(discountCode: CodeDiscountNodesNode?, adType: AdType) {
         self.discountCode = discountCode
         self.title = discountCode?.codeDiscount?.title ?? ""
         self.summury = discountCode?.codeDiscount?.summary ?? ""
         self.code = discountCode?.codeDiscount?.codes?.nodes?.first?.code ?? ""
+        self.adType = adType
     }
     func isExist(id: String,customerCode: String){
         FireBaseManager.shared.retriveCustomerDiscountCodes(id: id)?.getDocument {[weak self] snapshot, error in
@@ -34,17 +36,15 @@ class DiscountCodeViewModel : ObservableObject{
     }
     func getImageName() -> String {
         var image = ""
-        if ((discountCode?.codeDiscount?.title!.contains("Shoes")) != nil){
-             image = "Shoes"
-        }
-        if ((discountCode?.codeDiscount?.title!.contains("Bags")) != nil){
-             image = "Bags"
-        }
-        if ((discountCode?.codeDiscount?.title!.contains("Watches")) != nil){
-             image = "Watches"
-        }
-        if ((discountCode?.codeDiscount?.title!.contains("Everything")) != nil){
-             image = "Everything"
+        switch adType {
+        case .men:
+            image = "image cop"
+        case .women:
+            image = "image cop"
+        case .all:
+            image = "Everything"
+        case .kids:
+            image = "KIDS"
         }
         return image
     }

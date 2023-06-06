@@ -64,7 +64,7 @@ struct DiscountCodeCell: View {
 
 struct DiscountCodeCell_Previews: PreviewProvider {
     static var previews: some View {
-        DiscountCodeCell(discountCode: nil, cellViewModel: DiscountCodeViewModel(discountCode: nil))
+        DiscountCodeCell(discountCode: nil, cellViewModel: DiscountCodeViewModel(discountCode: nil,adType: .all))
     }
 }
 

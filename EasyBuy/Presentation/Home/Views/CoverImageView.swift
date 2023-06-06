@@ -20,7 +20,7 @@ struct CoverImageView: View {
                 LazyHGrid(rows: Array(repeating: GridItem(.flexible(), spacing: rowSpacing), count: 1), alignment: .center, spacing: 15, pinnedViews: [], content: {
                     ForEach(coverImages, id:\.self) { item in
                         HStack {
-                            image(CoverImage: item)
+                                image(CoverImage: item)
                         }
                     }
                     .onAppear {

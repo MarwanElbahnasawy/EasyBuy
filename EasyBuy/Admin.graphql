@@ -41,3 +41,50 @@ mutation discountCodeBasicCreateForSpecificUser($basicCodeDiscount: DiscountCode
     }
   }
 }
+
+mutation draftOrderNewCreate($input: DraftOrderInput!) {
+  draftOrderCreate(input: $input) {
+    draftOrder {
+      id
+    }
+  }
+}
+
+
+mutation draftOrderUpdate($id: ID!, $input: DraftOrderInput!) {
+  draftOrderUpdate(id: $id, input: $input) {
+    draftOrder {
+      id
+      name
+      email
+      subtotalPrice
+      lineItems(first: 100) {
+          nodes {
+              product {
+                title
+                productType
+                featuredImage {
+                    url
+                }
+              }
+          }
+      }
+    }
+  }
+}
+
+query draftOrder($id: ID!) {
+  draftOrder(id: $id) {
+    lineItems(first: 100) {
+          nodes {
+              product {
+                title
+                productType
+                featuredImage {
+                    url
+                }
+              }
+          }
+      }
+  }
+}

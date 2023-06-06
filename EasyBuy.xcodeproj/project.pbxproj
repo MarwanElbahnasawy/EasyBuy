@@ -70,7 +70,6 @@
 		3F02F2A82A29EA1A00FDE52E /* NetworkInterceptorProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F02F2A72A29EA1A00FDE52E /* NetworkInterceptorProvider.swift */; };
 		3F02F2AB2A29EBCE00FDE52E /* StoreFront.graphql in Sources */ = {isa = PBXBuildFile; fileRef = 3F02F2AA2A29EBCE00FDE52E /* StoreFront.graphql */; };
 		3F02F2AD2A29EC1400FDE52E /* Admin.graphql in Sources */ = {isa = PBXBuildFile; fileRef = 3F02F2AC2A29EC1400FDE52E /* Admin.graphql */; };
-		3F02F2B12A29EFEA00FDE52E /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F02F2B02A29EFE900FDE52E /* API.swift */; };
 		3F02F2B42A29F44700FDE52E /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 3F02F2B32A29F44700FDE52E /* loading.json */; };
 		3F02F2C42A2BCECA00FDE52E /* schemaAdmin.json in Resources */ = {isa = PBXBuildFile; fileRef = 3F02F2C32A2BCEC900FDE52E /* schemaAdmin.json */; };
 		3F02F2C62A2BD1BE00FDE52E /* DiscountCodesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F02F2C52A2BD1BE00FDE52E /* DiscountCodesModel.swift */; };
@@ -86,6 +85,8 @@
 		3F02F2E62A2DECFC00FDE52E /* RedeemedCodesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F02F2E52A2DECFC00FDE52E /* RedeemedCodesList.swift */; };
 		3F02F2EA2A2E010600FDE52E /* RedeemedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F02F2E92A2E010500FDE52E /* RedeemedCell.swift */; };
 		3F02F2EC2A2E013600FDE52E /* RedeemedListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F02F2EB2A2E013600FDE52E /* RedeemedListViewModel.swift */; };
+		3F5D3E432A2EA568005B65EA /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5D3E422A2EA567005B65EA /* API.swift */; };
+		3F5D3E452A2EA7E5005B65EA /* DraftOrdeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5D3E442A2EA7E4005B65EA /* DraftOrdeModel.swift */; };
 		46A13FDEE83F4DDB4720C12B /* Pods_EasyBuy_EasyBuyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3507BF2A68414E5293DF9AD /* Pods_EasyBuy_EasyBuyUITests.framework */; };
 		571213AB5A290D8C60576AA3 /* Pods_EasyBuy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C03094883316ABB45E3A79E7 /* Pods_EasyBuy.framework */; };
 		A8360D013A4F802E529FC832 /* Pods_EasyBuyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DFEA8E6555F657DAB22A79E /* Pods_EasyBuyTests.framework */; };
@@ -192,7 +193,6 @@
 		3F02F2AA2A29EBCE00FDE52E /* StoreFront.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = StoreFront.graphql; sourceTree = "<group>"; };
 		3F02F2AC2A29EC1400FDE52E /* Admin.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Admin.graphql; sourceTree = "<group>"; };
 		3F02F2AE2A29EC4C00FDE52E /* schema.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
-		3F02F2B02A29EFE900FDE52E /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		3F02F2B32A29F44700FDE52E /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		3F02F2C32A2BCEC900FDE52E /* schemaAdmin.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schemaAdmin.json; sourceTree = "<group>"; };
 		3F02F2C52A2BD1BE00FDE52E /* DiscountCodesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountCodesModel.swift; sourceTree = "<group>"; };
@@ -208,6 +208,8 @@
 		3F02F2E52A2DECFC00FDE52E /* RedeemedCodesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedeemedCodesList.swift; sourceTree = "<group>"; };
 		3F02F2E92A2E010500FDE52E /* RedeemedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedeemedCell.swift; sourceTree = "<group>"; };
 		3F02F2EB2A2E013600FDE52E /* RedeemedListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedeemedListViewModel.swift; sourceTree = "<group>"; };
+		3F5D3E422A2EA567005B65EA /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = API.swift; path = ../../../../Downloads/API.swift; sourceTree = "<group>"; };
+		3F5D3E442A2EA7E4005B65EA /* DraftOrdeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DraftOrdeModel.swift; path = EasyBuy/Presentation/DicoutCodes/ViewModels/DraftOrdeModel.swift; sourceTree = SOURCE_ROOT; };
 		57381625E4BE77ECA2BF6311 /* Pods-EasyBuyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyBuyTests.release.xcconfig"; path = "Target Support Files/Pods-EasyBuyTests/Pods-EasyBuyTests.release.xcconfig"; sourceTree = "<group>"; };
 		83BDA726C11A8D3B396FD0AB /* Pods-EasyBuyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyBuyTests.debug.xcconfig"; path = "Target Support Files/Pods-EasyBuyTests/Pods-EasyBuyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9FDB15B709C744CC1801AEF5 /* Pods-EasyBuy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyBuy.debug.xcconfig"; path = "Target Support Files/Pods-EasyBuy/Pods-EasyBuy.debug.xcconfig"; sourceTree = "<group>"; };
@@ -344,8 +346,7 @@
 		171B15152A28FC6600851C67 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				3F02F2C52A2BD1BE00FDE52E /* DiscountCodesModel.swift */,
-				171B15182A28FC9200851C67 /* Models.swift */,
+				3F5D3E442A2EA7E4005B65EA /* DraftOrdeModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -415,14 +416,9 @@
 			isa = PBXGroup;
 			children = (
 				3F02F2DF2A2D01DA00FDE52E /* GoogleService-Info.plist */,
+				3F5D3E422A2EA567005B65EA /* API.swift */,
 				3F02F2D42A2C03D100FDE52E /* APIAdmin.swift */,
-				3F02F2B02A29EFE900FDE52E /* API.swift */,
-				3F02F2C32A2BCEC900FDE52E /* schemaAdmin.json */,
-				3F02F2AE2A29EC4C00FDE52E /* schema.json */,
-				3F02F2AA2A29EBCE00FDE52E /* StoreFront.graphql */,
-				3F02F2AC2A29EC1400FDE52E /* Admin.graphql */,
 				17C9CF232A27E12F004BCCC2 /* EasyBuyApp.swift */,
-				3F02F2B02A29EFE900FDE52E /* API.swift */,
 				3F02F2C32A2BCEC900FDE52E /* schemaAdmin.json */,
 				3F02F2AE2A29EC4C00FDE52E /* schema.json */,
 				3F02F2AA2A29EBCE00FDE52E /* StoreFront.graphql */,
@@ -543,7 +539,6 @@
 			path = LottieFiles;
 			sourceTree = "<group>";
 		};
-
 		3F02F2C82A2BE73B00FDE52E /* DicoutCodes */ = {
 			isa = PBXGroup;
 			children = (
@@ -594,7 +589,6 @@
 			sourceTree = "<group>";
 		};
 		EB73E8D02A2BAB5700A9E70B /* Login */ = {
-
 			isa = PBXGroup;
 			children = (
 				EB73E8D32A2BAB6400A9E70B /* Models */,
@@ -1053,6 +1047,7 @@
 				EB9DF1422A2D445A000EDFDA /* NoAccountView.swift in Sources */,
 				EB90A61A2A2B384F00295296 /* CreateCustomerResponse.swift in Sources */,
 				EBC6453A2A2C9418000FD6F5 /* ProfileView.swift in Sources */,
+				3F5D3E452A2EA7E5005B65EA /* DraftOrdeModel.swift in Sources */,
 				17C9CF7F2A27E1D3004BCCC2 /* Constants.swift in Sources */,
 				3F02F2AD2A29EC1400FDE52E /* Admin.graphql in Sources */,
 				14F9B26A2A2B9651009C2611 /* ProductCatalog.swift in Sources */,
@@ -1069,9 +1064,8 @@
 				171B151E2A28FCCF00851C67 /* HomeViewModel.swift in Sources */,
 				148580172A2BEE6800D33591 /* image.swift in Sources */,
 				14F9B27E2A2B9832009C2611 /* Tags.swift in Sources */,
-				EB90A6182A2B383B00295296 /* CreateCustomer.swift in Sources */,
 				3F02F2D32A2BF59A00FDE52E /* DiscountCodesListViewModel.swift in Sources */,
-				EBC8D0E42A2AA930006DACFD /* ProductDetails.swift in Sources */,
+				EBC8D0E42A2AA930006DACFD /* Product.swift in Sources */,
 				171B151E2A28FCCF00851C67 /* HomeViewModel.swift in Sources */,
 				3F02F2EA2A2E010600FDE52E /* RedeemedCell.swift in Sources */,
 				17C9CF2D2A27E132004BCCC2 /* Persistence.swift in Sources */,
@@ -1080,17 +1074,15 @@
 				3F02F2AB2A29EBCE00FDE52E /* StoreFront.graphql in Sources */,
 				17C9CF262A27E12F004BCCC2 /* ContentView.swift in Sources */,
 				EBCA108B2A2B6B1F00E41C7B /* RegisterationView.swift in Sources */,
-				3F02F2B12A29EFEA00FDE52E /* API.swift in Sources */,
 				EB73E8D72A2BACF500A9E70B /* LoginViewModel.swift in Sources */,
 				14BC9B412A2CE69D00D7FD4B /* Category.swift in Sources */,
-				3F02F2B12A29EFEA00FDE52E /* API.swift in Sources */,
 				1486EB9B2A2B9FF40029212B /* Products.swift in Sources */,
+				3F5D3E432A2EA568005B65EA /* API.swift in Sources */,
 				14F9B2762A2B97A1009C2611 /* NavigationBarView.swift in Sources */,
 				1486EB9C2A2B9FF40029212B /* CoverImageModel.swift in Sources */,
 				3F02F2AB2A29EBCE00FDE52E /* StoreFront.graphql in Sources */,
 				17C9CF262A27E12F004BCCC2 /* ContentView.swift in Sources */,
 				14BC9B432A2CE6D300D7FD4B /* CategoryViewModel.swift in Sources */,
-				3F02F2B12A29EFEA00FDE52E /* API.swift in Sources */,
 				3F02F2C62A2BD1BE00FDE52E /* DiscountCodesModel.swift in Sources */,
 				EBC9D60E2A2CAAEF004E444C /* CustomerDetailsResponse.swift in Sources */,
 				EBC6453C2A2C947F000FD6F5 /* SettingRowView.swift in Sources */,
