@@ -31,8 +31,8 @@ struct EasyBuyApp: App {
                     if token == ""{
                         LoginView()
                     }else{
-                        CodesView()
-//                        BaseView()
+                     // CodesView()
+                      BaseView()
                     }
                 }
             }

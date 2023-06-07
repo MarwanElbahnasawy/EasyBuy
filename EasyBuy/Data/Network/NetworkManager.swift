@@ -20,17 +20,22 @@ final class NetworkManager: NetworkManagerProtocol {
     
     private var requestType: RequestType = .storeFront
 
-    private static var shared: NetworkManager?
+    static var shared: NetworkManager?
+    static var sharedAdmin: NetworkManager?
+    static var sharedStoreFront: NetworkManager?
 
     private init(requestType: RequestType) {
         self.requestType = requestType
     }
     static func getInstance(requestType: RequestType)-> NetworkManager{
-        if shared == nil {
-            shared = NetworkManager(requestType: requestType)
+        
+        switch requestType {
+        case .admin:
+            shared = NetworkManager(requestType: .admin)
+        case .storeFront:
+            shared = NetworkManager(requestType: .storeFront)
         }
         return shared!
-        
     }
     
     private lazy var _service: ApolloClient = {

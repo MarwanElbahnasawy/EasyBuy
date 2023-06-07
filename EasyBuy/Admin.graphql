@@ -42,25 +42,34 @@ mutation discountCodeBasicCreateForSpecificUser($basicCodeDiscount: DiscountCode
   }
 }
 
-mutation draftOrderNewCreate($input: DraftOrderInput!) {
+mutation draftOrderCreate($input: DraftOrderInput!) {
   draftOrderCreate(input: $input) {
-    draftOrder {
-      id
-    }
-  }
-}
-
-
-mutation draftOrderUpdate($id: ID!, $input: DraftOrderInput!) {
-  draftOrderUpdate(id: $id, input: $input) {
-    draftOrder {
+   draftOrder {
       id
       name
       email
       subtotalPrice
+      note2
+      totalPrice
       lineItems(first: 100) {
+          
           nodes {
+              quantity
+              variant{
+                  id
+                  price
+                  availableForSale
+                  title
+              }
               product {
+                  
+                id
+                 priceRangeV2{
+                      maxVariantPrice{
+                          amount
+                          currencyCode
+                      }
+                  }
                 title
                 productType
                 featuredImage {
@@ -72,12 +81,34 @@ mutation draftOrderUpdate($id: ID!, $input: DraftOrderInput!) {
     }
   }
 }
-
-query draftOrder($id: ID!) {
-  draftOrder(id: $id) {
-    lineItems(first: 100) {
+mutation draftOrderUpdate($id: ID!, $input: DraftOrderInput!) {
+  draftOrderUpdate(id: $id, input: $input) {
+     draftOrder {
+      id
+      name
+      email
+      subtotalPrice
+      note2
+      totalPrice
+      lineItems(first: 100) {
+          
           nodes {
+              quantity
+              variant{
+                  id
+                  price
+                  availableForSale
+                  title
+              }
               product {
+                  
+                id
+                 priceRangeV2{
+                      maxVariantPrice{
+                          amount
+                          currencyCode
+                      }
+                  }
                 title
                 productType
                 featuredImage {
@@ -86,5 +117,48 @@ query draftOrder($id: ID!) {
               }
           }
       }
+    }
+  }
+}
+query draftOrder($id: ID!) {
+  draftOrder(id: $id) {
+      id
+      name
+      email
+      subtotalPrice
+      note2
+      totalPrice
+      lineItems(first: 100) {
+          
+          nodes {
+              quantity
+              variant{
+                  id
+                  price
+                  availableForSale
+                  title
+              }
+              product {
+                  
+                id
+                 priceRangeV2{
+                      maxVariantPrice{
+                          amount
+                          currencyCode
+                      }
+                  }
+                title
+                productType
+                featuredImage {
+                    url
+                }
+              }
+          }
+      }
+    }
+}
+mutation draftOrderDelete($input: DraftOrderDeleteInput!) {
+  draftOrderDelete(input: $input) {
+    deletedId
   }
 }

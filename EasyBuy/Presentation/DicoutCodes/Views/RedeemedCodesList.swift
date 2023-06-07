@@ -19,7 +19,8 @@ struct RedeemedCodesList: View {
             }
             
         }.onAppear(){
-            redeemedViewModel.getRedeemedCode(id: "gidshopifyCustomer6")
+            let customerID = UserDefaults.standard.string(forKey: "customerID")
+            redeemedViewModel.getRedeemedCode(id: customerID!)
             
         }
     }

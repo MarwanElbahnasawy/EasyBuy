@@ -29,23 +29,25 @@ class HomeViewModel: ObservableObject {
     }
     
     func fetchProducts(){
-//        let draftOrderInput = DraftOrderInput(email: "marwan@gmail.com",
-//            lineItems: [
-//                DraftOrderLineItemInput(quantity: 1, variantId: "gid://shopify/ProductVariant/1234567890"),
-//            ])
-//        
-//
-//        let createDraftOrderMutation = DraftOrderNewCreateMutation(input: draftOrderInput)
-//        NetworkManager.getInstance(requestType: .admin).performGraphQLRequest(mutation: createDraftOrderMutation, responseModel: OrderDataClass.self, completion: {
-//            result in
-//            switch result {
-//            case .success(let success):
-//                print(success)
-//            case .failure(let failure):
-//                print(failure)
-//            }
-//        })
-//    
+        
+        let draftOrderInput = DraftOrderInput(email: "marwan@gmail.com",
+            lineItems: [
+                DraftOrderLineItemInput(quantity: 1, variantId: "gid://shopify/ProductVariant/45253508006195"),
+            ])
+        
+
+        let createDraftOrderMutation = DraftOrderCreateMutation(input: draftOrderInput)
+        NetworkManager.getInstance(requestType: .admin).performGraphQLRequest(mutation: createDraftOrderMutation, responseModel: DraftOrderDataClass.self, completion: {
+            result in
+            switch result {
+            case .success(let success):
+                print("draft order success is : \(success)")
+                FireBaseManager.shared.saveCustomerDiscountCodes(customerDiscountCodes: CustomerDiscountCodes(id: "Moses all+201013874386", discountCodes: ["sdasdas"],draftOrders: DraftOrders(favoriteDraftorder: success, cartDraftOrder: success)))
+            case .failure(let failure):
+                print(failure)
+            }
+        })
+    
         NetworkManager.getInstance(requestType: .storeFront).queryGraphQLRequest(query:GetAllProductsQuery(first: 100,imageFirst: 5, variantsFirst: 5) , responseModel: DataClassProdcuts.self, completion: { [weak self] result in
             guard let self = self else { return }
                             switch result {

@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct DiscountCodesList: View {
-    @StateObject var discountCodesViewModel = DiscountCodesListViewModel()
-    @State var adType: AdType = .men
+    @ObservedObject var discountCodesViewModel: DiscountCodesListViewModel
+    @State var adType: AdType = .all
   
     var body: some View {
         VStack{
@@ -21,7 +21,7 @@ struct DiscountCodesList: View {
                 DiscountCodeCell(discountCode: discountCode, cellViewModel: DiscountCodeViewModel(discountCode: discountCode ,adType: adType)).listRowBackground(Color.clear)   .listRowSeparator(.hidden).clipped().cornerRadius(10)
 
             }.onAppear {
-                discountCodesViewModel.getDiscountCodes(first: 10)
+                discountCodesViewModel.getDiscountCodes(first: 3)
             }
         }
     }
@@ -29,7 +29,7 @@ struct DiscountCodesList: View {
 
 struct DiscountCodeList_Previews: PreviewProvider {
     static var previews: some View {
-        DiscountCodesList()
+        DiscountCodesList(discountCodesViewModel: DiscountCodesListViewModel(),adType: .men)
     }
 }
 

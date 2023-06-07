@@ -11,6 +11,8 @@ struct DiscountCodeCell: View {
     @State var discountCode: CodeDiscountNodesNode?
     @ObservedObject var cellViewModel: DiscountCodeViewModel
     @State var animationAmount = 1.0
+    let customerID = UserDefaults.standard.string(forKey: "customerID")
+
     var body: some View {
         ZStack(alignment: .center) {
             Image(cellViewModel.getImageName())
@@ -39,7 +41,8 @@ struct DiscountCodeCell: View {
                 Spacer()
                 Text(cellViewModel.isUsed ? "Redemed" : "Get Now") .onAppear {
                     print(cellViewModel.isUsed)
-                    cellViewModel.isExist(id: "gidshopifyCustomer6",customerCode: cellViewModel.code)
+                    print("customer id is : \(String(describing: customerID))")
+                    cellViewModel.isExist(id: customerID!,customerCode: cellViewModel.code)
                     self.animationAmount = 1.1
                 }
                     .padding(10)
@@ -52,7 +55,7 @@ struct DiscountCodeCell: View {
                    
                     .onTapGesture {
                         print("pressing....")
-                        cellViewModel.saveCodeForCustomer(id: "gidshopifyCustomer6", customerCode: cellViewModel.code)
+                        cellViewModel.saveCodeForCustomer(id: customerID!, customerCode: cellViewModel.code)
                     }.disabled(cellViewModel.isUsed)
                     
             

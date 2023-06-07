@@ -36,6 +36,7 @@ struct image: View {
                         Spacer()
                     }.padding(.leading,26)
                     HStack{
+                     
                         Button(action: {
                             // Your action here
                         }) {

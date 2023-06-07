@@ -19,7 +19,7 @@ struct CodesView: View {
             }.padding()
             VStack{
                 if selectedValue == 0 {
-                    DiscountCodesList()
+                    DiscountCodesList(discountCodesViewModel: DiscountCodesListViewModel(), adType: .all)
                 }
                 else{
                    RedeemedCodesList(redeemedViewModel: RedeemedListViewModel())
