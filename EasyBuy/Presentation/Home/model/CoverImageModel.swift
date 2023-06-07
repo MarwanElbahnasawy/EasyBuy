@@ -13,5 +13,4 @@ struct CoverImage: Codable, Identifiable, Hashable{
     var title: String
     var des: String
     var code: String
-    
 }

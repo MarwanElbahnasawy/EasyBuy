@@ -1,22 +1,4 @@
-
-query getCollections{
-  collections(first: 2) {
-    edges {
-      node {
-        id
-        products(first: 5) {
-          edges {
-            node {
-              id
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-query ProductQuery($productId: ID, $imageFirst: Int, $variantsFirst: Int) {
+query ProductDetails($productId: ID, $imageFirst: Int, $variantsFirst: Int) {
   product(id: $productId) {
     id
     title
@@ -68,7 +50,7 @@ query Collections($first: Int) {
   }
 }
 
-query Products($first: Int, $imageFirst: Int, $variantsFirst: Int) {
+query GetAllProducts($first: Int, $imageFirst: Int, $variantsFirst: Int) {
   products(first: $first) {
     nodes {
     id
@@ -155,7 +137,7 @@ query CollectionProducts($handle: String, $first: Int , $imageFirst: Int, $varia
   }
 }
 
-mutation CustomerCreate($input: CustomerCreateInput!) {
+mutation CreateNewCustomer($input: CustomerCreateInput!) {
   customerCreate(input: $input) {
     customer {
       id

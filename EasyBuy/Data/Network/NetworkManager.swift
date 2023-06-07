@@ -18,19 +18,24 @@ protocol NetworkManagerProtocol {
 
 final class NetworkManager: NetworkManagerProtocol {
     
-    var requestType: RequestType = .storeFront
-    
+    private var requestType: RequestType = .storeFront
+
     static var shared: NetworkManager?
-    
+    static var sharedAdmin: NetworkManager?
+    static var sharedStoreFront: NetworkManager?
+
     private init(requestType: RequestType) {
         self.requestType = requestType
     }
     static func getInstance(requestType: RequestType)-> NetworkManager{
-        if shared == nil {
-            shared = NetworkManager(requestType: requestType)
+        
+        switch requestType {
+        case .admin:
+            shared = NetworkManager(requestType: .admin)
+        case .storeFront:
+            shared = NetworkManager(requestType: .storeFront)
         }
         return shared!
-        
     }
     
     private lazy var _service: ApolloClient = {
@@ -60,30 +65,30 @@ final class NetworkManager: NetworkManagerProtocol {
         
         
         NetworkManager.getInstance(requestType: requestType).service.fetch(query: query) { result in
-            
-            switch result {
-            case .success(let apolloResponse):
-                do {
-                    let data = try JSONSerialization.data(withJSONObject: apolloResponse.data!.jsonObject, options: .fragmentsAllowed)
-                    let decode = try JSONDecoder().decode(responseModel, from: data)
-                    completion(.success(decode))
-                }catch (let error) {
-                    print(error)
-                }
-            case .failure(let error):
-                print("Failure! Error: \(error)")
-                completion(.failure(error))
-            }
-        }
-    }
-    
+             
+             switch result {
+             case .success(let apolloResponse):
+                    do {
+                        let data = try JSONSerialization.data(withJSONObject: apolloResponse.data?.jsonObject ?? "", options: .fragmentsAllowed)
+                      let decode = try JSONDecoder().decode(responseModel, from: data)
+                        completion(.success(decode))
+                    }catch (let error) {
+                      print(error)
+                    }
+                  case .failure(let error):
+                    print("Failure! Error: \(error)")
+                 completion(.failure(error))
+                  }
+         }
+     }
     func performGraphQLRequest<T, K>(mutation: T, responseModel: K.Type, completion: @escaping ((Result<K, Error>) -> Void)) where T : Apollo.GraphQLMutation, K : Decodable, K : Encodable {
         
         NetworkManager.getInstance(requestType: requestType).service.perform(mutation: mutation) { result in
             switch result {
             case .success(let apolloResponse):
                 do {
-                    let data = try JSONSerialization.data(withJSONObject: apolloResponse.data!.jsonObject, options: .fragmentsAllowed)
+                   print("apollo response is: \(apolloResponse)")
+                    let data = try JSONSerialization.data(withJSONObject: apolloResponse.data?.jsonObject ?? "", options: .fragmentsAllowed)
                     let decode = try JSONDecoder().decode(responseModel, from: data)
                     completion(.success(decode))
                 }catch (let error) {

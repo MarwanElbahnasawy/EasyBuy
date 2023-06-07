@@ -4,12 +4,15 @@ class RegestrationViewModel: ObservableObject {
     @Published var customer: CustomerCreateData?
     
     func createCustomer(newCustomerInput: CustomerCreateInput, completion: @escaping (Result<Void, Error>) -> Void) {
-        NetworkManager.getInstance(requestType: .storeFront).performGraphQLRequest(mutation: CustomerCreateMutation(input: newCustomerInput), responseModel: CustomerCreateData.self, completion: { result in
+        NetworkManager.getInstance(requestType: .storeFront).performGraphQLRequest(mutation: CreateNewCustomerMutation(input: newCustomerInput), responseModel: CustomerCreateData.self, completion: { result in
             switch result {
             case .success(let response):
                 if let customerID = response.customerCreate?.customer?.id {
                     print("Success to create account with ID: \(customerID)")
-                    UserDefaults.standard.set(customerID, forKey: "customerID")
+                    let customerIDOj = (response.customerCreate?.customer?.displayName)!
+                    + (response.customerCreate?.customer?.phone)!
+                    UserDefaults.standard.set(customerIDOj, forKey: "customerID")
+                    
                     completion(.success(()))
                 } else {
                     print("Failed to create account: Invalid credentials")

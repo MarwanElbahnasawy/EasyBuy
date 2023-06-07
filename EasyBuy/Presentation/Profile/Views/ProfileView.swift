@@ -112,7 +112,6 @@ struct ProfileView: View {
                   message: Text("Are you sure you want to sign out?"),
                   primaryButton: .destructive(Text("Sign Out")) {
                       UserDefaults.standard.removeObject(forKey: "accessToken")
-                      UserDefaults.standard.removeObject(forKey: "customerID")
 
                       // Navigate to NoAccountView
 //                      UIApplication.shared.windows.first?.rootViewController = UIHostingController(rootView: Home())
