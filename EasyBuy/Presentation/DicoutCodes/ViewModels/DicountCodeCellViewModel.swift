@@ -43,8 +43,8 @@ class DiscountCodeViewModel : ObservableObject{
             image = "image cop"
         case .all:
             image = "Everything"
-        case .kids:
-            image = "KIDS"
+        case .shoes:
+            image = "SHOES"
         }
         return image
     }

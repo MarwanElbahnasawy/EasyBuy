@@ -1,30 +1,30 @@
 [
   {
     "id" : 1,
-    "name" : "image cop",
-    "title" : "50% Off",
+    "name" : "Everything",
+    "title" : "Up to 50% ",
     "des" : "On everything today",
     "code" : "FSCREATION"
   },
   {
     "id" : 2,
-    "name" : "image cop",
-    "title" : "60% Off",
-    "des" : "On everything today",
+    "name" : "MEN",
+    "title" : "Up to 60% ",
+    "des" : "On men items today",
     "code" : "FSCREATION"
   },
   {
     "id" : 3,
    "name" : "image cop",
-   "title": "70% Off",
-   "des" : "On everything today",
+   "title": "Up to 50% ",
+   "des" : "On women items today",
    "code" : "FSCREATION"
  },
 {
     "id" : 4,
-    "name" : "image cop",
-    "title" : "20% Off",
-    "des" : "On everything today",
+    "name" : "SHOES",
+    "title" : "Up to 40% ",
+    "des" : "On shoes products today",
     "code" : "FSCREATION",
   }
 ]

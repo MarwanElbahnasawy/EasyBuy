@@ -21,8 +21,8 @@ class DiscountCodesListViewModel: ObservableObject{
             resultArray =  filteredArray.filter({($0.codeDiscount?.codes?.nodes?.first?.code?.contains("WOMEN"))!})
         case .all:
            resultArray =  filteredArray.filter({($0.codeDiscount?.codes?.nodes?.first?.code?.contains("EVERYTHING"))!})
-        case .kids:
-            resultArray =  filteredArray.filter({($0.codeDiscount?.codes?.nodes?.first?.code?.contains("KIDS"))!})
+        case .shoes:
+            resultArray =  filteredArray.filter({($0.codeDiscount?.codes?.nodes?.first?.code?.contains("ADIDAS"))!})
         }
         return resultArray
     }
@@ -42,5 +42,5 @@ enum AdType{
     case men
     case women
     case all
-    case kids
+    case shoes
 }

@@ -21,7 +21,7 @@ struct DiscountCodesList: View {
                 DiscountCodeCell(discountCode: discountCode, cellViewModel: DiscountCodeViewModel(discountCode: discountCode ,adType: adType)).listRowBackground(Color.clear)   .listRowSeparator(.hidden).clipped().cornerRadius(10)
 
             }.onAppear {
-                discountCodesViewModel.getDiscountCodes(first: 3)
+                discountCodesViewModel.getDiscountCodes(first: 20)
             }
         }
     }

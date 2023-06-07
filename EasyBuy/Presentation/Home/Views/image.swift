@@ -14,7 +14,7 @@ struct image: View {
             ZStack{
                 Image(CoverImage.name)
                     .resizable()
-                    .frame(width: UIScreen.main.bounds.width * 0.7 ,height: 200)
+                    .frame(width: UIScreen.main.bounds.width * 0.95 ,height: 200)
                     .scaledToFill()
                     .cornerRadius(25)
                 VStack{
@@ -36,17 +36,31 @@ struct image: View {
                         Spacer()
                     }.padding(.leading,26)
                     HStack{
-                     
-                        Button(action: {
-                            // Your action here
-                        }) {
-                            Text("Click Me")
-                                .foregroundColor(.white)
-                                .padding()
-                                .background(Color.black)
-                                .cornerRadius(25)
-                                .frame(width: 150, height: 50)
-                        }.padding(.trailing,120)
+                        NavigationLink {
+                            switch CoverImage.name{
+                            case "Everything":
+                                CodesView(adType: .all)
+                            case "MEN":
+                                CodesView(adType: .men)
+                            case "image cop":
+                                CodesView(adType: .women)
+                             case "SHOES":
+                                CodesView(adType: .shoes)
+                            default:
+                                CodesView()
+                            }
+                        } label: {
+                             
+                                Text("Click Me")
+                                    .foregroundColor(.white)
+                                    .padding()
+                                    .background(Color.black)
+                                    .cornerRadius(25)
+                                    .frame(width: 150, height: 50)
+                                    .padding(.trailing,120)
+                           
+                        }
+                       
                         Spacer()
                     }
                 }

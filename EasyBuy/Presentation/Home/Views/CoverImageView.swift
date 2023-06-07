@@ -6,24 +6,26 @@
 //
 
 import SwiftUI
-
+import Combine
 struct CoverImageView: View {
     // MARK: - PROPERTIES
     
     var coverImages: [CoverImage] = Bundle.main.decode("covers.json")
+
     @State private var selectedIndex = 0
     @State private var adType: AdType = .all
-//    private var timer = Timer.publish(every: 3, on: .main, in: .common).autoconnect()
+    @State private var timer: Publishers.Autoconnect<Timer.TimerPublisher>?
     // MARK: - BODY
     var body: some View {
    ScrollViewReader { proxy in
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHGrid(rows: Array(repeating: GridItem(.flexible(), spacing: rowSpacing), count: 1), alignment: .center, spacing: 15, pinnedViews: [], content: {
                     ForEach(coverImages, id:\.self) { item in
+                        
                         HStack {
-                            NavigationLink(destination: CodesView(), label: {
-                                    image(CoverImage: item)
-                            })
+
+                            image(CoverImage: item).padding(.horizontal, 10)
+
                                 
                         }
                     }
@@ -32,22 +34,40 @@ struct CoverImageView: View {
                             proxy.scrollTo(coverImages[selectedIndex])
                         }
                     }
-//                    .onReceive(timer) { _ in
-//                        withAnimation {
-//                            if selectedIndex < coverImages.count - 1 {
-//
-//                                selectedIndex += 1
-//                                proxy.scrollTo(coverImages[selectedIndex])
-//                            }else{
-//                                selectedIndex = 0
-//                            }
-//                        }
-//                    }
+                    .onReceive(timer ??  Timer.publish(every: 3, on: .main, in: .common)
+                        .autoconnect()) { _ in
+                        withAnimation {
+                            if selectedIndex < coverImages.count - 1 {
+                                selectedIndex += 1
+                                proxy.scrollTo(coverImages[selectedIndex])
+                            }else{
+                                selectedIndex = 0
+                            }
+                        }
+                    }
                 }
-                ).padding(.horizontal,10)
+                ).padding(.horizontal)
+                  
+                 
             }
-        }
+   }.onAppear{
+       startTimer()
+   }
+   .onDisappear{
+       stopTimer()
+   }
     }
+    
+    func startTimer() {
+           timer = Timer.publish(every: 3, on: .main, in: .common)
+               .autoconnect()
+               
+       }
+       
+       func stopTimer() {
+           timer?.upstream.connect().cancel()
+       }
+
 }
 
 // MARK: - PREVIEW

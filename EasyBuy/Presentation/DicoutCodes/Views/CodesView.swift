@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CodesView: View {
     @State var selectedValue = 0
+    @State var adType: AdType = .all
     var body: some View {
         VStack{
             HStack(alignment: .top){
@@ -19,7 +20,7 @@ struct CodesView: View {
             }.padding()
             VStack{
                 if selectedValue == 0 {
-                    DiscountCodesList(discountCodesViewModel: DiscountCodesListViewModel(), adType: .all)
+                    DiscountCodesList(discountCodesViewModel: DiscountCodesListViewModel(), adType: adType)
                 }
                 else{
                    RedeemedCodesList(redeemedViewModel: RedeemedListViewModel())
