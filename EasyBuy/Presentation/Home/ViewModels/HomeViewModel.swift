@@ -9,9 +9,11 @@ import Foundation
 class HomeViewModel: ObservableObject {
     @Published var brands: [Brand]?
     @Published var items: [Product]?
-    @Published var isLoading: Bool = false
+    @Published var lottieFile = "loading"
+    @Published var isLoading: Bool = true
     init(){
-     
+        fetchBrands()
+        fetchProducts()
     }
     
     func fetchBrands(){
@@ -26,13 +28,17 @@ class HomeViewModel: ObservableObject {
     }
     
     func fetchProducts(){
-        NetworkManager.getInstance(requestType: .storeFront).queryGraphQLRequest(query:ProductsQuery(first: 100,imageFirst: 5, variantsFirst: 5) , responseModel: DataClassProdcuts.self, completion: { result in
+        NetworkManager.getInstance(requestType: .storeFront).queryGraphQLRequest(query:ProductsQuery(first: 100,imageFirst: 5, variantsFirst: 5) , responseModel: DataClassProdcuts.self, completion: { [weak self] result in
+            guard let self = self else { return }
                             switch result {
                             case .success(let success):
-                                self.items = success.products?.nodes
-                                self.isLoading = false
+                                DispatchQueue.main.async {
+                                    self.items = success.products?.nodes
+                                    self.isLoading = false
+                                }
                             case .failure(let failure):
                                 print(failure)
+                                self.lottieFile = "error"
                             }
                         })
     }

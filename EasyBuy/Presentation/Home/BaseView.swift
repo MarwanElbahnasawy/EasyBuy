@@ -9,7 +9,7 @@ struct BaseView: View {
     }
     
     var body: some View {
-        NavigationView{
+       
             TabView(selection: $baseData.currentTab) {
                 Home()
                     .environmentObject(baseData)
@@ -22,7 +22,7 @@ struct BaseView: View {
                     .background(Color.black.opacity(0.04))
                     .tag(Tab.Category)
                 
-                Text("Heart")
+                OrdersView()
                     .tag(Tab.Heart)
                 ProfileView()
                     .environmentObject(baseData)
@@ -80,7 +80,7 @@ struct BaseView: View {
                 , alignment: .bottom
             )
             
-        }
+        
     }
         @ViewBuilder
         func TabButton(Tab: Tab)-> some View {

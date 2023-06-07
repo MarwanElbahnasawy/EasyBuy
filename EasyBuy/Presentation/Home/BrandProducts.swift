@@ -8,33 +8,35 @@
 import SwiftUI
 
 struct BrandProducts: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @ObservedObject var viewModel:BrandViewModel = BrandViewModel()
     var body: some View {
-        NavigationView{
-        ZStack {
-           
-          
-                if(viewModel.isLoading){
-                    
-                }else{
-                    VStack(spacing: 0) {
-                        HStack{
-                            let brand = "\(viewModel.brand ?? "adidas") PRODUCTS"
-                            TitleView(title: brand)
-                                .font(.custom(Constants.AppFont.boldFont, size: 18))
-                        }
-                       ProductCatalog(products:viewModel.items ?? [])
-                    }
+  
+            VStack {
+                
+                                if(viewModel.isLoading){
+                
+                                }else{
+                
+                HStack{
+                    let brand = "\(viewModel.brand ?? "adidas") PRODUCTS"
+                    TitleView(title: brand)
+                        .font(.custom(Constants.AppFont.boldFont, size: 18))
                 }
-            }
-            }
-       
-        .onAppear(){
-                viewModel.fetchBrand()
-            }
-            //ZStack
-       
+                ProductCatalog(products:viewModel.items ?? [])
+                
+                
+            
         }
+            }.navigationBarBackButtonHidden(true)
+            .navigationBarItems(leading: BackButton(action: {presentationMode.wrappedValue.dismiss()}), trailing: Image("threeDot"))
+        
+            .onAppear(){
+                   viewModel.fetchBrand()
+            }
+        //ZStack
+        
+    }
     
 }
 

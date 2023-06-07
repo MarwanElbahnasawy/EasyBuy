@@ -38,8 +38,11 @@ struct ProductCell: View {
                                         .padding([.top, .trailing], 5)
                                     , alignment: .topTrailing
                                 )
-                Text(product.title ?? "title")
-                    .font(Font.system(size: 15, weight: .regular, design: .rounded))
+                HStack{
+                    Text(product.title ?? "title")
+                        .font(Font.system(size: 15, weight: .black, design: .rounded))
+                    Spacer()
+                }.frame(width:  UIScreen.main.bounds.width / 2 - 20,height: 25)
                 Text(product.productType ?? "product type")
                     .font(.custom(Constants.AppFont.regularFont, size: 11))
                     .foregroundColor(Color.gray)

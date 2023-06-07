@@ -41,15 +41,26 @@ struct ProfileView: View {
                         .foregroundColor(.gray)
                 }
             }
-
+            Section("Orders") {
+                VStack{
+                    HStack{
+                        NavigationLink(destination: OrdersView()){
+                            Spacer()
+                            Text("VIEW ALL")
+                                .font(.custom(Constants.AppFont.semiBoldFont, size: 12))
+                                .foregroundColor(.red)
+                                .padding(.trailing, 15)
+                        }
+                    }
+                    OrdersInLine()
+                }
+            }
             Section("Account") {
 
                 Button {
-                    
+                    //orders
                 } label: {
-                    SettingRowView(imageName: "bag.circle.fill",
-                                   title: "My Orders",
-                                   tintColor: .black)
+                    SettingRowView(imageName: "bag.circle.fill",title: "My Orders",tintColor: .black)
                 }
 
                 Button {

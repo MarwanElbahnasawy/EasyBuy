@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CoverImage: Codable, Identifiable {
+struct CoverImage: Codable, Identifiable, Hashable{
     var id: Int
     var name: String
     var title: String
