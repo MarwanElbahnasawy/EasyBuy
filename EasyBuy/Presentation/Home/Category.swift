@@ -14,81 +14,89 @@ struct Category: View {
     
     var body: some View {
         NavigationView{
-            VStack {
-                HStack{
-                    NavigationBarView()
-                    Button(action: {
-                        self.isModalPresented = true
-                    }, label: {
-                        ZStack {
-                            Image(systemName: "slider.horizontal.3")
-                                .font(.title)
-                                .foregroundColor(.black)
-                        }
-                    }) //: BUTTON
+            if(viewModel.isLoading){
+                VStack(spacing: 0) {
+                    LottieView(lottieFile: viewModel.lottieFile)
+                        .frame(width: 300, height: 300)
                 }
-                .padding(.horizontal, 15)
-                .padding(.bottom)
-                .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top)
-                .shadow(color: Color.black.opacity(0.05), radius: 5, x: 0, y: 5)
-                
-                VStack(spacing: 15) {
-                    HStack {
-                        Text("category")
-                            .font(.largeTitle.bold())
-                        
-                    }
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    
-                    .padding(.horizontal, 15)
-                    
-                    TagsView()
-                }.padding(.leading)
-                ScrollView(.vertical, showsIndicators: false, content: {
-                    
-                    VStack(spacing: 0) {
-                        
-                        LazyVGrid(columns: gridLayout, spacing: 15, content: {
-                            ForEach(viewModel.products ) { product in
-                                ProductCell(product: product)
-                            } //: LOOP
-                        }) //: GRID
-                        .padding(15)
-                    }
-                }
-                )}.ignoresSafeArea(.all, edges: .top)
-                .padding(.bottom, 65)
-//                .navigationBarTitle(Text(""), displayMode: .inline)
-//                .navigationBarHidden(true)
-//                .navigationBarBackButtonHidden(true)
-        } .partialSheet(presented: $isModalPresented) {
-            VStack {
-                Text("Filter By")
-                    .font(.headline)
-                    .padding()
-                
-                VStack(alignment: .leading) {
-                    ScrollView{
-                    ForEach(viewModel.arrFilter, id: \.self) { value in
+            }else{
+                VStack {
+                    HStack{
+                        NavigationBarView()
                         Button(action: {
-                            self.isModalPresented = false
-                            viewModel.filterBy = value
-                            viewModel.filterTag()
-                           
-                            
-                        }) {
-                            Text(value)
-                                .font(.custom(Constants.AppFont.semiBoldFont, size: 15))
-                                .padding()
-                                .foregroundColor(viewModel.filterBy == value ? Color.red  : Color.black)
-                                .font(.body)
-                            Spacer()
-                        }.frame(height: 40)
+                            self.isModalPresented = true
+                        }, label: {
+                            ZStack {
+                                Image(systemName: "slider.horizontal.3")
+                                    .font(.title)
+                                    .foregroundColor(.black)
+                            }
+                        }) //: BUTTON
                     }
-                    Spacer()
-                }
-                }.padding(.leading, 10)
-            }.frame(height: 350)
+                    .padding(.horizontal, 15)
+                    .padding(.bottom)
+                    .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top)
+                    .shadow(color: Color.black.opacity(0.05), radius: 5, x: 0, y: 5)
+                    
+                    VStack(spacing: 15) {
+                        HStack {
+                            Text("category")
+                                .font(.largeTitle.bold())
+                            
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        
+                        .padding(.horizontal, 15)
+                        
+                        TagsView()
+                    }.padding(.leading)
+                    ScrollView(.vertical, showsIndicators: false, content: {
+                        
+                        VStack(spacing: 0) {
+                            
+                            LazyVGrid(columns: gridLayout, spacing: 15, content: {
+                                ForEach(viewModel.products ) { product in
+                                    ProductCell(product: product)
+                                } //: LOOP
+                            }) //: GRID
+                            .padding(15)
+                        }
+                    }
+                    )}.ignoresSafeArea(.all, edges: .top)
+                    .padding(.bottom, 65)
+                //                .navigationBarTitle(Text(""), displayMode: .inline)
+                //                .navigationBarHidden(true)
+                //                .navigationBarBackButtonHidden(true)
+                    .partialSheet(presented: $isModalPresented) {
+                        VStack {
+                            Text("Filter By")
+                                .font(.headline)
+                                .padding()
+                            
+                            VStack(alignment: .leading) {
+                                ScrollView{
+                                    ForEach(viewModel.arrFilter, id: \.self) { value in
+                                        Button(action: {
+                                            self.isModalPresented = false
+                                            viewModel.filterBy = value
+                                            viewModel.filterTag()
+                                            
+                                            
+                                        }) {
+                                            Text(value)
+                                                .font(.custom(Constants.AppFont.semiBoldFont, size: 15))
+                                                .padding()
+                                                .foregroundColor(viewModel.filterBy == value ? Color.red  : Color.black)
+                                                .font(.body)
+                                            Spacer()
+                                        }.frame(height: 40)
+                                    }
+                                    Spacer()
+                                }
+                            }.padding(.leading, 10)
+                        }.frame(height: 350)
+                    }
+            }
         }
     }
     
@@ -113,7 +121,7 @@ struct Category: View {
                             }
                         }
                         .foregroundColor(viewModel.activeTag == tag ? .white : .gray)
-                        /// Changing Active Tag when tapped one of the tag
+                    /// Changing Active Tag when tapped one of the tag
                         .onTapGesture {
                             withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.7, blendDuration: 0.7)) {
                                 viewModel.activeTag = tag
@@ -127,8 +135,9 @@ struct Category: View {
         .onAppear(){
             viewModel.onAppearView()
         }
-    
+        
     }
+    
 }
 
 struct Category_Previews: PreviewProvider {

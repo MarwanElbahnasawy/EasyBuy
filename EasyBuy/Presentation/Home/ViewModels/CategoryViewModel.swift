@@ -10,13 +10,14 @@ import Foundation
 
 class CategoryViewModel: ObservableObject {
     @Published var items: [Product]?
-    @Published var isLoading: Bool = false
+    @Published var isLoading: Bool = true
+    @Published var lottieFile = "loading"
     @Published  var filterBy: String = "All"
     @Published  var activeTag: String = "All"
     @Published var arrFilter: [String] = []
     @Published var tags: [String] = []
     @Published var products :[Product] = []
-   
+    
     init(){
         fetchProducts()
     }
@@ -24,30 +25,30 @@ class CategoryViewModel: ObservableObject {
     
     func fetchProducts(){
         NetworkManager.getInstance(requestType: .storeFront).queryGraphQLRequest(query:GetAllProductsQuery(first: 100,imageFirst: 5, variantsFirst: 5) , responseModel: DataClassProdcuts.self, completion: { result in
-                            switch result {
-                            case .success(let success):
-                                DispatchQueue.main.async {
-                                    self.items = success.products?.nodes
-                                    self.isLoading = false
-                                    self.onAppearView()
-                                }
-                            case .failure(let failure):
-                                print(failure)
-                            }
-                        })
+            switch result {
+            case .success(let success):
+                DispatchQueue.main.async {
+                    self.items = success.products?.nodes
+                    self.isLoading = false
+                    self.onAppearView()
+                }
+            case .failure(let failure):
+                print(failure)
+            }
+        })
     }
     
     
     func onAppearView(){
         products = items ?? []
-          tags = ["All"]
+        tags = ["All"]
         getTags(products: items ?? []).forEach({ tag in
-              tags.append(tag)
-          })
-          arrFilter = ["All"]
+            tags.append(tag)
+        })
+        arrFilter = ["All"]
         getType(products: items ?? []).forEach({ tag in
-              arrFilter.append(tag)
-          })
+            arrFilter.append(tag)
+        })
     }
     
     func filterTag(){
@@ -117,6 +118,6 @@ class CategoryViewModel: ObservableObject {
             }
         }
     }
-    }
-    
+}
+
 
