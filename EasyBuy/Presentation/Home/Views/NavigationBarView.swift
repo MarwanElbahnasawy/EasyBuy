@@ -16,11 +16,11 @@ struct NavigationBarView: View {
   
   var body: some View {
     HStack {
-      Button(action: {}, label: {
+      NavigationLink(destination: SearchView()) {
         Image(systemName: "magnifyingglass")
           .font(.title)
-          .foregroundColor(Color.black)
-      }) //: BUTTON
+          .foregroundColor(.black)
+      } //: NAVIGATION LINK
       
       Spacer()
       
@@ -35,13 +35,12 @@ struct NavigationBarView: View {
       
       Spacer()
       
-    
-    }.onAppear{
+    }
+    .onAppear{
         isAnimated = false
-    }//: HSTACK
+    }
   }
 }
-
 // MARK: - PREVIEW
 
 struct NavigationBarView_Previews: PreviewProvider {

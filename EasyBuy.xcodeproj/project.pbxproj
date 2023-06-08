@@ -123,6 +123,8 @@
 		EBCEFBB42A31D98000042B62 /* ClientReviewListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCEFBB32A31D98000042B62 /* ClientReviewListView.swift */; };
 		EBCEFBB72A31D9D500042B62 /* FavoriteAndCartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCEFBB62A31D9D500042B62 /* FavoriteAndCartCell.swift */; };
 		EBCEFBB92A31DA0500042B62 /* FavoriteProductsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCEFBB82A31DA0500042B62 /* FavoriteProductsListView.swift */; };
+		EBCEFBBC2A31F56B00042B62 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCEFBBB2A31F56B00042B62 /* SearchView.swift */; };
+		EBCEFBBE2A31FF5300042B62 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCEFBBD2A31FF5300042B62 /* SearchBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -269,6 +271,8 @@
 		EBCEFBB32A31D98000042B62 /* ClientReviewListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientReviewListView.swift; sourceTree = "<group>"; };
 		EBCEFBB62A31D9D500042B62 /* FavoriteAndCartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FavoriteAndCartCell.swift; path = EasyBuy/Presentation/ClientReviews/Views/FavoriteAndCartCell.swift; sourceTree = SOURCE_ROOT; };
 		EBCEFBB82A31DA0500042B62 /* FavoriteProductsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteProductsListView.swift; sourceTree = "<group>"; };
+		EBCEFBBB2A31F56B00042B62 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		EBCEFBBD2A31FF5300042B62 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		FB74FE586EB4F9F505BC47A9 /* Pods-EasyBuy-EasyBuyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyBuy-EasyBuyUITests.release.xcconfig"; path = "Target Support Files/Pods-EasyBuy-EasyBuyUITests/Pods-EasyBuy-EasyBuyUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -395,6 +399,7 @@
 		171B151A2A28FC9900851C67 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				EBCEFBBA2A31F53400042B62 /* Search */,
 				EBCEFBB52A31D9B700042B62 /* FavoriteProducts */,
 				EBCEFBA92A31D8A300042B62 /* ClientReviews */,
 				EBC645352A2C93DD000FD6F5 /* Profile */,
@@ -462,13 +467,7 @@
 			isa = PBXGroup;
 			children = (
 				3F25A1AD2A31521C009614A8 /* GoogleService-Info.plist */,
-				3F02F2D42A2C03D100FDE52E /* APIAdmin.swift */,
-				3F25A1C62A316626009614A8 /* API.swift */,
 				17C9CF232A27E12F004BCCC2 /* EasyBuyApp.swift */,
-				3F02F2C32A2BCEC900FDE52E /* schemaAdmin.json */,
-				3F02F2AE2A29EC4C00FDE52E /* schema.json */,
-				3F02F2AA2A29EBCE00FDE52E /* StoreFront.graphql */,
-				3F02F2AC2A29EC1400FDE52E /* Admin.graphql */,
 				17C9CF252A27E12F004BCCC2 /* ContentView.swift */,
 				17C9CF7A2A27E186004BCCC2 /* App */,
 				17C9CF802A27E28C004BCCC2 /* Data */,
@@ -690,6 +689,12 @@
 		EB95F9DA2A2B5EF8007C7177 /* GraphQl */ = {
 			isa = PBXGroup;
 			children = (
+				3F02F2D42A2C03D100FDE52E /* APIAdmin.swift */,
+				3F25A1C62A316626009614A8 /* API.swift */,
+				3F02F2C32A2BCEC900FDE52E /* schemaAdmin.json */,
+				3F02F2AE2A29EC4C00FDE52E /* schema.json */,
+				3F02F2AA2A29EBCE00FDE52E /* StoreFront.graphql */,
+				3F02F2AC2A29EC1400FDE52E /* Admin.graphql */,
 			);
 			path = GraphQl;
 			sourceTree = "<group>";
@@ -848,6 +853,15 @@
 				EBCEFBB82A31DA0500042B62 /* FavoriteProductsListView.swift */,
 			);
 			path = FavoriteProducts;
+			sourceTree = "<group>";
+		};
+		EBCEFBBA2A31F53400042B62 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				EBCEFBBB2A31F56B00042B62 /* SearchView.swift */,
+				EBCEFBBD2A31FF5300042B62 /* SearchBar.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		F259314D8E7785EE5BB0F563 /* Frameworks */ = {
@@ -1240,11 +1254,13 @@
 				1486EBA32A2BA0F10029212B /* PartialSheet.swift in Sources */,
 				17C9CF242A27E12F004BCCC2 /* EasyBuyApp.swift in Sources */,
 				14F9B2662A2B94DD009C2611 /* TitleView.swift in Sources */,
+				EBCEFBBE2A31FF5300042B62 /* SearchBar.swift in Sources */,
 				14F9B27C2A2B980B009C2611 /* CoverImageView.swift in Sources */,
 				14F9B2722A2B9760009C2611 /* SectionView.swift in Sources */,
 				14F9B2682A2B9514009C2611 /* ProductCell.swift in Sources */,
 				EBCEFBB02A31D90D00042B62 /* ClientReviewViewModel.swift in Sources */,
 				14F9B2832A2B9B25009C2611 /* BaseView.swift in Sources */,
+				EBCEFBBC2A31F56B00042B62 /* SearchView.swift in Sources */,
 				EBCEFBB92A31DA0500042B62 /* FavoriteProductsListView.swift in Sources */,
 				146520162A2BA479006EC2CA /* Onboarding.swift in Sources */,
 				171B14D92A28996C00851C67 /* NetworkReachability.swift in Sources */,
