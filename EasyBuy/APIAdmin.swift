@@ -3213,7 +3213,6 @@ public struct ShippingLineInput: GraphQLMapConvertible {
 }
 
 
-
 /// The input fields used to create a payment terms.
 public struct PaymentTermsInput: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
@@ -3374,11 +3373,11 @@ public struct DraftOrderDeleteInput: GraphQLMapConvertible {
   }
 }
 
-public final class GetAllDicountCodesQuery: GraphQLQuery {
+public final class GetAllDiicountCodesQuery: GraphQLQuery {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition: String =
     """
-    query GetAllDicountCodes($first: Int) {
+    query getAllDiicountCodes($first: Int) {
       codeDiscountNodes(first: $first) {
         __typename
         nodes {
@@ -3417,7 +3416,7 @@ public final class GetAllDicountCodesQuery: GraphQLQuery {
     }
     """
 
-  public let operationName: String = "GetAllDicountCodes"
+  public let operationName: String = "getAllDiicountCodes"
 
   public var first: Int?
 

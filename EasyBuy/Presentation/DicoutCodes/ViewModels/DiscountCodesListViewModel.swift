@@ -27,7 +27,7 @@ class DiscountCodesListViewModel: ObservableObject{
         return resultArray
     }
     func getDiscountCodes(first: Int) {
-        NetworkManager.getInstance(requestType: .admin).queryGraphQLRequest(query:GetAllDicountCodesQuery(first: first) , responseModel: DataDiscountCodes.self) { [weak self] result in
+        NetworkManager.getInstance(requestType: .admin).queryGraphQLRequest(query:GetAllDiicountCodesQuery(first: first) , responseModel: DataDiscountCodes.self) { [weak self] result in
             switch result {
             case .success(let res):
                 self?.discountCodes = res
