@@ -57,7 +57,7 @@ var gridLayout: [GridItem] {
 
 
 func getTags(products: [Product])->[String]{
-    var tags :[String] = ["men", "women", "kid"]
+    var tags :[String] = []
     products.forEach { Product in
         Product.tags?.forEach { Substring in
            tags.append(String(Substring))

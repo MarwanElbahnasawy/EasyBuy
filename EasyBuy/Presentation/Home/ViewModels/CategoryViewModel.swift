@@ -14,8 +14,9 @@ class CategoryViewModel: ObservableObject {
     @Published  var filterBy: String = "All"
     @Published  var activeTag: String = "All"
     @Published var arrFilter: [String] = []
-    @Published var products :[Product] = []
     @Published var tags: [String] = []
+    @Published var products :[Product] = []
+   
     init(){
         fetchProducts()
     }
