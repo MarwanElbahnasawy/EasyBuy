@@ -41,4 +41,12 @@ struct Collection: Codable {
     var products: Products?
 }
 
+struct Root: Codable {
+    var success: Bool
+    var timestamp: Int
+    var base, date: String
+    var rates: [String: Double]
+}
+
+
 

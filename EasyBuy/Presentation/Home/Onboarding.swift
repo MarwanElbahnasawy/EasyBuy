@@ -9,15 +9,7 @@ import SwiftUI
 @available(iOS 15.0, *)
 struct Onboarding: View {
     @AppStorage("isOnboarding") var isOnboarding: Bool?
-    // MARK: - INTROS
-    @State var intros: [Intro] = [
-        Intro(title: "InStock App", subTitle: "Take Deep Breaths", description: "All That you need , All That you want just Hello at InStock .", img: "scrn1", color: Color("Intro1")),
-        
-        Intro(title: "Stay Creative", subTitle: "To Discover more Feature", description: "just Join InStock .", img: "scrn2", color: Color("Intro2")),
-        
-        Intro(title: "Add Payment Way", subTitle: "Create Task List", description: "You can use Apple Pay Or In Cash.", img: "scrn3", color: Color("Intro3")),
-    ]
-    
+    var viewModel = OnboardingViewModel()
     // MARK: - GESTURE PROPERTIES
     @GestureState var isDragging: Bool = false
     
@@ -26,15 +18,15 @@ struct Onboarding: View {
     
     var body: some View {
         ZStack {
-            ForEach(intros.indices.reversed(), id: \.self){index in
+            ForEach(viewModel.intros.indices.reversed(), id: \.self){index in
                 //Intro View
-                IntroView(intro: intros[index])
-                    .clipShape(LiquidShape(offset: intros[index].offset, curvePoint: fakeIndex == index ? 50 : 0))
+                IntroView(intro: viewModel.intros[index])
+                    .clipShape(LiquidShape(offset: viewModel.intros[index].offset, curvePoint: fakeIndex == index ? 50 : 0))
                     .padding(.trailing, fakeIndex == index ? 15: 0)
                     .ignoresSafeArea()
             }
             HStack(spacing: 8) {
-                ForEach(0..<intros.count - 2, id: \.self){index in
+                ForEach(0..<viewModel.intros.count - 2, id: \.self){index in
                     Circle()
                         .fill(.gray)
                         .frame(width: 8, height: 8)
@@ -77,20 +69,20 @@ struct Onboarding: View {
                         })
                         .onChanged({ value in
                             withAnimation(.interactiveSpring(response: 0.7, dampingFraction: 0.6, blendDuration: 0.6)){
-                                intros[fakeIndex].offset = value.translation
+                                viewModel.intros[fakeIndex].offset = value.translation
                             }
                             
                         })
                         .onEnded({value in
                             withAnimation(.spring()){
-                                if -intros[fakeIndex].offset.width >
+                                if -viewModel.intros[fakeIndex].offset.width >
                                         getRect().width / 2 {
-                                    intros[fakeIndex].offset.width = -getRect().height * 1.5
+                                    viewModel.intros[fakeIndex].offset.width = -getRect().height * 1.5
                                     
                                     fakeIndex += 1
                                     
                                     // MARK: - UPDATE ORIGINAL INDEX
-                                    if currentIndex == intros.count - 3 {
+                                    if currentIndex == viewModel.intros.count - 3 {
                                         currentIndex = 0
                                     } else {
                                         currentIndex += 1
@@ -98,9 +90,9 @@ struct Onboarding: View {
                                     
                                     // MARK: - RESETING INDEX
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                                        if fakeIndex == (intros.count - 2) {
-                                            for index in 0..<intros.count - 2{
-                                                intros[index].offset = .zero
+                                        if fakeIndex == (viewModel.intros.count - 2) {
+                                            for index in 0..<viewModel.intros.count - 2{
+                                                viewModel.intros[index].offset = .zero
                                             }
                                             
                                             fakeIndex = 0
@@ -108,7 +100,7 @@ struct Onboarding: View {
                                     }
                                     
                                 } else {
-                                    intros[fakeIndex].offset = .zero
+                                    viewModel.intros[fakeIndex].offset = .zero
                                 }
                             }
                         })
@@ -123,18 +115,18 @@ struct Onboarding: View {
             ,alignment: .topTrailing
         )
         .onAppear{
-            guard let first = intros.first else {
+            guard let first = viewModel.intros.first else {
                 return
             }
             
-            guard var last = intros.last else {
+            guard var last = viewModel.intros.last else {
                 return
             }
             
             last.offset.width = -getRect().height * 1.5
             
-            intros.append(first)
-            intros.insert(last, at: 0)
+            viewModel.intros.append(first)
+            viewModel.intros.insert(last, at: 0)
             
             fakeIndex = 1
         }

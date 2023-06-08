@@ -13,20 +13,15 @@ struct BrandProducts: View {
     var body: some View {
   
             VStack {
-                
                                 if(viewModel.isLoading){
                 
                                 }else{
-                
                 HStack{
                     let brand = "\(viewModel.brand ?? "adidas") PRODUCTS"
                     TitleView(title: brand)
                         .font(.custom(Constants.AppFont.boldFont, size: 18))
                 }
-                ProductCatalog(products:viewModel.items ?? [])
-                
-                
-            
+                ProductCatalog(products:viewModel.items ?? [])   
         }
             }.navigationBarBackButtonHidden(true)
             .navigationBarItems(leading: BackButton(action: {presentationMode.wrappedValue.dismiss()}), trailing: Image("threeDot"))
