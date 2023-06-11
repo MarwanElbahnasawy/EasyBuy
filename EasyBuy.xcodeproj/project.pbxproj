@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		144FBB2A2A3636C3000EA8DF /* ProductRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144FBB292A3636C2000EA8DF /* ProductRow.swift */; };
 		144FEAC22A2D0C670088F817 /* SwiftU.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144FEAC12A2D0C670088F817 /* SwiftU.swift */; };
 		146520162A2BA479006EC2CA /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146520152A2BA479006EC2CA /* Onboarding.swift */; };
 		146520182A2BA4AB006EC2CA /* Intro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146520172A2BA4AA006EC2CA /* Intro.swift */; };
@@ -147,6 +148,7 @@
 
 /* Begin PBXFileReference section */
 		097FF13FBA537AE765A4B491 /* Pods-EasyBuy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyBuy.release.xcconfig"; path = "Target Support Files/Pods-EasyBuy/Pods-EasyBuy.release.xcconfig"; sourceTree = "<group>"; };
+		144FBB292A3636C2000EA8DF /* ProductRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductRow.swift; sourceTree = "<group>"; };
 		144FEAC12A2D0C670088F817 /* SwiftU.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftU.swift; sourceTree = "<group>"; };
 		146520152A2BA479006EC2CA /* Onboarding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		146520172A2BA4AA006EC2CA /* Intro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Intro.swift; sourceTree = "<group>"; };
@@ -361,6 +363,8 @@
 		14F9B2602A2B943F009C2611 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				144FBB292A3636C2000EA8DF /* ProductRow.swift */,
+				14F9B2672A2B9514009C2611 /* ProductCell.swift */,
 				14E54EE82A2E1FA400635F72 /* OrderRow.swift */,
 				14F9B27D2A2B9831009C2611 /* Tags.swift */,
 				14F9B27B2A2B980B009C2611 /* CoverImageView.swift */,
@@ -373,7 +377,6 @@
 				14F9B26D2A2B96D7009C2611 /* CategoryGridView.swift */,
 				14F9B26B2A2B9698009C2611 /* CategoryItemView.swift */,
 				14F9B2692A2B9651009C2611 /* ProductCatalog.swift */,
-				14F9B2672A2B9514009C2611 /* ProductCell.swift */,
 				14F9B2652A2B94DC009C2611 /* TitleView.swift */,
 				14F9B2632A2B949B009C2611 /* LineView.swift */,
 				148580162A2BEE6800D33591 /* image.swift */,
@@ -1224,6 +1227,7 @@
 				17C9CF262A27E12F004BCCC2 /* ContentView.swift in Sources */,
 				14BC9B432A2CE6D300D7FD4B /* CategoryViewModel.swift in Sources */,
 				EBC9D60E2A2CAAEF004E444C /* CustomerDetailsResponse.swift in Sources */,
+				144FBB2A2A3636C3000EA8DF /* ProductRow.swift in Sources */,
 				EBCEFBA82A31D85700042B62 /* BackButtonView.swift in Sources */,
 				EBC6453C2A2C947F000FD6F5 /* SettingRowView.swift in Sources */,
 				3F02F2E62A2DECFC00FDE52E /* RedeemedCodesList.swift in Sources */,

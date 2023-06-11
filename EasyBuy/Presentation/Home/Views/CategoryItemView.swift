@@ -19,7 +19,7 @@ struct CategoryItemView: View {
 
           .resizable()
           .scaledToFit()
-          .frame(width: 30, height: 30, alignment: .center)
+          .frame(width: UIScreen.main.bounds.width * 0.08, height: UIScreen.main.bounds.width * 0.08, alignment: .center)
           .foregroundColor(.gray)
 
           Text(brand.title?.uppercased() ?? "brand")

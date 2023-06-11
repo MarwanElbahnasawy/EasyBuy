@@ -54,6 +54,9 @@ let rowSpacing: CGFloat = 10
 var gridLayout: [GridItem] {
   return Array(repeating: GridItem(.flexible(), spacing: rowSpacing), count: 2)
 }
+var lineLayout: [GridItem] {
+  return Array(repeating: GridItem(.flexible(), spacing: rowSpacing), count: 1)
+}
 
 
 func getTags(products: [Product])->[String]{

@@ -11,7 +11,7 @@ struct Category: View {
     @ObservedObject var viewModel = CategoryViewModel()
     @Namespace private var animation
     @State private var isModalPresented: Bool = false
-    
+    @State var isGrid = false
     var body: some View {
         NavigationView{
             if(viewModel.isLoading){
@@ -42,7 +42,14 @@ struct Category: View {
                         HStack {
                             Text("category")
                                 .font(.largeTitle.bold())
+                            Spacer()
+                            Button(action: {
+                                isGrid = !isGrid
+                            }) {
+                                Image(systemName:  isGrid ? "square.fill.text.grid.1x2" : "square.grid.2x2")
+                                    .font(.title2).padding(.trailing , 10).foregroundColor(.black)
                             
+                            }
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
                         
@@ -53,12 +60,14 @@ struct Category: View {
                     ScrollView(.vertical, showsIndicators: false, content: {
                         
                         VStack(spacing: 0) {
-                            
-                            LazyVGrid(columns: gridLayout, spacing: 15, content: {
+                            LazyVGrid(columns: isGrid ? gridLayout : lineLayout, spacing: 15, content: {
                                 ForEach(viewModel.products ) { product in
-                                    ProductCell(product: product)
+                                    if isGrid { ProductCell(product: product)
+                                    }else {
+                                        ProductRow(product: product)
+                                    }
                                 } //: LOOP
-                            }) //: GRID
+                            })//: GRID
                             .padding(15)
                         }
                     }
@@ -97,7 +106,7 @@ struct Category: View {
                         }.frame(height: 350)
                     }
             }
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
     
     /// Tags View
