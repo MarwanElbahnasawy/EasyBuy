@@ -5,14 +5,19 @@
 //  Created by mo_fathy on 03/06/2023.
 //
 
-import Foundation
 import Apollo
+import Alamofire
+import Foundation
+
 class HomeViewModel: ObservableObject {
     @Published var brands: [Brand]?
     @Published var items: [Product]?
     @Published var lottieFile = "loading"
     @Published var isLoading: Bool = true
+    var rates: [String: Double]?
+    
     init(){
+        getCurrency()
         fetchBrands()
         fetchProducts()
     }
@@ -29,25 +34,6 @@ class HomeViewModel: ObservableObject {
     }
     
     func fetchProducts(){
-//        
-//        let draftOrderInput = DraftOrderInput(email: "marwan@gmail.com",
-//            lineItems: [
-//                DraftOrderLineItemInput(quantity: 1, variantId: "gid://shopify/ProductVariant/45253508006195"),
-//            ])
-//        
-//
-//        let createDraftOrderMutation = DraftOrderCreateMutation(input: draftOrderInput)
-//        NetworkManager.getInstance(requestType: .admin).performGraphQLRequest(mutation: createDraftOrderMutation, responseModel: DraftOrderDataClass.self, completion: {
-//            result in
-//            switch result {
-//            case .success(let success):
-//                print("draft order success is : \(success)")
-//                FireBaseManager.shared.saveCustomerDiscountCodes(customerDiscountCodes: CustomerDiscountCodes(id: "Moses all+201013874386", discountCodes: ["sdasdas"],draftOrders: DraftOrders(favoriteDraftorder: success, cartDraftOrder: success)))
-//            case .failure(let failure):
-//                print(failure)
-//            }
-//        })
-//    
         NetworkManager.getInstance(requestType: .storeFront).queryGraphQLRequest(query:GetAllProductsQuery(first: 100,imageFirst: 5, variantsFirst: 5) , responseModel: DataClassProdcuts.self, completion: { [weak self] result in
             guard let self = self else { return }
                             switch result {
@@ -62,4 +48,20 @@ class HomeViewModel: ObservableObject {
                             }
                         })
     }
+    
+    func getCurrency(base :String = "USD"){
+        let param : [String: String] = ["base": base]
+        APIServices.instance.getDataAll(route: .typy, method: .get, params: param, encoding: URLEncoding.default, headers: nil) { [weak self] (dataurl: Root?, error) in
+            self?.rates = dataurl?.rates
+            dataurl?.rates.forEach({ (key: String, value: Double) in
+                if(key == UserDefaults.standard.currency){
+                    print(key)
+                    print(value)
+                    UserDefaults.standard.numCurrency = value
+                }
+            })
+        }
+    }
+    
+    
 }

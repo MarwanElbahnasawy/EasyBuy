@@ -37,8 +37,22 @@ struct ProductRow: View {
                         .cornerRadius(10)
                     VStack(alignment: .leading, spacing: 12) {
                         
-                        Text(product.title ?? "title")
-                            .font(Font.system(size: 17, weight: .regular, design: .rounded))
+                        if let title = product.title {
+                        let parts = title.split (separator: "|")
+                        if parts.count > 1 {
+                        Text (parts [1])
+                        . font (.system(size: 16))
+                        .lineLimit (1)
+                        } else {
+                            Text (title)
+                                . font (.system(size: 16))
+                                .lineLimit (1)
+                        }
+                        } else {
+                            Text ( "Unknown" )
+                                . font (.system(size: 16))
+                                .lineLimit(1)
+                        }
            
                                         Text(product.productType ?? "product type")
                                             .font(.custom(Constants.AppFont.regularFont, size: 11))
