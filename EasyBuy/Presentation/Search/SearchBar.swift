@@ -6,24 +6,46 @@
 //
 
 import SwiftUI
+
 struct SearchBar: View {
     @Binding var text: String
-    
+    @Binding var isEditing: Bool
+
     var body: some View {
         HStack {
             TextField("Search", text: $text)
-                .padding(8)
-                .background(Color.gray.opacity(0.1))
+                .padding(7)
+                .padding(.horizontal, 25)
+                .background(Color(.systemGray6))
                 .cornerRadius(8)
-            
-            Button(action: {
-                self.text = ""
-            }) {
-                Text("Clear")
+                .overlay(
+                    HStack {
+                        Image(systemName: "magnifyingglass")
+                            .foregroundColor(.gray)
+                            .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                            .padding(.leading, 8)
+                    }
+                )
+                .onTapGesture {
+                    withAnimation {
+                        self.isEditing = true
+                    }
+                }
+
+            if isEditing {
+                Button(action: {
+                    withAnimation {
+                        self.isEditing = false
+                        self.text = ""
+                    }
+                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                }) {
+                    Text("Cancel")
+                }
+                .transition(.move(edge: .trailing))
+                .animation(.default)
             }
         }
-        .padding(.horizontal, 15)
-        .padding(.vertical, 10)
+        .padding(.horizontal, 10)
     }
 }
-
