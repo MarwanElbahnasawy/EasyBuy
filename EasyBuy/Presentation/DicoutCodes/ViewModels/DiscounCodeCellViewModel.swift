@@ -63,13 +63,10 @@ class DiscountCodeViewModel : ObservableObject{
                 
                 return
             }
-          
-    let id = data["id"] as? String ?? ""
-    var discountCodes = data["discountCodes"] as? [String] ?? []
-          if discountCodes.contains(customerCode) == false{
-              discountCodes.append(customerCode)
-              print(discountCodes)
-              let codes = CustomerDiscountCodes(id: id, discountCodes: discountCodes)
+          var objFromFireBase = FireBaseManager.shared.mapFireBaseObject(data: data)
+          if objFromFireBase?.discountCodes?.contains(customerCode) == false{
+              objFromFireBase?.discountCodes?.append(customerCode)
+              let codes = CustomerDiscountCodes(id: id, discountCodes: objFromFireBase?.discountCodes, draftOrders: DraftOrders(cartDraftOrder: objFromFireBase?.draftOrders?.cartDraftOrder))
               FireBaseManager.shared.saveCustomerDiscountCodes(customerDiscountCodes: codes)
               print("pressed")
           }

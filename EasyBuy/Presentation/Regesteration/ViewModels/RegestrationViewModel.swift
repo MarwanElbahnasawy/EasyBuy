@@ -12,7 +12,7 @@ class RegestrationViewModel: ObservableObject {
                     let customerIDOj = (response.customerCreate?.customer?.displayName)!
                     + (response.customerCreate?.customer?.phone)!
                     UserDefaults.standard.set(customerIDOj, forKey: "customerID")
-                    
+                    UserDefaults.standard.set(customerID, forKey: "shopifyCustomerID")
                     completion(.success(()))
                 } else {
                     print("Failed to create account: Invalid credentials")

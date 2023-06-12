@@ -8,11 +8,8 @@ target 'EasyBuy' do
   # Pods for EasyBuy
 
 pod 'Cosmos'
-pod 'FirebaseAuth'
-pod 'FirebaseFirestore'
 pod 'IQKeyboardManagerSwift'
-pod 'Apollo', '~> 0.44'
-pod "Mobile-Buy-SDK", '~> 11.0.0'
+
 
   target 'EasyBuyTests' do
     inherit! :search_paths

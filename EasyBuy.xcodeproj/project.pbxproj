@@ -90,6 +90,12 @@
 		3F25A1C72A316626009614A8 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F25A1C62A316626009614A8 /* API.swift */; };
 		3F25A1C92A316719009614A8 /* DiscountCodeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F25A1C82A316719009614A8 /* DiscountCodeList.swift */; };
 		3F25A1CB2A31681C009614A8 /* DiscountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F25A1CA2A31681C009614A8 /* DiscountCell.swift */; };
+		3F7671622A31F61F006A278B /* CartCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7671612A31F61F006A278B /* CartCellViewModel.swift */; };
+		3F7671672A31F66A006A278B /* ShopingCartList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7671662A31F66A006A278B /* ShopingCartList.swift */; };
+		3FE205412A3792D8009043C5 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 3FE205402A3792D8009043C5 /* Apollo */; };
+		3FEA3A6C2A3789D400C2B4A4 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3FEA3A6B2A3789D400C2B4A4 /* FirebaseAuth */; };
+		3FEA3A6E2A3789D400C2B4A4 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3FEA3A6D2A3789D400C2B4A4 /* FirebaseFirestore */; };
+		3FEA3A702A3789D400C2B4A4 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3FEA3A6F2A3789D400C2B4A4 /* FirebaseFirestoreSwift */; };
 		46A13FDEE83F4DDB4720C12B /* Pods_EasyBuy_EasyBuyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3507BF2A68414E5293DF9AD /* Pods_EasyBuy_EasyBuyUITests.framework */; };
 		571213AB5A290D8C60576AA3 /* Pods_EasyBuy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C03094883316ABB45E3A79E7 /* Pods_EasyBuy.framework */; };
 		A8360D013A4F802E529FC832 /* Pods_EasyBuyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DFEA8E6555F657DAB22A79E /* Pods_EasyBuyTests.framework */; };
@@ -234,6 +240,8 @@
 		3F25A1C82A316719009614A8 /* DiscountCodeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountCodeList.swift; sourceTree = "<group>"; };
 		3F25A1CA2A31681C009614A8 /* DiscountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountCell.swift; sourceTree = "<group>"; };
 		3F5D3E422A2EA567005B65EA /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = API.swift; path = ../../../../Downloads/API.swift; sourceTree = "<group>"; };
+		3F7671612A31F61F006A278B /* CartCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCellViewModel.swift; sourceTree = "<group>"; };
+		3F7671662A31F66A006A278B /* ShopingCartList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopingCartList.swift; sourceTree = "<group>"; };
 		57381625E4BE77ECA2BF6311 /* Pods-EasyBuyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyBuyTests.release.xcconfig"; path = "Target Support Files/Pods-EasyBuyTests/Pods-EasyBuyTests.release.xcconfig"; sourceTree = "<group>"; };
 		83BDA726C11A8D3B396FD0AB /* Pods-EasyBuyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyBuyTests.debug.xcconfig"; path = "Target Support Files/Pods-EasyBuyTests/Pods-EasyBuyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9FDB15B709C744CC1801AEF5 /* Pods-EasyBuy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyBuy.debug.xcconfig"; path = "Target Support Files/Pods-EasyBuy/Pods-EasyBuy.debug.xcconfig"; sourceTree = "<group>"; };
@@ -278,9 +286,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				171B14DF2A28A34200851C67 /* Alamofire in Frameworks */,
+				3FEA3A6C2A3789D400C2B4A4 /* FirebaseAuth in Frameworks */,
 				171B14DC2A28A23E00851C67 /* Kingfisher in Frameworks */,
+				3FEA3A702A3789D400C2B4A4 /* FirebaseFirestoreSwift in Frameworks */,
 				571213AB5A290D8C60576AA3 /* Pods_EasyBuy.framework in Frameworks */,
+				3FE205412A3792D8009043C5 /* Apollo in Frameworks */,
 				171B14D42A2891B900851C67 /* Lottie in Frameworks */,
+				3FEA3A6E2A3789D400C2B4A4 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,7 +399,6 @@
 		171B15152A28FC6600851C67 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				3F25A1BE2A315CC3009614A8 /* DraftOrdersModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -395,6 +406,7 @@
 		171B151A2A28FC9900851C67 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				3F7671602A31F5FC006A278B /* ShoppingCart */,
 				EBCEFBB52A31D9B700042B62 /* FavoriteProducts */,
 				EBCEFBA92A31D8A300042B62 /* ClientReviews */,
 				EBC645352A2C93DD000FD6F5 /* Profile */,
@@ -643,6 +655,40 @@
 			path = FireBase;
 			sourceTree = "<group>";
 		};
+		3F7671602A31F5FC006A278B /* ShoppingCart */ = {
+			isa = PBXGroup;
+			children = (
+				3F7671652A31F639006A278B /* ViewModels */,
+				3F7671642A31F631006A278B /* Views */,
+				3F7671632A31F627006A278B /* Models */,
+			);
+			path = ShoppingCart;
+			sourceTree = "<group>";
+		};
+		3F7671632A31F627006A278B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3F25A1BE2A315CC3009614A8 /* DraftOrdersModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3F7671642A31F631006A278B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3F7671662A31F66A006A278B /* ShopingCartList.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3F7671652A31F639006A278B /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				3F7671612A31F61F006A278B /* CartCellViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		EB73E8D02A2BAB5700A9E70B /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -884,6 +930,10 @@
 				171B14D32A2891B900851C67 /* Lottie */,
 				171B14DB2A28A23E00851C67 /* Kingfisher */,
 				171B14DE2A28A34200851C67 /* Alamofire */,
+				3FEA3A6B2A3789D400C2B4A4 /* FirebaseAuth */,
+				3FEA3A6D2A3789D400C2B4A4 /* FirebaseFirestore */,
+				3FEA3A6F2A3789D400C2B4A4 /* FirebaseFirestoreSwift */,
+				3FE205402A3792D8009043C5 /* Apollo */,
 			);
 			productName = EasyBuy;
 			productReference = 17C9CF202A27E12F004BCCC2 /* EasyBuy.app */;
@@ -964,6 +1014,8 @@
 				171B14D22A2891B900851C67 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				171B14DA2A28A23E00851C67 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				171B14DD2A28A34200851C67 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				3FEA3A6A2A3789D400C2B4A4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				3FE2053F2A3792D8009043C5 /* XCRemoteSwiftPackageReference "apollo-ios" */,
 			);
 			productRefGroup = 17C9CF212A27E12F004BCCC2 /* Products */;
 			projectDirPath = "";
@@ -1239,6 +1291,7 @@
 				1486EB8A2A2B9FB30029212B /* Home.swift in Sources */,
 				1486EBA32A2BA0F10029212B /* PartialSheet.swift in Sources */,
 				17C9CF242A27E12F004BCCC2 /* EasyBuyApp.swift in Sources */,
+				3F7671622A31F61F006A278B /* CartCellViewModel.swift in Sources */,
 				14F9B2662A2B94DD009C2611 /* TitleView.swift in Sources */,
 				14F9B27C2A2B980B009C2611 /* CoverImageView.swift in Sources */,
 				14F9B2722A2B9760009C2611 /* SectionView.swift in Sources */,
@@ -1252,6 +1305,7 @@
 				14E54EE92A2E1FA500635F72 /* OrderRow.swift in Sources */,
 				171B15172A28FC7F00851C67 /* NetworkService.swift in Sources */,
 				14E649012A2E9B0D00EB5CC2 /* OrdersInLine.swift in Sources */,
+				3F7671672A31F66A006A278B /* ShopingCartList.swift in Sources */,
 				EBC9D6102A2CACB9004E444C /* ProfileViewModel.swift in Sources */,
 				3F02F2E22A2D472E00FDE52E /* FireBaseModels.swift in Sources */,
 				171B15172A28FC7F00851C67 /* NetworkService.swift in Sources */,
@@ -1613,6 +1667,22 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		3FE2053F2A3792D8009043C5 /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apollographql/apollo-ios.git";
+			requirement = {
+				kind = exactVersion;
+				version = 0.53.0;
+			};
+		};
+		3FEA3A6A2A3789D400C2B4A4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1630,6 +1700,26 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 171B14DD2A28A34200851C67 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		3FE205402A3792D8009043C5 /* Apollo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3FE2053F2A3792D8009043C5 /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = Apollo;
+		};
+		3FEA3A6B2A3789D400C2B4A4 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3FEA3A6A2A3789D400C2B4A4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		3FEA3A6D2A3789D400C2B4A4 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3FEA3A6A2A3789D400C2B4A4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		3FEA3A6F2A3789D400C2B4A4 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3FEA3A6A2A3789D400C2B4A4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 

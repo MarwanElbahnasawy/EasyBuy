@@ -16,7 +16,8 @@ struct ProductDetailsView: View {
                 DescriptionView(for: viewModel.product)
                 
                 AddToCartView(price: viewModel.product?.product?.variants?.edges?.first?.node?.price?.amount) {
-                    // Add to Cart action
+                    print("pressed")
+                    viewModel.getDraftOrder()
                 }
             }
             .edgesIgnoringSafeArea(.top)
