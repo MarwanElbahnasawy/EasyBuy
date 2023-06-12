@@ -11,15 +11,14 @@ struct ProductDetailsView: View {
         ZStack {
             Color.white
             ScrollView {
-                FeaturedImageView(imageUrl: viewModel.product?.product?.featuredImage?.url)
-                
+                ProductImagesView(images: viewModel.product?.product?.images?.edges?.map { $0.node! } ?? [])
+
                 DescriptionView(for: viewModel.product)
                 
                 AddToCartView(price: viewModel.product?.product?.variants?.edges?.first?.node?.price?.amount) {
                     // Add to Cart action
                 }
             }
-            .edgesIgnoringSafeArea(.top)
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: BackButton(action: {presentationMode.wrappedValue.dismiss()}), trailing: Image("threeDot"))

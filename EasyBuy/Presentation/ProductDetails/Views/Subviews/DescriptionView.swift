@@ -1,10 +1,3 @@
-//
-//  DescriptionView.swift
-//  EasyBuy
-//
-//  Created by Ahmad Hemeda on 08/06/2023.
-//
-
 import SwiftUI
 
 struct DescriptionView: View {
@@ -18,9 +11,7 @@ struct DescriptionView: View {
         VStack (alignment: .leading) {
             ProductTitleView(title: product?.product?.title ?? "", productType: product?.product?.productType ?? "")
             
-            RatingView(rating: 4.9)
-            
-            QuantityView()
+            RatingView(rating: 3.2)
             
             Text("Description")
                 .fontWeight(.medium)
