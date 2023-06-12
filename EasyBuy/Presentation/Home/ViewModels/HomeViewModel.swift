@@ -50,17 +50,17 @@ class HomeViewModel: ObservableObject {
     }
     
     func getCurrency(base :String = "USD"){
-        let param : [String: String] = ["base": base]
-        APIServices.instance.getDataAll(route: .typy, method: .get, params: param, encoding: URLEncoding.default, headers: nil) { [weak self] (dataurl: Root?, error) in
-            self?.rates = dataurl?.rates
-            dataurl?.rates.forEach({ (key: String, value: Double) in
-                if(key == UserDefaults.standard.currency){
-                    print(key)
-                    print(value)
-                    UserDefaults.standard.numCurrency = value
-                }
-            })
-        }
+//        let param : [String: String] = ["base": base]
+//        APIServices.instance.getDataAll(route: .typy, method: .get, params: param, encoding: URLEncoding.default, headers: nil) { [weak self] (dataurl: Root?, error) in
+//            self?.rates = dataurl?.rates
+//            dataurl?.rates.forEach({ (key: String, value: Double) in
+//                if(key == UserDefaults.standard.currency){
+//                    print(key)
+//                    print(value)
+//                    UserDefaults.standard.numCurrency = value
+//                }
+//            })
+//        }
     }
     
     

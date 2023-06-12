@@ -36,22 +36,18 @@ struct ProductRow: View {
                         .background(Color.gray.opacity(0.2))
                         .cornerRadius(10)
                     VStack(alignment: .leading, spacing: 12) {
-                        
+                        Spacer()
                         if let title = product.title {
                         let parts = title.split (separator: "|")
                         if parts.count > 1 {
                         Text (parts [1])
                         . font (.system(size: 16))
-                        .lineLimit (1)
                         } else {
-                            Text (title)
-                                . font (.system(size: 16))
-                                .lineLimit (1)
+                            Text (title).font (.system(size: 16))
                         }
                         } else {
                             Text ( "Unknown" )
                                 . font (.system(size: 16))
-                                .lineLimit(1)
                         }
            
                                         Text(product.productType ?? "product type")
@@ -64,6 +60,7 @@ struct ProductRow: View {
                         let formattedprice = String(format: "%.2f", priceCurrency) + " \(UserDefaults.standard.currency!)"
                         Text(formattedprice)
                             .font(Font.system(size: 17, weight: .bold, design: .rounded))
+                        Spacer()
                       
                     }
                     

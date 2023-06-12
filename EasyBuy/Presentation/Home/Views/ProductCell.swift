@@ -39,29 +39,21 @@ struct ProductCell: View {
                                     , alignment: .topTrailing
                                 )
                 HStack{
-                    
-                    
-                    
+
                     if let title = product.title {
                     let parts = title.split (separator: "|")
                     if parts.count > 1 {
-                    Text (parts [1])
-                    . font (.system(size: 16))
-                    .lineLimit (1)
+                        Text (parts [1])
+                        .font (.system(size: 16,design: .rounded))
                     } else {
                         Text (title)
                             . font (.system(size: 16))
-                            .lineLimit (1)
                     }
                     } else {
                         Text ( "Unknown" )
                             . font (.system(size: 16))
-                            .lineLimit(1)
                     }
-                    
-                    
-                    
-                    
+      
 //                    Text(product.title ?? "title")
 //                        .font(Font.system(size: 15, weight: .black, design: .rounded))
                     Spacer()
