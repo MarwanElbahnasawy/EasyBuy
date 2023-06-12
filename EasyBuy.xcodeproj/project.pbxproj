@@ -93,6 +93,7 @@
 		46A13FDEE83F4DDB4720C12B /* Pods_EasyBuy_EasyBuyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3507BF2A68414E5293DF9AD /* Pods_EasyBuy_EasyBuyUITests.framework */; };
 		571213AB5A290D8C60576AA3 /* Pods_EasyBuy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C03094883316ABB45E3A79E7 /* Pods_EasyBuy.framework */; };
 		A8360D013A4F802E529FC832 /* Pods_EasyBuyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DFEA8E6555F657DAB22A79E /* Pods_EasyBuyTests.framework */; };
+		EB5A0EFF2A372DF900DDA079 /* ValidationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5A0EFE2A372DF900DDA079 /* ValidationUtils.swift */; };
 		EB73E8D52A2BABDD00A9E70B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB73E8D42A2BABDD00A9E70B /* LoginView.swift */; };
 		EB73E8D72A2BACF500A9E70B /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB73E8D62A2BACF500A9E70B /* LoginViewModel.swift */; };
 		EB90A61A2A2B384F00295296 /* CreateCustomerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB90A6192A2B384F00295296 /* CreateCustomerResponse.swift */; };
@@ -239,6 +240,7 @@
 		9FDB15B709C744CC1801AEF5 /* Pods-EasyBuy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyBuy.debug.xcconfig"; path = "Target Support Files/Pods-EasyBuy/Pods-EasyBuy.debug.xcconfig"; sourceTree = "<group>"; };
 		C03094883316ABB45E3A79E7 /* Pods_EasyBuy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EasyBuy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3507BF2A68414E5293DF9AD /* Pods_EasyBuy_EasyBuyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EasyBuy_EasyBuyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB5A0EFE2A372DF900DDA079 /* ValidationUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationUtils.swift; sourceTree = "<group>"; };
 		EB73E8D42A2BABDD00A9E70B /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		EB73E8D62A2BACF500A9E70B /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		EB90A6192A2B384F00295296 /* CreateCustomerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCustomerResponse.swift; sourceTree = "<group>"; };
@@ -517,6 +519,7 @@
 				1486EB9D2A2BA0F00029212B /* Extension */,
 				17C9CF7E2A27E1D3004BCCC2 /* Constants.swift */,
 				171B14D82A28996C00851C67 /* NetworkReachability.swift */,
+				EB5A0EFE2A372DF900DDA079 /* ValidationUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1249,6 +1252,7 @@
 				146520162A2BA479006EC2CA /* Onboarding.swift in Sources */,
 				171B14D92A28996C00851C67 /* NetworkReachability.swift in Sources */,
 				1486EB9A2A2B9FF40029212B /* OrderModel.swift in Sources */,
+				EB5A0EFF2A372DF900DDA079 /* ValidationUtils.swift in Sources */,
 				14E54EE92A2E1FA500635F72 /* OrderRow.swift in Sources */,
 				171B15172A28FC7F00851C67 /* NetworkService.swift in Sources */,
 				14E649012A2E9B0D00EB5CC2 /* OrdersInLine.swift in Sources */,

@@ -2,6 +2,12 @@ import Foundation
 
 class RegestrationViewModel: ObservableObject {
     @Published var customer: CustomerCreateData?
+    @Published var email = ""
+    @Published var firstName = ""
+    @Published var lastName = ""
+    @Published var password = ""
+    @Published var confirmPassword = ""
+    @Published var phoneNumber = ""
     
     func createCustomer(newCustomerInput: CustomerCreateInput, completion: @escaping (Result<Void, Error>) -> Void) {
         NetworkManager.getInstance(requestType: .storeFront).performGraphQLRequest(mutation: CreateNewCustomerMutation(input: newCustomerInput), responseModel: CustomerCreateData.self, completion: { result in
@@ -25,14 +31,12 @@ class RegestrationViewModel: ObservableObject {
         })
     }
     
-    func formIsValid(email: String, password: String, confirmPassword: String, firstName: String, lastName: String, phoneNumber: String) -> Bool {
-        !email.isEmpty
-        && email.contains("@")
-        && !password.isEmpty
-        && password.count > 5
-        && confirmPassword == password
-        && !firstName.isEmpty
-        && !lastName.isEmpty
-        && !phoneNumber.isEmpty
+    var isFormValid: Bool {
+        return ValidationUtils.isValidEmail(email: email)
+        && ValidationUtils.isValidPassword(password: password)
+        && ValidationUtils.passwordsMatch(password: password, confirmPassword: confirmPassword)
+        && ValidationUtils.isValidName(name: firstName)
+        && ValidationUtils.isValidName(name: lastName)
+        && ValidationUtils.isValidPhoneNumber(phoneNumber: phoneNumber)
     }
 }
