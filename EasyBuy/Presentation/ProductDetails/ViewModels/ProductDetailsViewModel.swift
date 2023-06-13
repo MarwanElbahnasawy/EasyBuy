@@ -52,6 +52,7 @@ class ProductViewModel: ObservableObject {
                         var  lineItems: [DraftOrderLineItemInput] = []
                         lineItems = self?.mapLineItemsToDratOrderLineItems(lineItems: success.draftOrder?.lineItems?.nodes ?? []) ?? []
                         lineItems.append(DraftOrderLineItemInput(quantity: 1,variantId:  self?.product?.product?.variants?.edges?.first?.node?.id))
+                        print("products in lines items id \(String(describing: lineItems))")
                         self?.UpdateDraftOrder(id: objFireBase?.draftOrders?.cartDraftOrder?.draftOrderCreate?.draftOrder?.id ?? "", draftOrderInput: DraftOrderInput(lineItems: lineItems), customerDiscountCodes: objFireBase ?? CustomerDiscountCodes())
                     case .failure(let failure):
                         print(failure)

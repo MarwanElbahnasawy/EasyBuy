@@ -29,7 +29,8 @@ struct LineItems: Codable {
 }
 
 // MARK: - Node
-struct LinesItemNode: Codable {
+struct LinesItemNode: Codable,Identifiable {
+    var id: String?
     let quantity: Int?
     let variant: Variant?
     let product: DrafrtOrderProduct?
