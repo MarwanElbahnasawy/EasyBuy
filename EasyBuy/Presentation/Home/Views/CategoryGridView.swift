@@ -21,7 +21,7 @@ struct CategoryGridView: View {
                     ) {
                         ForEach(brands ,id:\.id) { brand in
                             NavigationLink {
-                                var VM = BrandViewModel(id:brand.handle , brand: brand.title)
+                                let VM = BrandViewModel(id:brand.handle , brand: brand.title)
                                 BrandProducts(viewModel: VM)
                             } label: {
                                 CategoryItemView(brand: brand)
@@ -29,7 +29,7 @@ struct CategoryGridView: View {
                         }
                     }
                 }) //: GRID
-                .frame(height: 140)
+                .frame(height: UIScreen.main.bounds.width * 0.32)
                 .padding(.horizontal, 15)
                 .padding(.vertical, 10)
             }) //: SCROLL

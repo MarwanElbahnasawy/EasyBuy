@@ -14,7 +14,7 @@ struct image: View {
             ZStack{
                 Image(CoverImage.name)
                     .resizable()
-                    .frame(width: UIScreen.main.bounds.width * 0.95 ,height: 200)
+                    .frame(width: UIScreen.main.bounds.width * 0.95 ,height: UIScreen.main.bounds.width * 0.40 )
                     .scaledToFill()
                     .cornerRadius(25)
                 VStack{

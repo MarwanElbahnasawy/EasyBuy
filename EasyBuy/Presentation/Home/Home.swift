@@ -9,7 +9,8 @@ import SwiftUI
 
 struct Home: View {
      @ObservedObject var viewModel = HomeViewModel()
-   
+     @State var isGrid = true
+    
     // MARK: - Func
     
     fileprivate func TrendingView() -> some View {
@@ -17,19 +18,28 @@ struct Home: View {
             HStack {
                 VStack(alignment: .leading) {
                     Text("Trending")
-                        .font(.custom(Constants.AppFont.boldFont, size: 18))
+                        .font(.custom(Constants.AppFont.boldFont, size: UIScreen.main.bounds.width * 0.04))
                         .padding(.bottom, -1)
                     Text("You have never seen it before")
-                        .font(.custom(Constants.AppFont.boldFont, size: 11))
+                        .font(.custom(Constants.AppFont.boldFont, size: UIScreen.main.bounds.width * 0.02))
                         .foregroundColor(.gray)
                 }.padding(.leading, 15)
                 Spacer()
+                Button(action: {
+                    isGrid = !isGrid
+                }) {
+                    Image(systemName:  isGrid ? "square.fill.text.grid.1x2" : "square.grid.2x2")
+                        .font(.title2).padding(.trailing , 10).foregroundColor(.black)
                 
+                }
             }
             
-            LazyVGrid(columns: gridLayout, spacing: 15, content: {
+            LazyVGrid(columns: isGrid ? gridLayout : lineLayout, spacing: 15, content: {
                 ForEach(viewModel.items ?? [] ) { product in
-                    ProductCell(product: product)
+                    if isGrid { ProductCell(product: product)
+                    }else {
+                        ProductRow(product: product)
+                    }
                 } //: LOOP
             }) //: GRID
             .padding(15)
@@ -68,10 +78,10 @@ struct Home: View {
                             HStack {
                                 VStack(alignment: .leading) {
                                     Text("Welcome,")
-                                        .font(.custom(Constants.AppFont.extraBoldFont, size: 30))
+                                        .font(.custom(Constants.AppFont.extraBoldFont, size: UIScreen.main.bounds.width * 0.07))
                                         .padding(.bottom, 2)
                                     Text("Our EasyBuy App")
-                                        .font(.custom(Constants.AppFont.semiBoldFont, size: 25))
+                                        .font(.custom(Constants.AppFont.semiBoldFont, size: UIScreen.main.bounds.width * 0.04))
                                         .foregroundColor(.gray)
                                 }.padding(.leading, 15)
                                 Spacer()
@@ -79,7 +89,7 @@ struct Home: View {
                                 .padding(.leading , 10)
                             
                             CoverImageView()
-                                .frame(height: 200)
+                              //  .frame(height: 200)
                                 .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                             CategoryGridView(brands: viewModel.brands ?? [])
                             TrendingView()

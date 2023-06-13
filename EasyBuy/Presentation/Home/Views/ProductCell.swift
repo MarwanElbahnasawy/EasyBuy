@@ -39,16 +39,33 @@ struct ProductCell: View {
                                     , alignment: .topTrailing
                                 )
                 HStack{
-                    Text(product.title ?? "title")
-                        .font(Font.system(size: 15, weight: .black, design: .rounded))
+
+                    if let title = product.title {
+                    let parts = title.split (separator: "|")
+                    if parts.count > 1 {
+                        Text (parts [1])
+                        .font (.system(size: 16,design: .rounded))
+                    } else {
+                        Text (title)
+                            . font (.system(size: 16))
+                    }
+                    } else {
+                        Text ( "Unknown" )
+                            . font (.system(size: 16))
+                    }
+      
+//                    Text(product.title ?? "title")
+//                        .font(Font.system(size: 15, weight: .black, design: .rounded))
                     Spacer()
                 }.frame(width:  UIScreen.main.bounds.width / 2 - 20,height: 25)
                 Text(product.productType ?? "product type")
                     .font(.custom(Constants.AppFont.regularFont, size: 11))
                     .foregroundColor(Color.gray)
                     .padding([.horizontal], 5)
-                let price = "$\(product.variants?.edges?.first?.node?.price?.amount! ?? "199")"
-                Text(price)
+                let price : Double = Double( product.variants?.edges?.first?.node?.price?.amount ?? "0.0") ?? 0.0
+                let priceCurrency = price * (UserDefaults.standard.numCurrency ?? 1.0)
+                let formattedprice = String(format: "%.2f", priceCurrency) + " \(UserDefaults.standard.currency!)"
+                Text(formattedprice)
                     .font(Font.system(size: 15, weight: .heavy, design: .rounded))
             }
             .aspectRatio(contentMode: .fit)
