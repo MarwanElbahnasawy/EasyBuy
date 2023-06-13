@@ -10,7 +10,7 @@ import Foundation
 class RedeemedListViewModel: ObservableObject{
     @Published var codes: CustomerDiscountCodes?
     func getRedeemedCode(id: String) {
-        FireBaseManager.shared.retriveCustomerDiscountCodes(id: id)?.getDocument {[weak self] snapshot, error in
+        FireBaseManager.shared.retriveCustomerDiscountCodes()?.getDocument {[weak self] snapshot, error in
             if let error = error {
                 print("Failed to fetch current user:", error)
                 return
