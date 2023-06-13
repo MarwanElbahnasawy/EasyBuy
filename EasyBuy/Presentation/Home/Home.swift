@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct Home: View {
-     @ObservedObject var viewModel = HomeViewModel()
-     @State var isGrid = true
+    @ObservedObject var viewModel = HomeViewModel()
+    @State var isGrid = true
     
     // MARK: - Func
     
@@ -30,7 +30,7 @@ struct Home: View {
                 }) {
                     Image(systemName:  isGrid ? "square.fill.text.grid.1x2" : "square.grid.2x2")
                         .font(.title2).padding(.trailing , 10).foregroundColor(.black)
-                
+                    
                 }
             }
             
@@ -89,7 +89,7 @@ struct Home: View {
                                 .padding(.leading , 10)
                             
                             CoverImageView()
-                              //  .frame(height: 200)
+                            //  .frame(height: 200)
                                 .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                             CategoryGridView(brands: viewModel.brands ?? [])
                             TrendingView()
@@ -104,12 +104,12 @@ struct Home: View {
         } //: ZSTACK
         .ignoresSafeArea(.all, edges: .top)
         .padding(.bottom, 65)
-                .onAppear(perform: {
-                   // viewModel.isLoading = true
-                   // viewModel.fetchBrands()
-                  //  viewModel.fetchProducts()
-                })
-    
+        .onAppear(perform: {
+            // viewModel.isLoading = true
+            // viewModel.fetchBrands()
+            //  viewModel.fetchProducts()
+        })
+        
         
         
     }

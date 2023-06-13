@@ -37,7 +37,7 @@ struct Onboarding: View {
                 Spacer()
                 
                 Button(action:{
-                   isOnboarding = false
+                    isOnboarding = false
                 }, label: {
                     Text("Let's Start")
                         .fontWeight(.semibold)
@@ -46,7 +46,7 @@ struct Onboarding: View {
                         .background(.gray)
                         .clipShape(Capsule())
                 }
-            )}
+                )}
             .padding()
             .padding(.horizontal)
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
@@ -54,7 +54,7 @@ struct Onboarding: View {
         .overlay(
             
             Button(action: {
-             
+                
             }, label: {
                 
                 Image(systemName: "chevron.right")
@@ -63,47 +63,47 @@ struct Onboarding: View {
                     .foregroundColor(.black)
                     .contentShape(Rectangle())
                     .gesture(
-                    DragGesture()
-                        .updating($isDragging, body: {value, out, _ in
-                            out = true
-                        })
-                        .onChanged({ value in
-                            withAnimation(.interactiveSpring(response: 0.7, dampingFraction: 0.6, blendDuration: 0.6)){
-                                viewModel.intros[fakeIndex].offset = value.translation
-                            }
-                            
-                        })
-                        .onEnded({value in
-                            withAnimation(.spring()){
-                                if -viewModel.intros[fakeIndex].offset.width >
-                                        getRect().width / 2 {
-                                    viewModel.intros[fakeIndex].offset.width = -getRect().height * 1.5
-                                    
-                                    fakeIndex += 1
-                                    
-                                    // MARK: - UPDATE ORIGINAL INDEX
-                                    if currentIndex == viewModel.intros.count - 3 {
-                                        currentIndex = 0
-                                    } else {
-                                        currentIndex += 1
-                                    }
-                                    
-                                    // MARK: - RESETING INDEX
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                                        if fakeIndex == (viewModel.intros.count - 2) {
-                                            for index in 0..<viewModel.intros.count - 2{
-                                                viewModel.intros[index].offset = .zero
-                                            }
-                                            
-                                            fakeIndex = 0
-                                        }
-                                    }
-                                    
-                                } else {
-                                    viewModel.intros[fakeIndex].offset = .zero
+                        DragGesture()
+                            .updating($isDragging, body: {value, out, _ in
+                                out = true
+                            })
+                            .onChanged({ value in
+                                withAnimation(.interactiveSpring(response: 0.7, dampingFraction: 0.6, blendDuration: 0.6)){
+                                    viewModel.intros[fakeIndex].offset = value.translation
                                 }
-                            }
-                        })
+                                
+                            })
+                            .onEnded({value in
+                                withAnimation(.spring()){
+                                    if -viewModel.intros[fakeIndex].offset.width >
+                                            getRect().width / 2 {
+                                        viewModel.intros[fakeIndex].offset.width = -getRect().height * 1.5
+                                        
+                                        fakeIndex += 1
+                                        
+                                        // MARK: - UPDATE ORIGINAL INDEX
+                                        if currentIndex == viewModel.intros.count - 3 {
+                                            currentIndex = 0
+                                        } else {
+                                            currentIndex += 1
+                                        }
+                                        
+                                        // MARK: - RESETING INDEX
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                                            if fakeIndex == (viewModel.intros.count - 2) {
+                                                for index in 0..<viewModel.intros.count - 2{
+                                                    viewModel.intros[index].offset = .zero
+                                                }
+                                                
+                                                fakeIndex = 0
+                                            }
+                                        }
+                                        
+                                    } else {
+                                        viewModel.intros[fakeIndex].offset = .zero
+                                    }
+                                }
+                            })
                     )
                 
             })
@@ -167,7 +167,7 @@ struct Onboarding: View {
         .background(
             
             intro.color
-        
+            
         )
     }
 }
@@ -203,26 +203,26 @@ struct LiquidShape: Shape {
     }
     
     func path(in rect: CGRect) -> Path {
-            return Path{path in
-                let width = rect.width + (-offset.width > 0 ? offset.width : 0)
-                
-                path.move(to: CGPoint(x: 0, y: 0))
-                path.addLine(to: CGPoint(x: rect.width, y: 0))
-                path.addLine(to: CGPoint(x: rect.width, y: rect.height))
-                path.addLine(to: CGPoint(x: 0, y: rect.height))
-                
-                // MARK: - FROM
-                let from = 80 + (offset.width)
-                path.move(to: CGPoint(x: rect.width, y: from > 80 ? 80 : from))
-                
-                // MAR: - TO
-                var to = 180 + (offset.height) + (-offset.width)
-                to = to < 180 ? 180 : to
-                
-                let mid : CGFloat = 80 + ((to - 80) / 2)
-                
-                path.addCurve(to: CGPoint(x: rect.width, y: to), control1: CGPoint(x: width - curvePoint, y: mid), control2: CGPoint(x: width - curvePoint, y: mid))
-                
-            }
+        return Path{path in
+            let width = rect.width + (-offset.width > 0 ? offset.width : 0)
+            
+            path.move(to: CGPoint(x: 0, y: 0))
+            path.addLine(to: CGPoint(x: rect.width, y: 0))
+            path.addLine(to: CGPoint(x: rect.width, y: rect.height))
+            path.addLine(to: CGPoint(x: 0, y: rect.height))
+            
+            // MARK: - FROM
+            let from = 80 + (offset.width)
+            path.move(to: CGPoint(x: rect.width, y: from > 80 ? 80 : from))
+            
+            // MAR: - TO
+            var to = 180 + (offset.height) + (-offset.width)
+            to = to < 180 ? 180 : to
+            
+            let mid : CGFloat = 80 + ((to - 80) / 2)
+            
+            path.addCurve(to: CGPoint(x: rect.width, y: to), control1: CGPoint(x: width - curvePoint, y: mid), control2: CGPoint(x: width - curvePoint, y: mid))
+            
         }
+    }
 }

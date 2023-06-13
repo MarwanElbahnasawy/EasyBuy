@@ -85,7 +85,7 @@ struct OrdersView: View {
                 }
             }
         }.background(MotionAnimationView())
-        .navigationBarBackButtonHidden(true)
+            .navigationBarBackButtonHidden(true)
     }
 }
 

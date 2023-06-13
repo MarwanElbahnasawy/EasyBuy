@@ -48,7 +48,7 @@ struct Category: View {
                             }) {
                                 Image(systemName:  isGrid ? "square.fill.text.grid.1x2" : "square.grid.2x2")
                                     .font(.title2).padding(.trailing , 10).foregroundColor(.black)
-                            
+                                
                             }
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)

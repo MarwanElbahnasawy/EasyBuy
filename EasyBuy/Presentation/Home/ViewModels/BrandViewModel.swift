@@ -7,8 +7,9 @@
 
 import Foundation
 class BrandViewModel: ObservableObject {
-    @Published var isLoading: Bool = false
+    @Published var isLoading: Bool = true
     @Published var items: [Product]?
+    @Published var lottieFile = "loading"
     var id : String?
     var brand : String?
  

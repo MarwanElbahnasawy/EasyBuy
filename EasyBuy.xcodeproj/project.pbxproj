@@ -163,7 +163,7 @@
 		1486EB7F2A2B9F870029212B /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
 		1486EB802A2B9F870029212B /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		1486EB812A2B9F870029212B /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
-		1486EB822A2B9F870029212B /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		1486EB822A2B9F870029212B /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = text; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		1486EB832A2B9F870029212B /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		1486EB892A2B9FB30029212B /* Home.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		1486EB8D2A2B9FF40029212B /* covers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = covers.json; sourceTree = "<group>"; };
@@ -426,12 +426,10 @@
 			children = (
 				146520152A2BA479006EC2CA /* Onboarding.swift */,
 				14BC9B402A2CE69D00D7FD4B /* Category.swift */,
-				14BC9B422A2CE6D300D7FD4B /* CategoryViewModel.swift */,
 				1486EB892A2B9FB30029212B /* Home.swift */,
 				146520192A2BBA61006EC2CA /* BrandProducts.swift */,
 				14F9B2822A2B9B25009C2611 /* BaseView.swift */,
 				14E54EE62A2E10B100635F72 /* OrdersView.swift */,
-				14E54EEC2A2E301E00635F72 /* OrdersViewModel.swift */,
 				1486EB8B2A2B9FF40029212B /* model */,
 				14F9B2602A2B943F009C2611 /* Views */,
 				171B151C2A28FCC100851C67 /* ViewModels */,
@@ -442,6 +440,8 @@
 		171B151C2A28FCC100851C67 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				14BC9B422A2CE6D300D7FD4B /* CategoryViewModel.swift */,
+				14E54EEC2A2E301E00635F72 /* OrdersViewModel.swift */,
 				14AC6C7D2A37D2DB00371D34 /* OnboardingViewModel.swift */,
 				14F9B2842A2B9B38009C2611 /* BaseViewModel.swift */,
 				171B151D2A28FCCF00851C67 /* HomeViewModel.swift */,
