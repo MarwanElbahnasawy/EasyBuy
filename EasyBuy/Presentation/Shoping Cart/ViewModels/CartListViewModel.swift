@@ -9,6 +9,8 @@ import Foundation
 
 class CartListViewModel: ObservableObject{
     @Published var products: [LinesItemNode]?
+    @Published var draftOrderID: String?
+    @Published var customerDiscountCodes: CustomerDiscountCodes?
     
     func getCartItems(){
         FireBaseManager.shared.retriveCustomerDiscountCodes()?.getDocument(completion: {[weak self] snapshot, error in
@@ -24,7 +26,9 @@ class CartListViewModel: ObservableObject{
             }
             
             let objFireBase = FireBaseManager.shared.mapFireBaseObject(data: data)
-            self?.getDraftOrders(id: objFireBase?.draftOrders?.cartDraftOrder?.draftOrderCreate?.draftOrder?.id ?? "")
+            self?.draftOrderID = objFireBase?.draftOrders?.cartDraftOrder?.draftOrderCreate?.draftOrder?.id ?? ""
+            self?.customerDiscountCodes = objFireBase ?? CustomerDiscountCodes()
+            self?.getDraftOrders(id: self?.draftOrderID ?? "")
             
         })
     }
@@ -40,4 +44,33 @@ class CartListViewModel: ObservableObject{
             }
         }
     }
+    func deletProduct(indexSet: IndexSet){
+        products?.remove(atOffsets: indexSet)
+        let lineItems = mapLineItemsToDratOrderLineItems(lineItems: products)
+        if lineItems.isEmpty{
+            NetworkManager.getInstance(requestType: .admin).performGraphQLRequest(mutation: DraftOrderDeleteMutation(input: DraftOrderDeleteInput(id: draftOrderID ?? "")), responseModel: DeleteDraftOrderDataClass.self) { res in
+                switch res{
+                case .success(let success):
+                    print(success)
+                    FireBaseManager.shared.removeCartFromFireBase()
+                case .failure(let failure):
+                    print(failure)
+                }
+            }
+        }
+        else{
+            NetworkManager.getInstance(requestType: .admin).performGraphQLRequest(mutation: DraftOrderUpdateMutation(id: draftOrderID ?? " ", input: DraftOrderInput(lineItems: lineItems)), responseModel: UpdateDraftOrderDataClass.self) {[weak self] res in
+                switch res {
+                case .success(let success):
+                    FireBaseManager.shared.saveCustomerDiscountCodes(customerDiscountCodes: CustomerDiscountCodes(id: self?.customerDiscountCodes?.id,
+                                                                                                                  discountCodes: self?.customerDiscountCodes?.discountCodes
+                                                                                                                  ,                                draftOrders: DraftOrders(cartDraftOrder: DraftOrderDataClass(draftOrderCreate: DraftOrderCreate(draftOrder: success.draftOrderUpdate?.draftOrder)))))
+                case .failure(let failure):
+                    print(failure)
+                }
+            }
+        }
+     
+    }
 }
+

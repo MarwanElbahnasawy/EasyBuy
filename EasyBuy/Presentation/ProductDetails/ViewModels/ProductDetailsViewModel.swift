@@ -5,6 +5,8 @@ class ProductViewModel: ObservableObject {
     @Published var product: DataClass?
     var productId: GraphQLID?
     @Published var cart: DraftOrderDataClass?
+    @Published var varaintID: String?
+    @Published var isExist = false
     let customerID = UserDefaults.standard.string(forKey:"shopifyCustomerID")
     let email = UserDefaults.standard.string(forKey:"email")
     
@@ -45,40 +47,41 @@ class ProductViewModel: ObservableObject {
                 self?.createDraftOrder(discountCodes: objFireBase?.discountCodes ?? [])
             }
             else{
-                print((objFireBase?.draftOrders?.cartDraftOrder?.draftOrderCreate?.draftOrder?.id)!)
-                NetworkManager.getInstance(requestType: .admin).queryGraphQLRequest(query: DraftOrderQuery(id: (objFireBase?.draftOrders?.cartDraftOrder?.draftOrderCreate?.draftOrder?.id)!), responseModel: DraftOrderCreate.self) {[weak self] res in
-                    switch res {
-                    case .success(let success):
-                        var  lineItems: [DraftOrderLineItemInput] = []
-                        lineItems = self?.mapLineItemsToDratOrderLineItems(lineItems: success.draftOrder?.lineItems?.nodes ?? []) ?? []
-                        lineItems.append(DraftOrderLineItemInput(quantity: 1,variantId:  self?.product?.product?.variants?.edges?.first?.node?.id))
-                        print("products in lines items id \(String(describing: lineItems))")
-                        self?.UpdateDraftOrder(id: objFireBase?.draftOrders?.cartDraftOrder?.draftOrderCreate?.draftOrder?.id ?? "", draftOrderInput: DraftOrderInput(lineItems: lineItems), customerDiscountCodes: objFireBase ?? CustomerDiscountCodes())
-                    case .failure(let failure):
-                        print(failure)
+                if let draftOrderID = objFireBase?.draftOrders?.cartDraftOrder?.draftOrderCreate?.draftOrder?.id{
+                    print((objFireBase?.draftOrders?.cartDraftOrder?.draftOrderCreate?.draftOrder?.id)!)
+                    NetworkManager.getInstance(requestType: .admin).queryGraphQLRequest(query: DraftOrderQuery(id: draftOrderID), responseModel: DraftOrderCreate.self) {[weak self] res in
+                        switch res {
+                        case .success(let success):
+                            var  lineItems: [DraftOrderLineItemInput] = []
+                            lineItems = mapLineItemsToDratOrderLineItems(lineItems: success.draftOrder?.lineItems?.nodes ?? [])
+                            if lineItems.contains(where: {$0.variantId == self?.varaintID}){
+                                self?.isExist = true
+                            }
+                            else{
+                                self?.isExist = false
+                                lineItems.append(DraftOrderLineItemInput(quantity: 1,variantId:  self?.varaintID))
+                                print("products in lines items id \(String(describing: lineItems))")
+                                self?.UpdateDraftOrder(id: objFireBase?.draftOrders?.cartDraftOrder?.draftOrderCreate?.draftOrder?.id ?? "", draftOrderInput: DraftOrderInput(lineItems: lineItems), customerDiscountCodes: objFireBase ?? CustomerDiscountCodes())
+                            }
+                         
+                        case .failure(let failure):
+                            print(failure)
+                        }
                     }
                 }
+
 
             }
         })
     }
     
-    func mapLineItemsToDratOrderLineItems(lineItems: [LinesItemNode]?) -> [DraftOrderLineItemInput]{
-      
-        var draftOrderLineItemInputs: [DraftOrderLineItemInput] = []
-        for item in lineItems ?? []{
-            let draftLineItem = DraftOrderLineItemInput(quantity: 1,variantId: item.variant?.id)
-            draftOrderLineItemInputs.append(draftLineItem)
-        }
-        return draftOrderLineItemInputs
-    }
-    
+  
     func createDraftOrder(discountCodes: [String]){
 
         // change variant with the choice of size
 
         let linesItems = DraftOrderInput(email: email, lineItems:
-                                            [DraftOrderLineItemInput(quantity: 1,variantId: product?.product?.variants?.edges?.first?.node?.id)])
+                                            [DraftOrderLineItemInput(quantity: 1,variantId: varaintID)])
         
         NetworkManager.getInstance(requestType: .admin).performGraphQLRequest(mutation: DraftOrderCreateMutation(input: linesItems), responseModel: DraftOrderDataClass.self) {[weak self] result in
             print(result)

@@ -65,7 +65,7 @@ struct Variants: Codable {
 
 // MARK: - VariantsEdge
 struct VariantsEdge: Codable {
-    let node: Nodes?
+    var node: Nodes?
 }
 
 // MARK: - Node

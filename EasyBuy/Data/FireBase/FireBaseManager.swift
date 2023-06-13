@@ -42,4 +42,14 @@ class FireBaseManager{
         
         return customerFirebase
     }
+    func removeCartFromFireBase(){
+        db.collection(NetworkConstants.CustomerDiscountCodes).document(firebaseCustomerID!).updateData(["draftOrders":FieldValue.arrayRemove(["cartDraftOrder"])]){
+            err in
+                if let err = err {
+                    print("Error updating document: \(err)")
+                } else {
+                    print("Document successfully updated")
+                }
+        }
+    }
 }

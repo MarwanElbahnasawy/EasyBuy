@@ -13,11 +13,14 @@ struct ProductDetailsView: View {
             ScrollView {
                 FeaturedImageView(imageUrl: viewModel.product?.product?.featuredImage?.url)
                 
-                DescriptionView(for: viewModel.product)
+                DescriptionView(for: viewModel.product, viewModel: viewModel)
                 
                 AddToCartView(price: viewModel.product?.product?.variants?.edges?.first?.node?.price?.amount) {
                     print("pressed")
                     viewModel.getDraftOrder()
+
+                }.alert(isPresented: $viewModel.isExist) {
+                    Alert(title: Text("Already added"),message: Text("This product already exist in your shopping cart"))
                 }
             }
             .edgesIgnoringSafeArea(.top)
@@ -52,3 +55,4 @@ struct DetailScreen_Previews: PreviewProvider {
         ProductDetailsView(viewModel: ProductViewModel(productId: nil), productId: "gid://shopify/Product/8311139762483")
     }
 }
+

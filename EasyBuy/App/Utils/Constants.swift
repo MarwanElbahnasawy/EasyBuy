@@ -86,3 +86,12 @@ func convertDateToString(date :Date)->String{
     let dateString = dateFormatter.string(from: date)
     return dateString
 }
+func mapLineItemsToDratOrderLineItems(lineItems: [LinesItemNode]?) -> [DraftOrderLineItemInput]{
+  
+    var draftOrderLineItemInputs: [DraftOrderLineItemInput] = []
+    for item in lineItems ?? []{
+        let draftLineItem = DraftOrderLineItemInput(quantity: 1,variantId: item.variant?.id)
+        draftOrderLineItemInputs.append(draftLineItem)
+    }
+    return draftOrderLineItemInputs
+}
