@@ -37,7 +37,7 @@ struct Product: Codable ,Identifiable {
 }
 
 // MARK: - FeaturedImage
-struct FeaturedImage: Codable {
+struct FeaturedImage: Codable,Identifiable {
     let id: String?
     let url: String?
 }
@@ -65,7 +65,7 @@ struct Variants: Codable {
 
 // MARK: - VariantsEdge
 struct VariantsEdge: Codable {
-    let node: Nodes?
+    var node: Nodes?
 }
 
 // MARK: - Node

@@ -22,7 +22,7 @@ class DiscountCodeViewModel : ObservableObject{
         self.adType = adType
     }
     func isExist(id: String,customerCode: String){
-        FireBaseManager.shared.retriveCustomerDiscountCodes(id: id)?.getDocument {[weak self] snapshot, error in
+        FireBaseManager.shared.retriveCustomerDiscountCodes()?.getDocument {[weak self] snapshot, error in
               guard let data = snapshot?.data() else {
                       print("No data found")
                   return
@@ -51,7 +51,7 @@ class DiscountCodeViewModel : ObservableObject{
     
     func saveCodeForCustomer(id: String,customerCode: String){
         isUsed = true
-      FireBaseManager.shared.retriveCustomerDiscountCodes(id: id)?.getDocument { snapshot, error in
+      FireBaseManager.shared.retriveCustomerDiscountCodes()?.getDocument { snapshot, error in
             if let error = error {
                 print("Failed to fetch current user:", error)
                 return
@@ -63,13 +63,10 @@ class DiscountCodeViewModel : ObservableObject{
                 
                 return
             }
-          
-    let id = data["id"] as? String ?? ""
-    var discountCodes = data["discountCodes"] as? [String] ?? []
-          if discountCodes.contains(customerCode) == false{
-              discountCodes.append(customerCode)
-              print(discountCodes)
-              let codes = CustomerDiscountCodes(id: id, discountCodes: discountCodes)
+          var objFromFireBase = FireBaseManager.shared.mapFireBaseObject(data: data)
+          if objFromFireBase?.discountCodes?.contains(customerCode) == false{
+              objFromFireBase?.discountCodes?.append(customerCode)
+              let codes = CustomerDiscountCodes(id: id, discountCodes: objFromFireBase?.discountCodes, draftOrders: DraftOrders(cartDraftOrder: objFromFireBase?.draftOrders?.cartDraftOrder))
               FireBaseManager.shared.saveCustomerDiscountCodes(customerDiscountCodes: codes)
               print("pressed")
           }

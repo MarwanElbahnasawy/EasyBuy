@@ -11,7 +11,7 @@ struct DiscountCodeCell: View {
     @State var discountCode: CodeDiscountNodesNode?
     @ObservedObject var cellViewModel: DiscountCodeViewModel
     @State var animationAmount = 1.0
-    let customerID = UserDefaults.standard.string(forKey: "customerID")
+    let customerID = UserDefaults.standard.string(forKey:"shopifyCustomerID")
 
     var body: some View {
         ZStack(alignment: .center) {

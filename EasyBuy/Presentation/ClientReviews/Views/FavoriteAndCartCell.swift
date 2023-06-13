@@ -2,10 +2,10 @@ import SwiftUI
 import Kingfisher
 
 struct FavoriteAndCartCell: View {
-    let imageUrl: URL?
-    let title: String
-    let type: String
-    let price: String
+    @State var imageUrl: URL?
+    @State var title: String?
+    @State var type: String?
+    @State var price: String?
     
     var body: some View {
         HStack {
@@ -15,13 +15,13 @@ struct FavoriteAndCartCell: View {
                 .cornerRadius(10)
                 .shadow(radius: 4)
             VStack(alignment: .leading) {
-                Text(title)
+                Text(title ?? "not available")
                     .font(.system(size: 20, weight: .bold))
-                Text(type)
+                Text(type ?? "not available")
                     .font(.system(size: 16))
                     .foregroundColor(.gray)
                 Spacer()
-                Text(price)
+                Text(price ?? "not available")
                     .font(.system(size: 20, weight: .bold))
             }
             Spacer()

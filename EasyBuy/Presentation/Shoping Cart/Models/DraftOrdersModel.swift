@@ -29,7 +29,8 @@ struct LineItems: Codable {
 }
 
 // MARK: - Node
-struct LinesItemNode: Codable {
+struct LinesItemNode: Codable,Identifiable {
+    var id: String?
     let quantity: Int?
     let variant: Variant?
     let product: DrafrtOrderProduct?
@@ -75,3 +76,15 @@ struct DraftOrderDelete: Codable {
         case deletedID = "deletedId"
     }
 }
+
+// MARK: - DataClass
+struct UpdateDraftOrderDataClass: Codable {
+    let draftOrderUpdate: DraftOrderUpdate?
+}
+
+// MARK: - DraftOrderUpdate
+struct DraftOrderUpdate: Codable {
+    let draftOrder: DraftOrder?
+}
+
+

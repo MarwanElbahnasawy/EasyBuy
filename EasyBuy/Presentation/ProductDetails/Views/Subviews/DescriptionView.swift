@@ -9,9 +9,10 @@ import SwiftUI
 
 struct DescriptionView: View {
     let product: DataClass?
-    
-    init(for product: DataClass?) {
+    let viewModel: ProductViewModel?
+    init(for product: DataClass?,viewModel: ProductViewModel) {
         self.product = product
+        self.viewModel = viewModel
     }
     
     var body: some View {
@@ -30,7 +31,7 @@ struct DescriptionView: View {
                 .lineSpacing(8.0)
                 .opacity(0.6)
             
-            SizesView(sizes: product?.product?.options?.first(where: { $0.name == "Size" })?.values)
+            SizesView(variants: product?.product?.variants?.edges,viewModel: viewModel ?? ProductViewModel(productId: nil))
         }
         .padding()
         .padding(.top)
