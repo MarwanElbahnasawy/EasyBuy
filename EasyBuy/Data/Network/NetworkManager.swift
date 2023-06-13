@@ -87,7 +87,7 @@ final class NetworkManager: NetworkManagerProtocol {
             switch result {
             case .success(let apolloResponse):
                 do {
-                   print("apollo response is: \(apolloResponse)")
+                
                     let data = try JSONSerialization.data(withJSONObject: apolloResponse.data?.jsonObject ?? "", options: .fragmentsAllowed)
                     let decode = try JSONDecoder().decode(responseModel, from: data)
                     completion(.success(decode))

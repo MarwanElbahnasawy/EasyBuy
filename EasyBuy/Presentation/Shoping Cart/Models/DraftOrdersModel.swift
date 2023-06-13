@@ -75,3 +75,15 @@ struct DraftOrderDelete: Codable {
         case deletedID = "deletedId"
     }
 }
+
+// MARK: - DataClass
+struct UpdateDraftOrderDataClass: Codable {
+    let draftOrderUpdate: DraftOrderUpdate?
+}
+
+// MARK: - DraftOrderUpdate
+struct DraftOrderUpdate: Codable {
+    let draftOrder: DraftOrder?
+}
+
+
