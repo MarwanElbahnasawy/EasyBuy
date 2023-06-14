@@ -19,9 +19,7 @@ struct DescriptionView: View {
         VStack (alignment: .leading) {
             ProductTitleView(title: product?.product?.title ?? "", productType: product?.product?.productType ?? "")
             
-            RatingView(rating: 4.9)
-            
-            QuantityView()
+            RatingView(rating: 3.2)
             
             Text("Description")
                 .fontWeight(.medium)

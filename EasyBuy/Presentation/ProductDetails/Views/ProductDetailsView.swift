@@ -11,8 +11,8 @@ struct ProductDetailsView: View {
         ZStack {
             Color.white
             ScrollView {
-                FeaturedImageView(imageUrl: viewModel.product?.product?.featuredImage?.url)
-                
+                ProductImagesView(images: viewModel.product?.product?.images?.edges?.map { $0.node! } ?? [])
+
                 DescriptionView(for: viewModel.product, viewModel: viewModel)
                 
                 AddToCartView(price: viewModel.product?.product?.variants?.edges?.first?.node?.price?.amount) {
@@ -23,7 +23,6 @@ struct ProductDetailsView: View {
                     Alert(title: Text("Already added"),message: Text("This product already exist in your shopping cart"))
                 }
             }
-            .edgesIgnoringSafeArea(.top)
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: BackButton(action: {presentationMode.wrappedValue.dismiss()}), trailing: Image("threeDot"))
