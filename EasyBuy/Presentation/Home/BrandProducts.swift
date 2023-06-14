@@ -11,12 +11,13 @@ struct BrandProducts: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @ObservedObject var viewModel:BrandViewModel = BrandViewModel()
     var body: some View {
-        
+        @State var iserror = viewModel.iserror
         VStack {
             if(viewModel.isLoading){
-                VStack(spacing: 0) {
-                    LottieView(lottieFile: viewModel.lottieFile)
-                        .frame(width: 300, height: 300)
+                if iserror{
+                    LottieView(lottieFile: "error")
+                }else{
+                    LottieView(lottieFile: "loading")
                 }
             }else{
                 HStack{

@@ -11,7 +11,7 @@ import Foundation
 class CategoryViewModel: ObservableObject {
     @Published var items: [Product]?
     @Published var isLoading: Bool = true
-    @Published var lottieFile = "loading"
+    @Published var iserror: Bool = false
     @Published  var filterBy: String = "All"
     @Published  var activeTag: String = "All"
     @Published var arrFilter: [String] = []
@@ -24,7 +24,8 @@ class CategoryViewModel: ObservableObject {
     
     
     func fetchProducts(){
-        NetworkManager.getInstance(requestType: .storeFront).queryGraphQLRequest(query:GetAllProductsQuery(first: 100,imageFirst: 5, variantsFirst: 5) , responseModel: DataClassProdcuts.self, completion: { result in
+        NetworkManager.getInstance(requestType: .storeFront).queryGraphQLRequest(query:GetAllProductsQuery(first: 100,imageFirst: 5, variantsFirst: 5) , responseModel: DataClassProdcuts.self, completion: { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success(let success):
                 DispatchQueue.main.async {
@@ -34,6 +35,7 @@ class CategoryViewModel: ObservableObject {
                 }
             case .failure(let failure):
                 print(failure)
+                self.iserror = true
             }
         })
     }

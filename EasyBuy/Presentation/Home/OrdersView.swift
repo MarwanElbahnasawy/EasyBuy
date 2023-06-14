@@ -27,65 +27,75 @@ struct OrdersView: View {
     }
     
     var body: some View {
-        ZStack{
-            VStack {
-                NavigationBarView()
-                Picker("", selection: $selectorIndex) {
-                    Text("Delivered").tag(0)
-                    Text("Processing").tag(1)
-                    Text("Cancelled").tag(2)
+        @State var iserror = viewModel.iserror
+        
+        if(viewModel.isLoading){
+            if iserror{
+                LottieView(lottieFile: "error")
+            }else{
+                LottieView(lottieFile: "loading")
+            }}
+        else{
+            ZStack{
+                VStack {
+                    NavigationBarView()
+                    Picker("", selection: $selectorIndex) {
+                        Text("Delivered").tag(0)
+                        Text("Processing").tag(1)
+                        Text("Cancelled").tag(2)
+                    }
+                    .pickerStyle(.segmented)
+                    .padding([.horizontal, .vertical], 10)
+                    .accentColor(.red)
+                    if selectorIndex == 0 {
+                        ScrollView(.vertical, showsIndicators: false, content: {
+                            VStack(spacing: 10) {
+                                if(viewModel.successOrders.count == 0){
+                                    NoProducts(type: "Orders")
+                                }else{
+                                    ForEach(viewModel.successOrders, id: \.id) { order in
+                                        OrderRow(order: order, selectorIndex: self.selectorIndex)
+                                        LineView()
+                                    }
+                                }
+                            }
+                            .padding(.horizontal, 15)
+                            
+                        })
+                    } else if selectorIndex == 1 {
+                        ScrollView(.vertical, showsIndicators: false, content: {
+                            VStack(spacing: 10) {
+                                if(viewModel.processingOrders.count == 0){
+                                    NoProducts(type: "Orders")
+                                }else{
+                                    ForEach(viewModel.processingOrders, id: \.id) { order in
+                                        OrderRow(order: order, selectorIndex: self.selectorIndex)
+                                        LineView()
+                                    }
+                                }
+                            }
+                            .padding(.horizontal, 15)
+                            
+                        })
+                    } else {
+                        ScrollView(.vertical, showsIndicators: false, content: {
+                            VStack(spacing: 10) {
+                                if(viewModel.failureOrders.count == 0){
+                                    NoProducts(type: "Orders")
+                                }else{
+                                    ForEach(viewModel.failureOrders, id: \.id) { order in
+                                        OrderRow(order: order, selectorIndex: self.selectorIndex)
+                                        LineView()
+                                    }
+                                }
+                            }
+                            .padding(.horizontal, 15)
+                        })
+                    }
                 }
-                .pickerStyle(.segmented)
-                .padding([.horizontal, .vertical], 10)
-                .accentColor(.red)
-                if selectorIndex == 0 {
-                    ScrollView(.vertical, showsIndicators: false, content: {
-                        VStack(spacing: 10) {
-                            if(viewModel.successOrders.count == 0){
-                                NoProducts(type: "Orders")
-                            }else{
-                                ForEach(viewModel.successOrders, id: \.id) { order in
-                                    OrderRow(order: order, selectorIndex: self.selectorIndex)
-                                    LineView()
-                                }
-                            }
-                        }
-                        .padding(.horizontal, 15)
-                        
-                    })
-                } else if selectorIndex == 1 {
-                    ScrollView(.vertical, showsIndicators: false, content: {
-                        VStack(spacing: 10) {
-                            if(viewModel.processingOrders.count == 0){
-                                NoProducts(type: "Orders")
-                            }else{
-                                ForEach(viewModel.processingOrders, id: \.id) { order in
-                                    OrderRow(order: order, selectorIndex: self.selectorIndex)
-                                    LineView()
-                                }
-                            }
-                        }
-                        .padding(.horizontal, 15)
-                        
-                    })
-                } else {
-                    ScrollView(.vertical, showsIndicators: false, content: {
-                        VStack(spacing: 10) {
-                            if(viewModel.failureOrders.count == 0){
-                                NoProducts(type: "Orders")
-                            }else{
-                                ForEach(viewModel.failureOrders, id: \.id) { order in
-                                    OrderRow(order: order, selectorIndex: self.selectorIndex)
-                                    LineView()
-                                }
-                            }
-                        }
-                        .padding(.horizontal, 15)
-                    })
-                }
-            }
-        }.background(MotionAnimationView())
-            .navigationBarBackButtonHidden(true)
+            }.background(MotionAnimationView())
+                .navigationBarBackButtonHidden(true)
+        }
     }
 }
 
