@@ -52,4 +52,14 @@ class FireBaseManager{
                 }
         }
     }
+    func removeFavoriteFromFireBase(){
+        db.collection(NetworkConstants.CustomerDiscountCodes).document(firebaseCustomerID!).updateData(["draftOrders":FieldValue.arrayRemove(["favoriteDraftorder"])]){
+            err in
+                if let err = err {
+                    print("Error updating document: \(err)")
+                } else {
+                    print("Document successfully updated")
+                }
+        }
+    }
 }

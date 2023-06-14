@@ -10,7 +10,8 @@ import SwiftUI
 struct ProductTitleView: View {
     let title: String
     let productType: String
-    
+    let action: () -> Void
+
     var body: some View {
         HStack {
             VStack {
@@ -23,9 +24,7 @@ struct ProductTitleView: View {
             
             Spacer()
             
-            Button(action: {
-                // Heart button action
-            }) {
+            Button(action: action) {
                 Image(systemName: "heart")
                     .font(.title)
                     .foregroundColor(.black)
