@@ -23,17 +23,30 @@ struct Edge: Codable {
 }
 
 struct Order: Codable, Identifiable {
+    var name: String?
     var id: String?
     var buyerAcceptsMarketing: Bool?
     var currentTotalPrice: String?
-    var createdAt: Date?
+    var createdAt: String?
+    var totalPriceSet: TotalPriceSet?
     var number, orderNumber: Int?
     var token, totalDiscounts: String?
     var totalPrice: String?
     var shippingAddress: Address?
-    var fulfillments: [Fulfillment]?
+ //   var fulfillments: [Fulfillment]?
     var displayFulfillmentStatus, displayFinancialStatus, returnStatus: String?
 }
+
+// MARK: - TotalPriceSet
+struct TotalPriceSet: Codable {
+    var presentmentMoney, shopMoney: Money?
+}
+
+// MARK: - Money
+struct Money: Codable {
+    var amount, currencyCode: String?
+}
+
 // MARK: - Address
 
 struct Address: Codable {

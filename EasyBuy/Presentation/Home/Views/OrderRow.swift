@@ -14,16 +14,15 @@ struct OrderRow: View {
         VStack(alignment: .leading) {
             VStack{
                 HStack {
-                    let orderNumber = "Order No: \(order.orderNumber ?? 207119551)"
+                    let orderNumber = "Order No: \(order.name ?? "207119551")"
                     Text(orderNumber)
                     Spacer()
-                    Text(convertDateToString(date: order.createdAt ?? Date()))
+                    Text(order.createdAt ?? "")
+
                         .foregroundColor(.gray)
                 }.padding([.top], 2)
                 HStack() {
-//                    Text("Tracking No:")
-//                        .foregroundColor(.gray)
-//                    Text(order.fulfillments?.first?.tracking_number ?? "1Z2345")
+
                     Spacer()
                 }.padding([.top], 2)
                 HStack {
@@ -33,7 +32,7 @@ struct OrderRow: View {
                         .foregroundColor(.gray)
                     Spacer()
                     Text("Total Amount:")
-                    let price = "$\(order.totalPrice ?? "199")"
+                    let price = "\(order.totalPriceSet?.shopMoney?.amount ?? "199") \(order.totalPriceSet?.shopMoney?.currencyCode ?? "")"
                     Text(price)
                         .foregroundColor(.gray)
                 }.padding([.top], 2)

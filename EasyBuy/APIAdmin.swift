@@ -7356,6 +7356,7 @@ public final class GetOrdersQuery: GraphQLQuery {
             id
             name
             phone
+            createdAt
             displayFinancialStatus
             displayFulfillmentStatus
             returnStatus
@@ -7520,6 +7521,7 @@ public final class GetOrdersQuery: GraphQLQuery {
               GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
               GraphQLField("name", type: .nonNull(.scalar(String.self))),
               GraphQLField("phone", type: .scalar(String.self)),
+              GraphQLField("createdAt", type: .nonNull(.scalar(String.self))),
               GraphQLField("displayFinancialStatus", type: .scalar(OrderDisplayFinancialStatus.self)),
               GraphQLField("displayFulfillmentStatus", type: .nonNull(.scalar(OrderDisplayFulfillmentStatus.self))),
               GraphQLField("returnStatus", type: .nonNull(.scalar(OrderReturnStatus.self))),
@@ -7535,8 +7537,8 @@ public final class GetOrdersQuery: GraphQLQuery {
             self.resultMap = unsafeResultMap
           }
 
-          public init(id: GraphQLID, name: String, phone: String? = nil, displayFinancialStatus: OrderDisplayFinancialStatus? = nil, displayFulfillmentStatus: OrderDisplayFulfillmentStatus, returnStatus: OrderReturnStatus, totalPriceSet: TotalPriceSet, shippingAddress: ShippingAddress? = nil) {
-            self.init(unsafeResultMap: ["__typename": "Order", "id": id, "name": name, "phone": phone, "displayFinancialStatus": displayFinancialStatus, "displayFulfillmentStatus": displayFulfillmentStatus, "returnStatus": returnStatus, "totalPriceSet": totalPriceSet.resultMap, "shippingAddress": shippingAddress.flatMap { (value: ShippingAddress) -> ResultMap in value.resultMap }])
+          public init(id: GraphQLID, name: String, phone: String? = nil, createdAt: String, displayFinancialStatus: OrderDisplayFinancialStatus? = nil, displayFulfillmentStatus: OrderDisplayFulfillmentStatus, returnStatus: OrderReturnStatus, totalPriceSet: TotalPriceSet, shippingAddress: ShippingAddress? = nil) {
+            self.init(unsafeResultMap: ["__typename": "Order", "id": id, "name": name, "phone": phone, "createdAt": createdAt, "displayFinancialStatus": displayFinancialStatus, "displayFulfillmentStatus": displayFulfillmentStatus, "returnStatus": returnStatus, "totalPriceSet": totalPriceSet.resultMap, "shippingAddress": shippingAddress.flatMap { (value: ShippingAddress) -> ResultMap in value.resultMap }])
           }
 
           public var __typename: String {
@@ -7577,6 +7579,16 @@ public final class GetOrdersQuery: GraphQLQuery {
             }
             set {
               resultMap.updateValue(newValue, forKey: "phone")
+            }
+          }
+
+          /// Date and time when the order was created in Shopify.
+          public var createdAt: String {
+            get {
+              return resultMap["createdAt"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "createdAt")
             }
           }
 

@@ -68,7 +68,7 @@ struct BaseView: View {
                     }
                 }
                     .background(
-                        Color.white
+                        Color("mywhite")
                             .clipShape(CustomCurveShape())
                         //MARK: - SHADOW
                             .shadow(color: Color.black.opacity(0.04), radius: 5, x: -5, y: -5)

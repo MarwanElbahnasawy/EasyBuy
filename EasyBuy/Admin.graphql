@@ -169,6 +169,7 @@ query getOrders($first: Int , $query: String){
         id
         name
         phone
+        createdAt
         displayFinancialStatus
         displayFulfillmentStatus
         returnStatus

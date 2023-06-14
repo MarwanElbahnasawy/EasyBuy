@@ -42,6 +42,7 @@ struct ProductRow: View {
                         if parts.count > 1 {
                         Text (parts [1])
                         . font (.system(size: 16))
+                        .foregroundColor(Color("myblack"))
                         } else {
                             Text (title).font (.system(size: 16))
                         }
@@ -60,6 +61,7 @@ struct ProductRow: View {
                         let formattedprice = String(format: "%.2f", priceCurrency) + " \(UserDefaults.standard.currency!)"
                         Text(formattedprice)
                             .font(Font.system(size: 17, weight: .bold, design: .rounded))
+                            .foregroundColor(Color("myblack"))
                         Spacer()
                       
                     }
