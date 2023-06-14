@@ -11,23 +11,27 @@ struct BrandProducts: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @ObservedObject var viewModel:BrandViewModel = BrandViewModel()
     var body: some View {
-  
-            VStack {
-                                if(viewModel.isLoading){
-                
-                                }else{
+        @State var iserror = viewModel.iserror
+        VStack {
+            if(viewModel.isLoading){
+                if iserror{
+                    LottieView(lottieFile: "error")
+                }else{
+                    LottieView(lottieFile: "loading")
+                }
+            }else{
                 HStack{
                     let brand = "\(viewModel.brand ?? "adidas") PRODUCTS"
                     TitleView(title: brand)
                         .font(.custom(Constants.AppFont.boldFont, size: 18))
                 }
                 ProductCatalog(products:viewModel.items ?? [])
-        }
-            }.navigationBarBackButtonHidden(true)
+            }
+        }.navigationBarBackButtonHidden(true)
             .navigationBarItems(leading: BackButton(action: {presentationMode.wrappedValue.dismiss()}), trailing: Image("threeDot"))
         
             .onAppear(){
-                   viewModel.fetchBrand()
+                viewModel.fetchBrand()
             }
         //ZStack
         
