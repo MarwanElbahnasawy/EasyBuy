@@ -7,12 +7,23 @@
 
 import Foundation
 
+// MARK: - ResOrder
 struct ResOrder: Codable {
-    var orders: [Order]
+    var orders: Orders?
+}
+
+// MARK: - Orders
+struct Orders: Codable {
+    var edges: [Edge]?
+}
+
+// MARK: - Edge
+struct Edge: Codable {
+    var node: Order?
 }
 
 struct Order: Codable, Identifiable {
-    var id: Int?
+    var id: String?
     var buyerAcceptsMarketing: Bool?
     var currentTotalPrice: String?
     var createdAt: Date?
@@ -21,6 +32,7 @@ struct Order: Codable, Identifiable {
     var totalPrice: String?
     var shippingAddress: Address?
     var fulfillments: [Fulfillment]?
+    var displayFulfillmentStatus, displayFinancialStatus, returnStatus: String?
 }
 // MARK: - Address
 

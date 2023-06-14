@@ -3212,6 +3212,1006 @@ public struct ShippingLineInput: GraphQLMapConvertible {
   }
 }
 
+/// The three-letter currency codes that represent the world currencies used in stores. These include standard ISO 4217 codes, legacy codes,
+/// and non-standard codes.
+public enum CurrencyCode: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
+  public typealias RawValue = String
+  /// United States Dollars (USD).
+  case usd
+  /// Euro (EUR).
+  case eur
+  /// United Kingdom Pounds (GBP).
+  case gbp
+  /// Canadian Dollars (CAD).
+  case cad
+  /// Afghan Afghani (AFN).
+  case afn
+  /// Albanian Lek (ALL).
+  case all
+  /// Algerian Dinar (DZD).
+  case dzd
+  /// Angolan Kwanza (AOA).
+  case aoa
+  /// Argentine Pesos (ARS).
+  case ars
+  /// Armenian Dram (AMD).
+  case amd
+  /// Aruban Florin (AWG).
+  case awg
+  /// Australian Dollars (AUD).
+  case aud
+  /// Barbadian Dollar (BBD).
+  case bbd
+  /// Azerbaijani Manat (AZN).
+  case azn
+  /// Bangladesh Taka (BDT).
+  case bdt
+  /// Bahamian Dollar (BSD).
+  case bsd
+  /// Bahraini Dinar (BHD).
+  case bhd
+  /// Burundian Franc (BIF).
+  case bif
+  /// Belize Dollar (BZD).
+  case bzd
+  /// Bermudian Dollar (BMD).
+  case bmd
+  /// Bhutanese Ngultrum (BTN).
+  case btn
+  /// Bosnia and Herzegovina Convertible Mark (BAM).
+  case bam
+  /// Brazilian Real (BRL).
+  case brl
+  /// Bolivian Boliviano (BOB).
+  case bob
+  /// Botswana Pula (BWP).
+  case bwp
+  /// Brunei Dollar (BND).
+  case bnd
+  /// Bulgarian Lev (BGN).
+  case bgn
+  /// Burmese Kyat (MMK).
+  case mmk
+  /// Cambodian Riel.
+  case khr
+  /// Cape Verdean escudo (CVE).
+  case cve
+  /// Cayman Dollars (KYD).
+  case kyd
+  /// Central African CFA Franc (XAF).
+  case xaf
+  /// Chilean Peso (CLP).
+  case clp
+  /// Chinese Yuan Renminbi (CNY).
+  case cny
+  /// Colombian Peso (COP).
+  case cop
+  /// Comorian Franc (KMF).
+  case kmf
+  /// Congolese franc (CDF).
+  case cdf
+  /// Costa Rican Colones (CRC).
+  case crc
+  /// Croatian Kuna (HRK).
+  case hrk
+  /// Czech Koruny (CZK).
+  case czk
+  /// Danish Kroner (DKK).
+  case dkk
+  /// Dominican Peso (DOP).
+  case dop
+  /// East Caribbean Dollar (XCD).
+  case xcd
+  /// Egyptian Pound (EGP).
+  case egp
+  /// Ethiopian Birr (ETB).
+  case etb
+  /// CFP Franc (XPF).
+  case xpf
+  /// Fijian Dollars (FJD).
+  case fjd
+  /// Gambian Dalasi (GMD).
+  case gmd
+  /// Ghanaian Cedi (GHS).
+  case ghs
+  /// Guatemalan Quetzal (GTQ).
+  case gtq
+  /// Guyanese Dollar (GYD).
+  case gyd
+  /// Georgian Lari (GEL).
+  case gel
+  /// Haitian Gourde (HTG).
+  case htg
+  /// Honduran Lempira (HNL).
+  case hnl
+  /// Hong Kong Dollars (HKD).
+  case hkd
+  /// Hungarian Forint (HUF).
+  case huf
+  /// Icelandic Kronur (ISK).
+  case isk
+  /// Indian Rupees (INR).
+  case inr
+  /// Indonesian Rupiah (IDR).
+  case idr
+  /// Israeli New Shekel (NIS).
+  case ils
+  /// Iraqi Dinar (IQD).
+  case iqd
+  /// Jamaican Dollars (JMD).
+  case jmd
+  /// Japanese Yen (JPY).
+  case jpy
+  /// Jersey Pound.
+  case jep
+  /// Jordanian Dinar (JOD).
+  case jod
+  /// Kazakhstani Tenge (KZT).
+  case kzt
+  /// Kenyan Shilling (KES).
+  case kes
+  /// Kuwaiti Dinar (KWD).
+  case kwd
+  /// Kyrgyzstani Som (KGS).
+  case kgs
+  /// Laotian Kip (LAK).
+  case lak
+  /// Latvian Lati (LVL).
+  case lvl
+  /// Lebanese Pounds (LBP).
+  case lbp
+  /// Lesotho Loti (LSL).
+  case lsl
+  /// Liberian Dollar (LRD).
+  case lrd
+  /// Lithuanian Litai (LTL).
+  case ltl
+  /// Malagasy Ariary (MGA).
+  case mga
+  /// Macedonia Denar (MKD).
+  case mkd
+  /// Macanese Pataca (MOP).
+  case mop
+  /// Malawian Kwacha (MWK).
+  case mwk
+  /// Maldivian Rufiyaa (MVR).
+  case mvr
+  /// Mexican Pesos (MXN).
+  case mxn
+  /// Malaysian Ringgits (MYR).
+  case myr
+  /// Mauritian Rupee (MUR).
+  case mur
+  /// Moldovan Leu (MDL).
+  case mdl
+  /// Moroccan Dirham.
+  case mad
+  /// Mongolian Tugrik.
+  case mnt
+  /// Mozambican Metical.
+  case mzn
+  /// Namibian Dollar.
+  case nad
+  /// Nepalese Rupee (NPR).
+  case npr
+  /// Netherlands Antillean Guilder.
+  case ang
+  /// New Zealand Dollars (NZD).
+  case nzd
+  /// Nicaraguan Córdoba (NIO).
+  case nio
+  /// Nigerian Naira (NGN).
+  case ngn
+  /// Norwegian Kroner (NOK).
+  case nok
+  /// Omani Rial (OMR).
+  case omr
+  /// Panamian Balboa (PAB).
+  case pab
+  /// Pakistani Rupee (PKR).
+  case pkr
+  /// Papua New Guinean Kina (PGK).
+  case pgk
+  /// Paraguayan Guarani (PYG).
+  case pyg
+  /// Peruvian Nuevo Sol (PEN).
+  case pen
+  /// Philippine Peso (PHP).
+  case php
+  /// Polish Zlotych (PLN).
+  case pln
+  /// Qatari Rial (QAR).
+  case qar
+  /// Romanian Lei (RON).
+  case ron
+  /// Russian Rubles (RUB).
+  case rub
+  /// Rwandan Franc (RWF).
+  case rwf
+  /// Samoan Tala (WST).
+  case wst
+  /// Saudi Riyal (SAR).
+  case sar
+  /// Serbian dinar (RSD).
+  case rsd
+  /// Seychellois Rupee (SCR).
+  case scr
+  /// Singapore Dollars (SGD).
+  case sgd
+  /// Sudanese Pound (SDG).
+  case sdg
+  /// Syrian Pound (SYP).
+  case syp
+  /// South African Rand (ZAR).
+  case zar
+  /// South Korean Won (KRW).
+  case krw
+  /// South Sudanese Pound (SSP).
+  case ssp
+  /// Solomon Islands Dollar (SBD).
+  case sbd
+  /// Sri Lankan Rupees (LKR).
+  case lkr
+  /// Surinamese Dollar (SRD).
+  case srd
+  /// Swazi Lilangeni (SZL).
+  case szl
+  /// Swedish Kronor (SEK).
+  case sek
+  /// Swiss Francs (CHF).
+  case chf
+  /// Taiwan Dollars (TWD).
+  case twd
+  /// Thai baht (THB).
+  case thb
+  /// Tanzanian Shilling (TZS).
+  case tzs
+  /// Trinidad and Tobago Dollars (TTD).
+  case ttd
+  /// Tunisian Dinar (TND).
+  case tnd
+  /// Turkish Lira (TRY).
+  case `try`
+  /// Turkmenistani Manat (TMT).
+  case tmt
+  /// Ugandan Shilling (UGX).
+  case ugx
+  /// Ukrainian Hryvnia (UAH).
+  case uah
+  /// United Arab Emirates Dirham (AED).
+  case aed
+  /// Uruguayan Pesos (UYU).
+  case uyu
+  /// Uzbekistan som (UZS).
+  case uzs
+  /// Vanuatu Vatu (VUV).
+  case vuv
+  /// Vietnamese đồng (VND).
+  case vnd
+  /// West African CFA franc (XOF).
+  case xof
+  /// Yemeni Rial (YER).
+  case yer
+  /// Zambian Kwacha (ZMW).
+  case zmw
+  /// Belarusian Ruble (BYN).
+  case byn
+  /// Belarusian Ruble (BYR).
+  @available(*, deprecated, message: "`BYR` is deprecated. Use `BYN` available from version `2021-01` onwards instead.")
+  case byr
+  /// Djiboutian Franc (DJF).
+  case djf
+  /// Eritrean Nakfa (ERN).
+  case ern
+  /// Falkland Islands Pounds (FKP).
+  case fkp
+  /// Gibraltar Pounds (GIP).
+  case gip
+  /// Guinean Franc (GNF).
+  case gnf
+  /// Iranian Rial (IRR).
+  case irr
+  /// Kiribati Dollar (KID).
+  case kid
+  /// Libyan Dinar (LYD).
+  case lyd
+  /// Mauritanian Ouguiya (MRU).
+  case mru
+  /// Sierra Leonean Leone (SLL).
+  case sll
+  /// Saint Helena Pounds (SHP).
+  case shp
+  /// Somali Shilling (SOS).
+  case sos
+  /// Sao Tome And Principe Dobra (STD).
+  @available(*, deprecated, message: "`STD` is deprecated. Use `STN` available from version `2022-07` onwards instead.")
+  case std
+  /// Sao Tome And Principe Dobra (STN).
+  case stn
+  /// Tajikistani Somoni (TJS).
+  case tjs
+  /// Tongan Pa'anga (TOP).
+  case top
+  /// Venezuelan Bolivares (VED).
+  case ved
+  /// Venezuelan Bolivares (VEF).
+  @available(*, deprecated, message: "`VEF` is deprecated. Use `VES` available from version `2020-10` onwards instead.")
+  case vef
+  /// Venezuelan Bolivares (VES).
+  case ves
+  /// Unrecognized currency.
+  case xxx
+  /// Auto generated constant for unknown enum values
+  case __unknown(RawValue)
+
+  public init?(rawValue: RawValue) {
+    switch rawValue {
+      case "USD": self = .usd
+      case "EUR": self = .eur
+      case "GBP": self = .gbp
+      case "CAD": self = .cad
+      case "AFN": self = .afn
+      case "ALL": self = .all
+      case "DZD": self = .dzd
+      case "AOA": self = .aoa
+      case "ARS": self = .ars
+      case "AMD": self = .amd
+      case "AWG": self = .awg
+      case "AUD": self = .aud
+      case "BBD": self = .bbd
+      case "AZN": self = .azn
+      case "BDT": self = .bdt
+      case "BSD": self = .bsd
+      case "BHD": self = .bhd
+      case "BIF": self = .bif
+      case "BZD": self = .bzd
+      case "BMD": self = .bmd
+      case "BTN": self = .btn
+      case "BAM": self = .bam
+      case "BRL": self = .brl
+      case "BOB": self = .bob
+      case "BWP": self = .bwp
+      case "BND": self = .bnd
+      case "BGN": self = .bgn
+      case "MMK": self = .mmk
+      case "KHR": self = .khr
+      case "CVE": self = .cve
+      case "KYD": self = .kyd
+      case "XAF": self = .xaf
+      case "CLP": self = .clp
+      case "CNY": self = .cny
+      case "COP": self = .cop
+      case "KMF": self = .kmf
+      case "CDF": self = .cdf
+      case "CRC": self = .crc
+      case "HRK": self = .hrk
+      case "CZK": self = .czk
+      case "DKK": self = .dkk
+      case "DOP": self = .dop
+      case "XCD": self = .xcd
+      case "EGP": self = .egp
+      case "ETB": self = .etb
+      case "XPF": self = .xpf
+      case "FJD": self = .fjd
+      case "GMD": self = .gmd
+      case "GHS": self = .ghs
+      case "GTQ": self = .gtq
+      case "GYD": self = .gyd
+      case "GEL": self = .gel
+      case "HTG": self = .htg
+      case "HNL": self = .hnl
+      case "HKD": self = .hkd
+      case "HUF": self = .huf
+      case "ISK": self = .isk
+      case "INR": self = .inr
+      case "IDR": self = .idr
+      case "ILS": self = .ils
+      case "IQD": self = .iqd
+      case "JMD": self = .jmd
+      case "JPY": self = .jpy
+      case "JEP": self = .jep
+      case "JOD": self = .jod
+      case "KZT": self = .kzt
+      case "KES": self = .kes
+      case "KWD": self = .kwd
+      case "KGS": self = .kgs
+      case "LAK": self = .lak
+      case "LVL": self = .lvl
+      case "LBP": self = .lbp
+      case "LSL": self = .lsl
+      case "LRD": self = .lrd
+      case "LTL": self = .ltl
+      case "MGA": self = .mga
+      case "MKD": self = .mkd
+      case "MOP": self = .mop
+      case "MWK": self = .mwk
+      case "MVR": self = .mvr
+      case "MXN": self = .mxn
+      case "MYR": self = .myr
+      case "MUR": self = .mur
+      case "MDL": self = .mdl
+      case "MAD": self = .mad
+      case "MNT": self = .mnt
+      case "MZN": self = .mzn
+      case "NAD": self = .nad
+      case "NPR": self = .npr
+      case "ANG": self = .ang
+      case "NZD": self = .nzd
+      case "NIO": self = .nio
+      case "NGN": self = .ngn
+      case "NOK": self = .nok
+      case "OMR": self = .omr
+      case "PAB": self = .pab
+      case "PKR": self = .pkr
+      case "PGK": self = .pgk
+      case "PYG": self = .pyg
+      case "PEN": self = .pen
+      case "PHP": self = .php
+      case "PLN": self = .pln
+      case "QAR": self = .qar
+      case "RON": self = .ron
+      case "RUB": self = .rub
+      case "RWF": self = .rwf
+      case "WST": self = .wst
+      case "SAR": self = .sar
+      case "RSD": self = .rsd
+      case "SCR": self = .scr
+      case "SGD": self = .sgd
+      case "SDG": self = .sdg
+      case "SYP": self = .syp
+      case "ZAR": self = .zar
+      case "KRW": self = .krw
+      case "SSP": self = .ssp
+      case "SBD": self = .sbd
+      case "LKR": self = .lkr
+      case "SRD": self = .srd
+      case "SZL": self = .szl
+      case "SEK": self = .sek
+      case "CHF": self = .chf
+      case "TWD": self = .twd
+      case "THB": self = .thb
+      case "TZS": self = .tzs
+      case "TTD": self = .ttd
+      case "TND": self = .tnd
+      case "TRY": self = .try
+      case "TMT": self = .tmt
+      case "UGX": self = .ugx
+      case "UAH": self = .uah
+      case "AED": self = .aed
+      case "UYU": self = .uyu
+      case "UZS": self = .uzs
+      case "VUV": self = .vuv
+      case "VND": self = .vnd
+      case "XOF": self = .xof
+      case "YER": self = .yer
+      case "ZMW": self = .zmw
+      case "BYN": self = .byn
+      case "BYR": self = .byr
+      case "DJF": self = .djf
+      case "ERN": self = .ern
+      case "FKP": self = .fkp
+      case "GIP": self = .gip
+      case "GNF": self = .gnf
+      case "IRR": self = .irr
+      case "KID": self = .kid
+      case "LYD": self = .lyd
+      case "MRU": self = .mru
+      case "SLL": self = .sll
+      case "SHP": self = .shp
+      case "SOS": self = .sos
+      case "STD": self = .std
+      case "STN": self = .stn
+      case "TJS": self = .tjs
+      case "TOP": self = .top
+      case "VED": self = .ved
+      case "VEF": self = .vef
+      case "VES": self = .ves
+      case "XXX": self = .xxx
+      default: self = .__unknown(rawValue)
+    }
+  }
+
+  public var rawValue: RawValue {
+    switch self {
+      case .usd: return "USD"
+      case .eur: return "EUR"
+      case .gbp: return "GBP"
+      case .cad: return "CAD"
+      case .afn: return "AFN"
+      case .all: return "ALL"
+      case .dzd: return "DZD"
+      case .aoa: return "AOA"
+      case .ars: return "ARS"
+      case .amd: return "AMD"
+      case .awg: return "AWG"
+      case .aud: return "AUD"
+      case .bbd: return "BBD"
+      case .azn: return "AZN"
+      case .bdt: return "BDT"
+      case .bsd: return "BSD"
+      case .bhd: return "BHD"
+      case .bif: return "BIF"
+      case .bzd: return "BZD"
+      case .bmd: return "BMD"
+      case .btn: return "BTN"
+      case .bam: return "BAM"
+      case .brl: return "BRL"
+      case .bob: return "BOB"
+      case .bwp: return "BWP"
+      case .bnd: return "BND"
+      case .bgn: return "BGN"
+      case .mmk: return "MMK"
+      case .khr: return "KHR"
+      case .cve: return "CVE"
+      case .kyd: return "KYD"
+      case .xaf: return "XAF"
+      case .clp: return "CLP"
+      case .cny: return "CNY"
+      case .cop: return "COP"
+      case .kmf: return "KMF"
+      case .cdf: return "CDF"
+      case .crc: return "CRC"
+      case .hrk: return "HRK"
+      case .czk: return "CZK"
+      case .dkk: return "DKK"
+      case .dop: return "DOP"
+      case .xcd: return "XCD"
+      case .egp: return "EGP"
+      case .etb: return "ETB"
+      case .xpf: return "XPF"
+      case .fjd: return "FJD"
+      case .gmd: return "GMD"
+      case .ghs: return "GHS"
+      case .gtq: return "GTQ"
+      case .gyd: return "GYD"
+      case .gel: return "GEL"
+      case .htg: return "HTG"
+      case .hnl: return "HNL"
+      case .hkd: return "HKD"
+      case .huf: return "HUF"
+      case .isk: return "ISK"
+      case .inr: return "INR"
+      case .idr: return "IDR"
+      case .ils: return "ILS"
+      case .iqd: return "IQD"
+      case .jmd: return "JMD"
+      case .jpy: return "JPY"
+      case .jep: return "JEP"
+      case .jod: return "JOD"
+      case .kzt: return "KZT"
+      case .kes: return "KES"
+      case .kwd: return "KWD"
+      case .kgs: return "KGS"
+      case .lak: return "LAK"
+      case .lvl: return "LVL"
+      case .lbp: return "LBP"
+      case .lsl: return "LSL"
+      case .lrd: return "LRD"
+      case .ltl: return "LTL"
+      case .mga: return "MGA"
+      case .mkd: return "MKD"
+      case .mop: return "MOP"
+      case .mwk: return "MWK"
+      case .mvr: return "MVR"
+      case .mxn: return "MXN"
+      case .myr: return "MYR"
+      case .mur: return "MUR"
+      case .mdl: return "MDL"
+      case .mad: return "MAD"
+      case .mnt: return "MNT"
+      case .mzn: return "MZN"
+      case .nad: return "NAD"
+      case .npr: return "NPR"
+      case .ang: return "ANG"
+      case .nzd: return "NZD"
+      case .nio: return "NIO"
+      case .ngn: return "NGN"
+      case .nok: return "NOK"
+      case .omr: return "OMR"
+      case .pab: return "PAB"
+      case .pkr: return "PKR"
+      case .pgk: return "PGK"
+      case .pyg: return "PYG"
+      case .pen: return "PEN"
+      case .php: return "PHP"
+      case .pln: return "PLN"
+      case .qar: return "QAR"
+      case .ron: return "RON"
+      case .rub: return "RUB"
+      case .rwf: return "RWF"
+      case .wst: return "WST"
+      case .sar: return "SAR"
+      case .rsd: return "RSD"
+      case .scr: return "SCR"
+      case .sgd: return "SGD"
+      case .sdg: return "SDG"
+      case .syp: return "SYP"
+      case .zar: return "ZAR"
+      case .krw: return "KRW"
+      case .ssp: return "SSP"
+      case .sbd: return "SBD"
+      case .lkr: return "LKR"
+      case .srd: return "SRD"
+      case .szl: return "SZL"
+      case .sek: return "SEK"
+      case .chf: return "CHF"
+      case .twd: return "TWD"
+      case .thb: return "THB"
+      case .tzs: return "TZS"
+      case .ttd: return "TTD"
+      case .tnd: return "TND"
+      case .try: return "TRY"
+      case .tmt: return "TMT"
+      case .ugx: return "UGX"
+      case .uah: return "UAH"
+      case .aed: return "AED"
+      case .uyu: return "UYU"
+      case .uzs: return "UZS"
+      case .vuv: return "VUV"
+      case .vnd: return "VND"
+      case .xof: return "XOF"
+      case .yer: return "YER"
+      case .zmw: return "ZMW"
+      case .byn: return "BYN"
+      case .byr: return "BYR"
+      case .djf: return "DJF"
+      case .ern: return "ERN"
+      case .fkp: return "FKP"
+      case .gip: return "GIP"
+      case .gnf: return "GNF"
+      case .irr: return "IRR"
+      case .kid: return "KID"
+      case .lyd: return "LYD"
+      case .mru: return "MRU"
+      case .sll: return "SLL"
+      case .shp: return "SHP"
+      case .sos: return "SOS"
+      case .std: return "STD"
+      case .stn: return "STN"
+      case .tjs: return "TJS"
+      case .top: return "TOP"
+      case .ved: return "VED"
+      case .vef: return "VEF"
+      case .ves: return "VES"
+      case .xxx: return "XXX"
+      case .__unknown(let value): return value
+    }
+  }
+
+  public static func == (lhs: CurrencyCode, rhs: CurrencyCode) -> Bool {
+    switch (lhs, rhs) {
+      case (.usd, .usd): return true
+      case (.eur, .eur): return true
+      case (.gbp, .gbp): return true
+      case (.cad, .cad): return true
+      case (.afn, .afn): return true
+      case (.all, .all): return true
+      case (.dzd, .dzd): return true
+      case (.aoa, .aoa): return true
+      case (.ars, .ars): return true
+      case (.amd, .amd): return true
+      case (.awg, .awg): return true
+      case (.aud, .aud): return true
+      case (.bbd, .bbd): return true
+      case (.azn, .azn): return true
+      case (.bdt, .bdt): return true
+      case (.bsd, .bsd): return true
+      case (.bhd, .bhd): return true
+      case (.bif, .bif): return true
+      case (.bzd, .bzd): return true
+      case (.bmd, .bmd): return true
+      case (.btn, .btn): return true
+      case (.bam, .bam): return true
+      case (.brl, .brl): return true
+      case (.bob, .bob): return true
+      case (.bwp, .bwp): return true
+      case (.bnd, .bnd): return true
+      case (.bgn, .bgn): return true
+      case (.mmk, .mmk): return true
+      case (.khr, .khr): return true
+      case (.cve, .cve): return true
+      case (.kyd, .kyd): return true
+      case (.xaf, .xaf): return true
+      case (.clp, .clp): return true
+      case (.cny, .cny): return true
+      case (.cop, .cop): return true
+      case (.kmf, .kmf): return true
+      case (.cdf, .cdf): return true
+      case (.crc, .crc): return true
+      case (.hrk, .hrk): return true
+      case (.czk, .czk): return true
+      case (.dkk, .dkk): return true
+      case (.dop, .dop): return true
+      case (.xcd, .xcd): return true
+      case (.egp, .egp): return true
+      case (.etb, .etb): return true
+      case (.xpf, .xpf): return true
+      case (.fjd, .fjd): return true
+      case (.gmd, .gmd): return true
+      case (.ghs, .ghs): return true
+      case (.gtq, .gtq): return true
+      case (.gyd, .gyd): return true
+      case (.gel, .gel): return true
+      case (.htg, .htg): return true
+      case (.hnl, .hnl): return true
+      case (.hkd, .hkd): return true
+      case (.huf, .huf): return true
+      case (.isk, .isk): return true
+      case (.inr, .inr): return true
+      case (.idr, .idr): return true
+      case (.ils, .ils): return true
+      case (.iqd, .iqd): return true
+      case (.jmd, .jmd): return true
+      case (.jpy, .jpy): return true
+      case (.jep, .jep): return true
+      case (.jod, .jod): return true
+      case (.kzt, .kzt): return true
+      case (.kes, .kes): return true
+      case (.kwd, .kwd): return true
+      case (.kgs, .kgs): return true
+      case (.lak, .lak): return true
+      case (.lvl, .lvl): return true
+      case (.lbp, .lbp): return true
+      case (.lsl, .lsl): return true
+      case (.lrd, .lrd): return true
+      case (.ltl, .ltl): return true
+      case (.mga, .mga): return true
+      case (.mkd, .mkd): return true
+      case (.mop, .mop): return true
+      case (.mwk, .mwk): return true
+      case (.mvr, .mvr): return true
+      case (.mxn, .mxn): return true
+      case (.myr, .myr): return true
+      case (.mur, .mur): return true
+      case (.mdl, .mdl): return true
+      case (.mad, .mad): return true
+      case (.mnt, .mnt): return true
+      case (.mzn, .mzn): return true
+      case (.nad, .nad): return true
+      case (.npr, .npr): return true
+      case (.ang, .ang): return true
+      case (.nzd, .nzd): return true
+      case (.nio, .nio): return true
+      case (.ngn, .ngn): return true
+      case (.nok, .nok): return true
+      case (.omr, .omr): return true
+      case (.pab, .pab): return true
+      case (.pkr, .pkr): return true
+      case (.pgk, .pgk): return true
+      case (.pyg, .pyg): return true
+      case (.pen, .pen): return true
+      case (.php, .php): return true
+      case (.pln, .pln): return true
+      case (.qar, .qar): return true
+      case (.ron, .ron): return true
+      case (.rub, .rub): return true
+      case (.rwf, .rwf): return true
+      case (.wst, .wst): return true
+      case (.sar, .sar): return true
+      case (.rsd, .rsd): return true
+      case (.scr, .scr): return true
+      case (.sgd, .sgd): return true
+      case (.sdg, .sdg): return true
+      case (.syp, .syp): return true
+      case (.zar, .zar): return true
+      case (.krw, .krw): return true
+      case (.ssp, .ssp): return true
+      case (.sbd, .sbd): return true
+      case (.lkr, .lkr): return true
+      case (.srd, .srd): return true
+      case (.szl, .szl): return true
+      case (.sek, .sek): return true
+      case (.chf, .chf): return true
+      case (.twd, .twd): return true
+      case (.thb, .thb): return true
+      case (.tzs, .tzs): return true
+      case (.ttd, .ttd): return true
+      case (.tnd, .tnd): return true
+      case (.try, .try): return true
+      case (.tmt, .tmt): return true
+      case (.ugx, .ugx): return true
+      case (.uah, .uah): return true
+      case (.aed, .aed): return true
+      case (.uyu, .uyu): return true
+      case (.uzs, .uzs): return true
+      case (.vuv, .vuv): return true
+      case (.vnd, .vnd): return true
+      case (.xof, .xof): return true
+      case (.yer, .yer): return true
+      case (.zmw, .zmw): return true
+      case (.byn, .byn): return true
+      case (.byr, .byr): return true
+      case (.djf, .djf): return true
+      case (.ern, .ern): return true
+      case (.fkp, .fkp): return true
+      case (.gip, .gip): return true
+      case (.gnf, .gnf): return true
+      case (.irr, .irr): return true
+      case (.kid, .kid): return true
+      case (.lyd, .lyd): return true
+      case (.mru, .mru): return true
+      case (.sll, .sll): return true
+      case (.shp, .shp): return true
+      case (.sos, .sos): return true
+      case (.std, .std): return true
+      case (.stn, .stn): return true
+      case (.tjs, .tjs): return true
+      case (.top, .top): return true
+      case (.ved, .ved): return true
+      case (.vef, .vef): return true
+      case (.ves, .ves): return true
+      case (.xxx, .xxx): return true
+      case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
+      default: return false
+    }
+  }
+
+  public static var allCases: [CurrencyCode] {
+    return [
+      .usd,
+      .eur,
+      .gbp,
+      .cad,
+      .afn,
+      .all,
+      .dzd,
+      .aoa,
+      .ars,
+      .amd,
+      .awg,
+      .aud,
+      .bbd,
+      .azn,
+      .bdt,
+      .bsd,
+      .bhd,
+      .bif,
+      .bzd,
+      .bmd,
+      .btn,
+      .bam,
+      .brl,
+      .bob,
+      .bwp,
+      .bnd,
+      .bgn,
+      .mmk,
+      .khr,
+      .cve,
+      .kyd,
+      .xaf,
+      .clp,
+      .cny,
+      .cop,
+      .kmf,
+      .cdf,
+      .crc,
+      .hrk,
+      .czk,
+      .dkk,
+      .dop,
+      .xcd,
+      .egp,
+      .etb,
+      .xpf,
+      .fjd,
+      .gmd,
+      .ghs,
+      .gtq,
+      .gyd,
+      .gel,
+      .htg,
+      .hnl,
+      .hkd,
+      .huf,
+      .isk,
+      .inr,
+      .idr,
+      .ils,
+      .iqd,
+      .jmd,
+      .jpy,
+      .jep,
+      .jod,
+      .kzt,
+      .kes,
+      .kwd,
+      .kgs,
+      .lak,
+      .lvl,
+      .lbp,
+      .lsl,
+      .lrd,
+      .ltl,
+      .mga,
+      .mkd,
+      .mop,
+      .mwk,
+      .mvr,
+      .mxn,
+      .myr,
+      .mur,
+      .mdl,
+      .mad,
+      .mnt,
+      .mzn,
+      .nad,
+      .npr,
+      .ang,
+      .nzd,
+      .nio,
+      .ngn,
+      .nok,
+      .omr,
+      .pab,
+      .pkr,
+      .pgk,
+      .pyg,
+      .pen,
+      .php,
+      .pln,
+      .qar,
+      .ron,
+      .rub,
+      .rwf,
+      .wst,
+      .sar,
+      .rsd,
+      .scr,
+      .sgd,
+      .sdg,
+      .syp,
+      .zar,
+      .krw,
+      .ssp,
+      .sbd,
+      .lkr,
+      .srd,
+      .szl,
+      .sek,
+      .chf,
+      .twd,
+      .thb,
+      .tzs,
+      .ttd,
+      .tnd,
+      .try,
+      .tmt,
+      .ugx,
+      .uah,
+      .aed,
+      .uyu,
+      .uzs,
+      .vuv,
+      .vnd,
+      .xof,
+      .yer,
+      .zmw,
+      .byn,
+      .byr,
+      .djf,
+      .ern,
+      .fkp,
+      .gip,
+      .gnf,
+      .irr,
+      .kid,
+      .lyd,
+      .mru,
+      .sll,
+      .shp,
+      .sos,
+      .std,
+      .stn,
+      .tjs,
+      .top,
+      .ved,
+      .vef,
+      .ves,
+      .xxx,
+    ]
+  }
+}
 
 /// The input fields used to create a payment terms.
 public struct PaymentTermsInput: GraphQLMapConvertible {
@@ -3370,6 +4370,239 @@ public struct DraftOrderDeleteInput: GraphQLMapConvertible {
     set {
       graphQLMap.updateValue(newValue, forKey: "id")
     }
+  }
+}
+
+/// Represents the order's current financial status.
+public enum OrderDisplayFinancialStatus: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
+  public typealias RawValue = String
+  /// Displayed as **Pending**.
+  case pending
+  /// Displayed as **Authorized**.
+  case authorized
+  /// Displayed as **Partially paid**.
+  case partiallyPaid
+  /// Displayed as **Partially refunded**.
+  case partiallyRefunded
+  /// Displayed as **Voided**.
+  case voided
+  /// Displayed as **Paid**.
+  case paid
+  /// Displayed as **Refunded**.
+  case refunded
+  /// Displayed as **Expired**.
+  case expired
+  /// Auto generated constant for unknown enum values
+  case __unknown(RawValue)
+
+  public init?(rawValue: RawValue) {
+    switch rawValue {
+      case "PENDING": self = .pending
+      case "AUTHORIZED": self = .authorized
+      case "PARTIALLY_PAID": self = .partiallyPaid
+      case "PARTIALLY_REFUNDED": self = .partiallyRefunded
+      case "VOIDED": self = .voided
+      case "PAID": self = .paid
+      case "REFUNDED": self = .refunded
+      case "EXPIRED": self = .expired
+      default: self = .__unknown(rawValue)
+    }
+  }
+
+  public var rawValue: RawValue {
+    switch self {
+      case .pending: return "PENDING"
+      case .authorized: return "AUTHORIZED"
+      case .partiallyPaid: return "PARTIALLY_PAID"
+      case .partiallyRefunded: return "PARTIALLY_REFUNDED"
+      case .voided: return "VOIDED"
+      case .paid: return "PAID"
+      case .refunded: return "REFUNDED"
+      case .expired: return "EXPIRED"
+      case .__unknown(let value): return value
+    }
+  }
+
+  public static func == (lhs: OrderDisplayFinancialStatus, rhs: OrderDisplayFinancialStatus) -> Bool {
+    switch (lhs, rhs) {
+      case (.pending, .pending): return true
+      case (.authorized, .authorized): return true
+      case (.partiallyPaid, .partiallyPaid): return true
+      case (.partiallyRefunded, .partiallyRefunded): return true
+      case (.voided, .voided): return true
+      case (.paid, .paid): return true
+      case (.refunded, .refunded): return true
+      case (.expired, .expired): return true
+      case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
+      default: return false
+    }
+  }
+
+  public static var allCases: [OrderDisplayFinancialStatus] {
+    return [
+      .pending,
+      .authorized,
+      .partiallyPaid,
+      .partiallyRefunded,
+      .voided,
+      .paid,
+      .refunded,
+      .expired,
+    ]
+  }
+}
+
+/// Represents the order's aggregated fulfillment status for display purposes.
+public enum OrderDisplayFulfillmentStatus: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
+  public typealias RawValue = String
+  /// Displayed as **Unfulfilled**. None of the items in the order have been fulfilled.
+  case unfulfilled
+  /// Displayed as **Partially fulfilled**. Some of the items in the order have been fulfilled.
+  case partiallyFulfilled
+  /// Displayed as **Fulfilled**. All the items in the order have been fulfilled.
+  case fulfilled
+  /// Displayed as **Restocked**. All the items in the order have been restocked. Replaced by the "UNFULFILLED" status.
+  case restocked
+  /// Displayed as **Pending fulfillment**. A request for fulfillment of some items awaits a response from the fulfillment service. Replaced by the "IN_PROGRESS" status.
+  case pendingFulfillment
+  /// Displayed as **Open**. None of the items in the order have been fulfilled. Replaced by "UNFULFILLED" status.
+  case `open`
+  /// Displayed as **In progress**. Some of the items in the order have been fulfilled, or a request for fulfillment has been sent to the fulfillment service.
+  case inProgress
+  /// Displayed as **On hold**. All of the unfulfilled items in this order are on hold.
+  case onHold
+  /// Displayed as **Scheduled**. All of the unfulfilled items in this order are scheduled for fulfillment at later time.
+  case scheduled
+  /// Auto generated constant for unknown enum values
+  case __unknown(RawValue)
+
+  public init?(rawValue: RawValue) {
+    switch rawValue {
+      case "UNFULFILLED": self = .unfulfilled
+      case "PARTIALLY_FULFILLED": self = .partiallyFulfilled
+      case "FULFILLED": self = .fulfilled
+      case "RESTOCKED": self = .restocked
+      case "PENDING_FULFILLMENT": self = .pendingFulfillment
+      case "OPEN": self = .open
+      case "IN_PROGRESS": self = .inProgress
+      case "ON_HOLD": self = .onHold
+      case "SCHEDULED": self = .scheduled
+      default: self = .__unknown(rawValue)
+    }
+  }
+
+  public var rawValue: RawValue {
+    switch self {
+      case .unfulfilled: return "UNFULFILLED"
+      case .partiallyFulfilled: return "PARTIALLY_FULFILLED"
+      case .fulfilled: return "FULFILLED"
+      case .restocked: return "RESTOCKED"
+      case .pendingFulfillment: return "PENDING_FULFILLMENT"
+      case .open: return "OPEN"
+      case .inProgress: return "IN_PROGRESS"
+      case .onHold: return "ON_HOLD"
+      case .scheduled: return "SCHEDULED"
+      case .__unknown(let value): return value
+    }
+  }
+
+  public static func == (lhs: OrderDisplayFulfillmentStatus, rhs: OrderDisplayFulfillmentStatus) -> Bool {
+    switch (lhs, rhs) {
+      case (.unfulfilled, .unfulfilled): return true
+      case (.partiallyFulfilled, .partiallyFulfilled): return true
+      case (.fulfilled, .fulfilled): return true
+      case (.restocked, .restocked): return true
+      case (.pendingFulfillment, .pendingFulfillment): return true
+      case (.open, .open): return true
+      case (.inProgress, .inProgress): return true
+      case (.onHold, .onHold): return true
+      case (.scheduled, .scheduled): return true
+      case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
+      default: return false
+    }
+  }
+
+  public static var allCases: [OrderDisplayFulfillmentStatus] {
+    return [
+      .unfulfilled,
+      .partiallyFulfilled,
+      .fulfilled,
+      .restocked,
+      .pendingFulfillment,
+      .open,
+      .inProgress,
+      .onHold,
+      .scheduled,
+    ]
+  }
+}
+
+/// The order's aggregated return status that's used for display purposes.
+/// An order might have multiple returns, so this field communicates the prioritized return status.
+/// The `OrderReturnStatus` enum is a supported filter parameter in the [`orders` query](https://shopify.dev/api/admin-graphql/latest/queries/orders#:~:text=reference_location_id-,return_status,-risk_level).
+public enum OrderReturnStatus: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
+  public typealias RawValue = String
+  /// Some items in the order are being returned.
+  case inProgress
+  /// All return shipments from a return in this order were inspected.
+  case inspectionComplete
+  /// No items in the order were returned.
+  case noReturn
+  /// Some items in the order were returned.
+  case returned
+  /// Some returns in the order were not completed successfully.
+  case returnFailed
+  /// A return was requested for some items in the order.
+  case returnRequested
+  /// Auto generated constant for unknown enum values
+  case __unknown(RawValue)
+
+  public init?(rawValue: RawValue) {
+    switch rawValue {
+      case "IN_PROGRESS": self = .inProgress
+      case "INSPECTION_COMPLETE": self = .inspectionComplete
+      case "NO_RETURN": self = .noReturn
+      case "RETURNED": self = .returned
+      case "RETURN_FAILED": self = .returnFailed
+      case "RETURN_REQUESTED": self = .returnRequested
+      default: self = .__unknown(rawValue)
+    }
+  }
+
+  public var rawValue: RawValue {
+    switch self {
+      case .inProgress: return "IN_PROGRESS"
+      case .inspectionComplete: return "INSPECTION_COMPLETE"
+      case .noReturn: return "NO_RETURN"
+      case .returned: return "RETURNED"
+      case .returnFailed: return "RETURN_FAILED"
+      case .returnRequested: return "RETURN_REQUESTED"
+      case .__unknown(let value): return value
+    }
+  }
+
+  public static func == (lhs: OrderReturnStatus, rhs: OrderReturnStatus) -> Bool {
+    switch (lhs, rhs) {
+      case (.inProgress, .inProgress): return true
+      case (.inspectionComplete, .inspectionComplete): return true
+      case (.noReturn, .noReturn): return true
+      case (.returned, .returned): return true
+      case (.returnFailed, .returnFailed): return true
+      case (.returnRequested, .returnRequested): return true
+      case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
+      default: return false
+    }
+  }
+
+  public static var allCases: [OrderReturnStatus] {
+    return [
+      .inProgress,
+      .inspectionComplete,
+      .noReturn,
+      .returned,
+      .returnFailed,
+      .returnRequested,
+    ]
   }
 }
 
@@ -6103,6 +7336,575 @@ public final class DraftOrderDeleteMutation: GraphQLMutation {
         }
         set {
           resultMap.updateValue(newValue, forKey: "deletedId")
+        }
+      }
+    }
+  }
+}
+
+public final class GetOrdersQuery: GraphQLQuery {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    query getOrders($first: Int, $query: String) {
+      orders(first: $first, query: $query) {
+        __typename
+        edges {
+          __typename
+          node {
+            __typename
+            id
+            name
+            phone
+            displayFinancialStatus
+            displayFulfillmentStatus
+            returnStatus
+            phone
+            totalPriceSet {
+              __typename
+              presentmentMoney {
+                __typename
+                amount
+                currencyCode
+              }
+              shopMoney {
+                __typename
+                amount
+                currencyCode
+              }
+            }
+            shippingAddress {
+              __typename
+              address1
+              firstName
+              lastName
+              city
+              country
+              zip
+              phone
+              id
+            }
+          }
+        }
+      }
+    }
+    """
+
+  public let operationName: String = "getOrders"
+
+  public var first: Int?
+  public var query: String?
+
+  public init(first: Int? = nil, query: String? = nil) {
+    self.first = first
+    self.query = query
+  }
+
+  public var variables: GraphQLMap? {
+    return ["first": first, "query": query]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["QueryRoot"]
+
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("orders", arguments: ["first": GraphQLVariable("first"), "query": GraphQLVariable("query")], type: .nonNull(.object(Order.selections))),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(orders: Order) {
+      self.init(unsafeResultMap: ["__typename": "QueryRoot", "orders": orders.resultMap])
+    }
+
+    /// Returns a list of orders placed.
+    public var orders: Order {
+      get {
+        return Order(unsafeResultMap: resultMap["orders"]! as! ResultMap)
+      }
+      set {
+        resultMap.updateValue(newValue.resultMap, forKey: "orders")
+      }
+    }
+
+    public struct Order: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["OrderConnection"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("edges", type: .nonNull(.list(.nonNull(.object(Edge.selections))))),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(edges: [Edge]) {
+        self.init(unsafeResultMap: ["__typename": "OrderConnection", "edges": edges.map { (value: Edge) -> ResultMap in value.resultMap }])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      /// A list of edges.
+      public var edges: [Edge] {
+        get {
+          return (resultMap["edges"] as! [ResultMap]).map { (value: ResultMap) -> Edge in Edge(unsafeResultMap: value) }
+        }
+        set {
+          resultMap.updateValue(newValue.map { (value: Edge) -> ResultMap in value.resultMap }, forKey: "edges")
+        }
+      }
+
+      public struct Edge: GraphQLSelectionSet {
+        public static let possibleTypes: [String] = ["OrderEdge"]
+
+        public static var selections: [GraphQLSelection] {
+          return [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("node", type: .nonNull(.object(Node.selections))),
+          ]
+        }
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(node: Node) {
+          self.init(unsafeResultMap: ["__typename": "OrderEdge", "node": node.resultMap])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        /// The item at the end of OrderEdge.
+        public var node: Node {
+          get {
+            return Node(unsafeResultMap: resultMap["node"]! as! ResultMap)
+          }
+          set {
+            resultMap.updateValue(newValue.resultMap, forKey: "node")
+          }
+        }
+
+        public struct Node: GraphQLSelectionSet {
+          public static let possibleTypes: [String] = ["Order"]
+
+          public static var selections: [GraphQLSelection] {
+            return [
+              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+              GraphQLField("name", type: .nonNull(.scalar(String.self))),
+              GraphQLField("phone", type: .scalar(String.self)),
+              GraphQLField("displayFinancialStatus", type: .scalar(OrderDisplayFinancialStatus.self)),
+              GraphQLField("displayFulfillmentStatus", type: .nonNull(.scalar(OrderDisplayFulfillmentStatus.self))),
+              GraphQLField("returnStatus", type: .nonNull(.scalar(OrderReturnStatus.self))),
+              GraphQLField("phone", type: .scalar(String.self)),
+              GraphQLField("totalPriceSet", type: .nonNull(.object(TotalPriceSet.selections))),
+              GraphQLField("shippingAddress", type: .object(ShippingAddress.selections)),
+            ]
+          }
+
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public init(id: GraphQLID, name: String, phone: String? = nil, displayFinancialStatus: OrderDisplayFinancialStatus? = nil, displayFulfillmentStatus: OrderDisplayFulfillmentStatus, returnStatus: OrderReturnStatus, totalPriceSet: TotalPriceSet, shippingAddress: ShippingAddress? = nil) {
+            self.init(unsafeResultMap: ["__typename": "Order", "id": id, "name": name, "phone": phone, "displayFinancialStatus": displayFinancialStatus, "displayFulfillmentStatus": displayFulfillmentStatus, "returnStatus": returnStatus, "totalPriceSet": totalPriceSet.resultMap, "shippingAddress": shippingAddress.flatMap { (value: ShippingAddress) -> ResultMap in value.resultMap }])
+          }
+
+          public var __typename: String {
+            get {
+              return resultMap["__typename"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          /// A globally-unique ID.
+          public var id: GraphQLID {
+            get {
+              return resultMap["id"]! as! GraphQLID
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "id")
+            }
+          }
+
+          /// The unique identifier for the order that appears on the order page in the Shopify admin and the order status page.
+          /// For example, "#1001", "EN1001", or "1001-A".
+          /// This value isn't unique across multiple stores.
+          public var name: String {
+            get {
+              return resultMap["name"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "name")
+            }
+          }
+
+          /// The phone number associated with the customer.
+          public var phone: String? {
+            get {
+              return resultMap["phone"] as? String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "phone")
+            }
+          }
+
+          /// The financial status of the order that can be shown to the merchant.
+          /// This field does not capture all the details of an order's financial state. It should only be used for display summary purposes.
+          public var displayFinancialStatus: OrderDisplayFinancialStatus? {
+            get {
+              return resultMap["displayFinancialStatus"] as? OrderDisplayFinancialStatus
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "displayFinancialStatus")
+            }
+          }
+
+          /// The fulfillment status for the order that can be shown to the merchant.
+          /// This field does not capture all the details of an order's fulfillment state. It should only be used for display summary purposes.
+          /// For a more granular view of the fulfillment status, refer to the [FulfillmentOrder](https://shopify.dev/api/admin-graphql/latest/objects/FulfillmentOrder) object.
+          public var displayFulfillmentStatus: OrderDisplayFulfillmentStatus {
+            get {
+              return resultMap["displayFulfillmentStatus"]! as! OrderDisplayFulfillmentStatus
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "displayFulfillmentStatus")
+            }
+          }
+
+          /// The order's aggregated return status for display purposes.
+          public var returnStatus: OrderReturnStatus {
+            get {
+              return resultMap["returnStatus"]! as! OrderReturnStatus
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "returnStatus")
+            }
+          }
+
+          /// The total price of the order, before returns, in shop and presentment currencies.
+          /// This includes taxes and discounts.
+          public var totalPriceSet: TotalPriceSet {
+            get {
+              return TotalPriceSet(unsafeResultMap: resultMap["totalPriceSet"]! as! ResultMap)
+            }
+            set {
+              resultMap.updateValue(newValue.resultMap, forKey: "totalPriceSet")
+            }
+          }
+
+          /// The mailing address of the customer.
+          public var shippingAddress: ShippingAddress? {
+            get {
+              return (resultMap["shippingAddress"] as? ResultMap).flatMap { ShippingAddress(unsafeResultMap: $0) }
+            }
+            set {
+              resultMap.updateValue(newValue?.resultMap, forKey: "shippingAddress")
+            }
+          }
+
+          public struct TotalPriceSet: GraphQLSelectionSet {
+            public static let possibleTypes: [String] = ["MoneyBag"]
+
+            public static var selections: [GraphQLSelection] {
+              return [
+                GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+                GraphQLField("presentmentMoney", type: .nonNull(.object(PresentmentMoney.selections))),
+                GraphQLField("shopMoney", type: .nonNull(.object(ShopMoney.selections))),
+              ]
+            }
+
+            public private(set) var resultMap: ResultMap
+
+            public init(unsafeResultMap: ResultMap) {
+              self.resultMap = unsafeResultMap
+            }
+
+            public init(presentmentMoney: PresentmentMoney, shopMoney: ShopMoney) {
+              self.init(unsafeResultMap: ["__typename": "MoneyBag", "presentmentMoney": presentmentMoney.resultMap, "shopMoney": shopMoney.resultMap])
+            }
+
+            public var __typename: String {
+              get {
+                return resultMap["__typename"]! as! String
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "__typename")
+              }
+            }
+
+            /// Amount in presentment currency.
+            public var presentmentMoney: PresentmentMoney {
+              get {
+                return PresentmentMoney(unsafeResultMap: resultMap["presentmentMoney"]! as! ResultMap)
+              }
+              set {
+                resultMap.updateValue(newValue.resultMap, forKey: "presentmentMoney")
+              }
+            }
+
+            /// Amount in shop currency.
+            public var shopMoney: ShopMoney {
+              get {
+                return ShopMoney(unsafeResultMap: resultMap["shopMoney"]! as! ResultMap)
+              }
+              set {
+                resultMap.updateValue(newValue.resultMap, forKey: "shopMoney")
+              }
+            }
+
+            public struct PresentmentMoney: GraphQLSelectionSet {
+              public static let possibleTypes: [String] = ["MoneyV2"]
+
+              public static var selections: [GraphQLSelection] {
+                return [
+                  GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+                  GraphQLField("amount", type: .nonNull(.scalar(String.self))),
+                  GraphQLField("currencyCode", type: .nonNull(.scalar(CurrencyCode.self))),
+                ]
+              }
+
+              public private(set) var resultMap: ResultMap
+
+              public init(unsafeResultMap: ResultMap) {
+                self.resultMap = unsafeResultMap
+              }
+
+              public init(amount: String, currencyCode: CurrencyCode) {
+                self.init(unsafeResultMap: ["__typename": "MoneyV2", "amount": amount, "currencyCode": currencyCode])
+              }
+
+              public var __typename: String {
+                get {
+                  return resultMap["__typename"]! as! String
+                }
+                set {
+                  resultMap.updateValue(newValue, forKey: "__typename")
+                }
+              }
+
+              /// Decimal money amount.
+              public var amount: String {
+                get {
+                  return resultMap["amount"]! as! String
+                }
+                set {
+                  resultMap.updateValue(newValue, forKey: "amount")
+                }
+              }
+
+              /// Currency of the money.
+              public var currencyCode: CurrencyCode {
+                get {
+                  return resultMap["currencyCode"]! as! CurrencyCode
+                }
+                set {
+                  resultMap.updateValue(newValue, forKey: "currencyCode")
+                }
+              }
+            }
+
+            public struct ShopMoney: GraphQLSelectionSet {
+              public static let possibleTypes: [String] = ["MoneyV2"]
+
+              public static var selections: [GraphQLSelection] {
+                return [
+                  GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+                  GraphQLField("amount", type: .nonNull(.scalar(String.self))),
+                  GraphQLField("currencyCode", type: .nonNull(.scalar(CurrencyCode.self))),
+                ]
+              }
+
+              public private(set) var resultMap: ResultMap
+
+              public init(unsafeResultMap: ResultMap) {
+                self.resultMap = unsafeResultMap
+              }
+
+              public init(amount: String, currencyCode: CurrencyCode) {
+                self.init(unsafeResultMap: ["__typename": "MoneyV2", "amount": amount, "currencyCode": currencyCode])
+              }
+
+              public var __typename: String {
+                get {
+                  return resultMap["__typename"]! as! String
+                }
+                set {
+                  resultMap.updateValue(newValue, forKey: "__typename")
+                }
+              }
+
+              /// Decimal money amount.
+              public var amount: String {
+                get {
+                  return resultMap["amount"]! as! String
+                }
+                set {
+                  resultMap.updateValue(newValue, forKey: "amount")
+                }
+              }
+
+              /// Currency of the money.
+              public var currencyCode: CurrencyCode {
+                get {
+                  return resultMap["currencyCode"]! as! CurrencyCode
+                }
+                set {
+                  resultMap.updateValue(newValue, forKey: "currencyCode")
+                }
+              }
+            }
+          }
+
+          public struct ShippingAddress: GraphQLSelectionSet {
+            public static let possibleTypes: [String] = ["MailingAddress"]
+
+            public static var selections: [GraphQLSelection] {
+              return [
+                GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+                GraphQLField("address1", type: .scalar(String.self)),
+                GraphQLField("firstName", type: .scalar(String.self)),
+                GraphQLField("lastName", type: .scalar(String.self)),
+                GraphQLField("city", type: .scalar(String.self)),
+                GraphQLField("country", type: .scalar(String.self)),
+                GraphQLField("zip", type: .scalar(String.self)),
+                GraphQLField("phone", type: .scalar(String.self)),
+                GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+              ]
+            }
+
+            public private(set) var resultMap: ResultMap
+
+            public init(unsafeResultMap: ResultMap) {
+              self.resultMap = unsafeResultMap
+            }
+
+            public init(address1: String? = nil, firstName: String? = nil, lastName: String? = nil, city: String? = nil, country: String? = nil, zip: String? = nil, phone: String? = nil, id: GraphQLID) {
+              self.init(unsafeResultMap: ["__typename": "MailingAddress", "address1": address1, "firstName": firstName, "lastName": lastName, "city": city, "country": country, "zip": zip, "phone": phone, "id": id])
+            }
+
+            public var __typename: String {
+              get {
+                return resultMap["__typename"]! as! String
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "__typename")
+              }
+            }
+
+            /// The first line of the address. Typically the street address or PO Box number.
+            public var address1: String? {
+              get {
+                return resultMap["address1"] as? String
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "address1")
+              }
+            }
+
+            /// The first name of the customer.
+            public var firstName: String? {
+              get {
+                return resultMap["firstName"] as? String
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "firstName")
+              }
+            }
+
+            /// The last name of the customer.
+            public var lastName: String? {
+              get {
+                return resultMap["lastName"] as? String
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "lastName")
+              }
+            }
+
+            /// The name of the city, district, village, or town.
+            public var city: String? {
+              get {
+                return resultMap["city"] as? String
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "city")
+              }
+            }
+
+            /// The name of the country.
+            public var country: String? {
+              get {
+                return resultMap["country"] as? String
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "country")
+              }
+            }
+
+            /// The zip or postal code of the address.
+            public var zip: String? {
+              get {
+                return resultMap["zip"] as? String
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "zip")
+              }
+            }
+
+            /// A unique phone number for the customer.
+            /// 
+            /// Formatted using E.164 standard. For example, _+16135551111_.
+            public var phone: String? {
+              get {
+                return resultMap["phone"] as? String
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "phone")
+              }
+            }
+
+            /// A globally-unique ID.
+            public var id: GraphQLID {
+              get {
+                return resultMap["id"]! as! GraphQLID
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "id")
+              }
+            }
+          }
         }
       }
     }

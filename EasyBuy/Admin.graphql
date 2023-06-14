@@ -162,3 +162,38 @@ mutation draftOrderDelete($input: DraftOrderDeleteInput!) {
     deletedId
   }
 }
+query getOrders($first: Int , $query: String){
+  orders(first: $first,query: $query) {
+    edges {
+      node {
+        id
+        name
+        phone
+        displayFinancialStatus
+        displayFulfillmentStatus
+        returnStatus
+        phone
+      totalPriceSet{
+          presentmentMoney{
+              amount
+              currencyCode
+          }
+          shopMoney{
+              amount
+              currencyCode
+          }
+      }
+      shippingAddress{
+          address1
+          firstName
+          lastName
+          city
+          country
+          zip
+          phone
+          id
+      }
+      }
+    }
+  }
+}
