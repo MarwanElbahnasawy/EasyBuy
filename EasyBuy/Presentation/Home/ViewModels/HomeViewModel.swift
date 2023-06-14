@@ -12,7 +12,7 @@ import Foundation
 class HomeViewModel: ObservableObject {
     @Published var brands: [Brand]?
     @Published var items: [Product]?
-    @Published var lottieFile = "loading"
+    @Published var iserror: Bool = false
     @Published var isLoading: Bool = true
     var rates: [String: Double]?
     
@@ -44,7 +44,7 @@ class HomeViewModel: ObservableObject {
                                 }
                             case .failure(let failure):
                                 print(failure)
-                                self.lottieFile = "error"
+                                self.iserror = true
                             }
                         })
     }
