@@ -12,6 +12,7 @@ class FavoriteListViewModel : ObservableObject {
     @Published var products: [LinesItemNode]?
     @Published var draftOrderID: String?
     @Published var customerDiscountCodes: CustomerDiscountCodes?
+    var draftOrderDataClass: DraftOrderDataClass?
     
     func getFavoriteProducts() {
         FireBaseManager.shared.retriveCustomerDiscountCodes()?.getDocument(completion: {[weak self] snapshot, error in
@@ -31,6 +32,7 @@ class FavoriteListViewModel : ObservableObject {
             self?.draftOrderID = objFireBase?.draftOrders?.favoriteDraftorder?.draftOrderCreate?.draftOrder?.id ?? ""
             self?.customerDiscountCodes = objFireBase ?? CustomerDiscountCodes()
             self?.getDraftOrders(id: self?.draftOrderID ?? "")
+            self?.draftOrderDataClass = objFireBase?.draftOrders?.cartDraftOrder
         })
     }
     
@@ -87,7 +89,8 @@ class FavoriteListViewModel : ObservableObject {
                                     draftOrderCreate: DraftOrderCreate(
                                         draftOrder: success.draftOrderUpdate?.draftOrder
                                     )
-                                )
+                                ),
+                                cartDraftOrder: self?.draftOrderDataClass
                             )
                         )
                     )

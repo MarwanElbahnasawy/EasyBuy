@@ -45,6 +45,8 @@ class ProductViewModel: ObservableObject {
             
             let objFireBase = FireBaseManager.shared.mapFireBaseObject(data: data)
             self?.cart = objFireBase?.draftOrders?.cartDraftOrder
+            self?.favorite = objFireBase?.draftOrders?.favoriteDraftorder
+            
             if self?.cart == nil{
                 self?.createDraftOrder(discountCodes: objFireBase?.discountCodes ?? [])
             }
@@ -90,7 +92,7 @@ class ProductViewModel: ObservableObject {
             switch result {
             case .success(let success):
                 self?.cart = success
-                FireBaseManager.shared.saveCustomerDiscountCodes(customerDiscountCodes: CustomerDiscountCodes(id: self?.customerID,discountCodes: discountCodes, draftOrders: DraftOrders(cartDraftOrder: success)))
+                FireBaseManager.shared.saveCustomerDiscountCodes(customerDiscountCodes: CustomerDiscountCodes(id: self?.customerID,discountCodes: discountCodes, draftOrders: DraftOrders(favoriteDraftorder: self?.favorite, cartDraftOrder: success)))
             case .failure(let failure):
                 print(failure)
             }
@@ -101,7 +103,7 @@ class ProductViewModel: ObservableObject {
         NetworkManager.getInstance(requestType: .admin).performGraphQLRequest(mutation: DraftOrderUpdateMutation(id: id, input: draftOrderInput), responseModel: UpdateDraftOrderDataClass.self) { res in
             switch res {
             case .success(let success):
-                FireBaseManager.shared.saveCustomerDiscountCodes(customerDiscountCodes: CustomerDiscountCodes(id: customerDiscountCodes.id,discountCodes: customerDiscountCodes.discountCodes,draftOrders: DraftOrders(cartDraftOrder: DraftOrderDataClass(draftOrderCreate: DraftOrderCreate(draftOrder: success.draftOrderUpdate?.draftOrder)))))
+                FireBaseManager.shared.saveCustomerDiscountCodes(customerDiscountCodes: CustomerDiscountCodes(id: customerDiscountCodes.id,discountCodes: customerDiscountCodes.discountCodes,draftOrders: DraftOrders(favoriteDraftorder: self.favorite, cartDraftOrder: DraftOrderDataClass(draftOrderCreate: DraftOrderCreate(draftOrder: success.draftOrderUpdate?.draftOrder)))))
             case .failure(let failure):
                 print(failure)
             }
@@ -127,6 +129,8 @@ class ProductViewModel: ObservableObject {
             
             let objFireBase = FireBaseManager.shared.mapFireBaseObject(data: data)
             self?.favorite = objFireBase?.draftOrders?.favoriteDraftorder
+            self?.cart = objFireBase?.draftOrders?.cartDraftOrder
+            
             if self?.favorite == nil{
                 self?.createFavoriteDraftOrder(discountCodes: objFireBase?.discountCodes ?? [])
             }
@@ -151,7 +155,7 @@ class ProductViewModel: ObservableObject {
                                     variantId:  self?.varaintID
                                 ))
                                 print("products in lines items id \(String(describing: lineItems))")
-                                self?.updateFavoriteDraftOrder(
+                                self?.updateFvoriteDraftOrder (
                                     id: objFireBase?.draftOrders?.favoriteDraftorder?.draftOrderCreate?.draftOrder?.id ?? "",
                                     draftOrderInput: DraftOrderInput(
                                         lineItems: lineItems),
@@ -168,64 +172,60 @@ class ProductViewModel: ObservableObject {
         })
     }
     
-//    func createFavoriteDraftOrder(discountCodes: [String]) {
-//        let linesItems = DraftOrderInput(
-//            email: email,
-//            lineItems: [DraftOrderLineItemInput(quantity: 1,variantId: varaintID)]
-//        )
-//
-//        NetworkManager.getInstance(requestType: .admin).performGraphQLRequest(
-//            mutation: DraftOrderCreateMutation(input: linesItems),
-//            responseModel: DraftOrderDataClass.self
-//        ) {[weak self] result in
-//            print(result)
-//            switch result {
-//            case .success(let success):
-//                self?.favorite = success
-//                FireBaseManager.shared.saveCustomerDiscountCodes(
-//                    customerDiscountCodes: CustomerDiscountCodes(
-//                        id: self?.customerID,
-//                        discountCodes: discountCodes,
-//                        draftOrders: DraftOrders(
-//                            favoriteDraftorder: success
-//                        )
-//                    )
-//                )
-//            case .failure(let failure):
-//                print(failure)
-//            }
-//        }
-//    }
-    
     func createFavoriteDraftOrder(discountCodes: [String]) {
-        let lineItems = [DraftOrderLineItemInput(quantity: 1, variantId: varaintID)]
+        let linesItems = DraftOrderInput(
+            email: email,
+            lineItems: [DraftOrderLineItemInput(quantity: 1,variantId: varaintID)]
+        )
         
         NetworkManager.getInstance(requestType: .admin).performGraphQLRequest(
-            mutation: DraftOrderCreateMutation(input: DraftOrderInput(email: email, lineItems: lineItems)),
+            mutation: DraftOrderCreateMutation(input: linesItems),
             responseModel: DraftOrderDataClass.self
         ) { [weak self] result in
             print(result)
             switch result {
             case .success(let success):
-//                if let existingCartDraftOrder = self?.cart?.draftOrderCreate?.draftOrder {
-//                    existingCartDraftOrder.lineItems.append(contentsOf: success.draftOrderCreate?.draftOrder.lineItems ?? [])
-//                } else {
-//                    self?.cart = success
-//                }
-                
-                if let customerID = self?.customerID {
-                    let draftOrders = DraftOrders(
-                        favoriteDraftorder: success,
-                        cartDraftOrder: self?.cart
-                    )
-                    FireBaseManager.shared.saveCustomerDiscountCodes(
-                        customerDiscountCodes: CustomerDiscountCodes(
-                            id: customerID,
-                            discountCodes: discountCodes,
-                            draftOrders: draftOrders
+                self?.favorite = success
+                FireBaseManager.shared.saveCustomerDiscountCodes(
+                    customerDiscountCodes: CustomerDiscountCodes(
+                        id: self?.customerID,
+                        discountCodes: discountCodes,
+                        draftOrders: DraftOrders(
+                            favoriteDraftorder: success,
+                            cartDraftOrder: self?.cart
                         )
                     )
-                }
+                )
+            case .failure(let failure):
+                print(failure)
+            }
+        }
+        
+    }
+    
+    func updateFvoriteDraftOrder(id: String, draftOrderInput: DraftOrderInput, customerDiscountCodes: CustomerDiscountCodes){
+        NetworkManager.getInstance(requestType: .admin).performGraphQLRequest(
+            mutation: DraftOrderUpdateMutation(
+                id: id,
+                input: draftOrderInput),
+            responseModel: UpdateDraftOrderDataClass.self)
+        { res in
+            switch res {
+            case .success(let success):
+                FireBaseManager.shared.saveCustomerDiscountCodes(
+                    customerDiscountCodes: CustomerDiscountCodes(
+                        id: customerDiscountCodes.id,
+                        discountCodes: customerDiscountCodes.discountCodes,
+                        draftOrders: DraftOrders(
+                            favoriteDraftorder: DraftOrderDataClass(
+                                draftOrderCreate: DraftOrderCreate(
+                                    draftOrder: success.draftOrderUpdate?.draftOrder
+                                )
+                            ),
+                            cartDraftOrder: self.cart
+                        )
+                    )
+                )
             case .failure(let failure):
                 print(failure)
             }
@@ -233,55 +233,45 @@ class ProductViewModel: ObservableObject {
     }
     
 //    func updateFavoriteDraftOrder(id: String, draftOrderInput: DraftOrderInput, customerDiscountCodes: CustomerDiscountCodes) {
-//        NetworkManager.getInstance(requestType: .admin).performGraphQLRequest(mutation: DraftOrderUpdateMutation(id: id, input: draftOrderInput), responseModel: UpdateDraftOrderDataClass.self) { res in
-//            switch res {
-//            case .success(let success):
-//                FireBaseManager.shared.saveCustomerDiscountCodes(
-//                    customerDiscountCodes: CustomerDiscountCodes(
-//                        id: customerDiscountCodes.id,
-//                        discountCodes: customerDiscountCodes.discountCodes,
-//                        draftOrders: DraftOrders(
-//                            favoriteDraftorder: DraftOrderDataClass(
-//                                draftOrderCreate: DraftOrderCreate(draftOrder: success.draftOrderUpdate?.draftOrder)
+//        FireBaseManager.shared.retriveCustomerDiscountCodes()?.getDocument(completion: { [weak self] snapshot, error in
+//            if let error = error {
+//                print("Failed to fetch current user:", error)
+//                return
+//            }
+//            guard let data = snapshot?.data() else {
+//                print("no data found")
+//                self?.createFavoriteDraftOrder(discountCodes: [])
+//                return
+//            }
+//            let objFireBase = FireBaseManager.shared.mapFireBaseObject(data: data)
+//            if let cartDraftOrder = objFireBase?.draftOrders?.cartDraftOrder {
+//                let updatedDraftOrders = DraftOrders(favoriteDraftorder: self?.favorite, cartDraftOrder: cartDraftOrder)
+//                let customerDiscountCodes = CustomerDiscountCodes(
+//                    id: customerDiscountCodes.id,
+//                    discountCodes: customerDiscountCodes.discountCodes,
+//                    draftOrders: updatedDraftOrders
+//                )
+//                FireBaseManager.shared.saveCustomerDiscountCodes(customerDiscountCodes: customerDiscountCodes)
+//            } else {
+//                NetworkManager.getInstance(requestType: .admin).performGraphQLRequest(mutation: DraftOrderUpdateMutation(id: id, input: draftOrderInput), responseModel: UpdateDraftOrderDataClass.self) { res in
+//                    switch res {
+//                    case .success(let success):
+//                        FireBaseManager.shared.saveCustomerDiscountCodes(
+//                            customerDiscountCodes: CustomerDiscountCodes(
+//                                id: customerDiscountCodes.id,
+//                                discountCodes: customerDiscountCodes.discountCodes,
+//                                draftOrders: DraftOrders(
+//                                    favoriteDraftorder: DraftOrderDataClass(
+//                                        draftOrderCreate: DraftOrderCreate(draftOrder: success.draftOrderUpdate?.draftOrder)
+//                                    )
+//                                )
 //                            )
 //                        )
-//                    )
-//                )
-//            case .failure(let failure):
-//                print(failure)
-//            }
-//        }
-//    }
-    
-    func updateFavoriteDraftOrder(id: String, draftOrderInput: DraftOrderInput, customerDiscountCodes: CustomerDiscountCodes) {
-        NetworkManager.getInstance(requestType: .admin).performGraphQLRequest(
-            mutation: DraftOrderUpdateMutation(id: id, input: draftOrderInput),
-            responseModel: UpdateDraftOrderDataClass.self
-        ) { [weak self] res in
-            switch res {
-            case .success(let success):
-//                if let existingCartDraftOrder = self?.cart?.draftOrderCreate?.draftOrder {
-//                    existingCartDraftOrder.lineItems.append(contentsOf: success.draftOrderUpdate?.draftOrder.lineItems ?? [])
-//                } else {
-//                    self?.cart?.draftOrderCreate?.draftOrder = success.draftOrderUpdate?.draftOrder
+//                    case .failure(let failure):
+//                        print(failure)
+//                    }
 //                }
-                
-                if let customerID = self?.customerID {
-                    let draftOrders = DraftOrders(
-                        favoriteDraftorder: DraftOrderDataClass(draftOrderCreate: DraftOrderCreate(draftOrder: success.draftOrderUpdate?.draftOrder)),
-                        cartDraftOrder: self?.cart
-                    )
-                    FireBaseManager.shared.saveCustomerDiscountCodes(
-                        customerDiscountCodes: CustomerDiscountCodes(
-                            id: customerID,
-                            discountCodes: customerDiscountCodes.discountCodes,
-                            draftOrders: draftOrders
-                        )
-                    )
-                }
-            case .failure(let failure):
-                print(failure)
-            }
-        }
-    }
+//            }
+//        })
+//    }
 }
