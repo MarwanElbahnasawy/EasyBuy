@@ -8,8 +8,6 @@
 import Foundation
 class OrdersViewModel: ObservableObject  {
     let resOrder : ResOrder = Bundle.main.decode("orders.json")
-    @Published var iserror: Bool = false
-    @Published var isLoading: Bool = true
     @Published var orders : [Order] = []
     @Published var successOrders : [Order] = []
     @Published var processingOrders : [Order] = []
@@ -20,7 +18,6 @@ class OrdersViewModel: ObservableObject  {
     }
     
     func fetchProducts(){
-        isLoading = false
         self.orders = resOrder.orders
         setOrdderLine(orders: self.orders)
         filterOrdder(orders: self.orders)

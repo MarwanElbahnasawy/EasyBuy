@@ -7,8 +7,7 @@
 
 import Foundation
 class BrandViewModel: ObservableObject {
-    @Published var isLoading: Bool = true
-    @Published var iserror: Bool = false
+    @Published var isLoading: Bool = false
     @Published var items: [Product]?
     var id : String?
     var brand : String?
@@ -23,15 +22,13 @@ class BrandViewModel: ObservableObject {
     
     func fetchBrand(){
         
-        NetworkManager.getInstance(requestType: .storeFront).queryGraphQLRequest(query:CollectionProductsQuery(handle: id,first: 100, imageFirst: 5,variantsFirst: 5), responseModel: ResCollectionHandle.self, completion: { [weak self] result in
-            guard let self = self else { return }
+        NetworkManager.getInstance(requestType: .storeFront).queryGraphQLRequest(query:CollectionProductsQuery(handle: id,first: 100, imageFirst: 5,variantsFirst: 5), responseModel: ResCollectionHandle.self, completion: { result in
                             switch result {
                             case .success(let success):
                                 self.items = success.collection?.products?.nodes
                                 self.isLoading = false
                             case .failure(let failure):
                                 print(failure)
-                                self.iserror = true
                             }
                         })
     }

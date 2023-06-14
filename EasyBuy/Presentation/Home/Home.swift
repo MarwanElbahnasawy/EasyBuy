@@ -50,16 +50,14 @@ struct Home: View {
     // MARK: - BODY
     
     var body: some View {
-        @State var iserror = viewModel.iserror
+        
         ZStack {
             if(viewModel.isLoading){
-                if iserror{
-                    LottieView(lottieFile: "error")
-                }else{
-                    LottieView(lottieFile: "loading")
+                VStack(spacing: 0) {
+                    LottieView(lottieFile: viewModel.lottieFile)
+                        .frame(width: 300, height: 300)
                 }
-                    
-    
+                
             }else{
                 VStack(spacing: 0) {
                     HStack{

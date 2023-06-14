@@ -13,13 +13,11 @@ struct Category: View {
     @State private var isModalPresented: Bool = false
     @State var isGrid = false
     var body: some View {
-        @State var iserror = viewModel.iserror
         NavigationView{
             if(viewModel.isLoading){
-                if iserror{
-                    LottieView(lottieFile: "error")
-                }else{
-                    LottieView(lottieFile: "loading")
+                VStack(spacing: 0) {
+                    LottieView(lottieFile: viewModel.lottieFile)
+                        .frame(width: 300, height: 300)
                 }
             }else{
                 VStack {
