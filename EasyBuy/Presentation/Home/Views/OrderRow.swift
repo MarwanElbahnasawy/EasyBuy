@@ -22,19 +22,18 @@ struct OrderRow: View {
                         .foregroundColor(.gray)
                 }.padding([.top], 2)
                 HStack() {
-
-                    Spacer()
-                }.padding([.top], 2)
-                HStack {
                     Text("Address:")
                     let token = "\(order.shippingAddress?.address1 ?? "shipping Address")"
                     Text(token)
                         .foregroundColor(.gray)
                     Spacer()
+                }.padding([.top], 2)
+                HStack {
                     Text("Total Amount:")
                     let price = "\(order.totalPriceSet?.shopMoney?.amount ?? "199") \(order.totalPriceSet?.shopMoney?.currencyCode ?? "")"
                     Text(price)
                         .foregroundColor(.gray)
+                    Spacer()
                 }.padding([.top], 2)
                 HStack{
                     if self.selectorIndex == 0 {
@@ -59,7 +58,6 @@ struct OrderRow: View {
                 .cornerRadius(25)
                
         }
-        .padding(.horizontal,10)
         .font(.footnote)
 
     }

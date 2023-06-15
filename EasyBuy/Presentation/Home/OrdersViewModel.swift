@@ -8,7 +8,7 @@
 import Foundation
 class OrdersViewModel: ObservableObject  {
     @Published var iserror: Bool = false
-    @Published var isLoading: Bool = false
+    @Published var isLoading: Bool = true
     @Published var orders : [Order] = []
     @Published var successOrders : [Order] = []
     @Published var processingOrders : [Order] = []

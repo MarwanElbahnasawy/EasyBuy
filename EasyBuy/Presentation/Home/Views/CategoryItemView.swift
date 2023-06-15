@@ -24,13 +24,13 @@ struct CategoryItemView: View {
 
           Text(brand.title?.uppercased() ?? "brand")
           .fontWeight(.light)
-          .foregroundColor(.gray)
+          .foregroundColor(Color("myblack"))
 
 
         Spacer()
       } //: HSTACK
       .padding()
-      .background(Color.white.cornerRadius(12))
+      .background(Color("mywhite").cornerRadius(12))
       .background(
         RoundedRectangle(cornerRadius: 12)
           .stroke(Color.gray, lineWidth: 1)
