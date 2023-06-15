@@ -10,6 +10,7 @@ import SwiftUI
 struct DescriptionView: View {
     let product: DataClass?
     let viewModel: ProductViewModel?
+    
     init(for product: DataClass?,viewModel: ProductViewModel) {
         self.product = product
         self.viewModel = viewModel
@@ -17,7 +18,9 @@ struct DescriptionView: View {
     
     var body: some View {
         VStack (alignment: .leading) {
-            ProductTitleView(title: product?.product?.title ?? "", productType: product?.product?.productType ?? "")
+            ProductTitleView(title: product?.product?.title ?? "", productType: product?.product?.productType ?? "") {
+                viewModel?.getFavoriteDraftOrder()
+            }
             
             RatingView(rating: 3.2)
             

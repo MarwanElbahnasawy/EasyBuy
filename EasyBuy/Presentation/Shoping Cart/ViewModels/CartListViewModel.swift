@@ -11,6 +11,7 @@ class CartListViewModel: ObservableObject{
     @Published var products: [LinesItemNode]?
     @Published var draftOrderID: String?
     @Published var customerDiscountCodes: CustomerDiscountCodes?
+    var draftOrderDataClass: DraftOrderDataClass?
     
     func getCartItems(){
         FireBaseManager.shared.retriveCustomerDiscountCodes()?.getDocument(completion: {[weak self] snapshot, error in
@@ -29,7 +30,7 @@ class CartListViewModel: ObservableObject{
             self?.draftOrderID = objFireBase?.draftOrders?.cartDraftOrder?.draftOrderCreate?.draftOrder?.id ?? ""
             self?.customerDiscountCodes = objFireBase ?? CustomerDiscountCodes()
             self?.getDraftOrders(id: self?.draftOrderID ?? "")
-            
+            self?.draftOrderDataClass = objFireBase?.draftOrders?.favoriteDraftorder
         })
     }
     
@@ -64,7 +65,7 @@ class CartListViewModel: ObservableObject{
                 case .success(let success):
                     FireBaseManager.shared.saveCustomerDiscountCodes(customerDiscountCodes: CustomerDiscountCodes(id: self?.customerDiscountCodes?.id,
                                                                                                                   discountCodes: self?.customerDiscountCodes?.discountCodes
-                                                                                                                  ,                                draftOrders: DraftOrders(cartDraftOrder: DraftOrderDataClass(draftOrderCreate: DraftOrderCreate(draftOrder: success.draftOrderUpdate?.draftOrder)))))
+                                                                                                                  ,                                draftOrders: DraftOrders(favoriteDraftorder: self?.draftOrderDataClass, cartDraftOrder: DraftOrderDataClass(draftOrderCreate: DraftOrderCreate(draftOrder: success.draftOrderUpdate?.draftOrder)))))
                 case .failure(let failure):
                     print(failure)
                 }

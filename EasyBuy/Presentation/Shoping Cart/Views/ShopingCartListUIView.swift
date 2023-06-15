@@ -37,10 +37,3 @@ struct ShopingCartListUIView: View {
       
     }
 }
-
-struct ShopingCartListUIView_Previews: PreviewProvider {
-    static var previews: some View {
-        ShopingCartListUIView(shopingCartViewModel: CartListViewModel())
-    }
-}
-
