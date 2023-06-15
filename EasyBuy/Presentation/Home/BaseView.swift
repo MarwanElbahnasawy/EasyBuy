@@ -22,7 +22,7 @@ struct BaseView: View {
                     .background(Color.black.opacity(0.04))
                     .tag(Tab.Category)
                 
-                OrdersView()
+                AddressPage()
                     .tag(Tab.Heart)
                 ProfileView()
                     .environmentObject(baseData)
@@ -53,7 +53,7 @@ struct BaseView: View {
                                 .frame(width: 26, height: 26)
                                 .offset(x: -1)
                                 .padding(18)
-                                .foregroundColor(Color.red)
+                                .foregroundColor(Color("myWhite"))
                                 .background(Color("Btnbg"))
                                 .clipShape(Circle())
                             //MAR: - BUTTON SHADOWS
@@ -68,7 +68,7 @@ struct BaseView: View {
                     }
                 }
                     .background(
-                        Color.white
+                        Color("myWhite")
                             .clipShape(CustomCurveShape())
                         //MARK: - SHADOW
                             .shadow(color: Color.black.opacity(0.04), radius: 5, x: -5, y: -5)

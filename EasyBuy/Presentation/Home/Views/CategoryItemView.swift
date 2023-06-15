@@ -30,7 +30,7 @@ struct CategoryItemView: View {
         Spacer()
       } //: HSTACK
       .padding()
-      .background(Color("mywhite").cornerRadius(12))
+      .background(Color("myWhite").cornerRadius(12))
       .background(
         RoundedRectangle(cornerRadius: 12)
           .stroke(Color.gray, lineWidth: 1)

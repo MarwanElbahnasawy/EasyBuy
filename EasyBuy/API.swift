@@ -4,8 +4,7 @@
 import Apollo
 import Foundation
 
-/// The three-letter currency codes that represent the world currencies used in stores. These include standard ISO 4217 codes, legacy codes,
-/// and non-standard codes.
+
 
 /// The input fields to create a new customer.
 public struct CustomerCreateInput: GraphQLMapConvertible {
@@ -16,7 +15,7 @@ public struct CustomerCreateInput: GraphQLMapConvertible {
   ///   - lastName: The customer’s last name.
   ///   - email: The customer’s email.
   ///   - phone: A unique phone number for the customer.
-  ///
+  /// 
   /// Formatted using E.164 standard. For example, _+16135551111_.
   ///   - password: The login password used by the customer.
   ///   - acceptsMarketing: Indicates whether the customer has consented to be sent marketing material via email.
@@ -55,7 +54,7 @@ public struct CustomerCreateInput: GraphQLMapConvertible {
   }
 
   /// A unique phone number for the customer.
-  ///
+  /// 
   /// Formatted using E.164 standard. For example, _+16135551111_.
   public var phone: Swift.Optional<String?> {
     get {
@@ -236,6 +235,130 @@ public struct CustomerAccessTokenCreateInput: GraphQLMapConvertible {
     }
     set {
       graphQLMap.updateValue(newValue, forKey: "password")
+    }
+  }
+}
+
+/// The input fields to create or update a mailing address.
+public struct MailingAddressInput: GraphQLMapConvertible {
+  public var graphQLMap: GraphQLMap
+
+  /// - Parameters:
+  ///   - address1: The first line of the address. Typically the street address or PO Box number.
+  ///   - address2: The second line of the address. Typically the number of the apartment, suite, or unit.
+  ///   - city: The name of the city, district, village, or town.
+  ///   - company: The name of the customer's company or organization.
+  ///   - country: The name of the country.
+  ///   - firstName: The first name of the customer.
+  ///   - lastName: The last name of the customer.
+  ///   - phone: A unique phone number for the customer.
+  /// 
+  /// Formatted using E.164 standard. For example, _+16135551111_.
+  ///   - province: The region of the address, such as the province, state, or district.
+  ///   - zip: The zip or postal code of the address.
+  public init(address1: Swift.Optional<String?> = nil, address2: Swift.Optional<String?> = nil, city: Swift.Optional<String?> = nil, company: Swift.Optional<String?> = nil, country: Swift.Optional<String?> = nil, firstName: Swift.Optional<String?> = nil, lastName: Swift.Optional<String?> = nil, phone: Swift.Optional<String?> = nil, province: Swift.Optional<String?> = nil, zip: Swift.Optional<String?> = nil) {
+    graphQLMap = ["address1": address1, "address2": address2, "city": city, "company": company, "country": country, "firstName": firstName, "lastName": lastName, "phone": phone, "province": province, "zip": zip]
+  }
+
+  /// The first line of the address. Typically the street address or PO Box number.
+  public var address1: Swift.Optional<String?> {
+    get {
+      return graphQLMap["address1"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "address1")
+    }
+  }
+
+  /// The second line of the address. Typically the number of the apartment, suite, or unit.
+  public var address2: Swift.Optional<String?> {
+    get {
+      return graphQLMap["address2"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "address2")
+    }
+  }
+
+  /// The name of the city, district, village, or town.
+  public var city: Swift.Optional<String?> {
+    get {
+      return graphQLMap["city"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "city")
+    }
+  }
+
+  /// The name of the customer's company or organization.
+  public var company: Swift.Optional<String?> {
+    get {
+      return graphQLMap["company"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "company")
+    }
+  }
+
+  /// The name of the country.
+  public var country: Swift.Optional<String?> {
+    get {
+      return graphQLMap["country"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "country")
+    }
+  }
+
+  /// The first name of the customer.
+  public var firstName: Swift.Optional<String?> {
+    get {
+      return graphQLMap["firstName"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "firstName")
+    }
+  }
+
+  /// The last name of the customer.
+  public var lastName: Swift.Optional<String?> {
+    get {
+      return graphQLMap["lastName"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "lastName")
+    }
+  }
+
+  /// A unique phone number for the customer.
+  /// 
+  /// Formatted using E.164 standard. For example, _+16135551111_.
+  public var phone: Swift.Optional<String?> {
+    get {
+      return graphQLMap["phone"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "phone")
+    }
+  }
+
+  /// The region of the address, such as the province, state, or district.
+  public var province: Swift.Optional<String?> {
+    get {
+      return graphQLMap["province"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "province")
+    }
+  }
+
+  /// The zip or postal code of the address.
+  public var zip: Swift.Optional<String?> {
+    get {
+      return graphQLMap["zip"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "zip")
     }
   }
 }
@@ -447,7 +570,7 @@ public final class ProductDetailsQuery: GraphQLQuery {
       }
 
       /// The featured image for the product.
-      ///
+      /// 
       /// This field is functionally equivalent to `images(first: 1)`.
       public var featuredImage: FeaturedImage? {
         get {
@@ -764,11 +887,11 @@ public final class ProductDetailsQuery: GraphQLQuery {
         }
 
         /// The location of the image as a URL.
-        ///
+        /// 
         /// If no transform options are specified, then the original image will be preserved including any pre-applied transforms.
-        ///
+        /// 
         /// All transformation options are considered "best-effort". Any transformation that the original image type doesn't support will be ignored.
-        ///
+        /// 
         /// If you need multiple variations of the same image, then you can use [GraphQL aliases](https://graphql.org/learn/queries/#aliases).
         public var url: String {
           get {
@@ -899,11 +1022,11 @@ public final class ProductDetailsQuery: GraphQLQuery {
             }
 
             /// The location of the image as a URL.
-            ///
+            /// 
             /// If no transform options are specified, then the original image will be preserved including any pre-applied transforms.
-            ///
+            /// 
             /// All transformation options are considered "best-effort". Any transformation that the original image type doesn't support will be ignored.
-            ///
+            /// 
             /// If you need multiple variations of the same image, then you can use [GraphQL aliases](https://graphql.org/learn/queries/#aliases).
             public var url: String {
               get {
@@ -1124,11 +1247,11 @@ public final class CollectionsQuery: GraphQLQuery {
           }
 
           /// The location of the image as a URL.
-          ///
+          /// 
           /// If no transform options are specified, then the original image will be preserved including any pre-applied transforms.
-          ///
+          /// 
           /// All transformation options are considered "best-effort". Any transformation that the original image type doesn't support will be ignored.
-          ///
+          /// 
           /// If you need multiple variations of the same image, then you can use [GraphQL aliases](https://graphql.org/learn/queries/#aliases).
           public var url: String {
             get {
@@ -1406,7 +1529,7 @@ public final class GetAllProductsQuery: GraphQLQuery {
         }
 
         /// The featured image for the product.
-        ///
+        /// 
         /// This field is functionally equivalent to `images(first: 1)`.
         public var featuredImage: FeaturedImage? {
           get {
@@ -1723,11 +1846,11 @@ public final class GetAllProductsQuery: GraphQLQuery {
           }
 
           /// The location of the image as a URL.
-          ///
+          /// 
           /// If no transform options are specified, then the original image will be preserved including any pre-applied transforms.
-          ///
+          /// 
           /// All transformation options are considered "best-effort". Any transformation that the original image type doesn't support will be ignored.
-          ///
+          /// 
           /// If you need multiple variations of the same image, then you can use [GraphQL aliases](https://graphql.org/learn/queries/#aliases).
           public var url: String {
             get {
@@ -1858,11 +1981,11 @@ public final class GetAllProductsQuery: GraphQLQuery {
               }
 
               /// The location of the image as a URL.
-              ///
+              /// 
               /// If no transform options are specified, then the original image will be preserved including any pre-applied transforms.
-              ///
+              /// 
               /// All transformation options are considered "best-effort". Any transformation that the original image type doesn't support will be ignored.
-              ///
+              /// 
               /// If you need multiple variations of the same image, then you can use [GraphQL aliases](https://graphql.org/learn/queries/#aliases).
               public var url: String {
                 get {
@@ -2198,7 +2321,7 @@ public final class CollectionProductsQuery: GraphQLQuery {
           }
 
           /// The featured image for the product.
-          ///
+          /// 
           /// This field is functionally equivalent to `images(first: 1)`.
           public var featuredImage: FeaturedImage? {
             get {
@@ -2515,11 +2638,11 @@ public final class CollectionProductsQuery: GraphQLQuery {
             }
 
             /// The location of the image as a URL.
-            ///
+            /// 
             /// If no transform options are specified, then the original image will be preserved including any pre-applied transforms.
-            ///
+            /// 
             /// All transformation options are considered "best-effort". Any transformation that the original image type doesn't support will be ignored.
-            ///
+            /// 
             /// If you need multiple variations of the same image, then you can use [GraphQL aliases](https://graphql.org/learn/queries/#aliases).
             public var url: String {
               get {
@@ -2650,11 +2773,11 @@ public final class CollectionProductsQuery: GraphQLQuery {
                 }
 
                 /// The location of the image as a URL.
-                ///
+                /// 
                 /// If no transform options are specified, then the original image will be preserved including any pre-applied transforms.
-                ///
+                /// 
                 /// All transformation options are considered "best-effort". Any transformation that the original image type doesn't support will be ignored.
-                ///
+                /// 
                 /// If you need multiple variations of the same image, then you can use [GraphQL aliases](https://graphql.org/learn/queries/#aliases).
                 public var url: String {
                   get {
@@ -3113,6 +3236,223 @@ public final class CustomerAccessTokenCreateMutation: GraphQLMutation {
           }
           set {
             resultMap.updateValue(newValue, forKey: "message")
+          }
+        }
+      }
+    }
+  }
+}
+
+public final class CustomerAddressCreateMutation: GraphQLMutation {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    mutation customerAddressCreate($customerAccessToken: String!, $address: MailingAddressInput!) {
+      customerAddressCreate(
+        customerAccessToken: $customerAccessToken
+        address: $address
+      ) {
+        __typename
+        customerAddress {
+          __typename
+          address1
+          address2
+          city
+          country
+          id
+          phone
+          zip
+        }
+      }
+    }
+    """
+
+  public let operationName: String = "customerAddressCreate"
+
+  public var customerAccessToken: String
+  public var address: MailingAddressInput
+
+  public init(customerAccessToken: String, address: MailingAddressInput) {
+    self.customerAccessToken = customerAccessToken
+    self.address = address
+  }
+
+  public var variables: GraphQLMap? {
+    return ["customerAccessToken": customerAccessToken, "address": address]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["Mutation"]
+
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("customerAddressCreate", arguments: ["customerAccessToken": GraphQLVariable("customerAccessToken"), "address": GraphQLVariable("address")], type: .object(CustomerAddressCreate.selections)),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(customerAddressCreate: CustomerAddressCreate? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Mutation", "customerAddressCreate": customerAddressCreate.flatMap { (value: CustomerAddressCreate) -> ResultMap in value.resultMap }])
+    }
+
+    /// Creates a new address for a customer.
+    public var customerAddressCreate: CustomerAddressCreate? {
+      get {
+        return (resultMap["customerAddressCreate"] as? ResultMap).flatMap { CustomerAddressCreate(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "customerAddressCreate")
+      }
+    }
+
+    public struct CustomerAddressCreate: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["CustomerAddressCreatePayload"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("customerAddress", type: .object(CustomerAddress.selections)),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(customerAddress: CustomerAddress? = nil) {
+        self.init(unsafeResultMap: ["__typename": "CustomerAddressCreatePayload", "customerAddress": customerAddress.flatMap { (value: CustomerAddress) -> ResultMap in value.resultMap }])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      /// The new customer address object.
+      public var customerAddress: CustomerAddress? {
+        get {
+          return (resultMap["customerAddress"] as? ResultMap).flatMap { CustomerAddress(unsafeResultMap: $0) }
+        }
+        set {
+          resultMap.updateValue(newValue?.resultMap, forKey: "customerAddress")
+        }
+      }
+
+      public struct CustomerAddress: GraphQLSelectionSet {
+        public static let possibleTypes: [String] = ["MailingAddress"]
+
+        public static var selections: [GraphQLSelection] {
+          return [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("address1", type: .scalar(String.self)),
+            GraphQLField("address2", type: .scalar(String.self)),
+            GraphQLField("city", type: .scalar(String.self)),
+            GraphQLField("country", type: .scalar(String.self)),
+            GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+            GraphQLField("phone", type: .scalar(String.self)),
+            GraphQLField("zip", type: .scalar(String.self)),
+          ]
+        }
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(address1: String? = nil, address2: String? = nil, city: String? = nil, country: String? = nil, id: GraphQLID, phone: String? = nil, zip: String? = nil) {
+          self.init(unsafeResultMap: ["__typename": "MailingAddress", "address1": address1, "address2": address2, "city": city, "country": country, "id": id, "phone": phone, "zip": zip])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        /// The first line of the address. Typically the street address or PO Box number.
+        public var address1: String? {
+          get {
+            return resultMap["address1"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "address1")
+          }
+        }
+
+        /// The second line of the address. Typically the number of the apartment, suite, or unit.
+        public var address2: String? {
+          get {
+            return resultMap["address2"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "address2")
+          }
+        }
+
+        /// The name of the city, district, village, or town.
+        public var city: String? {
+          get {
+            return resultMap["city"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "city")
+          }
+        }
+
+        /// The name of the country.
+        public var country: String? {
+          get {
+            return resultMap["country"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "country")
+          }
+        }
+
+        /// A globally-unique ID.
+        public var id: GraphQLID {
+          get {
+            return resultMap["id"]! as! GraphQLID
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "id")
+          }
+        }
+
+        /// A unique phone number for the customer.
+        /// 
+        /// Formatted using E.164 standard. For example, _+16135551111_.
+        public var phone: String? {
+          get {
+            return resultMap["phone"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "phone")
+          }
+        }
+
+        /// The zip or postal code of the address.
+        public var zip: String? {
+          get {
+            return resultMap["zip"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "zip")
           }
         }
       }
