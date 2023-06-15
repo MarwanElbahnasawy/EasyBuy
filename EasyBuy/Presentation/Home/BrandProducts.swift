@@ -10,11 +10,12 @@ import SwiftUI
 struct BrandProducts: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @ObservedObject var viewModel:BrandViewModel = BrandViewModel()
+
     var body: some View {
-        @State var iserror = viewModel.iserror
+        
         VStack {
             if(viewModel.isLoading){
-                if iserror{
+                if viewModel.iserror{
                     LottieView(lottieFile: "error")
                 }else{
                     LottieView(lottieFile: "loading")

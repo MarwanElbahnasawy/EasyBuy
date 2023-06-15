@@ -12,11 +12,12 @@ struct Category: View {
     @Namespace private var animation
     @State private var isModalPresented: Bool = false
     @State var isGrid = false
+   
     var body: some View {
-        @State var iserror = viewModel.iserror
+      
         NavigationView{
             if(viewModel.isLoading){
-                if iserror{
+                if viewModel.iserror{
                     LottieView(lottieFile: "error")
                 }else{
                     LottieView(lottieFile: "loading")
@@ -144,6 +145,7 @@ struct Category: View {
         }
         
         .onAppear(){
+            
             viewModel.onAppearView()
         }
         

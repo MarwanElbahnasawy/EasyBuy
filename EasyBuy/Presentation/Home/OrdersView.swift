@@ -27,10 +27,10 @@ struct OrdersView: View {
     }
     
     var body: some View {
-        @State var iserror = viewModel.iserror
+     
         
         if(viewModel.isLoading){
-            if iserror{
+            if viewModel.iserror{
                 LottieView(lottieFile: "error")
             }else{
                 LottieView(lottieFile: "loading")

@@ -252,6 +252,7 @@
 		3F25A1CA2A31681C009614A8 /* DiscountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountCell.swift; sourceTree = "<group>"; };
 		3FE184412A385329009EBBB3 /* ShopingCartListUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopingCartListUIView.swift; sourceTree = "<group>"; };
 		3FE184432A385349009EBBB3 /* CartListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartListViewModel.swift; sourceTree = "<group>"; };
+		3FE184512A3B237D009EBBB3 /* EasyBuy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EasyBuy.entitlements; sourceTree = "<group>"; };
 		EB7015342A391DD3002CD0FC /* ProductImagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductImagesView.swift; sourceTree = "<group>"; };
 		EB7258FC2A37D74B0074747C /* ValidationUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationUtils.swift; sourceTree = "<group>"; };
 		EB73E8D42A2BABDD00A9E70B /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -484,6 +485,7 @@
 		17C9CF222A27E12F004BCCC2 /* EasyBuy */ = {
 			isa = PBXGroup;
 			children = (
+				3FE184512A3B237D009EBBB3 /* EasyBuy.entitlements */,
 				3F25A1AD2A31521C009614A8 /* GoogleService-Info.plist */,
 				3F02F2D42A2C03D100FDE52E /* APIAdmin.swift */,
 				3F25A1C62A316626009614A8 /* API.swift */,
@@ -1431,10 +1433,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = EasyBuy/EasyBuy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"EasyBuy/App/Assets/Preview Content\"";
-				DEVELOPMENT_TEAM = PARRY5PM9L;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -1460,10 +1463,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = EasyBuy/EasyBuy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"EasyBuy/App/Assets/Preview Content\"";
-				DEVELOPMENT_TEAM = PARRY5PM9L;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
