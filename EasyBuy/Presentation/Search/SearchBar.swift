@@ -1,10 +1,3 @@
-//
-//  SearchBar.swift
-//  EasyBuy
-//
-//  Created by Ahmad Hemeda on 08/06/2023.
-//
-
 import SwiftUI
 
 struct SearchBar: View {
@@ -42,8 +35,6 @@ struct SearchBar: View {
                 }) {
                     Text("Cancel")
                 }
-                .transition(.move(edge: .trailing))
-                .animation(.default)
             }
         }
         .padding(.horizontal, 10)

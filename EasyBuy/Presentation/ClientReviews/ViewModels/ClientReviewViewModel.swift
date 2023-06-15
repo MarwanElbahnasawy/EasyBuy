@@ -9,4 +9,23 @@ class ClientReviewViewModel: ObservableObject {
         ClientReview(imageName: "client5", name: "David Brown", review: "I'm satisfied with this product. It's not perfect, but it does what it's supposed to do and the price is reasonable.", stars: 4),
         ClientReview(imageName: "client6", name: "Emily Davis", review: "I'm disappointed with this product. It broke after just a few uses and the customer service was unhelpful.", stars: 1)
     ]
+    
+    private let maxDisplayedReviews = 3
+    @Published var displayedReviews: [ClientReview] = []
+    
+    init() {
+        updateDisplayedReviews()
+    }
+    
+    func showAllReviews() {
+        displayedReviews = reviews
+    }
+    
+    private func updateDisplayedReviews() {
+        if reviews.count <= maxDisplayedReviews {
+            displayedReviews = reviews
+        } else {
+            displayedReviews = Array(reviews.prefix(maxDisplayedReviews))
+        }
+    }
 }
