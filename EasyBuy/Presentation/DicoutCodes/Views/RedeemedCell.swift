@@ -10,6 +10,10 @@ import SwiftUI
 struct RedeemedCell: View {
     @State var code: String = "any thing"
     @State var isUseable: Bool = false
+    @Environment(\.dismiss) var dismiss
+    var checkoutViewModel: CheckoutViewModel?
+    var index: Int?
+    @State var redeemedViewMode: RedeemedListViewModel = RedeemedListViewModel()
     var body: some View {
         if isUseable{
             ZStack{
@@ -27,6 +31,9 @@ struct RedeemedCell: View {
                         .cornerRadius(10)
                         .shadow(radius: 5)
                         .onTapGesture {
+                            checkoutViewModel?.discountCodes = code
+                            redeemedViewMode.deleteDiscountCode(index: code)
+                            dismiss()
                             isUseable = false
                             print("press in redeemed")
                         }
@@ -42,8 +49,6 @@ struct RedeemedCell: View {
         }
         else{
             VStack(alignment: .leading) {
-               
-                
                     Text(code)
                         .font(Font.system(size: 14))
                         .foregroundColor(Color.black)
@@ -64,8 +69,9 @@ struct RedeemedCell: View {
     }
 
 
-struct RedemeedCell_Previews: PreviewProvider {
-    static var previews: some View {
-        RedeemedCell()
-    }
-}
+//struct RedemeedCell_Previews: PreviewProvider {
+//    @State var isPre = false
+//    static var previews: some View {
+//      
+//    }
+//}

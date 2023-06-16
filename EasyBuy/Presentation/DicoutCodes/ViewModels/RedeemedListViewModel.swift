@@ -20,10 +20,16 @@ class RedeemedListViewModel: ObservableObject{
                 print("No data found")
                 return
             }
-            let codecust = data["discountCodes"] as? [String] ?? []
-            self?.codes = CustomerDiscountCodes(id: id, discountCodes: codecust)
-            print(codecust)
+            self?.codes = FireBaseManager.shared.mapFireBaseObject(data: data)
+
                 print(self?.codes?.discountCodes ?? "default")
         }
+    }
+    func deleteDiscountCode(index: String) {
+        let discountCodes: [String] = codes?.discountCodes ?? []
+        codes?.discountCodes = discountCodes.filter { $0 != index }
+        print(discountCodes)
+        FireBaseManager.shared.saveCustomerDiscountCodes(customerDiscountCodes: codes ?? CustomerDiscountCodes())
+        
     }
 }

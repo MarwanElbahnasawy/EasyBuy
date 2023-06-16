@@ -10,6 +10,7 @@ import SwiftUI
 struct image: View {
     var CoverImage: CoverImage
     @State var  isGoingTONextView = false
+    @State var isPresented = false
     var body: some View {
             ZStack{
                 Image(CoverImage.name)
