@@ -4,1006 +4,6 @@
 import Apollo
 import Foundation
 
-/// The three-letter currency codes that represent the world currencies used in stores. These include standard ISO 4217 codes, legacy codes,
-/// and non-standard codes.
-public enum CurrencyCode: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
-  public typealias RawValue = String
-  /// United States Dollars (USD).
-  case usd
-  /// Euro (EUR).
-  case eur
-  /// United Kingdom Pounds (GBP).
-  case gbp
-  /// Canadian Dollars (CAD).
-  case cad
-  /// Afghan Afghani (AFN).
-  case afn
-  /// Albanian Lek (ALL).
-  case all
-  /// Algerian Dinar (DZD).
-  case dzd
-  /// Angolan Kwanza (AOA).
-  case aoa
-  /// Argentine Pesos (ARS).
-  case ars
-  /// Armenian Dram (AMD).
-  case amd
-  /// Aruban Florin (AWG).
-  case awg
-  /// Australian Dollars (AUD).
-  case aud
-  /// Barbadian Dollar (BBD).
-  case bbd
-  /// Azerbaijani Manat (AZN).
-  case azn
-  /// Bangladesh Taka (BDT).
-  case bdt
-  /// Bahamian Dollar (BSD).
-  case bsd
-  /// Bahraini Dinar (BHD).
-  case bhd
-  /// Burundian Franc (BIF).
-  case bif
-  /// Belize Dollar (BZD).
-  case bzd
-  /// Bermudian Dollar (BMD).
-  case bmd
-  /// Bhutanese Ngultrum (BTN).
-  case btn
-  /// Bosnia and Herzegovina Convertible Mark (BAM).
-  case bam
-  /// Brazilian Real (BRL).
-  case brl
-  /// Bolivian Boliviano (BOB).
-  case bob
-  /// Botswana Pula (BWP).
-  case bwp
-  /// Brunei Dollar (BND).
-  case bnd
-  /// Bulgarian Lev (BGN).
-  case bgn
-  /// Burmese Kyat (MMK).
-  case mmk
-  /// Cambodian Riel.
-  case khr
-  /// Cape Verdean escudo (CVE).
-  case cve
-  /// Cayman Dollars (KYD).
-  case kyd
-  /// Central African CFA Franc (XAF).
-  case xaf
-  /// Chilean Peso (CLP).
-  case clp
-  /// Chinese Yuan Renminbi (CNY).
-  case cny
-  /// Colombian Peso (COP).
-  case cop
-  /// Comorian Franc (KMF).
-  case kmf
-  /// Congolese franc (CDF).
-  case cdf
-  /// Costa Rican Colones (CRC).
-  case crc
-  /// Croatian Kuna (HRK).
-  case hrk
-  /// Czech Koruny (CZK).
-  case czk
-  /// Danish Kroner (DKK).
-  case dkk
-  /// Dominican Peso (DOP).
-  case dop
-  /// East Caribbean Dollar (XCD).
-  case xcd
-  /// Egyptian Pound (EGP).
-  case egp
-  /// Ethiopian Birr (ETB).
-  case etb
-  /// CFP Franc (XPF).
-  case xpf
-  /// Fijian Dollars (FJD).
-  case fjd
-  /// Gambian Dalasi (GMD).
-  case gmd
-  /// Ghanaian Cedi (GHS).
-  case ghs
-  /// Guatemalan Quetzal (GTQ).
-  case gtq
-  /// Guyanese Dollar (GYD).
-  case gyd
-  /// Georgian Lari (GEL).
-  case gel
-  /// Haitian Gourde (HTG).
-  case htg
-  /// Honduran Lempira (HNL).
-  case hnl
-  /// Hong Kong Dollars (HKD).
-  case hkd
-  /// Hungarian Forint (HUF).
-  case huf
-  /// Icelandic Kronur (ISK).
-  case isk
-  /// Indian Rupees (INR).
-  case inr
-  /// Indonesian Rupiah (IDR).
-  case idr
-  /// Israeli New Shekel (NIS).
-  case ils
-  /// Iraqi Dinar (IQD).
-  case iqd
-  /// Jamaican Dollars (JMD).
-  case jmd
-  /// Japanese Yen (JPY).
-  case jpy
-  /// Jersey Pound.
-  case jep
-  /// Jordanian Dinar (JOD).
-  case jod
-  /// Kazakhstani Tenge (KZT).
-  case kzt
-  /// Kenyan Shilling (KES).
-  case kes
-  /// Kuwaiti Dinar (KWD).
-  case kwd
-  /// Kyrgyzstani Som (KGS).
-  case kgs
-  /// Laotian Kip (LAK).
-  case lak
-  /// Latvian Lati (LVL).
-  case lvl
-  /// Lebanese Pounds (LBP).
-  case lbp
-  /// Lesotho Loti (LSL).
-  case lsl
-  /// Liberian Dollar (LRD).
-  case lrd
-  /// Lithuanian Litai (LTL).
-  case ltl
-  /// Malagasy Ariary (MGA).
-  case mga
-  /// Macedonia Denar (MKD).
-  case mkd
-  /// Macanese Pataca (MOP).
-  case mop
-  /// Malawian Kwacha (MWK).
-  case mwk
-  /// Maldivian Rufiyaa (MVR).
-  case mvr
-  /// Mexican Pesos (MXN).
-  case mxn
-  /// Malaysian Ringgits (MYR).
-  case myr
-  /// Mauritian Rupee (MUR).
-  case mur
-  /// Moldovan Leu (MDL).
-  case mdl
-  /// Moroccan Dirham.
-  case mad
-  /// Mongolian Tugrik.
-  case mnt
-  /// Mozambican Metical.
-  case mzn
-  /// Namibian Dollar.
-  case nad
-  /// Nepalese Rupee (NPR).
-  case npr
-  /// Netherlands Antillean Guilder.
-  case ang
-  /// New Zealand Dollars (NZD).
-  case nzd
-  /// Nicaraguan Córdoba (NIO).
-  case nio
-  /// Nigerian Naira (NGN).
-  case ngn
-  /// Norwegian Kroner (NOK).
-  case nok
-  /// Omani Rial (OMR).
-  case omr
-  /// Panamian Balboa (PAB).
-  case pab
-  /// Pakistani Rupee (PKR).
-  case pkr
-  /// Papua New Guinean Kina (PGK).
-  case pgk
-  /// Paraguayan Guarani (PYG).
-  case pyg
-  /// Peruvian Nuevo Sol (PEN).
-  case pen
-  /// Philippine Peso (PHP).
-  case php
-  /// Polish Zlotych (PLN).
-  case pln
-  /// Qatari Rial (QAR).
-  case qar
-  /// Romanian Lei (RON).
-  case ron
-  /// Russian Rubles (RUB).
-  case rub
-  /// Rwandan Franc (RWF).
-  case rwf
-  /// Samoan Tala (WST).
-  case wst
-  /// Saudi Riyal (SAR).
-  case sar
-  /// Serbian dinar (RSD).
-  case rsd
-  /// Seychellois Rupee (SCR).
-  case scr
-  /// Singapore Dollars (SGD).
-  case sgd
-  /// Sudanese Pound (SDG).
-  case sdg
-  /// Syrian Pound (SYP).
-  case syp
-  /// South African Rand (ZAR).
-  case zar
-  /// South Korean Won (KRW).
-  case krw
-  /// South Sudanese Pound (SSP).
-  case ssp
-  /// Solomon Islands Dollar (SBD).
-  case sbd
-  /// Sri Lankan Rupees (LKR).
-  case lkr
-  /// Surinamese Dollar (SRD).
-  case srd
-  /// Swazi Lilangeni (SZL).
-  case szl
-  /// Swedish Kronor (SEK).
-  case sek
-  /// Swiss Francs (CHF).
-  case chf
-  /// Taiwan Dollars (TWD).
-  case twd
-  /// Thai baht (THB).
-  case thb
-  /// Tanzanian Shilling (TZS).
-  case tzs
-  /// Trinidad and Tobago Dollars (TTD).
-  case ttd
-  /// Tunisian Dinar (TND).
-  case tnd
-  /// Turkish Lira (TRY).
-  case `try`
-  /// Turkmenistani Manat (TMT).
-  case tmt
-  /// Ugandan Shilling (UGX).
-  case ugx
-  /// Ukrainian Hryvnia (UAH).
-  case uah
-  /// United Arab Emirates Dirham (AED).
-  case aed
-  /// Uruguayan Pesos (UYU).
-  case uyu
-  /// Uzbekistan som (UZS).
-  case uzs
-  /// Vanuatu Vatu (VUV).
-  case vuv
-  /// Vietnamese đồng (VND).
-  case vnd
-  /// West African CFA franc (XOF).
-  case xof
-  /// Yemeni Rial (YER).
-  case yer
-  /// Zambian Kwacha (ZMW).
-  case zmw
-  /// Belarusian Ruble (BYN).
-  case byn
-  /// Belarusian Ruble (BYR).
-  @available(*, deprecated, message: "`BYR` is deprecated. Use `BYN` available from version `2021-01` onwards instead.")
-  case byr
-  /// Djiboutian Franc (DJF).
-  case djf
-  /// Eritrean Nakfa (ERN).
-  case ern
-  /// Falkland Islands Pounds (FKP).
-  case fkp
-  /// Gibraltar Pounds (GIP).
-  case gip
-  /// Guinean Franc (GNF).
-  case gnf
-  /// Iranian Rial (IRR).
-  case irr
-  /// Kiribati Dollar (KID).
-  case kid
-  /// Libyan Dinar (LYD).
-  case lyd
-  /// Mauritanian Ouguiya (MRU).
-  case mru
-  /// Sierra Leonean Leone (SLL).
-  case sll
-  /// Saint Helena Pounds (SHP).
-  case shp
-  /// Somali Shilling (SOS).
-  case sos
-  /// Sao Tome And Principe Dobra (STD).
-  @available(*, deprecated, message: "`STD` is deprecated. Use `STN` available from version `2022-07` onwards instead.")
-  case std
-  /// Sao Tome And Principe Dobra (STN).
-  case stn
-  /// Tajikistani Somoni (TJS).
-  case tjs
-  /// Tongan Pa'anga (TOP).
-  case top
-  /// Venezuelan Bolivares (VED).
-  case ved
-  /// Venezuelan Bolivares (VEF).
-  @available(*, deprecated, message: "`VEF` is deprecated. Use `VES` available from version `2020-10` onwards instead.")
-  case vef
-  /// Venezuelan Bolivares (VES).
-  case ves
-  /// Unrecognized currency.
-  case xxx
-  /// Auto generated constant for unknown enum values
-  case __unknown(RawValue)
-
-  public init?(rawValue: RawValue) {
-    switch rawValue {
-      case "USD": self = .usd
-      case "EUR": self = .eur
-      case "GBP": self = .gbp
-      case "CAD": self = .cad
-      case "AFN": self = .afn
-      case "ALL": self = .all
-      case "DZD": self = .dzd
-      case "AOA": self = .aoa
-      case "ARS": self = .ars
-      case "AMD": self = .amd
-      case "AWG": self = .awg
-      case "AUD": self = .aud
-      case "BBD": self = .bbd
-      case "AZN": self = .azn
-      case "BDT": self = .bdt
-      case "BSD": self = .bsd
-      case "BHD": self = .bhd
-      case "BIF": self = .bif
-      case "BZD": self = .bzd
-      case "BMD": self = .bmd
-      case "BTN": self = .btn
-      case "BAM": self = .bam
-      case "BRL": self = .brl
-      case "BOB": self = .bob
-      case "BWP": self = .bwp
-      case "BND": self = .bnd
-      case "BGN": self = .bgn
-      case "MMK": self = .mmk
-      case "KHR": self = .khr
-      case "CVE": self = .cve
-      case "KYD": self = .kyd
-      case "XAF": self = .xaf
-      case "CLP": self = .clp
-      case "CNY": self = .cny
-      case "COP": self = .cop
-      case "KMF": self = .kmf
-      case "CDF": self = .cdf
-      case "CRC": self = .crc
-      case "HRK": self = .hrk
-      case "CZK": self = .czk
-      case "DKK": self = .dkk
-      case "DOP": self = .dop
-      case "XCD": self = .xcd
-      case "EGP": self = .egp
-      case "ETB": self = .etb
-      case "XPF": self = .xpf
-      case "FJD": self = .fjd
-      case "GMD": self = .gmd
-      case "GHS": self = .ghs
-      case "GTQ": self = .gtq
-      case "GYD": self = .gyd
-      case "GEL": self = .gel
-      case "HTG": self = .htg
-      case "HNL": self = .hnl
-      case "HKD": self = .hkd
-      case "HUF": self = .huf
-      case "ISK": self = .isk
-      case "INR": self = .inr
-      case "IDR": self = .idr
-      case "ILS": self = .ils
-      case "IQD": self = .iqd
-      case "JMD": self = .jmd
-      case "JPY": self = .jpy
-      case "JEP": self = .jep
-      case "JOD": self = .jod
-      case "KZT": self = .kzt
-      case "KES": self = .kes
-      case "KWD": self = .kwd
-      case "KGS": self = .kgs
-      case "LAK": self = .lak
-      case "LVL": self = .lvl
-      case "LBP": self = .lbp
-      case "LSL": self = .lsl
-      case "LRD": self = .lrd
-      case "LTL": self = .ltl
-      case "MGA": self = .mga
-      case "MKD": self = .mkd
-      case "MOP": self = .mop
-      case "MWK": self = .mwk
-      case "MVR": self = .mvr
-      case "MXN": self = .mxn
-      case "MYR": self = .myr
-      case "MUR": self = .mur
-      case "MDL": self = .mdl
-      case "MAD": self = .mad
-      case "MNT": self = .mnt
-      case "MZN": self = .mzn
-      case "NAD": self = .nad
-      case "NPR": self = .npr
-      case "ANG": self = .ang
-      case "NZD": self = .nzd
-      case "NIO": self = .nio
-      case "NGN": self = .ngn
-      case "NOK": self = .nok
-      case "OMR": self = .omr
-      case "PAB": self = .pab
-      case "PKR": self = .pkr
-      case "PGK": self = .pgk
-      case "PYG": self = .pyg
-      case "PEN": self = .pen
-      case "PHP": self = .php
-      case "PLN": self = .pln
-      case "QAR": self = .qar
-      case "RON": self = .ron
-      case "RUB": self = .rub
-      case "RWF": self = .rwf
-      case "WST": self = .wst
-      case "SAR": self = .sar
-      case "RSD": self = .rsd
-      case "SCR": self = .scr
-      case "SGD": self = .sgd
-      case "SDG": self = .sdg
-      case "SYP": self = .syp
-      case "ZAR": self = .zar
-      case "KRW": self = .krw
-      case "SSP": self = .ssp
-      case "SBD": self = .sbd
-      case "LKR": self = .lkr
-      case "SRD": self = .srd
-      case "SZL": self = .szl
-      case "SEK": self = .sek
-      case "CHF": self = .chf
-      case "TWD": self = .twd
-      case "THB": self = .thb
-      case "TZS": self = .tzs
-      case "TTD": self = .ttd
-      case "TND": self = .tnd
-      case "TRY": self = .try
-      case "TMT": self = .tmt
-      case "UGX": self = .ugx
-      case "UAH": self = .uah
-      case "AED": self = .aed
-      case "UYU": self = .uyu
-      case "UZS": self = .uzs
-      case "VUV": self = .vuv
-      case "VND": self = .vnd
-      case "XOF": self = .xof
-      case "YER": self = .yer
-      case "ZMW": self = .zmw
-      case "BYN": self = .byn
-      case "BYR": self = .byr
-      case "DJF": self = .djf
-      case "ERN": self = .ern
-      case "FKP": self = .fkp
-      case "GIP": self = .gip
-      case "GNF": self = .gnf
-      case "IRR": self = .irr
-      case "KID": self = .kid
-      case "LYD": self = .lyd
-      case "MRU": self = .mru
-      case "SLL": self = .sll
-      case "SHP": self = .shp
-      case "SOS": self = .sos
-      case "STD": self = .std
-      case "STN": self = .stn
-      case "TJS": self = .tjs
-      case "TOP": self = .top
-      case "VED": self = .ved
-      case "VEF": self = .vef
-      case "VES": self = .ves
-      case "XXX": self = .xxx
-      default: self = .__unknown(rawValue)
-    }
-  }
-
-  public var rawValue: RawValue {
-    switch self {
-      case .usd: return "USD"
-      case .eur: return "EUR"
-      case .gbp: return "GBP"
-      case .cad: return "CAD"
-      case .afn: return "AFN"
-      case .all: return "ALL"
-      case .dzd: return "DZD"
-      case .aoa: return "AOA"
-      case .ars: return "ARS"
-      case .amd: return "AMD"
-      case .awg: return "AWG"
-      case .aud: return "AUD"
-      case .bbd: return "BBD"
-      case .azn: return "AZN"
-      case .bdt: return "BDT"
-      case .bsd: return "BSD"
-      case .bhd: return "BHD"
-      case .bif: return "BIF"
-      case .bzd: return "BZD"
-      case .bmd: return "BMD"
-      case .btn: return "BTN"
-      case .bam: return "BAM"
-      case .brl: return "BRL"
-      case .bob: return "BOB"
-      case .bwp: return "BWP"
-      case .bnd: return "BND"
-      case .bgn: return "BGN"
-      case .mmk: return "MMK"
-      case .khr: return "KHR"
-      case .cve: return "CVE"
-      case .kyd: return "KYD"
-      case .xaf: return "XAF"
-      case .clp: return "CLP"
-      case .cny: return "CNY"
-      case .cop: return "COP"
-      case .kmf: return "KMF"
-      case .cdf: return "CDF"
-      case .crc: return "CRC"
-      case .hrk: return "HRK"
-      case .czk: return "CZK"
-      case .dkk: return "DKK"
-      case .dop: return "DOP"
-      case .xcd: return "XCD"
-      case .egp: return "EGP"
-      case .etb: return "ETB"
-      case .xpf: return "XPF"
-      case .fjd: return "FJD"
-      case .gmd: return "GMD"
-      case .ghs: return "GHS"
-      case .gtq: return "GTQ"
-      case .gyd: return "GYD"
-      case .gel: return "GEL"
-      case .htg: return "HTG"
-      case .hnl: return "HNL"
-      case .hkd: return "HKD"
-      case .huf: return "HUF"
-      case .isk: return "ISK"
-      case .inr: return "INR"
-      case .idr: return "IDR"
-      case .ils: return "ILS"
-      case .iqd: return "IQD"
-      case .jmd: return "JMD"
-      case .jpy: return "JPY"
-      case .jep: return "JEP"
-      case .jod: return "JOD"
-      case .kzt: return "KZT"
-      case .kes: return "KES"
-      case .kwd: return "KWD"
-      case .kgs: return "KGS"
-      case .lak: return "LAK"
-      case .lvl: return "LVL"
-      case .lbp: return "LBP"
-      case .lsl: return "LSL"
-      case .lrd: return "LRD"
-      case .ltl: return "LTL"
-      case .mga: return "MGA"
-      case .mkd: return "MKD"
-      case .mop: return "MOP"
-      case .mwk: return "MWK"
-      case .mvr: return "MVR"
-      case .mxn: return "MXN"
-      case .myr: return "MYR"
-      case .mur: return "MUR"
-      case .mdl: return "MDL"
-      case .mad: return "MAD"
-      case .mnt: return "MNT"
-      case .mzn: return "MZN"
-      case .nad: return "NAD"
-      case .npr: return "NPR"
-      case .ang: return "ANG"
-      case .nzd: return "NZD"
-      case .nio: return "NIO"
-      case .ngn: return "NGN"
-      case .nok: return "NOK"
-      case .omr: return "OMR"
-      case .pab: return "PAB"
-      case .pkr: return "PKR"
-      case .pgk: return "PGK"
-      case .pyg: return "PYG"
-      case .pen: return "PEN"
-      case .php: return "PHP"
-      case .pln: return "PLN"
-      case .qar: return "QAR"
-      case .ron: return "RON"
-      case .rub: return "RUB"
-      case .rwf: return "RWF"
-      case .wst: return "WST"
-      case .sar: return "SAR"
-      case .rsd: return "RSD"
-      case .scr: return "SCR"
-      case .sgd: return "SGD"
-      case .sdg: return "SDG"
-      case .syp: return "SYP"
-      case .zar: return "ZAR"
-      case .krw: return "KRW"
-      case .ssp: return "SSP"
-      case .sbd: return "SBD"
-      case .lkr: return "LKR"
-      case .srd: return "SRD"
-      case .szl: return "SZL"
-      case .sek: return "SEK"
-      case .chf: return "CHF"
-      case .twd: return "TWD"
-      case .thb: return "THB"
-      case .tzs: return "TZS"
-      case .ttd: return "TTD"
-      case .tnd: return "TND"
-      case .try: return "TRY"
-      case .tmt: return "TMT"
-      case .ugx: return "UGX"
-      case .uah: return "UAH"
-      case .aed: return "AED"
-      case .uyu: return "UYU"
-      case .uzs: return "UZS"
-      case .vuv: return "VUV"
-      case .vnd: return "VND"
-      case .xof: return "XOF"
-      case .yer: return "YER"
-      case .zmw: return "ZMW"
-      case .byn: return "BYN"
-      case .byr: return "BYR"
-      case .djf: return "DJF"
-      case .ern: return "ERN"
-      case .fkp: return "FKP"
-      case .gip: return "GIP"
-      case .gnf: return "GNF"
-      case .irr: return "IRR"
-      case .kid: return "KID"
-      case .lyd: return "LYD"
-      case .mru: return "MRU"
-      case .sll: return "SLL"
-      case .shp: return "SHP"
-      case .sos: return "SOS"
-      case .std: return "STD"
-      case .stn: return "STN"
-      case .tjs: return "TJS"
-      case .top: return "TOP"
-      case .ved: return "VED"
-      case .vef: return "VEF"
-      case .ves: return "VES"
-      case .xxx: return "XXX"
-      case .__unknown(let value): return value
-    }
-  }
-
-  public static func == (lhs: CurrencyCode, rhs: CurrencyCode) -> Bool {
-    switch (lhs, rhs) {
-      case (.usd, .usd): return true
-      case (.eur, .eur): return true
-      case (.gbp, .gbp): return true
-      case (.cad, .cad): return true
-      case (.afn, .afn): return true
-      case (.all, .all): return true
-      case (.dzd, .dzd): return true
-      case (.aoa, .aoa): return true
-      case (.ars, .ars): return true
-      case (.amd, .amd): return true
-      case (.awg, .awg): return true
-      case (.aud, .aud): return true
-      case (.bbd, .bbd): return true
-      case (.azn, .azn): return true
-      case (.bdt, .bdt): return true
-      case (.bsd, .bsd): return true
-      case (.bhd, .bhd): return true
-      case (.bif, .bif): return true
-      case (.bzd, .bzd): return true
-      case (.bmd, .bmd): return true
-      case (.btn, .btn): return true
-      case (.bam, .bam): return true
-      case (.brl, .brl): return true
-      case (.bob, .bob): return true
-      case (.bwp, .bwp): return true
-      case (.bnd, .bnd): return true
-      case (.bgn, .bgn): return true
-      case (.mmk, .mmk): return true
-      case (.khr, .khr): return true
-      case (.cve, .cve): return true
-      case (.kyd, .kyd): return true
-      case (.xaf, .xaf): return true
-      case (.clp, .clp): return true
-      case (.cny, .cny): return true
-      case (.cop, .cop): return true
-      case (.kmf, .kmf): return true
-      case (.cdf, .cdf): return true
-      case (.crc, .crc): return true
-      case (.hrk, .hrk): return true
-      case (.czk, .czk): return true
-      case (.dkk, .dkk): return true
-      case (.dop, .dop): return true
-      case (.xcd, .xcd): return true
-      case (.egp, .egp): return true
-      case (.etb, .etb): return true
-      case (.xpf, .xpf): return true
-      case (.fjd, .fjd): return true
-      case (.gmd, .gmd): return true
-      case (.ghs, .ghs): return true
-      case (.gtq, .gtq): return true
-      case (.gyd, .gyd): return true
-      case (.gel, .gel): return true
-      case (.htg, .htg): return true
-      case (.hnl, .hnl): return true
-      case (.hkd, .hkd): return true
-      case (.huf, .huf): return true
-      case (.isk, .isk): return true
-      case (.inr, .inr): return true
-      case (.idr, .idr): return true
-      case (.ils, .ils): return true
-      case (.iqd, .iqd): return true
-      case (.jmd, .jmd): return true
-      case (.jpy, .jpy): return true
-      case (.jep, .jep): return true
-      case (.jod, .jod): return true
-      case (.kzt, .kzt): return true
-      case (.kes, .kes): return true
-      case (.kwd, .kwd): return true
-      case (.kgs, .kgs): return true
-      case (.lak, .lak): return true
-      case (.lvl, .lvl): return true
-      case (.lbp, .lbp): return true
-      case (.lsl, .lsl): return true
-      case (.lrd, .lrd): return true
-      case (.ltl, .ltl): return true
-      case (.mga, .mga): return true
-      case (.mkd, .mkd): return true
-      case (.mop, .mop): return true
-      case (.mwk, .mwk): return true
-      case (.mvr, .mvr): return true
-      case (.mxn, .mxn): return true
-      case (.myr, .myr): return true
-      case (.mur, .mur): return true
-      case (.mdl, .mdl): return true
-      case (.mad, .mad): return true
-      case (.mnt, .mnt): return true
-      case (.mzn, .mzn): return true
-      case (.nad, .nad): return true
-      case (.npr, .npr): return true
-      case (.ang, .ang): return true
-      case (.nzd, .nzd): return true
-      case (.nio, .nio): return true
-      case (.ngn, .ngn): return true
-      case (.nok, .nok): return true
-      case (.omr, .omr): return true
-      case (.pab, .pab): return true
-      case (.pkr, .pkr): return true
-      case (.pgk, .pgk): return true
-      case (.pyg, .pyg): return true
-      case (.pen, .pen): return true
-      case (.php, .php): return true
-      case (.pln, .pln): return true
-      case (.qar, .qar): return true
-      case (.ron, .ron): return true
-      case (.rub, .rub): return true
-      case (.rwf, .rwf): return true
-      case (.wst, .wst): return true
-      case (.sar, .sar): return true
-      case (.rsd, .rsd): return true
-      case (.scr, .scr): return true
-      case (.sgd, .sgd): return true
-      case (.sdg, .sdg): return true
-      case (.syp, .syp): return true
-      case (.zar, .zar): return true
-      case (.krw, .krw): return true
-      case (.ssp, .ssp): return true
-      case (.sbd, .sbd): return true
-      case (.lkr, .lkr): return true
-      case (.srd, .srd): return true
-      case (.szl, .szl): return true
-      case (.sek, .sek): return true
-      case (.chf, .chf): return true
-      case (.twd, .twd): return true
-      case (.thb, .thb): return true
-      case (.tzs, .tzs): return true
-      case (.ttd, .ttd): return true
-      case (.tnd, .tnd): return true
-      case (.try, .try): return true
-      case (.tmt, .tmt): return true
-      case (.ugx, .ugx): return true
-      case (.uah, .uah): return true
-      case (.aed, .aed): return true
-      case (.uyu, .uyu): return true
-      case (.uzs, .uzs): return true
-      case (.vuv, .vuv): return true
-      case (.vnd, .vnd): return true
-      case (.xof, .xof): return true
-      case (.yer, .yer): return true
-      case (.zmw, .zmw): return true
-      case (.byn, .byn): return true
-      case (.byr, .byr): return true
-      case (.djf, .djf): return true
-      case (.ern, .ern): return true
-      case (.fkp, .fkp): return true
-      case (.gip, .gip): return true
-      case (.gnf, .gnf): return true
-      case (.irr, .irr): return true
-      case (.kid, .kid): return true
-      case (.lyd, .lyd): return true
-      case (.mru, .mru): return true
-      case (.sll, .sll): return true
-      case (.shp, .shp): return true
-      case (.sos, .sos): return true
-      case (.std, .std): return true
-      case (.stn, .stn): return true
-      case (.tjs, .tjs): return true
-      case (.top, .top): return true
-      case (.ved, .ved): return true
-      case (.vef, .vef): return true
-      case (.ves, .ves): return true
-      case (.xxx, .xxx): return true
-      case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
-      default: return false
-    }
-  }
-
-  public static var allCases: [CurrencyCode] {
-    return [
-      .usd,
-      .eur,
-      .gbp,
-      .cad,
-      .afn,
-      .all,
-      .dzd,
-      .aoa,
-      .ars,
-      .amd,
-      .awg,
-      .aud,
-      .bbd,
-      .azn,
-      .bdt,
-      .bsd,
-      .bhd,
-      .bif,
-      .bzd,
-      .bmd,
-      .btn,
-      .bam,
-      .brl,
-      .bob,
-      .bwp,
-      .bnd,
-      .bgn,
-      .mmk,
-      .khr,
-      .cve,
-      .kyd,
-      .xaf,
-      .clp,
-      .cny,
-      .cop,
-      .kmf,
-      .cdf,
-      .crc,
-      .hrk,
-      .czk,
-      .dkk,
-      .dop,
-      .xcd,
-      .egp,
-      .etb,
-      .xpf,
-      .fjd,
-      .gmd,
-      .ghs,
-      .gtq,
-      .gyd,
-      .gel,
-      .htg,
-      .hnl,
-      .hkd,
-      .huf,
-      .isk,
-      .inr,
-      .idr,
-      .ils,
-      .iqd,
-      .jmd,
-      .jpy,
-      .jep,
-      .jod,
-      .kzt,
-      .kes,
-      .kwd,
-      .kgs,
-      .lak,
-      .lvl,
-      .lbp,
-      .lsl,
-      .lrd,
-      .ltl,
-      .mga,
-      .mkd,
-      .mop,
-      .mwk,
-      .mvr,
-      .mxn,
-      .myr,
-      .mur,
-      .mdl,
-      .mad,
-      .mnt,
-      .mzn,
-      .nad,
-      .npr,
-      .ang,
-      .nzd,
-      .nio,
-      .ngn,
-      .nok,
-      .omr,
-      .pab,
-      .pkr,
-      .pgk,
-      .pyg,
-      .pen,
-      .php,
-      .pln,
-      .qar,
-      .ron,
-      .rub,
-      .rwf,
-      .wst,
-      .sar,
-      .rsd,
-      .scr,
-      .sgd,
-      .sdg,
-      .syp,
-      .zar,
-      .krw,
-      .ssp,
-      .sbd,
-      .lkr,
-      .srd,
-      .szl,
-      .sek,
-      .chf,
-      .twd,
-      .thb,
-      .tzs,
-      .ttd,
-      .tnd,
-      .try,
-      .tmt,
-      .ugx,
-      .uah,
-      .aed,
-      .uyu,
-      .uzs,
-      .vuv,
-      .vnd,
-      .xof,
-      .yer,
-      .zmw,
-      .byn,
-      .byr,
-      .djf,
-      .ern,
-      .fkp,
-      .gip,
-      .gnf,
-      .irr,
-      .kid,
-      .lyd,
-      .mru,
-      .sll,
-      .shp,
-      .sos,
-      .std,
-      .stn,
-      .tjs,
-      .top,
-      .ved,
-      .vef,
-      .ves,
-      .xxx,
-    ]
-  }
-}
 
 /// The input fields to create a new customer.
 public struct CustomerCreateInput: GraphQLMapConvertible {
@@ -1014,7 +14,7 @@ public struct CustomerCreateInput: GraphQLMapConvertible {
   ///   - lastName: The customer’s last name.
   ///   - email: The customer’s email.
   ///   - phone: A unique phone number for the customer.
-  ///
+  /// 
   /// Formatted using E.164 standard. For example, _+16135551111_.
   ///   - password: The login password used by the customer.
   ///   - acceptsMarketing: Indicates whether the customer has consented to be sent marketing material via email.
@@ -1053,7 +53,7 @@ public struct CustomerCreateInput: GraphQLMapConvertible {
   }
 
   /// A unique phone number for the customer.
-  ///
+  /// 
   /// Formatted using E.164 standard. For example, _+16135551111_.
   public var phone: Swift.Optional<String?> {
     get {
@@ -1234,6 +234,130 @@ public struct CustomerAccessTokenCreateInput: GraphQLMapConvertible {
     }
     set {
       graphQLMap.updateValue(newValue, forKey: "password")
+    }
+  }
+}
+
+/// The input fields to create or update a mailing address.
+public struct MailingAddressInput: GraphQLMapConvertible {
+  public var graphQLMap: GraphQLMap
+
+  /// - Parameters:
+  ///   - address1: The first line of the address. Typically the street address or PO Box number.
+  ///   - address2: The second line of the address. Typically the number of the apartment, suite, or unit.
+  ///   - city: The name of the city, district, village, or town.
+  ///   - company: The name of the customer's company or organization.
+  ///   - country: The name of the country.
+  ///   - firstName: The first name of the customer.
+  ///   - lastName: The last name of the customer.
+  ///   - phone: A unique phone number for the customer.
+  /// 
+  /// Formatted using E.164 standard. For example, _+16135551111_.
+  ///   - province: The region of the address, such as the province, state, or district.
+  ///   - zip: The zip or postal code of the address.
+  public init(address1: Swift.Optional<String?> = nil, address2: Swift.Optional<String?> = nil, city: Swift.Optional<String?> = nil, company: Swift.Optional<String?> = nil, country: Swift.Optional<String?> = nil, firstName: Swift.Optional<String?> = nil, lastName: Swift.Optional<String?> = nil, phone: Swift.Optional<String?> = nil, province: Swift.Optional<String?> = nil, zip: Swift.Optional<String?> = nil) {
+    graphQLMap = ["address1": address1, "address2": address2, "city": city, "company": company, "country": country, "firstName": firstName, "lastName": lastName, "phone": phone, "province": province, "zip": zip]
+  }
+
+  /// The first line of the address. Typically the street address or PO Box number.
+  public var address1: Swift.Optional<String?> {
+    get {
+      return graphQLMap["address1"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "address1")
+    }
+  }
+
+  /// The second line of the address. Typically the number of the apartment, suite, or unit.
+  public var address2: Swift.Optional<String?> {
+    get {
+      return graphQLMap["address2"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "address2")
+    }
+  }
+
+  /// The name of the city, district, village, or town.
+  public var city: Swift.Optional<String?> {
+    get {
+      return graphQLMap["city"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "city")
+    }
+  }
+
+  /// The name of the customer's company or organization.
+  public var company: Swift.Optional<String?> {
+    get {
+      return graphQLMap["company"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "company")
+    }
+  }
+
+  /// The name of the country.
+  public var country: Swift.Optional<String?> {
+    get {
+      return graphQLMap["country"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "country")
+    }
+  }
+
+  /// The first name of the customer.
+  public var firstName: Swift.Optional<String?> {
+    get {
+      return graphQLMap["firstName"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "firstName")
+    }
+  }
+
+  /// The last name of the customer.
+  public var lastName: Swift.Optional<String?> {
+    get {
+      return graphQLMap["lastName"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "lastName")
+    }
+  }
+
+  /// A unique phone number for the customer.
+  /// 
+  /// Formatted using E.164 standard. For example, _+16135551111_.
+  public var phone: Swift.Optional<String?> {
+    get {
+      return graphQLMap["phone"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "phone")
+    }
+  }
+
+  /// The region of the address, such as the province, state, or district.
+  public var province: Swift.Optional<String?> {
+    get {
+      return graphQLMap["province"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "province")
+    }
+  }
+
+  /// The zip or postal code of the address.
+  public var zip: Swift.Optional<String?> {
+    get {
+      return graphQLMap["zip"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "zip")
     }
   }
 }
@@ -1445,7 +569,7 @@ public final class ProductDetailsQuery: GraphQLQuery {
       }
 
       /// The featured image for the product.
-      ///
+      /// 
       /// This field is functionally equivalent to `images(first: 1)`.
       public var featuredImage: FeaturedImage? {
         get {
@@ -1762,11 +886,11 @@ public final class ProductDetailsQuery: GraphQLQuery {
         }
 
         /// The location of the image as a URL.
-        ///
+        /// 
         /// If no transform options are specified, then the original image will be preserved including any pre-applied transforms.
-        ///
+        /// 
         /// All transformation options are considered "best-effort". Any transformation that the original image type doesn't support will be ignored.
-        ///
+        /// 
         /// If you need multiple variations of the same image, then you can use [GraphQL aliases](https://graphql.org/learn/queries/#aliases).
         public var url: String {
           get {
@@ -1897,11 +1021,11 @@ public final class ProductDetailsQuery: GraphQLQuery {
             }
 
             /// The location of the image as a URL.
-            ///
+            /// 
             /// If no transform options are specified, then the original image will be preserved including any pre-applied transforms.
-            ///
+            /// 
             /// All transformation options are considered "best-effort". Any transformation that the original image type doesn't support will be ignored.
-            ///
+            /// 
             /// If you need multiple variations of the same image, then you can use [GraphQL aliases](https://graphql.org/learn/queries/#aliases).
             public var url: String {
               get {
@@ -2122,11 +1246,11 @@ public final class CollectionsQuery: GraphQLQuery {
           }
 
           /// The location of the image as a URL.
-          ///
+          /// 
           /// If no transform options are specified, then the original image will be preserved including any pre-applied transforms.
-          ///
+          /// 
           /// All transformation options are considered "best-effort". Any transformation that the original image type doesn't support will be ignored.
-          ///
+          /// 
           /// If you need multiple variations of the same image, then you can use [GraphQL aliases](https://graphql.org/learn/queries/#aliases).
           public var url: String {
             get {
@@ -2404,7 +1528,7 @@ public final class GetAllProductsQuery: GraphQLQuery {
         }
 
         /// The featured image for the product.
-        ///
+        /// 
         /// This field is functionally equivalent to `images(first: 1)`.
         public var featuredImage: FeaturedImage? {
           get {
@@ -2721,11 +1845,11 @@ public final class GetAllProductsQuery: GraphQLQuery {
           }
 
           /// The location of the image as a URL.
-          ///
+          /// 
           /// If no transform options are specified, then the original image will be preserved including any pre-applied transforms.
-          ///
+          /// 
           /// All transformation options are considered "best-effort". Any transformation that the original image type doesn't support will be ignored.
-          ///
+          /// 
           /// If you need multiple variations of the same image, then you can use [GraphQL aliases](https://graphql.org/learn/queries/#aliases).
           public var url: String {
             get {
@@ -2856,11 +1980,11 @@ public final class GetAllProductsQuery: GraphQLQuery {
               }
 
               /// The location of the image as a URL.
-              ///
+              /// 
               /// If no transform options are specified, then the original image will be preserved including any pre-applied transforms.
-              ///
+              /// 
               /// All transformation options are considered "best-effort". Any transformation that the original image type doesn't support will be ignored.
-              ///
+              /// 
               /// If you need multiple variations of the same image, then you can use [GraphQL aliases](https://graphql.org/learn/queries/#aliases).
               public var url: String {
                 get {
@@ -3196,7 +2320,7 @@ public final class CollectionProductsQuery: GraphQLQuery {
           }
 
           /// The featured image for the product.
-          ///
+          /// 
           /// This field is functionally equivalent to `images(first: 1)`.
           public var featuredImage: FeaturedImage? {
             get {
@@ -3513,11 +2637,11 @@ public final class CollectionProductsQuery: GraphQLQuery {
             }
 
             /// The location of the image as a URL.
-            ///
+            /// 
             /// If no transform options are specified, then the original image will be preserved including any pre-applied transforms.
-            ///
+            /// 
             /// All transformation options are considered "best-effort". Any transformation that the original image type doesn't support will be ignored.
-            ///
+            /// 
             /// If you need multiple variations of the same image, then you can use [GraphQL aliases](https://graphql.org/learn/queries/#aliases).
             public var url: String {
               get {
@@ -3648,11 +2772,11 @@ public final class CollectionProductsQuery: GraphQLQuery {
                 }
 
                 /// The location of the image as a URL.
-                ///
+                /// 
                 /// If no transform options are specified, then the original image will be preserved including any pre-applied transforms.
-                ///
+                /// 
                 /// All transformation options are considered "best-effort". Any transformation that the original image type doesn't support will be ignored.
-                ///
+                /// 
                 /// If you need multiple variations of the same image, then you can use [GraphQL aliases](https://graphql.org/learn/queries/#aliases).
                 public var url: String {
                   get {
@@ -4112,6 +3236,581 @@ public final class CustomerAccessTokenCreateMutation: GraphQLMutation {
           set {
             resultMap.updateValue(newValue, forKey: "message")
           }
+        }
+      }
+    }
+  }
+}
+
+public final class CustomerAddressCreateMutation: GraphQLMutation {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    mutation customerAddressCreate($customerAccessToken: String!, $address: MailingAddressInput!) {
+      customerAddressCreate(
+        customerAccessToken: $customerAccessToken
+        address: $address
+      ) {
+        __typename
+        customerAddress {
+          __typename
+          address1
+          address2
+          city
+          country
+          id
+          phone
+          zip
+        }
+      }
+    }
+    """
+
+  public let operationName: String = "customerAddressCreate"
+
+  public var customerAccessToken: String
+  public var address: MailingAddressInput
+
+  public init(customerAccessToken: String, address: MailingAddressInput) {
+    self.customerAccessToken = customerAccessToken
+    self.address = address
+  }
+
+  public var variables: GraphQLMap? {
+    return ["customerAccessToken": customerAccessToken, "address": address]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["Mutation"]
+
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("customerAddressCreate", arguments: ["customerAccessToken": GraphQLVariable("customerAccessToken"), "address": GraphQLVariable("address")], type: .object(CustomerAddressCreate.selections)),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(customerAddressCreate: CustomerAddressCreate? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Mutation", "customerAddressCreate": customerAddressCreate.flatMap { (value: CustomerAddressCreate) -> ResultMap in value.resultMap }])
+    }
+
+    /// Creates a new address for a customer.
+    public var customerAddressCreate: CustomerAddressCreate? {
+      get {
+        return (resultMap["customerAddressCreate"] as? ResultMap).flatMap { CustomerAddressCreate(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "customerAddressCreate")
+      }
+    }
+
+    public struct CustomerAddressCreate: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["CustomerAddressCreatePayload"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("customerAddress", type: .object(CustomerAddress.selections)),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(customerAddress: CustomerAddress? = nil) {
+        self.init(unsafeResultMap: ["__typename": "CustomerAddressCreatePayload", "customerAddress": customerAddress.flatMap { (value: CustomerAddress) -> ResultMap in value.resultMap }])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      /// The new customer address object.
+      public var customerAddress: CustomerAddress? {
+        get {
+          return (resultMap["customerAddress"] as? ResultMap).flatMap { CustomerAddress(unsafeResultMap: $0) }
+        }
+        set {
+          resultMap.updateValue(newValue?.resultMap, forKey: "customerAddress")
+        }
+      }
+
+      public struct CustomerAddress: GraphQLSelectionSet {
+        public static let possibleTypes: [String] = ["MailingAddress"]
+
+        public static var selections: [GraphQLSelection] {
+          return [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("address1", type: .scalar(String.self)),
+            GraphQLField("address2", type: .scalar(String.self)),
+            GraphQLField("city", type: .scalar(String.self)),
+            GraphQLField("country", type: .scalar(String.self)),
+            GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+            GraphQLField("phone", type: .scalar(String.self)),
+            GraphQLField("zip", type: .scalar(String.self)),
+          ]
+        }
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(address1: String? = nil, address2: String? = nil, city: String? = nil, country: String? = nil, id: GraphQLID, phone: String? = nil, zip: String? = nil) {
+          self.init(unsafeResultMap: ["__typename": "MailingAddress", "address1": address1, "address2": address2, "city": city, "country": country, "id": id, "phone": phone, "zip": zip])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        /// The first line of the address. Typically the street address or PO Box number.
+        public var address1: String? {
+          get {
+            return resultMap["address1"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "address1")
+          }
+        }
+
+        /// The second line of the address. Typically the number of the apartment, suite, or unit.
+        public var address2: String? {
+          get {
+            return resultMap["address2"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "address2")
+          }
+        }
+
+        /// The name of the city, district, village, or town.
+        public var city: String? {
+          get {
+            return resultMap["city"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "city")
+          }
+        }
+
+        /// The name of the country.
+        public var country: String? {
+          get {
+            return resultMap["country"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "country")
+          }
+        }
+
+        /// A globally-unique ID.
+        public var id: GraphQLID {
+          get {
+            return resultMap["id"]! as! GraphQLID
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "id")
+          }
+        }
+
+        /// A unique phone number for the customer.
+        /// 
+        /// Formatted using E.164 standard. For example, _+16135551111_.
+        public var phone: String? {
+          get {
+            return resultMap["phone"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "phone")
+          }
+        }
+
+        /// The zip or postal code of the address.
+        public var zip: String? {
+          get {
+            return resultMap["zip"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "zip")
+          }
+        }
+      }
+    }
+  }
+}
+
+public final class QueryGetAddressQuery: GraphQLQuery {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    query QueryGetAddress($customerAccessToken: String!, $first: Int) {
+      customer(customerAccessToken: $customerAccessToken) {
+        __typename
+        addresses(first: $first) {
+          __typename
+          nodes {
+            __typename
+            address1
+            address2
+            city
+            country
+            id
+            zip
+            phone
+          }
+        }
+      }
+    }
+    """
+
+  public let operationName: String = "QueryGetAddress"
+
+  public var customerAccessToken: String
+  public var first: Int?
+
+  public init(customerAccessToken: String, first: Int? = nil) {
+    self.customerAccessToken = customerAccessToken
+    self.first = first
+  }
+
+  public var variables: GraphQLMap? {
+    return ["customerAccessToken": customerAccessToken, "first": first]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["QueryRoot"]
+
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("customer", arguments: ["customerAccessToken": GraphQLVariable("customerAccessToken")], type: .object(Customer.selections)),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(customer: Customer? = nil) {
+      self.init(unsafeResultMap: ["__typename": "QueryRoot", "customer": customer.flatMap { (value: Customer) -> ResultMap in value.resultMap }])
+    }
+
+    /// The customer associated with the given access token. Tokens are obtained by using the
+    /// [`customerAccessTokenCreate` mutation](https://shopify.dev/docs/api/storefront/latest/mutations/customerAccessTokenCreate).
+    public var customer: Customer? {
+      get {
+        return (resultMap["customer"] as? ResultMap).flatMap { Customer(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "customer")
+      }
+    }
+
+    public struct Customer: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["Customer"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("addresses", arguments: ["first": GraphQLVariable("first")], type: .nonNull(.object(Address.selections))),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(addresses: Address) {
+        self.init(unsafeResultMap: ["__typename": "Customer", "addresses": addresses.resultMap])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      /// A list of addresses for the customer.
+      public var addresses: Address {
+        get {
+          return Address(unsafeResultMap: resultMap["addresses"]! as! ResultMap)
+        }
+        set {
+          resultMap.updateValue(newValue.resultMap, forKey: "addresses")
+        }
+      }
+
+      public struct Address: GraphQLSelectionSet {
+        public static let possibleTypes: [String] = ["MailingAddressConnection"]
+
+        public static var selections: [GraphQLSelection] {
+          return [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("nodes", type: .nonNull(.list(.nonNull(.object(Node.selections))))),
+          ]
+        }
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(nodes: [Node]) {
+          self.init(unsafeResultMap: ["__typename": "MailingAddressConnection", "nodes": nodes.map { (value: Node) -> ResultMap in value.resultMap }])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        /// A list of the nodes contained in MailingAddressEdge.
+        public var nodes: [Node] {
+          get {
+            return (resultMap["nodes"] as! [ResultMap]).map { (value: ResultMap) -> Node in Node(unsafeResultMap: value) }
+          }
+          set {
+            resultMap.updateValue(newValue.map { (value: Node) -> ResultMap in value.resultMap }, forKey: "nodes")
+          }
+        }
+
+        public struct Node: GraphQLSelectionSet {
+          public static let possibleTypes: [String] = ["MailingAddress"]
+
+          public static var selections: [GraphQLSelection] {
+            return [
+              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLField("address1", type: .scalar(String.self)),
+              GraphQLField("address2", type: .scalar(String.self)),
+              GraphQLField("city", type: .scalar(String.self)),
+              GraphQLField("country", type: .scalar(String.self)),
+              GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+              GraphQLField("zip", type: .scalar(String.self)),
+              GraphQLField("phone", type: .scalar(String.self)),
+            ]
+          }
+
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public init(address1: String? = nil, address2: String? = nil, city: String? = nil, country: String? = nil, id: GraphQLID, zip: String? = nil, phone: String? = nil) {
+            self.init(unsafeResultMap: ["__typename": "MailingAddress", "address1": address1, "address2": address2, "city": city, "country": country, "id": id, "zip": zip, "phone": phone])
+          }
+
+          public var __typename: String {
+            get {
+              return resultMap["__typename"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          /// The first line of the address. Typically the street address or PO Box number.
+          public var address1: String? {
+            get {
+              return resultMap["address1"] as? String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "address1")
+            }
+          }
+
+          /// The second line of the address. Typically the number of the apartment, suite, or unit.
+          public var address2: String? {
+            get {
+              return resultMap["address2"] as? String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "address2")
+            }
+          }
+
+          /// The name of the city, district, village, or town.
+          public var city: String? {
+            get {
+              return resultMap["city"] as? String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "city")
+            }
+          }
+
+          /// The name of the country.
+          public var country: String? {
+            get {
+              return resultMap["country"] as? String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "country")
+            }
+          }
+
+          /// A globally-unique ID.
+          public var id: GraphQLID {
+            get {
+              return resultMap["id"]! as! GraphQLID
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "id")
+            }
+          }
+
+          /// The zip or postal code of the address.
+          public var zip: String? {
+            get {
+              return resultMap["zip"] as? String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "zip")
+            }
+          }
+
+          /// A unique phone number for the customer.
+          /// 
+          /// Formatted using E.164 standard. For example, _+16135551111_.
+          public var phone: String? {
+            get {
+              return resultMap["phone"] as? String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "phone")
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+public final class MutationMutation: GraphQLMutation {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    mutation Mutation($customerAddressDeleteId: ID!, $customerAccessToken: String!) {
+      customerAddressDelete(
+        id: $customerAddressDeleteId
+        customerAccessToken: $customerAccessToken
+      ) {
+        __typename
+        deletedCustomerAddressId
+      }
+    }
+    """
+
+  public let operationName: String = "Mutation"
+
+  public var customerAddressDeleteId: GraphQLID
+  public var customerAccessToken: String
+
+  public init(customerAddressDeleteId: GraphQLID, customerAccessToken: String) {
+    self.customerAddressDeleteId = customerAddressDeleteId
+    self.customerAccessToken = customerAccessToken
+  }
+
+  public var variables: GraphQLMap? {
+    return ["customerAddressDeleteId": customerAddressDeleteId, "customerAccessToken": customerAccessToken]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["Mutation"]
+
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("customerAddressDelete", arguments: ["id": GraphQLVariable("customerAddressDeleteId"), "customerAccessToken": GraphQLVariable("customerAccessToken")], type: .object(CustomerAddressDelete.selections)),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(customerAddressDelete: CustomerAddressDelete? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Mutation", "customerAddressDelete": customerAddressDelete.flatMap { (value: CustomerAddressDelete) -> ResultMap in value.resultMap }])
+    }
+
+    /// Permanently deletes the address of an existing customer.
+    public var customerAddressDelete: CustomerAddressDelete? {
+      get {
+        return (resultMap["customerAddressDelete"] as? ResultMap).flatMap { CustomerAddressDelete(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "customerAddressDelete")
+      }
+    }
+
+    public struct CustomerAddressDelete: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["CustomerAddressDeletePayload"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("deletedCustomerAddressId", type: .scalar(String.self)),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(deletedCustomerAddressId: String? = nil) {
+        self.init(unsafeResultMap: ["__typename": "CustomerAddressDeletePayload", "deletedCustomerAddressId": deletedCustomerAddressId])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      /// ID of the deleted customer address.
+      public var deletedCustomerAddressId: String? {
+        get {
+          return resultMap["deletedCustomerAddressId"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "deletedCustomerAddressId")
         }
       }
     }

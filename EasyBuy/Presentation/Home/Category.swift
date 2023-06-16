@@ -32,7 +32,7 @@ struct Category: View {
                             ZStack {
                                 Image(systemName: "slider.horizontal.3")
                                     .font(.title)
-                                    .foregroundColor(.black)
+                                    .foregroundColor(Color("myblack"))
                             }
                         }) //: BUTTON
                     }
@@ -50,8 +50,8 @@ struct Category: View {
                                 isGrid = !isGrid
                             }) {
                                 Image(systemName:  isGrid ? "square.fill.text.grid.1x2" : "square.grid.2x2")
-                                    .font(.title2).padding(.trailing , 10).foregroundColor(.black)
-                                
+                                    .font(.title2).padding(.trailing , 10).foregroundColor(Color("myblack"))
+                            
                             }
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)

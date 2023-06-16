@@ -21,6 +21,7 @@ struct Customer: Codable {
     let id, displayName, email, phone: String?
 }
 
+
 // MARK: - CustomerUserError
 struct CustomerUserError: Codable {
     let code: String?
