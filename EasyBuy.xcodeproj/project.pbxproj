@@ -118,6 +118,7 @@
 		3FFBDFEB2A3C5B6700ACC61E /* PaymentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFBDFEA2A3C5B6700ACC61E /* PaymentButton.swift */; };
 		3FFBDFED2A3C941300ACC61E /* DraftOrderComplete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFBDFEC2A3C941300ACC61E /* DraftOrderComplete.swift */; };
 		3FFBDFF32A3CDEFF00ACC61E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFBDFF22A3CDEFF00ACC61E /* SettingsView.swift */; };
+		3FFBDFF52A3CDF5200ACC61E /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFBDFF42A3CDF5200ACC61E /* SettingsViewModel.swift */; };
 		EB7015352A391DD3002CD0FC /* ProductImagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7015342A391DD3002CD0FC /* ProductImagesView.swift */; };
 		EB7258FD2A37D74B0074747C /* ValidationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7258FC2A37D74B0074747C /* ValidationUtils.swift */; };
 		EB73E8D52A2BABDD00A9E70B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB73E8D42A2BABDD00A9E70B /* LoginView.swift */; };
@@ -282,6 +283,7 @@
 		3FFBDFEA2A3C5B6700ACC61E /* PaymentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentButton.swift; sourceTree = "<group>"; };
 		3FFBDFEC2A3C941300ACC61E /* DraftOrderComplete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftOrderComplete.swift; sourceTree = "<group>"; };
 		3FFBDFF22A3CDEFF00ACC61E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		3FFBDFF42A3CDF5200ACC61E /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		EB7015342A391DD3002CD0FC /* ProductImagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductImagesView.swift; sourceTree = "<group>"; };
 		EB7258FC2A37D74B0074747C /* ValidationUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationUtils.swift; sourceTree = "<group>"; };
 		EB73E8D42A2BABDD00A9E70B /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -849,6 +851,7 @@
 		3FFBDFF12A3CDEE700ACC61E /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				3FFBDFF42A3CDF5200ACC61E /* SettingsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1416,6 +1419,7 @@
 				3F02F2E62A2DECFC00FDE52E /* RedeemedCodesList.swift in Sources */,
 				14FB09182A3A77B1006F54F6 /* APIAdmin.swift in Sources */,
 				3F02F2A62A29E83E00FDE52E /* NetworkManager.swift in Sources */,
+				3FFBDFF52A3CDF5200ACC61E /* SettingsViewModel.swift in Sources */,
 				3F25A1C12A315DE3009614A8 /* DiscounCodeCellViewModel.swift in Sources */,
 				14B138312A3B891500F33395 /* AddressPage.swift in Sources */,
 				1486EBA42A2BA0F10029212B /* ImageViewExtension.swift in Sources */,

@@ -13,7 +13,7 @@ struct PaymentMethodView: View {
     @State var draftOrderID: String = ""
     var body: some View {
         if #available(iOS 16.0, *) {
-            Text("Paayment Method").frame(maxWidth: .infinity, alignment: .leading).padding(.leading,10).fontWeight(.bold).font(Font.system(size: 22))
+            Text("Payment Method").frame(maxWidth: .infinity, alignment: .leading).padding(.leading,10).fontWeight(.bold).font(Font.system(size: 22))
         }
         PaymentButton(products: products, totalPrice: totalPrice,currrencyCode: "USD", draftOrderID: draftOrderID).frame(minWidth: 100, maxWidth:
                 .infinity, maxHeight: 45)
