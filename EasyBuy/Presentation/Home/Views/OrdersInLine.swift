@@ -15,7 +15,7 @@ struct OrdersInLine: View {
     var body: some View {
         VStack{
             ScrollView(.horizontal, showsIndicators: false) {
-                LazyHGrid(rows:rows , alignment: .center, spacing: 10, pinnedViews: [], content: {
+                LazyHGrid(rows:rows , alignment: .center, spacing: 4, pinnedViews: [], content: {
                     ForEach(viewModel.ordersInLine) { item in
                         OrderRow(order: item)
                     }

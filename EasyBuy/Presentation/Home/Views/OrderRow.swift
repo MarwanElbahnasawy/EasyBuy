@@ -14,41 +14,38 @@ struct OrderRow: View {
         VStack(alignment: .leading) {
             VStack{
                 HStack {
-                    let orderNumber = "Order No: \(order.orderNumber ?? 207119551)"
+                    let orderNumber = "Order No: \(order.name ?? "207119551")"
                     Text(orderNumber)
                     Spacer()
-                    Text(convertDateToString(date: order.createdAt ?? Date()))
+                    Text(order.createdAt ?? "")
+
                         .foregroundColor(.gray)
                 }.padding([.top], 2)
                 HStack() {
-                    Text("Tracking No:")
-                        .foregroundColor(.gray)
-                    Text(order.fulfillments?.first?.tracking_number ?? "1Z2345")
-                    Spacer()
-                }.padding([.top], 2)
-                HStack {
                     Text("Address:")
                     let token = "\(order.shippingAddress?.address1 ?? "shipping Address")"
                     Text(token)
                         .foregroundColor(.gray)
                     Spacer()
+                }.padding([.top], 2)
+                HStack {
                     Text("Total Amount:")
-                    let price = "$\(order.totalPrice ?? "199")"
+                    let price = "\(order.totalPriceSet?.shopMoney?.amount ?? "199") \(order.totalPriceSet?.shopMoney?.currencyCode ?? "")"
                     Text(price)
                         .foregroundColor(.gray)
+                    Spacer()
                 }.padding([.top], 2)
                 HStack{
                     if self.selectorIndex == 0 {
-                        
-                        Text(order.fulfillments?.first?.status ?? "Delivered")
+                        Text(order.displayFulfillmentStatus ?? "Delivered")
                             .foregroundColor(.green)
                             .padding(.vertical, 1)
                     } else if self.selectorIndex == 1 {
-                        Text(order.fulfillments?.first?.status ?? "Processing")
+                        Text(order.displayFulfillmentStatus ?? "Processing")
                             .foregroundColor(Color.init("CCAA00"))
                             .padding(.vertical, 1)
                     } else {
-                        Text(order.fulfillments?.first?.status ?? "Cancelled")
+                        Text(order.displayFulfillmentStatus ?? "Cancelled")
                             .foregroundColor(.red)
                             .padding(.vertical, 1)
                     }
@@ -59,9 +56,7 @@ struct OrderRow: View {
             }.padding(.all,15)
                .background(Color("itemcolor"))
                 .cornerRadius(25)
-               
         }
-        .padding(.horizontal,10)
         .font(.footnote)
 
     }
@@ -70,6 +65,6 @@ struct OrderRow: View {
 struct OrderRow_Previews: PreviewProvider {
     static var previews: some View {
         let resOrder : ResOrder = Bundle.main.decode("orders.json")
-        OrderRow(order: resOrder.orders.first!)
+        OrderRow(order: (resOrder.orders?.edges?.first?.node)!)
     }
 }

@@ -45,6 +45,7 @@ struct ProductCell: View {
                     if parts.count > 1 {
                         Text (parts [1])
                         .font (.system(size: 16,design: .rounded))
+                        .foregroundColor(Color("myblack"))
                     } else {
                         Text (title)
                             . font (.system(size: 16))
@@ -54,8 +55,7 @@ struct ProductCell: View {
                             . font (.system(size: 16))
                     }
       
-//                    Text(product.title ?? "title")
-//                        .font(Font.system(size: 15, weight: .black, design: .rounded))
+
                     Spacer()
                 }.frame(width:  UIScreen.main.bounds.width / 2 - 20,height: 25)
                 Text(product.productType ?? "product type")
@@ -67,6 +67,7 @@ struct ProductCell: View {
                 let formattedprice = String(format: "%.2f", priceCurrency) + " \(UserDefaults.standard.currency!)"
                 Text(formattedprice)
                     .font(Font.system(size: 15, weight: .heavy, design: .rounded))
+                    .foregroundColor(Color("myblack"))
             }
             .aspectRatio(contentMode: .fit)
         }

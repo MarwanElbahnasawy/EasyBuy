@@ -9,7 +9,7 @@ struct ClientReviewListView: View {
                 .font(.headline)
             
             LazyVStack(spacing: 16) {
-                ForEach(viewModel.reviews) { review in
+                ForEach(viewModel.displayedReviews) { review in
                     ClientReviewCell(
                         imageName: review.imageName,
                         name: review.name,
@@ -17,11 +17,22 @@ struct ClientReviewListView: View {
                         stars: review.stars
                     )
                 }
+                
+                if viewModel.displayedReviews.count < viewModel.reviews.count {
+                    Button(action: {
+                        viewModel.showAllReviews()
+                    }) {
+                        Text("See More")
+                            .font(.headline)
+                            .foregroundColor(.blue)
+                    }
+                }
             }
             .padding()
         }
     }
 }
+
 
 struct ClientReviewListView_Previews: PreviewProvider {
     static var previews: some View {
