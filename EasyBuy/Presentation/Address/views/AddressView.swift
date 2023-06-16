@@ -12,9 +12,11 @@ struct AddressView: View {
     @State var id : String = ""
     @State var showAlert = false
     @State var checkOutViewMode: CheckoutViewModel = CheckoutViewModel()
+    @State var settingsViewModel: SettingsViewModel = SettingsViewModel()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     @State var isComingFromPayment = false
+    @State var isComingFromSettings = false
     fileprivate  func deleteButton(id :String) -> some View {
         return Button(action: {
               print(id)
@@ -85,6 +87,10 @@ struct AddressView: View {
                                     ).onTapGesture {
                                         if isComingFromPayment{
                                             checkOutViewMode.customerAddress = address
+                                            self.presentationMode.wrappedValue.dismiss()
+                                        }
+                                        if isComingFromSettings{
+                                            settingsViewModel.customerAddress = address
                                             self.presentationMode.wrappedValue.dismiss()
                                         }
                                     }
