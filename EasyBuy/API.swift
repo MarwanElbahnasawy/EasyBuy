@@ -5,6 +5,7 @@ import Apollo
 import Foundation
 
 
+
 /// The input fields to create a new customer.
 public struct CustomerCreateInput: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
@@ -3717,11 +3718,11 @@ public final class QueryGetAddressQuery: GraphQLQuery {
   }
 }
 
-public final class MutationMutation: GraphQLMutation {
+public final class MutationDeleteAddressMutation: GraphQLMutation {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition: String =
     """
-    mutation Mutation($customerAddressDeleteId: ID!, $customerAccessToken: String!) {
+    mutation MutationDeleteAddress($customerAddressDeleteId: ID!, $customerAccessToken: String!) {
       customerAddressDelete(
         id: $customerAddressDeleteId
         customerAccessToken: $customerAccessToken
@@ -3732,7 +3733,7 @@ public final class MutationMutation: GraphQLMutation {
     }
     """
 
-  public let operationName: String = "Mutation"
+  public let operationName: String = "MutationDeleteAddress"
 
   public var customerAddressDeleteId: GraphQLID
   public var customerAccessToken: String

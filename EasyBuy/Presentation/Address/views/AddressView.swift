@@ -9,7 +9,25 @@ import SwiftUI
 
 struct AddressView: View {
     @ObservedObject var viewModel = AddressViewModel()
+    @State var id : String = ""
+    @State var showAlert = false
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
+    fileprivate  func deleteButton(id :String) -> some View {
+        return Button(action: {
+              print(id)
+            self.id = id
+            showAlert = true
+        }) {
+            Image(systemName: "delete.left")
+                .foregroundColor( .red)
+                .frame(width: 30, height: 30)
+        }
+        .cornerRadius(20)
+        .opacity(0.9)
+        .shadow(color: Color.gray, radius: 0.5, x: 0.3, y: 0.3)
+    }
+
     
     fileprivate func NavigationBarView() -> some View {
         return HStack {
@@ -58,6 +76,11 @@ struct AddressView: View {
                         }else{
                             ForEach(viewModel.address, id: \.id) { address in
                                 AddressCell(address: address)
+                                    .overlay(
+                                        deleteButton(id: address.id!)
+                                        .padding([.top, .trailing], 10)
+                                    , alignment: .topTrailing
+                                )
                                 LineView()
                             }
                         }
@@ -70,6 +93,11 @@ struct AddressView: View {
         }.onAppear{
             viewModel.featchAddress()
         }
+        .alert(isPresented: $showAlert) {
+                    Alert(title: Text("Important message"), message: Text("Do You Want To Delete This Address"), primaryButton: .destructive(Text("Cancel")), secondaryButton: .default(Text("OK"), action: {
+                        viewModel.deleteAddress(id: id)
+                    }))
+                }
     }
 }
 

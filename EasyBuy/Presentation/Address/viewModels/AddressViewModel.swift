@@ -95,15 +95,15 @@ class AddressViewModel: NSObject, ObservableObject, CLLocationManagerDelegate{
                         })
     }
     func deleteAddress(id : String){
-//        NetworkManager.getInstance(requestType: .storeFront).performGraphQLRequest(mutation: MutationMutation(customerAddressDeleteId: id, customerAccessToken: "") , responseModel: ResAddress.self, completion: { result in
-//            switch result {
-//            case .success(let response):
-//                
-//                print(" create access token: \(response.customerAddressCreate?.customerAddress?.address1 ?? "")")
-//            case .failure(let error):
-//                print("Failed to create access token: \(error)")
-//            }
-//        })
+        NetworkManager.getInstance(requestType: .storeFront).performGraphQLRequest(mutation: MutationDeleteAddressMutation(customerAddressDeleteId: id, customerAccessToken: "87169899dfeebbd0b776e9d6c8d4aaf9") , responseModel: DataClassDeletedCustomer.self, completion: { result in
+            switch result {
+            case .success( _):
+                self.featchAddress()
+                print("deleted \(id)")
+            case .failure(let error):
+                print("Failed to delete address : \(error)")
+            }
+        })
     }
 }
 
