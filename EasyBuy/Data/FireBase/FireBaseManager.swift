@@ -42,24 +42,10 @@ class FireBaseManager{
         
         return customerFirebase
     }
-    func removeCartFromFireBase(){
-        db.collection(NetworkConstants.CustomerDiscountCodes).document(firebaseCustomerID!).updateData(["draftOrders":FieldValue.arrayRemove(["cartDraftOrder"])]){
-            err in
-                if let err = err {
-                    print("Error updating document: \(err)")
-                } else {
-                    print("Document successfully updated")
-                }
-        }
-    }
-    func removeFavoriteFromFireBase(){
+    func removeCartFromFireBase() {
         db.collection(NetworkConstants.CustomerDiscountCodes)
             .document(firebaseCustomerID!)
-            .updateData(
-                ["draftOrders":FieldValue.arrayRemove(
-                    ["favoriteDraftorder"]
-                )]
-            ) { err in
+            .updateData(["draftOrders.cartDraftOrder": FieldValue.delete()]) { err in
                 if let err = err {
                     print("Error updating document: \(err)")
                 } else {
@@ -67,4 +53,42 @@ class FireBaseManager{
                 }
         }
     }
+
+    func removeFavoriteFromFireBase() {
+        db.collection(NetworkConstants.CustomerDiscountCodes)
+            .document(firebaseCustomerID!)
+            .updateData(["draftOrders.favoriteDraftorder": FieldValue.delete()]) { err in
+                if let err = err {
+                    print("Error updating document: \(err)")
+                } else {
+                    print("Document successfully updated")
+                }
+        }
+    }
+
+//    func removeCartFromFireBase(){
+//        db.collection(NetworkConstants.CustomerDiscountCodes).document(firebaseCustomerID!).updateData(["draftOrders":FieldValue.arrayRemove(["cartDraftOrder"])]){
+//            err in
+//                if let err = err {
+//                    print("Error updating document: \(err)")
+//                } else {
+//                    print("Document successfully updated")
+//                }
+//        }
+//    }
+//    func removeFavoriteFromFireBase(){
+//        db.collection(NetworkConstants.CustomerDiscountCodes)
+//            .document(firebaseCustomerID!)
+//            .updateData(
+//                ["draftOrders":FieldValue.arrayRemove(
+//                    ["favoriteDraftorder"]
+//                )]
+//            ) { err in
+//                if let err = err {
+//                    print("Error updating document: \(err)")
+//                } else {
+//                    print("Document successfully updated")
+//                }
+//        }
+//    }
 }
