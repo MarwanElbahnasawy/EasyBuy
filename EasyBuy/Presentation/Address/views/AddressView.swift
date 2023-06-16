@@ -11,8 +11,12 @@ struct AddressView: View {
     @ObservedObject var viewModel = AddressViewModel()
     @State var id : String = ""
     @State var showAlert = false
+    @State var checkOutViewMode: CheckoutViewModel = CheckoutViewModel()
+    @State var settingsViewModel: SettingsViewModel = SettingsViewModel()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
+    @State var isComingFromPayment = false
+    @State var isComingFromSettings = false
     fileprivate  func deleteButton(id :String) -> some View {
         return Button(action: {
               print(id)
@@ -59,9 +63,9 @@ struct AddressView: View {
     
     var body: some View {
         VStack{
-        @State var iserror = viewModel.iserror
+  
         if(viewModel.isLoading){
-            if iserror{
+            if viewModel.iserror{
                 LottieView(lottieFile: "error")
             }else{
                 LottieView(lottieFile: "loading")
@@ -80,7 +84,16 @@ struct AddressView: View {
                                         deleteButton(id: address.id!)
                                         .padding([.top, .trailing], 10)
                                     , alignment: .topTrailing
-                                )
+                                    ).onTapGesture {
+                                        if isComingFromPayment{
+                                            checkOutViewMode.customerAddress = address
+                                            self.presentationMode.wrappedValue.dismiss()
+                                        }
+                                        if isComingFromSettings{
+                                            settingsViewModel.customerAddress = address
+                                            self.presentationMode.wrappedValue.dismiss()
+                                        }
+                                    }
                                 LineView()
                             }
                         }

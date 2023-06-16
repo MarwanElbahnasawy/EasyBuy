@@ -174,7 +174,6 @@ class ProductViewModel: ObservableObject {
     
     func createFavoriteDraftOrder(discountCodes: [String]) {
         let linesItems = DraftOrderInput(
-            email: email,
             lineItems: [DraftOrderLineItemInput(quantity: 1,variantId: varaintID)]
         )
         

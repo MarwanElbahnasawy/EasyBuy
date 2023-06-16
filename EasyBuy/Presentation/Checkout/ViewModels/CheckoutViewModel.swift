@@ -14,7 +14,7 @@ class CheckoutViewModel: ObservableObject{
     @Published var discountCodes: String = ""
     @Published var cartDraftOrderID: String?
     @Published var customerDiscountCodes: CustomerDiscountCodes?
-    
+    @Published var customerAddress: CustomerAddress?
     func getProducts(){
         FireBaseManager.shared.retriveCustomerDiscountCodes()?.getDocument(completion: {[weak self] snapshot, error in
             
@@ -50,7 +50,7 @@ class CheckoutViewModel: ObservableObject{
     func applyDiscountCode(){
         let precentage = discountCodes.split(separator: "O").first
         print(precentage ?? "default")
-        let precentageValue = (precentage as! NSString).doubleValue/100
+        let precentageValue = (precentage as! NSString).doubleValue
         var  lineItems: [DraftOrderLineItemInput] = []
         lineItems = mapLineItemsToDratOrderLineItems(lineItems: customerDiscountCodes?.draftOrders?.cartDraftOrder?.draftOrderCreate?.draftOrder?.lineItems?.nodes)
         print("lines items \(lineItems)")

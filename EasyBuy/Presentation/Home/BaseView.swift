@@ -46,9 +46,10 @@ struct BaseView: View {
                             .offset(x: -10)
                         
                         // MARK: CURVED BUTTON
-                        Button {
-                            
+                        NavigationLink {
+                            ShopingCartListUIView(shopingCartViewModel: CartListViewModel())
                         } label: {
+                            
                             Image("cart")
                                 .resizable()
                                 .renderingMode(.template)
@@ -62,8 +63,10 @@ struct BaseView: View {
                             //MAR: - BUTTON SHADOWS
                                 .shadow(color: Color.black.opacity(0.04), radius: 5, x: 5, y: 5)
                                 .shadow(color: Color.black.opacity(0.04), radius: 5, x: -5, y: -5)
-                        }
-                        .offset(y: -30)
+                        }.offset(y: -30)
+
+                      
+                       
                         
                         TabButton(Tab: .Heart)
                             .offset(x: 10)

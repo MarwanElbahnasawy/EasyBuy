@@ -34,6 +34,7 @@ struct ProfileView: View {
 
             Section("General") {
                 HStack {
+                    
                     SettingRowView(imageName: "gear",
                                    title: "Version",
                                    tintColor: Color(.systemGray))
@@ -63,14 +64,14 @@ struct ProfileView: View {
                 NavigationLink(destination: AddressView(),label: {
                         SettingRowView(imageName: "bag.circle.fill",title: "My Address",tintColor: .black)
                 })
-                Button {
-
+                NavigationLink {
+                    SettingsView()
                 } label: {
+                    
                     SettingRowView(imageName: "gearshape.circle.fill",
                                    title: "Settings",
                                    tintColor: .black)
                 }
-
 
                 Button {
                     confirmingSignOut = true
