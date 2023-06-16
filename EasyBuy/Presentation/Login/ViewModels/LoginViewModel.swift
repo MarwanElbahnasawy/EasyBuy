@@ -3,7 +3,7 @@ import Foundation
 class LoginViewModel: ObservableObject {
     @Published var token: CustomerAccessTokenCreateData?
     @Published var tokenString: String?
-
+    
     func createAccessToken(newAccessTokenInput: CustomerAccessTokenCreateInput, completion: @escaping (Result<Void, Error>) -> Void) {
         NetworkManager.getInstance(requestType: .storeFront).performGraphQLRequest(mutation: CustomerAccessTokenCreateMutation(input: newAccessTokenInput), responseModel: CustomerAccessTokenCreateData.self, completion: { result in
             switch result {
@@ -14,8 +14,13 @@ class LoginViewModel: ObservableObject {
                     self.tokenString = token
                     completion(.success(()))
                 } else {
-                    print("Failed to create access token: Invalid credentials")
-                    completion(.failure(NSError(domain: "Invalid credentials", code: 400, userInfo: nil)))
+                    if let errorMessage = response.customerAccessTokenCreate?.customerAccessTokenError?.first?.message {
+                        print("Failed to create access token: \(errorMessage)")
+                        completion(.failure(NSError(domain: errorMessage, code: 400, userInfo: nil)))
+                    } else {
+                        print("Failed to create access token: Invalid credentials")
+                        completion(.failure(NSError(domain: "Invalid credentials", code: 400, userInfo: nil)))
+                    }
                 }
             case .failure(let error):
                 print("Failed to create access token: \(error)")

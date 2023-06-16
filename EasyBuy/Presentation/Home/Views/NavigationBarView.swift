@@ -16,11 +16,11 @@ struct NavigationBarView: View {
   
   var body: some View {
     HStack {
-      Button(action: {}, label: {
-        Image(systemName: "magnifyingglass")
-          .font(.title)
-          .foregroundColor(Color("myblack"))
-      }) //: BUTTON
+        NavigationLink(destination: SearchView()) {
+            Image(systemName: "magnifyingglass")
+                .font(.title)
+                .foregroundColor(Color("myblack"))
+        }
       
       Spacer()
       

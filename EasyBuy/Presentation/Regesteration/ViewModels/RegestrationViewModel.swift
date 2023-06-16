@@ -25,8 +25,13 @@ class RegestrationViewModel: ObservableObject {
                     UserDefaults.standard.set(customerDisplayName, forKey: "displayName")
                     completion(.success(()))
                 } else {
-                    print("Failed to create account: Invalid credentials")
-                    completion(.failure(NSError(domain: "Invalid credentials", code: 400, userInfo: nil)))
+                    if let errorMessage = response.customerCreate?.customerUserErrors?.first?.message {
+                        print("Failed to create account: \(errorMessage)")
+                        completion(.failure(NSError(domain: errorMessage, code: 400, userInfo: nil)))
+                    } else {
+                        print("Failed to create account: Invalid credentials")
+                        completion(.failure(NSError(domain: "Invalid credentials", code: 400, userInfo: nil)))
+                    }
                 }
             case .failure(let error):
                 print("Failed to create account: \(error)")
