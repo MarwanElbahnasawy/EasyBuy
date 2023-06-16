@@ -10,7 +10,7 @@ import Combine
 
 struct CheckoutView: View {
     @ObservedObject var viewModel: CheckoutViewModel
-
+    
 
     var body: some View {
         
@@ -20,18 +20,18 @@ struct CheckoutView: View {
                     if #available(iOS 16.0, *) {
                         Text("Delivery Address").frame(maxWidth: .infinity, alignment: .leading).padding(.leading,10).fontWeight(.bold).font(Font.system(size: 22))
                     }
-                    AddressCartView(street: "ismailia", city: "ismailia", state: "ismailia", phone: "ismailia", zipcode: "ismailia", country: "ismailia")
-                        .padding(.leading,10).padding(.top,10).shadow(radius: 20).cornerRadius(20)
-                    Button(action: {
-                        // Perform action here
-                    }) {
+                    AddressCell(address: viewModel.customerAddress ?? CustomerAddress())
+                        .padding(.leading,10).padding(.top,10)
+                    NavigationLink(destination: {
+                        AddressView(checkOutViewMode: viewModel,isComingFromPayment: true)
+                    }, label: {
                         Text("Address")
                             .padding(.horizontal, 10)
                             .padding(.vertical, 10)
                             .background(Color.black)
                             .foregroundColor(.white)
                             .cornerRadius(5)
-                    }
+                    })
                     
                 }
                 .frame(height: 300)

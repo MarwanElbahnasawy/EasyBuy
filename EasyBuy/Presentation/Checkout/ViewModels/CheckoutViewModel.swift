@@ -14,7 +14,7 @@ class CheckoutViewModel: ObservableObject{
     @Published var discountCodes: String = ""
     @Published var cartDraftOrderID: String?
     @Published var customerDiscountCodes: CustomerDiscountCodes?
-    
+    @Published var customerAddress: CustomerAddress?
     func getProducts(){
         FireBaseManager.shared.retriveCustomerDiscountCodes()?.getDocument(completion: {[weak self] snapshot, error in
             
