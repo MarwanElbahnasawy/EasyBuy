@@ -90,8 +90,10 @@ struct CheckoutView: View {
                         Spacer()
                     }.padding(.leading,10).padding(.top,30)
                 }
-                Button {
-                    //do action here
+                NavigationLink {
+                   
+                    PaymentMethodView(totalPrice:$viewModel.priceAfterDiscounts , products: viewModel.products ?? [])
+                    
                 } label: {
                     Text("Go To Payment")
                         .font(.title3)
@@ -101,7 +103,6 @@ struct CheckoutView: View {
                         .padding(.horizontal, 8)
                         .background(Color.black)
                         .cornerRadius(10.0)
-                    
                 }
             }
         })
