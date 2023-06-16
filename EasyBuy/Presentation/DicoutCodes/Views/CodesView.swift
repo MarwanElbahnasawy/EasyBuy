@@ -10,6 +10,8 @@ import SwiftUI
 struct CodesView: View {
     @State var selectedValue = 0
     @State var adType: AdType = .all
+    @State var isUseable = false
+    var checkoutViewModel: CheckoutViewModel?
     var body: some View {
         VStack{
             HStack(alignment: .top){
@@ -23,7 +25,7 @@ struct CodesView: View {
                     DiscountCodesList(discountCodesViewModel: DiscountCodesListViewModel(), adType: adType)
                 }
                 else{
-                   RedeemedCodesList(redeemedViewModel: RedeemedListViewModel())
+                    RedeemedCodesList(redeemedViewModel: RedeemedListViewModel(),isUseable: isUseable,checkoutViewModel: checkoutViewModel)
                 }
             }
         }
@@ -31,8 +33,8 @@ struct CodesView: View {
     }
 
 
-struct CodesView_Previews: PreviewProvider {
-    static var previews: some View {
-        CodesView()
-    }
-}
+//struct CodesView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CodesView()
+//    }
+//}
