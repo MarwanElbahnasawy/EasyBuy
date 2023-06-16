@@ -191,7 +191,7 @@ query QueryGetAddress($customerAccessToken: String!, $first: Int) {
     }
   }
 }
-mutation Mutation($customerAddressDeleteId: ID!, $customerAccessToken: String!) {
+mutation MutationDeleteAddress($customerAddressDeleteId: ID!, $customerAccessToken: String!) {
   customerAddressDelete(id: $customerAddressDeleteId, customerAccessToken: $customerAccessToken) {
     deletedCustomerAddressId
   }
