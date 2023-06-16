@@ -198,3 +198,13 @@ query getOrders($first: Int , $query: String){
     }
   }
 }
+mutation draftOrderComplete($id: ID!) {
+  draftOrderComplete(id: $id) {
+    draftOrder {
+      id
+      order {
+        id
+      }
+    }
+  }
+}

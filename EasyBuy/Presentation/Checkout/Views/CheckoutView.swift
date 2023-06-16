@@ -77,6 +77,11 @@ struct CheckoutView: View {
                         viewModel.applyDiscountCode()
                     } label: {
                         Text("Apply Code")
+                            .padding(.horizontal, 10)
+                            .padding(.vertical, 10)
+                            .background(Color.black)
+                            .foregroundColor(.white)
+                            .cornerRadius(5)
                     }
 
                     HStack{
@@ -92,7 +97,7 @@ struct CheckoutView: View {
                 }
                 NavigationLink {
                    
-                    PaymentMethodView(totalPrice:$viewModel.priceAfterDiscounts , products: viewModel.products ?? [])
+                    PaymentMethodView(totalPrice:$viewModel.priceAfterDiscounts , products: viewModel.products ?? [],draftOrderID: viewModel.cartDraftOrderID ?? " ")
                     
                 } label: {
                     Text("Go To Payment")

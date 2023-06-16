@@ -13,12 +13,14 @@ class PaymentManager: NSObject , PKPaymentAuthorizationControllerDelegate{
     var items: [LinesItemNode]
     var totalPrice: String
     var currencyCode: String
+    var draftOrderID: String
     var button = PKPaymentButton.init(paymentButtonType: .checkout, paymentButtonStyle: .automatic)
     
-    init(items: [LinesItemNode], totalPrice: String, currencyCode: String) {
+    init(items: [LinesItemNode], totalPrice: String, currencyCode: String, draftOrderId: String) {
         self.items = items
         self.totalPrice = totalPrice
         self.currencyCode = currencyCode
+        self.draftOrderID = draftOrderId
         super.init()
         button.addTarget(self, action: #selector(callBack), for: .touchUpInside)
     }
@@ -51,6 +53,8 @@ class PaymentManager: NSObject , PKPaymentAuthorizationControllerDelegate{
         paymentController?.present()
     }
     func paymentAuthorizationControllerDidFinish(_ controller: PKPaymentAuthorizationController) {
+        completeOrder()
+        draftOrderDelete()
         controller.dismiss()
     }
     func paymentAuthorizationController(_ controller: PKPaymentAuthorizationController, didAuthorizePayment payment: PKPayment) async -> PKPaymentAuthorizationResult {
@@ -71,5 +75,27 @@ class PaymentManager: NSObject , PKPaymentAuthorizationControllerDelegate{
             return [shippingDelivery]
         }
         return []
+    }
+    func completeOrder(){
+        print("the draft order is \(draftOrderID)")
+        NetworkManager.getInstance(requestType: .admin).performGraphQLRequest(mutation: DraftOrderCompleteMutation(id: draftOrderID), responseModel: DraftOrderCompleteDataClass.self) { result in
+            switch result {
+            case .success(let success):
+                print(success)
+            case .failure(let failure):
+                print(failure)
+            }
+        }
+    }
+    func draftOrderDelete(){
+        NetworkManager.getInstance(requestType: .admin).performGraphQLRequest(mutation: DraftOrderDeleteMutation(input: DraftOrderDeleteInput(id: draftOrderID)), responseModel: DeleteDraftOrderDataClass.self) { result in
+            switch result {
+            case .success(let success):
+                print(success)
+                // delete from fire base
+            case .failure(let failure):
+                print(failure)
+            }
+        }
     }
 }
