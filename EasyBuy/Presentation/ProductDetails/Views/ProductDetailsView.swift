@@ -25,7 +25,7 @@ struct ProductDetailsView: View {
             }
         }
         .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: BackButton(action: {presentationMode.wrappedValue.dismiss()}), trailing: Image("threeDot"))
+        .navigationBarItems(leading: BackButton(action: {presentationMode.wrappedValue.dismiss()}))
         .onAppear(perform: {
             viewModel.productId = productId
             viewModel.fetchProductDetails()

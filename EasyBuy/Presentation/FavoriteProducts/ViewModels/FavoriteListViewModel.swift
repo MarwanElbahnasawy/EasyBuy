@@ -1,10 +1,3 @@
-//
-//  FavoriteListViewModel.swift
-//  EasyBuy
-//
-//  Created by Ahmad Hemeda on 14/06/2023.
-//
-
 import Foundation
 
 class FavoriteListViewModel : ObservableObject {
@@ -99,5 +92,18 @@ class FavoriteListViewModel : ObservableObject {
                 }
             }
         }
+    }
+    
+    func indexSet(for item: LinesItemNode) -> IndexSet? {
+        guard let products = products else {
+            return nil
+        }
+        
+        let index = products.firstIndex { $0.variant?.id == item.variant?.id }
+        guard let unwrappedIndex = index else {
+            return nil
+        }
+        
+        return IndexSet(integer: unwrappedIndex)
     }
 }
