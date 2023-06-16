@@ -56,13 +56,9 @@ struct ProfileView: View {
                 }
             }
             Section("Account") {
-
-                Button {
-                    //orders
-                } label: {
-                    SettingRowView(imageName: "bag.circle.fill",title: "My Orders",tintColor: .black)
-                }
-
+                NavigationLink(destination: AddressView(),label: {
+                        SettingRowView(imageName: "bag.circle.fill",title: "My Address",tintColor: .black)
+                })
                 Button {
 
                 } label: {

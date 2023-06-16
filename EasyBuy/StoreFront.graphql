@@ -176,3 +176,23 @@ mutation customerAddressCreate($customerAccessToken: String!, $address: MailingA
     }
   }
 }
+query QueryGetAddress($customerAccessToken: String!, $first: Int) {
+  customer(customerAccessToken: $customerAccessToken) {
+    addresses(first: $first) {
+      nodes {
+        address1
+        address2
+        city
+        country
+        id
+        zip
+        phone
+      }
+    }
+  }
+}
+mutation Mutation($customerAddressDeleteId: ID!, $customerAccessToken: String!) {
+  customerAddressDelete(id: $customerAddressDeleteId, customerAccessToken: $customerAccessToken) {
+    deletedCustomerAddressId
+  }
+}

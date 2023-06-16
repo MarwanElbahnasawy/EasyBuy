@@ -14,6 +14,9 @@ class AddressViewModel: NSObject, ObservableObject, CLLocationManagerDelegate{
     
     @Published var mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 50, longitude: 0), span: MKCoordinateSpan(latitudeDelta: 25, longitudeDelta: 25))
     @Published var locations: [Location] = []
+    @Published var address: [CustomerAddress] = []
+    @Published var iserror: Bool = false
+    @Published var isLoading: Bool = true
     @Published var selectedPlace: Location?
     @Published var selectorIndex = 0
     let manager = CLLocationManager()
@@ -23,8 +26,7 @@ class AddressViewModel: NSObject, ObservableObject, CLLocationManagerDelegate{
     override init() {
         super.init()
         manager.delegate = self
-        requestLocation()
-      
+        featchAddress()
     }
     func requestLocation() {
         manager.requestLocation()
@@ -70,7 +72,6 @@ class AddressViewModel: NSObject, ObservableObject, CLLocationManagerDelegate{
         return result
     }
     func addAddress(address1: String,address2: String,city: String,country: String,phone: String,zip: String ){
-     
         NetworkManager.getInstance(requestType: .storeFront).performGraphQLRequest(mutation:  CustomerAddressCreateMutation(customerAccessToken: "87169899dfeebbd0b776e9d6c8d4aaf9", address: MailingAddressInput(address1: address1, address2: address2, city: city, country: country , phone: phone, zip: zip)), responseModel: ResAddress.self, completion: { result in
             switch result {
             case .success(let response):
@@ -80,7 +81,29 @@ class AddressViewModel: NSObject, ObservableObject, CLLocationManagerDelegate{
                 print("Failed to create access token: \(error)")
             }
         })
-        
+    }
+    func featchAddress(){
+        NetworkManager.getInstance(requestType: .storeFront).queryGraphQLRequest(query:QueryGetAddressQuery(customerAccessToken: "87169899dfeebbd0b776e9d6c8d4aaf9",first: 20) , responseModel: DataClassAddress.self, completion: { result in
+                            switch result {
+                            case .success(let success):
+                                self.address = success.customer?.addresses?.nodes ?? []
+                                self.isLoading = false
+                            case .failure(let failure):
+                                print(failure)
+                                self.iserror = true
+                            }
+                        })
+    }
+    func deleteAddress(id : String){
+//        NetworkManager.getInstance(requestType: .storeFront).performGraphQLRequest(mutation: MutationMutation(customerAddressDeleteId: id, customerAccessToken: "") , responseModel: ResAddress.self, completion: { result in
+//            switch result {
+//            case .success(let response):
+//                
+//                print(" create access token: \(response.customerAddressCreate?.customerAddress?.address1 ?? "")")
+//            case .failure(let error):
+//                print("Failed to create access token: \(error)")
+//            }
+//        })
     }
 }
 

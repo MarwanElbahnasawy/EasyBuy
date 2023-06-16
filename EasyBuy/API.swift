@@ -5,7 +5,6 @@ import Apollo
 import Foundation
 
 
-
 /// The input fields to create a new customer.
 public struct CustomerCreateInput: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
@@ -3454,6 +3453,364 @@ public final class CustomerAddressCreateMutation: GraphQLMutation {
           set {
             resultMap.updateValue(newValue, forKey: "zip")
           }
+        }
+      }
+    }
+  }
+}
+
+public final class QueryGetAddressQuery: GraphQLQuery {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    query QueryGetAddress($customerAccessToken: String!, $first: Int) {
+      customer(customerAccessToken: $customerAccessToken) {
+        __typename
+        addresses(first: $first) {
+          __typename
+          nodes {
+            __typename
+            address1
+            address2
+            city
+            country
+            id
+            zip
+            phone
+          }
+        }
+      }
+    }
+    """
+
+  public let operationName: String = "QueryGetAddress"
+
+  public var customerAccessToken: String
+  public var first: Int?
+
+  public init(customerAccessToken: String, first: Int? = nil) {
+    self.customerAccessToken = customerAccessToken
+    self.first = first
+  }
+
+  public var variables: GraphQLMap? {
+    return ["customerAccessToken": customerAccessToken, "first": first]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["QueryRoot"]
+
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("customer", arguments: ["customerAccessToken": GraphQLVariable("customerAccessToken")], type: .object(Customer.selections)),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(customer: Customer? = nil) {
+      self.init(unsafeResultMap: ["__typename": "QueryRoot", "customer": customer.flatMap { (value: Customer) -> ResultMap in value.resultMap }])
+    }
+
+    /// The customer associated with the given access token. Tokens are obtained by using the
+    /// [`customerAccessTokenCreate` mutation](https://shopify.dev/docs/api/storefront/latest/mutations/customerAccessTokenCreate).
+    public var customer: Customer? {
+      get {
+        return (resultMap["customer"] as? ResultMap).flatMap { Customer(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "customer")
+      }
+    }
+
+    public struct Customer: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["Customer"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("addresses", arguments: ["first": GraphQLVariable("first")], type: .nonNull(.object(Address.selections))),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(addresses: Address) {
+        self.init(unsafeResultMap: ["__typename": "Customer", "addresses": addresses.resultMap])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      /// A list of addresses for the customer.
+      public var addresses: Address {
+        get {
+          return Address(unsafeResultMap: resultMap["addresses"]! as! ResultMap)
+        }
+        set {
+          resultMap.updateValue(newValue.resultMap, forKey: "addresses")
+        }
+      }
+
+      public struct Address: GraphQLSelectionSet {
+        public static let possibleTypes: [String] = ["MailingAddressConnection"]
+
+        public static var selections: [GraphQLSelection] {
+          return [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("nodes", type: .nonNull(.list(.nonNull(.object(Node.selections))))),
+          ]
+        }
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(nodes: [Node]) {
+          self.init(unsafeResultMap: ["__typename": "MailingAddressConnection", "nodes": nodes.map { (value: Node) -> ResultMap in value.resultMap }])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        /// A list of the nodes contained in MailingAddressEdge.
+        public var nodes: [Node] {
+          get {
+            return (resultMap["nodes"] as! [ResultMap]).map { (value: ResultMap) -> Node in Node(unsafeResultMap: value) }
+          }
+          set {
+            resultMap.updateValue(newValue.map { (value: Node) -> ResultMap in value.resultMap }, forKey: "nodes")
+          }
+        }
+
+        public struct Node: GraphQLSelectionSet {
+          public static let possibleTypes: [String] = ["MailingAddress"]
+
+          public static var selections: [GraphQLSelection] {
+            return [
+              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLField("address1", type: .scalar(String.self)),
+              GraphQLField("address2", type: .scalar(String.self)),
+              GraphQLField("city", type: .scalar(String.self)),
+              GraphQLField("country", type: .scalar(String.self)),
+              GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+              GraphQLField("zip", type: .scalar(String.self)),
+              GraphQLField("phone", type: .scalar(String.self)),
+            ]
+          }
+
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public init(address1: String? = nil, address2: String? = nil, city: String? = nil, country: String? = nil, id: GraphQLID, zip: String? = nil, phone: String? = nil) {
+            self.init(unsafeResultMap: ["__typename": "MailingAddress", "address1": address1, "address2": address2, "city": city, "country": country, "id": id, "zip": zip, "phone": phone])
+          }
+
+          public var __typename: String {
+            get {
+              return resultMap["__typename"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          /// The first line of the address. Typically the street address or PO Box number.
+          public var address1: String? {
+            get {
+              return resultMap["address1"] as? String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "address1")
+            }
+          }
+
+          /// The second line of the address. Typically the number of the apartment, suite, or unit.
+          public var address2: String? {
+            get {
+              return resultMap["address2"] as? String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "address2")
+            }
+          }
+
+          /// The name of the city, district, village, or town.
+          public var city: String? {
+            get {
+              return resultMap["city"] as? String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "city")
+            }
+          }
+
+          /// The name of the country.
+          public var country: String? {
+            get {
+              return resultMap["country"] as? String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "country")
+            }
+          }
+
+          /// A globally-unique ID.
+          public var id: GraphQLID {
+            get {
+              return resultMap["id"]! as! GraphQLID
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "id")
+            }
+          }
+
+          /// The zip or postal code of the address.
+          public var zip: String? {
+            get {
+              return resultMap["zip"] as? String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "zip")
+            }
+          }
+
+          /// A unique phone number for the customer.
+          /// 
+          /// Formatted using E.164 standard. For example, _+16135551111_.
+          public var phone: String? {
+            get {
+              return resultMap["phone"] as? String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "phone")
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+public final class MutationMutation: GraphQLMutation {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    mutation Mutation($customerAddressDeleteId: ID!, $customerAccessToken: String!) {
+      customerAddressDelete(
+        id: $customerAddressDeleteId
+        customerAccessToken: $customerAccessToken
+      ) {
+        __typename
+        deletedCustomerAddressId
+      }
+    }
+    """
+
+  public let operationName: String = "Mutation"
+
+  public var customerAddressDeleteId: GraphQLID
+  public var customerAccessToken: String
+
+  public init(customerAddressDeleteId: GraphQLID, customerAccessToken: String) {
+    self.customerAddressDeleteId = customerAddressDeleteId
+    self.customerAccessToken = customerAccessToken
+  }
+
+  public var variables: GraphQLMap? {
+    return ["customerAddressDeleteId": customerAddressDeleteId, "customerAccessToken": customerAccessToken]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["Mutation"]
+
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("customerAddressDelete", arguments: ["id": GraphQLVariable("customerAddressDeleteId"), "customerAccessToken": GraphQLVariable("customerAccessToken")], type: .object(CustomerAddressDelete.selections)),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(customerAddressDelete: CustomerAddressDelete? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Mutation", "customerAddressDelete": customerAddressDelete.flatMap { (value: CustomerAddressDelete) -> ResultMap in value.resultMap }])
+    }
+
+    /// Permanently deletes the address of an existing customer.
+    public var customerAddressDelete: CustomerAddressDelete? {
+      get {
+        return (resultMap["customerAddressDelete"] as? ResultMap).flatMap { CustomerAddressDelete(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "customerAddressDelete")
+      }
+    }
+
+    public struct CustomerAddressDelete: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["CustomerAddressDeletePayload"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("deletedCustomerAddressId", type: .scalar(String.self)),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(deletedCustomerAddressId: String? = nil) {
+        self.init(unsafeResultMap: ["__typename": "CustomerAddressDeletePayload", "deletedCustomerAddressId": deletedCustomerAddressId])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      /// ID of the deleted customer address.
+      public var deletedCustomerAddressId: String? {
+        get {
+          return resultMap["deletedCustomerAddressId"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "deletedCustomerAddressId")
         }
       }
     }

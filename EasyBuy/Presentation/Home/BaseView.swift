@@ -22,7 +22,7 @@ struct BaseView: View {
                     .background(Color.black.opacity(0.04))
                     .tag(Tab.Category)
                 
-                AddressPage()
+                AddressView()
                     .tag(Tab.Heart)
                 ProfileView()
                     .environmentObject(baseData)
@@ -98,8 +98,6 @@ struct BaseView: View {
                     .frame(maxWidth: .infinity)
             }
         }
-    
-    
 }
 
 struct BaseView_Previews: PreviewProvider {

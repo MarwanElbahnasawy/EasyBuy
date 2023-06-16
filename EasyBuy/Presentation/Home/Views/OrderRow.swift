@@ -56,7 +56,6 @@ struct OrderRow: View {
             }.padding(.all,15)
                .background(Color("itemcolor"))
                 .cornerRadius(25)
-               
         }
         .font(.footnote)
 

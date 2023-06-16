@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		141E43B62A3BACF9009EA9DB /* AddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141E43B52A3BACF9009EA9DB /* AddressView.swift */; };
+		141E43B92A3BAFA5009EA9DB /* AddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141E43B82A3BAFA5009EA9DB /* AddressCell.swift */; };
+		141E43BB2A3BC9EF009EA9DB /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141E43BA2A3BC9EF009EA9DB /* API.swift */; };
 		144FEAC22A2D0C670088F817 /* SwiftU.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144FEAC12A2D0C670088F817 /* SwiftU.swift */; };
 		146520162A2BA479006EC2CA /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146520152A2BA479006EC2CA /* Onboarding.swift */; };
 		146520182A2BA4AB006EC2CA /* Intro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146520172A2BA4AA006EC2CA /* Intro.swift */; };
@@ -39,7 +42,6 @@
 		14B138312A3B891500F33395 /* AddressPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B138302A3B891500F33395 /* AddressPage.swift */; };
 		14B138332A3B891C00F33395 /* AddressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B138322A3B891C00F33395 /* AddressViewModel.swift */; };
 		14B138352A3B892300F33395 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B138342A3B892300F33395 /* Location.swift */; };
-		14B138392A3B8D9D00F33395 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B138382A3B8D9D00F33395 /* API.swift */; };
 		14B1383B2A3B932B00F33395 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B1383A2A3B932B00F33395 /* Address.swift */; };
 		14BC9B412A2CE69D00D7FD4B /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BC9B402A2CE69D00D7FD4B /* Category.swift */; };
 		14BC9B432A2CE6D300D7FD4B /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BC9B422A2CE6D300D7FD4B /* CategoryViewModel.swift */; };
@@ -156,6 +158,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		141E43B52A3BACF9009EA9DB /* AddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressView.swift; sourceTree = "<group>"; };
+		141E43B82A3BAFA5009EA9DB /* AddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCell.swift; sourceTree = "<group>"; };
+		141E43BA2A3BC9EF009EA9DB /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		144FEAC12A2D0C670088F817 /* SwiftU.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftU.swift; sourceTree = "<group>"; };
 		146520152A2BA479006EC2CA /* Onboarding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		146520172A2BA4AA006EC2CA /* Intro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Intro.swift; sourceTree = "<group>"; };
@@ -188,7 +193,6 @@
 		14B138302A3B891500F33395 /* AddressPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressPage.swift; sourceTree = "<group>"; };
 		14B138322A3B891C00F33395 /* AddressViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressViewModel.swift; sourceTree = "<group>"; };
 		14B138342A3B892300F33395 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
-		14B138382A3B8D9D00F33395 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		14B1383A2A3B932B00F33395 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		14BC9B402A2CE69D00D7FD4B /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		14BC9B422A2CE6D300D7FD4B /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
@@ -380,6 +384,8 @@
 			isa = PBXGroup;
 			children = (
 				14B138302A3B891500F33395 /* AddressPage.swift */,
+				141E43B52A3BACF9009EA9DB /* AddressView.swift */,
+				141E43B82A3BAFA5009EA9DB /* AddressCell.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -514,7 +520,7 @@
 			children = (
 				3F25A1AD2A31521C009614A8 /* GoogleService-Info.plist */,
 				14FB09172A3A77B1006F54F6 /* APIAdmin.swift */,
-				14B138382A3B8D9D00F33395 /* API.swift */,
+				141E43BA2A3BC9EF009EA9DB /* API.swift */,
 				17C9CF232A27E12F004BCCC2 /* EasyBuyApp.swift */,
 				3F02F2C32A2BCEC900FDE52E /* schemaAdmin.json */,
 				3F02F2AE2A29EC4C00FDE52E /* schema.json */,
@@ -1139,6 +1145,7 @@
 				14E54EED2A2E301E00635F72 /* OrdersViewModel.swift in Sources */,
 				EB90A61A2A2B384F00295296 /* CreateCustomerResponse.swift in Sources */,
 				EBC6453A2A2C9418000FD6F5 /* ProfileView.swift in Sources */,
+				141E43B92A3BAFA5009EA9DB /* AddressCell.swift in Sources */,
 				EBCEFB9C2A31D77900042B62 /* DescriptionView.swift in Sources */,
 				17C9CF7F2A27E1D3004BCCC2 /* Constants.swift in Sources */,
 				EBCEFBA42A31D80D00042B62 /* SizesView.swift in Sources */,
@@ -1164,10 +1171,10 @@
 				EBC8D0E42A2AA930006DACFD /* Product.swift in Sources */,
 				EBCEFB9A2A31D74B00042B62 /* FeaturedImageView.swift in Sources */,
 				14AC6C7E2A37D2DC00371D34 /* OnboardingViewModel.swift in Sources */,
-				14B138392A3B8D9D00F33395 /* API.swift in Sources */,
 				171B151E2A28FCCF00851C67 /* HomeViewModel.swift in Sources */,
 				148580172A2BEE6800D33591 /* image.swift in Sources */,
 				3F25A1B92A315332009614A8 /* RedeemedCell.swift in Sources */,
+				141E43B62A3BACF9009EA9DB /* AddressView.swift in Sources */,
 				14AC6C782A37CBE700371D34 /* ProductRow.swift in Sources */,
 				14F9B27E2A2B9832009C2611 /* Tags.swift in Sources */,
 				3F02F2D32A2BF59A00FDE52E /* DiscountCodesListViewModel.swift in Sources */,
@@ -1210,6 +1217,7 @@
 				EBCA108F2A2B6D5D00E41C7B /* RegestrationViewModel.swift in Sources */,
 				1486EBA52A2BA0F10029212B /* CodableBundleExtension.swift in Sources */,
 				146520182A2BA4AB006EC2CA /* Intro.swift in Sources */,
+				141E43BB2A3BC9EF009EA9DB /* API.swift in Sources */,
 				14F9B2702A2B9733009C2611 /* RatingBlock.swift in Sources */,
 				14F9B2742A2B9783009C2611 /* LogoView.swift in Sources */,
 				14F9B2642A2B949B009C2611 /* LineView.swift in Sources */,

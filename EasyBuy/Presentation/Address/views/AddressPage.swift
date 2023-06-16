@@ -11,9 +11,10 @@ import MapKit
 
 
 struct AddressPage: View {
+    @ObservedObject var viewModel = AddressViewModel()
+    @Environment(\.presentationMode) var presentationMode
     @State private var validAll = false
     @State private var valid = ""
-    @ObservedObject var viewModel = AddressViewModel()
     @State var selectorIndex = 0
     @State var address1: String = ""
     @State var address2: String = ""
@@ -26,9 +27,9 @@ struct AddressPage: View {
         
         VStack{
             Picker("", selection: $selectorIndex) {
-                Text("enter").tag(0)
-                Text("cuttert").tag(1)
-                Text("maps").tag(2)
+                Text("Custom").tag(0)
+                Text("Current Locatio").tag(1)
+                Text("Map").tag(2)
             }.pickerStyle(SegmentedPickerStyle())
                 .padding([.horizontal, .vertical], 10)
             Spacer()
@@ -128,6 +129,7 @@ struct AddressPage: View {
                             }else{
                                validAll = false
                                 viewModel.addAddress(address1: address1, address2: address2, city: city, country: country, phone: phone, zip: zip)
+                                presentationMode.wrappedValue.dismiss()
                             }
                         }
                     else{
@@ -150,10 +152,9 @@ struct AddressPage: View {
         }.onAppear{
             viewModel.requestLocation()
         }
+        
         .alert(isPresented: $validAll) {
-           Alert(title: Text("Important message"), message: Text(valid), dismissButton: .default(Text("Got it!")){
-
-           })
+           Alert(title: Text("Important message"), message: Text(valid))
        }
   
     }
