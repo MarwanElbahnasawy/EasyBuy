@@ -43,13 +43,6 @@ struct InputView: View {
                                 .foregroundColor(showPassword ? Color(.systemGray) : Color(.secondaryLabel))
                                 .padding(.trailing, 12)
                         }
-                        
-                        // validation mark beside the eye icon
-                        if !text.isEmpty {
-                            Image(systemName: passwordsMatch ? "checkmark.circle" : "xmark.circle")
-                                .foregroundColor(passwordsMatch ? .green : .red)
-                                .padding(.trailing, 6)
-                        }
                     }
                 }
             } else {
@@ -61,7 +54,6 @@ struct InputView: View {
                     .autocapitalization(.none)
                     .textContentType(.oneTimeCode)
                     
-                    // validation mark beside the placeholder
                     if !text.isEmpty {
                         Image(systemName: isValid ? "checkmark.circle" : "xmark.circle")
                             .foregroundColor(isValid ? .green : .red)

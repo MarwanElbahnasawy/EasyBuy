@@ -96,7 +96,7 @@ struct RegisterationView: View {
             }
         }
         .alert(isPresented: $signUpSuccess) {
-            Alert(title: Text("Important message"), message: Text("Wear sunscreen"), dismissButton: .default(Text("Got it!")){
+            Alert(title: Text("SignUp success"), message: Text("Please login to use EasyBuy app!"), dismissButton: .default(Text("Ok")){
                 UIApplication.shared.windows.first?.rootViewController = UIHostingController(rootView: LoginView(email: regestrationViewModel.email, password: regestrationViewModel.password))
             })
         }

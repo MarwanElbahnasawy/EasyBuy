@@ -19,7 +19,7 @@ class ValidationUtils {
     }
     
     static func isValidName(name: String) -> Bool {
-        let nameRegex = "^[a-zA-Z]+$"
+        let nameRegex = "^[a-zA-Z]{3,}$"
         let namePredicate = NSPredicate(format: "SELF MATCHES %@", nameRegex)
         return namePredicate.evaluate(with: name)
     }
