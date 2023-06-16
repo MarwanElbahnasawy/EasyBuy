@@ -22,7 +22,10 @@ struct BaseView: View {
                     .background(Color.black.opacity(0.04))
                     .tag(Tab.Category)
                 
-                AddressView()
+                FavoriteProductsView(favoriteProductViewModel: FavoriteListViewModel())
+                    .environmentObject(baseData)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color.black.opacity(0.04))
                     .tag(Tab.Heart)
                 ProfileView()
                     .environmentObject(baseData)

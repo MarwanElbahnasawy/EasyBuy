@@ -1,8 +1,12 @@
 import SwiftUI
 
 struct ProfileView: View {
+    
     @State private var confirmingSignOut = false
+    @State private var isShowingFAQs = false
+    @State private var isShowingAboutUs = false
     @AppStorage("token") var token: String?
+    
     var body: some View {
         List {
             Section {
@@ -80,22 +84,29 @@ struct ProfileView: View {
 
             Section("Policy") {
                 Button {
-
+                    isShowingFAQs = true
                 } label: {
                     SettingRowView(imageName: "exclamationmark.circle.fill",
                                    title: "FAQs",
                                    tintColor: .black)
                 }
-
+                .sheet(isPresented: $isShowingFAQs) {
+                    FAQView()
+                }
+                
                 Button {
-
+                    isShowingAboutUs = true
                 } label: {
                     SettingRowView(imageName: "checkmark.shield.fill",
                                    title: "About Us",
                                    tintColor: .black)
                 }
+                .sheet(isPresented: $isShowingAboutUs) {
+                    AboutUsView()
+                }
             }
         }
+        .padding(.bottom, 50)
         .onAppear(perform: {
             //            viewModel.fetchCustomerDetails()
             let token = UserDefaults.standard.string(forKey: "accessToken")
