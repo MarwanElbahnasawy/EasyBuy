@@ -36,6 +36,7 @@ import LocalAuthentication
     
     override init() {
         super.init()
+        featchAddress()
         manager.delegate = self
         manager.startUpdatingLocation()
     }
@@ -101,7 +102,8 @@ import LocalAuthentication
         return result
     }
     func addAddress(address1: String,address2: String,city: String,country: String,phone: String,zip: String ){
-        NetworkManager.getInstance(requestType: .storeFront).performGraphQLRequest(mutation:  CustomerAddressCreateMutation(customerAccessToken: "87169899dfeebbd0b776e9d6c8d4aaf9", address: MailingAddressInput(address1: address1, address2: address2, city: city, country: country , phone: phone, zip: zip)), responseModel: ResAddress.self, completion: { result in
+        guard let token = UserDefaults.standard.string(forKey: "accessToken") else { return }
+        NetworkManager.getInstance(requestType: .storeFront).performGraphQLRequest(mutation:  CustomerAddressCreateMutation(customerAccessToken: token, address: MailingAddressInput(address1: address1, address2: address2, city: city, country: country , phone: phone, zip: zip)), responseModel: ResAddress.self, completion: { result in
             switch result {
             case .success(let response):
                 self.featchAddress()
@@ -112,7 +114,8 @@ import LocalAuthentication
         })
     }
     func featchAddress(){
-        NetworkManager.getInstance(requestType: .storeFront).queryGraphQLRequest(query:QueryGetAddressQuery(customerAccessToken: "87169899dfeebbd0b776e9d6c8d4aaf9",first: 20) , responseModel: DataClassAddress.self, completion: { result in
+        guard let token = UserDefaults.standard.string(forKey: "accessToken") else { return }
+        NetworkManager.getInstance(requestType: .storeFront).queryGraphQLRequest(query:QueryGetAddressQuery(customerAccessToken: token,first: 20) , responseModel: DataClassAddress.self, completion: { result in
             switch result {
             case .success(let success):
                 self.address = success.customer?.addresses?.nodes ?? []
@@ -124,7 +127,8 @@ import LocalAuthentication
         })
     }
     func deleteAddress(id : String){
-        NetworkManager.getInstance(requestType: .storeFront).performGraphQLRequest(mutation: MutationDeleteAddressMutation(customerAddressDeleteId: id, customerAccessToken: "87169899dfeebbd0b776e9d6c8d4aaf9") , responseModel: DataClassDeletedCustomer.self, completion: { result in
+        guard let token = UserDefaults.standard.string(forKey: "accessToken") else { return }
+        NetworkManager.getInstance(requestType: .storeFront).performGraphQLRequest(mutation: MutationDeleteAddressMutation(customerAddressDeleteId: id, customerAccessToken: token) , responseModel: DataClassDeletedCustomer.self, completion: { result in
             switch result {
             case .success( _):
                 self.featchAddress()

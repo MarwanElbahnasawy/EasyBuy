@@ -20,8 +20,9 @@ class OrdersViewModel: ObservableObject  {
     }
     
     func fetchProducts(){
-        
-        NetworkManager.getInstance(requestType: .admin).queryGraphQLRequest(query:GetOrdersQuery(first: 10,query: "email:marwan@gmail.com") , responseModel: ResOrder.self, completion: { result in
+        guard let email = UserDefaults.standard.string(forKey: "email") else { return }
+        var mail = "email:\(email)"
+        NetworkManager.getInstance(requestType: .admin).queryGraphQLRequest(query:GetOrdersQuery(first: 10,query: mail) , responseModel: ResOrder.self, completion: { result in
                             switch result {
                             case .success(let success):
                                 self.isLoading = false

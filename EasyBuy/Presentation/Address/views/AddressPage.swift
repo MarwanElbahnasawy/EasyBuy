@@ -95,7 +95,6 @@ struct AddressPage: View {
                 
             default :
                 VStack{
-                    
                     Form {
                         Section(header: Text("Address")) {
                             TextField("Address Line 1 *", text: $address1)
@@ -107,7 +106,7 @@ struct AddressPage: View {
                         Section(header: Text("Contact")) {
                             TextField("Phone Number", text: $phone)
                         }
-                        
+                       
                     }
                     .onAppear{
                         viewModel.bindResultToViewController = {() in
@@ -139,12 +138,14 @@ struct AddressPage: View {
                         Text("add address")
                             .padding()
                             .background(Color("myblack"))
-                            .cornerRadius(25)
+                            .cornerRadius(30)
                             .foregroundColor(Color("myWhite"))
-                            .frame(width: 300, height: 50)
+                            .frame(width: 300, height: 50,alignment: .center)
                             
                     }
+                   Spacer(minLength: 100)
                 }
+                
             }
             
         }.onAppear{
