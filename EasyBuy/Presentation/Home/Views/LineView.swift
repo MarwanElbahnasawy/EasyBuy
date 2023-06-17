@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LineView: View {
-    let color: Color = Color.init("F9F9F9")
+    let color: Color = Color.gray
     var body: some View {
         Divider()
             .background(color)

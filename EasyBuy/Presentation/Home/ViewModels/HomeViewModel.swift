@@ -17,9 +17,7 @@ class HomeViewModel: ObservableObject {
     var rates: [String: Double]?
     
     init(){
-        getCurrency()
-        fetchBrands()
-        fetchProducts()
+        
     }
     
     func fetchBrands(){

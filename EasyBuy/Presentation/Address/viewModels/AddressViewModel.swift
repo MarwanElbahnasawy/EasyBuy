@@ -10,8 +10,8 @@ import CoreLocation
 import MapKit
 import LocalAuthentication
 
-class AddressViewModel: NSObject, ObservableObject, CLLocationManagerDelegate{
-    
+ class AddressViewModel: NSObject, ObservableObject, CLLocationManagerDelegate{
+    @Published var bindResultToViewController : (()->()) = {}
     @Published var mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 50, longitude: 0), span: MKCoordinateSpan(latitudeDelta: 25, longitudeDelta: 25))
     @Published var locations: [Location] = []
     @Published var address: [CustomerAddress] = []
@@ -21,19 +21,46 @@ class AddressViewModel: NSObject, ObservableObject, CLLocationManagerDelegate{
     @Published var selectorIndex = 0
     let manager = CLLocationManager()
     @Published var location: CLLocationCoordinate2D?
-    @Published var placemark: CLPlacemark?
+     var placemark: CLPlacemark!{
+        didSet {
+            bindResultToViewController()
+            self.mapRegion = {
+                let mapCoordinates = CLLocationCoordinate2D(latitude: location?.latitude ?? 0 , longitude: location?.longitude ?? 0 )
+                let mapZoomLevel = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+                let mapRegion = MKCoordinateRegion(center: mapCoordinates, span: mapZoomLevel)
+                
+                return mapRegion
+            }()
+        }
+    }
     
     override init() {
         super.init()
-        manager.delegate = self
         featchAddress()
+        manager.delegate = self
+        manager.startUpdatingLocation()
     }
     func requestLocation() {
         manager.requestLocation()
     }
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Error getting location: \(error.localizedDescription)")
-    }
+     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+          if let clErr = error as? CLError {
+              switch clErr.code {
+              case .denied:
+                  print("Location access denied")
+              case .network:
+                  print("Network error")
+              case .locationUnknown:
+                  print("Location unknown")
+              default:
+                  print("Other error")
+              }
+          } else {
+              print("Error: \(error.localizedDescription)")
+          }
+      }
+  
+   
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         location = locations.first?.coordinate
@@ -42,18 +69,20 @@ class AddressViewModel: NSObject, ObservableObject, CLLocationManagerDelegate{
         geoCoder.reverseGeocodeLocation(location) { (placemarks, error) -> Void in
             guard let placeMark = placemarks?.first else { return }
             self.placemark = placeMark
+          
         }
-        mapRegion = {
+        manager.stopUpdatingLocation()
+        self.mapRegion = {
             let mapCoordinates = CLLocationCoordinate2D(latitude: location.coordinate.latitude , longitude: location.coordinate.longitude )
-            let mapZoomLevel = MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
+            let mapZoomLevel = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
             let mapRegion = MKCoordinateRegion(center: mapCoordinates, span: mapZoomLevel)
             
             return mapRegion
         }()
+        
     }
     func addLocation() {
-        let newLocation = Location(id: UUID(), name: "New location", description: "", latitude: mapRegion.center.latitude, longitude: mapRegion.center.longitude)
-        locations = []
+        let newLocation = Location(id: UUID(), name: "location", description: "", latitude: mapRegion.center.latitude, longitude: mapRegion.center.longitude)
         let geoCoder = CLGeocoder()
         let location = CLLocation(latitude: newLocation.latitude, longitude: newLocation.longitude)
         geoCoder.reverseGeocodeLocation(location) { (placemarks, error) -> Void in
@@ -61,8 +90,9 @@ class AddressViewModel: NSObject, ObservableObject, CLLocationManagerDelegate{
             self.placemark = placeMark
             
         }
+        locations = []
         locations.append(newLocation)
-       
+        
     }
     
     func validatePhoneNumber(value: String) -> Bool {
@@ -72,30 +102,33 @@ class AddressViewModel: NSObject, ObservableObject, CLLocationManagerDelegate{
         return result
     }
     func addAddress(address1: String,address2: String,city: String,country: String,phone: String,zip: String ){
-        NetworkManager.getInstance(requestType: .storeFront).performGraphQLRequest(mutation:  CustomerAddressCreateMutation(customerAccessToken: "87169899dfeebbd0b776e9d6c8d4aaf9", address: MailingAddressInput(address1: address1, address2: address2, city: city, country: country , phone: phone, zip: zip)), responseModel: ResAddress.self, completion: { result in
+        guard let token = UserDefaults.standard.string(forKey: "accessToken") else { return }
+        NetworkManager.getInstance(requestType: .storeFront).performGraphQLRequest(mutation:  CustomerAddressCreateMutation(customerAccessToken: token, address: MailingAddressInput(address1: address1, address2: address2, city: city, country: country , phone: phone, zip: zip)), responseModel: ResAddress.self, completion: { result in
             switch result {
             case .success(let response):
-                
-                print(" create access token: \(response.customerAddressCreate?.customerAddress?.address1 ?? "")")
+                self.featchAddress()
+                print(" create customerAddress : \(response.customerAddressCreate?.customerAddress?.address1 ?? "")")
             case .failure(let error):
                 print("Failed to create access token: \(error)")
             }
         })
     }
     func featchAddress(){
-        NetworkManager.getInstance(requestType: .storeFront).queryGraphQLRequest(query:QueryGetAddressQuery(customerAccessToken: "87169899dfeebbd0b776e9d6c8d4aaf9",first: 20) , responseModel: DataClassAddress.self, completion: { result in
-                            switch result {
-                            case .success(let success):
-                                self.address = success.customer?.addresses?.nodes ?? []
-                                self.isLoading = false
-                            case .failure(let failure):
-                                print(failure)
-                                self.iserror = true
-                            }
-                        })
+        guard let token = UserDefaults.standard.string(forKey: "accessToken") else { return }
+        NetworkManager.getInstance(requestType: .storeFront).queryGraphQLRequest(query:QueryGetAddressQuery(customerAccessToken: token,first: 20) , responseModel: DataClassAddress.self, completion: { result in
+            switch result {
+            case .success(let success):
+                self.address = success.customer?.addresses?.nodes ?? []
+                self.isLoading = false
+            case .failure(let failure):
+                print(failure)
+                self.iserror = true
+            }
+        })
     }
     func deleteAddress(id : String){
-        NetworkManager.getInstance(requestType: .storeFront).performGraphQLRequest(mutation: MutationDeleteAddressMutation(customerAddressDeleteId: id, customerAccessToken: "87169899dfeebbd0b776e9d6c8d4aaf9") , responseModel: DataClassDeletedCustomer.self, completion: { result in
+        guard let token = UserDefaults.standard.string(forKey: "accessToken") else { return }
+        NetworkManager.getInstance(requestType: .storeFront).performGraphQLRequest(mutation: MutationDeleteAddressMutation(customerAddressDeleteId: id, customerAccessToken: token) , responseModel: DataClassDeletedCustomer.self, completion: { result in
             switch result {
             case .success( _):
                 self.featchAddress()

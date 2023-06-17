@@ -69,11 +69,7 @@ struct ProductRow: View {
                     Spacer()
                     
                     
-                }  .overlay(
-                    FevoriteButton()
-                        .padding([.top, .trailing], 5)
-                    , alignment: .topTrailing
-                )
+                } 
             }
         }
     }

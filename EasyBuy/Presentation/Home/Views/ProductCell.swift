@@ -28,16 +28,9 @@ struct ProductCell: View {
         NavigationLink(destination:
                         ProductDetailsView(viewModel: ProductViewModel(productId: nil), productId: product.id!)){
             VStack(alignment: .leading, spacing: 4) {
-                KingFisherImageView(url: product.featuredImage?.url ?? "https://theperfectroundgolf.com/wp-content/uploads/2022/04/placeholder.png",placeholder: "")
-                    .resizable()
+                images(product: product)
                     .frame(width: UIScreen.main.bounds.width / 2 - 20, height: UIScreen.main.bounds.width / 2 - 20)
-                    .scaledToFill()
                     .cornerRadius(10)
-                                .overlay(
-                                    FevoriteButton()
-                                        .padding([.top, .trailing], 5)
-                                    , alignment: .topTrailing
-                                )
                 HStack{
 
                     if let title = product.title {
