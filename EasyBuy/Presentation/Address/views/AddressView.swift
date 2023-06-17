@@ -19,7 +19,7 @@ struct AddressView: View {
             self.id = id
             showAlert = true
         }) {
-            Image(systemName: "delete.left")
+            Image(systemName: "x.circle")
                 .foregroundColor( .red)
                 .frame(width: 30, height: 30)
         }

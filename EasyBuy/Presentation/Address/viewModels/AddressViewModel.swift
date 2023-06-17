@@ -24,20 +24,42 @@ import LocalAuthentication
      var placemark: CLPlacemark!{
         didSet {
             bindResultToViewController()
+            self.mapRegion = {
+                let mapCoordinates = CLLocationCoordinate2D(latitude: location?.latitude ?? 0 , longitude: location?.longitude ?? 0 )
+                let mapZoomLevel = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+                let mapRegion = MKCoordinateRegion(center: mapCoordinates, span: mapZoomLevel)
+                
+                return mapRegion
+            }()
         }
     }
     
     override init() {
         super.init()
         manager.delegate = self
-        featchAddress()
+        manager.startUpdatingLocation()
     }
     func requestLocation() {
         manager.requestLocation()
     }
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Error getting location: \(error.localizedDescription)")
-    }
+     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+          if let clErr = error as? CLError {
+              switch clErr.code {
+              case .denied:
+                  print("Location access denied")
+              case .network:
+                  print("Network error")
+              case .locationUnknown:
+                  print("Location unknown")
+              default:
+                  print("Other error")
+              }
+          } else {
+              print("Error: \(error.localizedDescription)")
+          }
+      }
+  
+   
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         location = locations.first?.coordinate
@@ -46,16 +68,17 @@ import LocalAuthentication
         geoCoder.reverseGeocodeLocation(location) { (placemarks, error) -> Void in
             guard let placeMark = placemarks?.first else { return }
             self.placemark = placeMark
+          
         }
-        
-        mapRegion = {
+        manager.stopUpdatingLocation()
+        self.mapRegion = {
             let mapCoordinates = CLLocationCoordinate2D(latitude: location.coordinate.latitude , longitude: location.coordinate.longitude )
             let mapZoomLevel = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
             let mapRegion = MKCoordinateRegion(center: mapCoordinates, span: mapZoomLevel)
             
             return mapRegion
         }()
-        manager.stopUpdatingLocation()
+        
     }
     func addLocation() {
         let newLocation = Location(id: UUID(), name: "location", description: "", latitude: mapRegion.center.latitude, longitude: mapRegion.center.longitude)
@@ -81,8 +104,8 @@ import LocalAuthentication
         NetworkManager.getInstance(requestType: .storeFront).performGraphQLRequest(mutation:  CustomerAddressCreateMutation(customerAccessToken: "87169899dfeebbd0b776e9d6c8d4aaf9", address: MailingAddressInput(address1: address1, address2: address2, city: city, country: country , phone: phone, zip: zip)), responseModel: ResAddress.self, completion: { result in
             switch result {
             case .success(let response):
-                
-                print(" create access token: \(response.customerAddressCreate?.customerAddress?.address1 ?? "")")
+                self.featchAddress()
+                print(" create customerAddress : \(response.customerAddressCreate?.customerAddress?.address1 ?? "")")
             case .failure(let error):
                 print("Failed to create access token: \(error)")
             }

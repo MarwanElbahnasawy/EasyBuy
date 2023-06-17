@@ -26,6 +26,7 @@ struct AddressPage: View {
         
         
         VStack{
+            NavigationBarView()
             Picker("", selection: $selectorIndex) {
                 Text("Custom").tag(0)
                 Text("Map").tag(2)
@@ -38,7 +39,7 @@ struct AddressPage: View {
                     viewModel.requestLocation()
                     if viewModel.placemark == nil {
                     }else{
-                    selectorIndex = viewModel.selectorIndex
+                        selectorIndex = viewModel.selectorIndex
                     }
                 }.frame(height: 44)
                     .padding()
@@ -54,7 +55,7 @@ struct AddressPage: View {
                                     .scaledToFit()
                                     .foregroundColor(.blue)
                                     .frame(width: 44, height: 44)
-
+                                
                                 Text(location.name)
                                     .fixedSize()
                             }
@@ -64,21 +65,21 @@ struct AddressPage: View {
                         }
                     }
                     .ignoresSafeArea()
-
+                    
                     Circle()
                         .fill(.blue)
                         .opacity(0.3)
                         .frame(width: 32, height: 32)
-
+                    
                     VStack {
                         Spacer()
-
+                        
                         HStack {
                             Spacer()
-
+                            
                             Button {
                                 viewModel.addLocation()
-                                    selectorIndex = 0
+                                selectorIndex = 0
                             } label: {
                                 Image(systemName: "plus")
                             }
@@ -94,9 +95,7 @@ struct AddressPage: View {
                 
             default :
                 VStack{
-                    LocationButton {
-                        viewModel.requestLocation()
-                    }.frame(height: 44).cornerRadius(25)
+                    
                     Form {
                         Section(header: Text("Address")) {
                             TextField("Address Line 1 *", text: $address1)
@@ -110,49 +109,48 @@ struct AddressPage: View {
                         }
                         
                     }
-                    .navigationTitle("Address")
                     .onAppear{
                         viewModel.bindResultToViewController = {() in
-                          print ("done" )
+                            print ("done" )
                             country = viewModel.placemark?.country ?? ""
                             address1 = viewModel.placemark?.name ?? ""
                             zip = viewModel.placemark?.postalCode ?? ""
                             city = viewModel.placemark?.locality ?? ""
                         }
-                     
+                        
                     }
                     Button {
-                       if (viewModel.validatePhoneNumber(value: phone)){
-                           validAll = false
+                        if (viewModel.validatePhoneNumber(value: phone)){
+                            validAll = false
                             if(address1.isEmpty || city.isEmpty || country.isEmpty || zip.isEmpty || phone.isEmpty  ){
                                 valid = "Check Inputs"
                                 validAll = true
                             }else{
-                               validAll = false
+                                validAll = false
                                 viewModel.addAddress(address1: address1, address2: address2, city: city, country: country, phone: phone, zip: zip)
                                 presentationMode.wrappedValue.dismiss()
                             }
                         }
-                    else{
-                        valid = "Number Is Not Valid"
-                        validAll = true
-                        
+                        else{
+                            valid = "Number Is Not Valid"
+                            validAll = true
                         }
-                       
                     } label: {
                         Text("add address")
                             .padding()
+                            .background(Color("myblack"))
                             .cornerRadius(25)
-                            .frame(width: 200, height: 50)
+                            .foregroundColor(Color("myWhite"))
+                            .frame(width: 300, height: 50)
+                            
                     }
-                    
-                    
                 }
             }
-               
+            
         }.onAppear{
+            viewModel.manager.requestWhenInUseAuthorization()
             viewModel.bindResultToViewController = {() in
-              print ("done" )
+                print ("done" )
                 country = viewModel.placemark?.country ?? ""
                 address1 = viewModel.placemark?.name ?? ""
                 zip = viewModel.placemark?.postalCode ?? ""
@@ -161,11 +159,33 @@ struct AddressPage: View {
         }
         
         .alert(isPresented: $validAll) {
-           Alert(title: Text("Important message"), message: Text(valid))
-       }
-  
+            Alert(title: Text("Important message"), message: Text(valid))
+        }
+        .navigationBarBackButtonHidden(true)
+        
     }
-               
+    fileprivate func NavigationBarView() -> some View {
+        return HStack {
+            Button(action: {
+                self.presentationMode.wrappedValue.dismiss()
+            }) {
+                Image(systemName: "arrow.left")
+                    .foregroundColor(Color("secColorBackground"))
+            }
+            .padding(.leading, 10)
+            .frame(width: 50, height: 50)
+            Spacer()
+            
+            LocationButton {
+                viewModel.requestLocation()
+            }.tint(.clear)
+                .foregroundColor(.gray)
+                .labelStyle(.iconOnly)
+                .frame( height: 50)
+                .padding(.trailing,15)
+        }
+        .frame(width: UIScreen.main.bounds.width, height: 35)
+    }
     
 }
 
