@@ -63,7 +63,9 @@ struct RegisterationView: View {
                             case .failure(let error):
                                 let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
                                 alert.addAction(UIAlertAction(title: "OK", style: .default))
-                                UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true)
+                                if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+                                    scene.windows.first?.rootViewController?.present(alert, animated: true)
+                                }
                             }
                         }
                 }) {
@@ -97,7 +99,9 @@ struct RegisterationView: View {
         }
         .alert(isPresented: $signUpSuccess) {
             Alert(title: Text("SignUp success"), message: Text("Please login to use EasyBuy app!"), dismissButton: .default(Text("Ok")){
-                UIApplication.shared.windows.first?.rootViewController = UIHostingController(rootView: LoginView(email: regestrationViewModel.email, password: regestrationViewModel.password))
+                if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+                    scene.windows.first?.rootViewController = UIHostingController(rootView: LoginView(email: regestrationViewModel.email, password: regestrationViewModel.password))
+                }
             })
         }
     }
