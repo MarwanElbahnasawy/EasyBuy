@@ -16,9 +16,9 @@ class SettingsViewModel: ObservableObject{
         UserDefaults.standard.set(encodedPerson, forKey: "Address")
     }
     func getAddress(){
-        let data = UserDefaults.standard.data(forKey: "Address")
+        guard let data = UserDefaults.standard.data(forKey: "Address") else{return}
         let decoder = JSONDecoder()
-        let address = (try? decoder.decode(CustomerAddress.self, from: data!)) ?? CustomerAddress()
+        let address = (try? decoder.decode(CustomerAddress.self, from: data)) ?? CustomerAddress()
         customerAddress = address
     }
     func getCurrencyCode(){

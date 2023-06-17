@@ -3,6 +3,7 @@ import SwiftUI
 struct LoginView: View {
     @ObservedObject var loginViewModel = LoginViewModel()
     @AppStorage("token") var token: String?
+    @AppStorage("email") var Useremail: String?
     @State private var signInSuccess = false
     @State var email = ""
     @State var password = ""
@@ -29,6 +30,7 @@ struct LoginView: View {
 //                        window.rootViewController = UIHostingController(rootView: Home())
 //                    }
                     token = loginViewModel.tokenString
+                    Useremail = email
                 })
             }
             .navigationBarBackButtonHidden(true)

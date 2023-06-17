@@ -21,7 +21,7 @@ class OrdersViewModel: ObservableObject  {
     
     func fetchProducts(){
         guard let email = UserDefaults.standard.string(forKey: "email") else { return }
-        var mail = "email:\(email)"
+        let mail = "email:\(email)"
         NetworkManager.getInstance(requestType: .admin).queryGraphQLRequest(query:GetOrdersQuery(first: 10,query: mail) , responseModel: ResOrder.self, completion: { result in
                             switch result {
                             case .success(let success):

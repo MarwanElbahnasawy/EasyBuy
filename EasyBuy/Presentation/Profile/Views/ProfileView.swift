@@ -22,8 +22,9 @@ struct ProfileView: View {
         .onAppear(perform: {
             // Fetch customer details
             let token = UserDefaults.standard.string(forKey: "accessToken")
+            let email = UserDefaults.standard.string(forKey: "email")
             print("current token is \(token ?? "")")
-            
+            print("current email is \(email ?? "")")
             let customerID = UserDefaults.standard.string(forKey: "customerID")
             print("current customerID is \(customerID ?? "")")
         })
