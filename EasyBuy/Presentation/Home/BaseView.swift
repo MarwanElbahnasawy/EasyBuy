@@ -3,6 +3,8 @@ import SwiftUI
 struct BaseView: View {
     @StateObject var baseData = BaseViewModel()
     @AppStorage("barIsShow") var barIsShow: Bool = false
+    @AppStorage("token") var token: String?
+
     // MARK: - HIDE TAB BAR
     init() {
         UITabBar.appearance().isHidden = true
@@ -27,11 +29,20 @@ struct BaseView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(Color.black.opacity(0.04))
                     .tag(Tab.Heart)
-                ProfileView()
-                    .environmentObject(baseData)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background(Color.black.opacity(0.04))
-                    .tag(Tab.Person)
+                
+                if token == "guest" || token == "" {
+                    NoAccountView()
+                        .environmentObject(baseData)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .background(Color.black.opacity(0.04))
+                        .tag(Tab.Person)
+                } else {
+                    ProfileView()
+                        .environmentObject(baseData)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .background(Color.black.opacity(0.04))
+                        .tag(Tab.Person)
+                }
             }
             
             .overlay(
