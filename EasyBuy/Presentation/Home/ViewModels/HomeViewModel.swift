@@ -19,7 +19,7 @@ class HomeViewModel: ObservableObject {
     init(){
         getCurrency()
         fetchBrands()
-        fetchProducts()
+       
     }
     
     func fetchBrands(){
@@ -62,6 +62,5 @@ class HomeViewModel: ObservableObject {
             })
         }
     }
-    
-    
+
 }

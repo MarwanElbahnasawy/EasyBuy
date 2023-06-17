@@ -55,7 +55,7 @@ struct AddressCell: View {
                 
                 
             }.padding(.all,20)
-               .background(Color("itemcolor"))
+                .background(Color.white)
                 .cornerRadius(30)
         }
         .font(.footnote)

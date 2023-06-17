@@ -14,6 +14,7 @@ query ProductDetails($productId: ID, $imageFirst: Int, $variantsFirst: Int) {
         node {
           id
           title
+          quantityAvailable
           price {
             amount
             currencyCode

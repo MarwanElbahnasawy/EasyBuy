@@ -14,12 +14,12 @@ import Foundation
 
 enum Route {
     static let baseUrl = "https://api.apilayer.com/exchangerates_data/latest"
-    static let APIkey = "i895UgRBcNACH2JU28QA28gqNms8tdgR"
+    static let APIkey = "Td95Yomavq9hlsG91aEQpDRmgzV4BEci"
     case typy
     var description: String {
         switch self {
         case .typy:
-            return"https://api.apilayer.com/exchangerates_data/latest?apikey=i895UgRBcNACH2JU28QA28gqNms8tdgR"
+            return"https://api.apilayer.com/exchangerates_data/latest?apikey=Td95Yomavq9hlsG91aEQpDRmgzV4BEci"
         }
     }
 }
@@ -35,6 +35,7 @@ class APIServices {
         Alamofire.AF.request(route.description, method: method, parameters: params, encoding: encoding, headers: headers)
             .validate(statusCode: 200...300)
             .responseJSON { (response) in
+                print(response)
                 switch response.result {
                 case .success(_):
                     guard let data = response.data else { return }

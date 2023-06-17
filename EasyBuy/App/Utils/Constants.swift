@@ -98,3 +98,9 @@ func mapLineItemsToDratOrderLineItems(lineItems: [LinesItemNode]?) -> [DraftOrde
     }
     return draftOrderLineItemInputs
 }
+func formatPrice(price: String?) -> String{
+    let priceDoubleValue: Double = Double( price ?? "0.0") ?? 0.0
+    let priceCurrency = priceDoubleValue * (UserDefaults.standard.numCurrency ?? 1.0)
+    let formattedprice = String(format: "%.2f", priceCurrency) + " \(UserDefaults.standard.currency!)"
+    return formattedprice
+}

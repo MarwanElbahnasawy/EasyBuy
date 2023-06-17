@@ -109,7 +109,7 @@ struct Home: View {
         .onAppear(perform: {
             // viewModel.isLoading = true
             // viewModel.fetchBrands()
-            //  viewModel.fetchProducts()
+              viewModel.fetchProducts()
         })
         
         
