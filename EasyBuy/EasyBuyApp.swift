@@ -16,6 +16,7 @@ struct EasyBuyApp: App {
     let persistenceController = PersistenceController.shared
     @AppStorage("isOnboarding") var isOnboarding: Bool = true
     @AppStorage("token") var token: String = ""
+
     // @AppStorage("barIsShow") var barIsShow: Bool = true
     var body: some Scene {
         WindowGroup {
@@ -27,7 +28,7 @@ struct EasyBuyApp: App {
                         LoginView()
                     }else{
                      // CodesView()
-                      BaseView()
+                        BaseView()
                     }
                 }
             }

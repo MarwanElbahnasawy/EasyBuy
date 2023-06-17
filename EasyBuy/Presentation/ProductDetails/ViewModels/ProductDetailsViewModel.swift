@@ -79,9 +79,9 @@ class ProductViewModel: ObservableObject {
         })
     }
     
-  
-    func createDraftOrder(discountCodes: [String]){
 
+    func createDraftOrder(discountCodes: [String]){
+ 
         // change variant with the choice of size
 
         let linesItems = DraftOrderInput(email: email, lineItems:
@@ -92,6 +92,7 @@ class ProductViewModel: ObservableObject {
             switch result {
             case .success(let success):
                 self?.cart = success
+                UserDefaults.standard.set(success.draftOrderCreate?.draftOrder?.lineItems?.nodes?.count, forKey: "count")
                 FireBaseManager.shared.saveCustomerDiscountCodes(customerDiscountCodes: CustomerDiscountCodes(id: self?.customerID,discountCodes: discountCodes, draftOrders: DraftOrders(favoriteDraftorder: self?.favorite, cartDraftOrder: success)))
             case .failure(let failure):
                 print(failure)
@@ -103,6 +104,7 @@ class ProductViewModel: ObservableObject {
         NetworkManager.getInstance(requestType: .admin).performGraphQLRequest(mutation: DraftOrderUpdateMutation(id: id, input: draftOrderInput), responseModel: UpdateDraftOrderDataClass.self) { res in
             switch res {
             case .success(let success):
+                UserDefaults.standard.set(success.draftOrderUpdate?.draftOrder?.lineItems?.nodes?.count, forKey: "count")
                 FireBaseManager.shared.saveCustomerDiscountCodes(customerDiscountCodes: CustomerDiscountCodes(id: customerDiscountCodes.id,discountCodes: customerDiscountCodes.discountCodes,draftOrders: DraftOrders(favoriteDraftorder: self.favorite, cartDraftOrder: DraftOrderDataClass(draftOrderCreate: DraftOrderCreate(draftOrder: success.draftOrderUpdate?.draftOrder)))))
             case .failure(let failure):
                 print(failure)
@@ -130,7 +132,6 @@ class ProductViewModel: ObservableObject {
             let objFireBase = FireBaseManager.shared.mapFireBaseObject(data: data)
             self?.favorite = objFireBase?.draftOrders?.favoriteDraftorder
             self?.cart = objFireBase?.draftOrders?.cartDraftOrder
-            
             if self?.favorite == nil{
                 self?.createFavoriteDraftOrder(discountCodes: objFireBase?.discountCodes ?? [])
             }

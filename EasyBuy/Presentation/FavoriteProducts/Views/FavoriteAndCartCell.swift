@@ -7,7 +7,8 @@ struct FavoriteAndCartCell: View {
     @State var type: String?
     @State var price: String?
     var onDelete: (() -> Void)?
-
+    @State var quantity: Int = 1
+    @State var availableQuantity = 10
     
     var body: some View {
         ZStack(alignment: .topTrailing) {
@@ -19,11 +20,15 @@ struct FavoriteAndCartCell: View {
                     .shadow(radius: 4)
                 VStack(alignment: .leading) {
                     Text(title ?? "not available")
-                        .font(.system(size: 16, weight: .bold))
-                    Text(type ?? "not available")
-                        .font(.system(size: 12))
-                        .foregroundColor(.gray)
+                        .font(.system(size: 12, weight: .bold)).lineLimit(0)
+               
+                        Text(type ?? "not available")
+                            .font(.system(size: 10))
+                            .foregroundColor(.gray)
                     Spacer()
+                    Stepper(value: $quantity, in: 1...availableQuantity) {
+                                   Text("Quantity : \(quantity)")
+                               }
                     Text(price ?? "not available")
                         .font(.system(size: 16, weight: .bold))
                 }
@@ -31,17 +36,16 @@ struct FavoriteAndCartCell: View {
             }
             .padding()
             .frame(maxWidth: .infinity)
-            .frame(height: 120)
+            .frame(height: UIScreen.main.bounds.height/6)
             .background(Color.white)
             .cornerRadius(10)
             .shadow(radius: 4)
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(Color.gray.opacity(0.5), lineWidth: 1)
+              
             )
-            
-            
-            // Delete Button
+
             Button(action: {
                 onDelete?()
             }) {
