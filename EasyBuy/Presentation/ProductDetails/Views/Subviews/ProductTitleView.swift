@@ -1,17 +1,11 @@
-//
-//  ProductTitleView.swift
-//  EasyBuy
-//
-//  Created by Ahmad Hemeda on 08/06/2023.
-//
-
 import SwiftUI
 
 struct ProductTitleView: View {
+    @AppStorage("token") var token: String?
     let title: String
     let productType: String
     let action: () -> Void
-
+    
     var body: some View {
         HStack {
             VStack {
@@ -24,15 +18,27 @@ struct ProductTitleView: View {
             
             Spacer()
             
-            Button(action: action) {
-                Image(systemName: "heart")
-                    .font(.title)
-                    .foregroundColor(.black)
-                    .padding()
-                    .background(Color.white)
-                    .clipShape(Circle())
+            if token == "guest" || token == "" {
+                NavigationLink {
+                    NoAccountView()
+                } label: {
+                    Image(systemName: "heart")
+                        .font(.title)
+                        .foregroundColor(.black)
+                        .padding()
+                        .background(Color.white)
+                        .clipShape(Circle())
+                }
+            } else {
+                Button(action: action) {
+                    Image(systemName: "heart")
+                        .font(.title)
+                        .foregroundColor(.black)
+                        .padding()
+                        .background(Color.white)
+                        .clipShape(Circle())
+                }
             }
         }
     }
 }
-
