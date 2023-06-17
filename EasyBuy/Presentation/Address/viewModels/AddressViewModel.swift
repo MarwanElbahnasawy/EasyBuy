@@ -10,8 +10,8 @@ import CoreLocation
 import MapKit
 import LocalAuthentication
 
-class AddressViewModel: NSObject, ObservableObject, CLLocationManagerDelegate{
-    
+ class AddressViewModel: NSObject, ObservableObject, CLLocationManagerDelegate{
+    @Published var bindResultToViewController : (()->()) = {}
     @Published var mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 50, longitude: 0), span: MKCoordinateSpan(latitudeDelta: 25, longitudeDelta: 25))
     @Published var locations: [Location] = []
     @Published var address: [CustomerAddress] = []
@@ -21,7 +21,11 @@ class AddressViewModel: NSObject, ObservableObject, CLLocationManagerDelegate{
     @Published var selectorIndex = 0
     let manager = CLLocationManager()
     @Published var location: CLLocationCoordinate2D?
-    @Published var placemark: CLPlacemark?
+     var placemark: CLPlacemark!{
+        didSet {
+            bindResultToViewController()
+        }
+    }
     
     override init() {
         super.init()
@@ -43,17 +47,18 @@ class AddressViewModel: NSObject, ObservableObject, CLLocationManagerDelegate{
             guard let placeMark = placemarks?.first else { return }
             self.placemark = placeMark
         }
+        
         mapRegion = {
             let mapCoordinates = CLLocationCoordinate2D(latitude: location.coordinate.latitude , longitude: location.coordinate.longitude )
-            let mapZoomLevel = MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
+            let mapZoomLevel = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
             let mapRegion = MKCoordinateRegion(center: mapCoordinates, span: mapZoomLevel)
             
             return mapRegion
         }()
+        manager.stopUpdatingLocation()
     }
     func addLocation() {
-        let newLocation = Location(id: UUID(), name: "New location", description: "", latitude: mapRegion.center.latitude, longitude: mapRegion.center.longitude)
-        locations = []
+        let newLocation = Location(id: UUID(), name: "location", description: "", latitude: mapRegion.center.latitude, longitude: mapRegion.center.longitude)
         let geoCoder = CLGeocoder()
         let location = CLLocation(latitude: newLocation.latitude, longitude: newLocation.longitude)
         geoCoder.reverseGeocodeLocation(location) { (placemarks, error) -> Void in
@@ -61,6 +66,7 @@ class AddressViewModel: NSObject, ObservableObject, CLLocationManagerDelegate{
             self.placemark = placeMark
             
         }
+        locations = []
         locations.append(newLocation)
         
     }

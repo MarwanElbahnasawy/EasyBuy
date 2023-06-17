@@ -23,12 +23,11 @@ struct AddressPage: View {
     @State var phone: String = ""
     @State var zip: String =  ""
     var body: some View {
-       
+        
         
         VStack{
             Picker("", selection: $selectorIndex) {
                 Text("Custom").tag(0)
-                Text("Current Locatio").tag(1)
                 Text("Map").tag(2)
             }.pickerStyle(SegmentedPickerStyle())
                 .padding([.horizontal, .vertical], 10)
@@ -50,12 +49,11 @@ struct AddressPage: View {
                     Map(coordinateRegion: $viewModel.mapRegion, annotationItems: viewModel.locations) { location in
                         MapAnnotation(coordinate: location.coordinate) {
                             VStack {
-                                Image(systemName: "star.circle")
+                                Image(systemName: "mappin")
                                     .resizable()
-                                    .foregroundColor(.red)
+                                    .scaledToFit()
+                                    .foregroundColor(.blue)
                                     .frame(width: 44, height: 44)
-                                    .background(.white)
-                                    .clipShape(Circle())
 
                                 Text(location.name)
                                     .fixedSize()
@@ -80,10 +78,7 @@ struct AddressPage: View {
 
                             Button {
                                 viewModel.addLocation()
-                                if viewModel.placemark == nil {
-                                }else{
                                     selectorIndex = 0
-                                }
                             } label: {
                                 Image(systemName: "plus")
                             }
@@ -99,6 +94,9 @@ struct AddressPage: View {
                 
             default :
                 VStack{
+                    LocationButton {
+                        viewModel.requestLocation()
+                    }.frame(height: 44).cornerRadius(25)
                     Form {
                         Section(header: Text("Address")) {
                             TextField("Address Line 1 *", text: $address1)
@@ -114,11 +112,14 @@ struct AddressPage: View {
                     }
                     .navigationTitle("Address")
                     .onAppear{
+                        viewModel.bindResultToViewController = {() in
+                          print ("done" )
                             country = viewModel.placemark?.country ?? ""
                             address1 = viewModel.placemark?.name ?? ""
                             zip = viewModel.placemark?.postalCode ?? ""
                             city = viewModel.placemark?.locality ?? ""
-                        viewModel.placemark = nil
+                        }
+                     
                     }
                     Button {
                        if (viewModel.validatePhoneNumber(value: phone)){
@@ -150,7 +151,13 @@ struct AddressPage: View {
             }
                
         }.onAppear{
-            viewModel.requestLocation()
+            viewModel.bindResultToViewController = {() in
+              print ("done" )
+                country = viewModel.placemark?.country ?? ""
+                address1 = viewModel.placemark?.name ?? ""
+                zip = viewModel.placemark?.postalCode ?? ""
+                city = viewModel.placemark?.locality ?? ""
+            }
         }
         
         .alert(isPresented: $validAll) {
