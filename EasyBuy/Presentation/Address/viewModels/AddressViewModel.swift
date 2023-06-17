@@ -62,7 +62,7 @@ class AddressViewModel: NSObject, ObservableObject, CLLocationManagerDelegate{
             
         }
         locations.append(newLocation)
-       
+        
     }
     
     func validatePhoneNumber(value: String) -> Bool {
@@ -84,15 +84,15 @@ class AddressViewModel: NSObject, ObservableObject, CLLocationManagerDelegate{
     }
     func featchAddress(){
         NetworkManager.getInstance(requestType: .storeFront).queryGraphQLRequest(query:QueryGetAddressQuery(customerAccessToken: "87169899dfeebbd0b776e9d6c8d4aaf9",first: 20) , responseModel: DataClassAddress.self, completion: { result in
-                            switch result {
-                            case .success(let success):
-                                self.address = success.customer?.addresses?.nodes ?? []
-                                self.isLoading = false
-                            case .failure(let failure):
-                                print(failure)
-                                self.iserror = true
-                            }
-                        })
+            switch result {
+            case .success(let success):
+                self.address = success.customer?.addresses?.nodes ?? []
+                self.isLoading = false
+            case .failure(let failure):
+                print(failure)
+                self.iserror = true
+            }
+        })
     }
     func deleteAddress(id : String){
         NetworkManager.getInstance(requestType: .storeFront).performGraphQLRequest(mutation: MutationDeleteAddressMutation(customerAddressDeleteId: id, customerAccessToken: "87169899dfeebbd0b776e9d6c8d4aaf9") , responseModel: DataClassDeletedCustomer.self, completion: { result in
