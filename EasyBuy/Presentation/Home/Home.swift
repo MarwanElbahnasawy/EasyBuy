@@ -106,12 +106,14 @@ struct Home: View {
         } //: ZSTACK
         .ignoresSafeArea(.all, edges: .top)
         .padding(.bottom, 65)
+
                 .onAppear(perform: {
                     viewModel.getCurrency()
                     viewModel.fetchBrands()
                     viewModel.fetchProducts()
                 })
     
+
         
         
     }

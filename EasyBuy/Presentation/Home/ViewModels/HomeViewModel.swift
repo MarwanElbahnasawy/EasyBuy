@@ -17,7 +17,8 @@ class HomeViewModel: ObservableObject {
     var rates: [String: Double]?
     
     init(){
-        
+
+
     }
     
     func fetchBrands(){
@@ -60,6 +61,5 @@ class HomeViewModel: ObservableObject {
             })
         }
     }
-    
-    
+
 }
