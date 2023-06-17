@@ -4,14 +4,17 @@ struct BaseView: View {
     @StateObject var baseData = BaseViewModel()
     @AppStorage("barIsShow") var barIsShow: Bool = false
     @AppStorage("token") var token: String?
+    @State var unreadNotifications: Int = 0
 
     // MARK: - HIDE TAB BAR
     init() {
         UITabBar.appearance().isHidden = true
+       
+          
     }
     
     var body: some View {
-       
+   
             TabView(selection: $baseData.currentTab) {
                 Home()
                     .environmentObject(baseData)
@@ -44,7 +47,6 @@ struct BaseView: View {
                         .tag(Tab.Person)
                 }
             }
-            
             .overlay(
                 // MARK: - CUSTOM TAB BAR
                 HStack(spacing: 0) {
@@ -71,10 +73,15 @@ struct BaseView: View {
                                 .foregroundColor(Color("myWhite"))
                                 .background(Color("Btnbg"))
                                 .clipShape(Circle())
-                            //MAR: - BUTTON SHADOWS
                                 .shadow(color: Color.black.opacity(0.04), radius: 5, x: 5, y: 5)
                                 .shadow(color: Color.black.opacity(0.04), radius: 5, x: -5, y: -5)
-                        }.offset(y: -30)
+                        }.onAppear(perform: {
+                            unreadNotifications = UserDefaults.standard.integer(forKey: "count")
+                            print(unreadNotifications)
+                        }).overlay(
+                            NotificationCountView(value: $unreadNotifications)
+                        ).offset(y: -30)
+
 
                       
                        
@@ -83,8 +90,7 @@ struct BaseView: View {
                             .offset(x: 10)
                         TabButton(Tab: .Person)
                     }
-                }
-                    .background(
+                }.background(
                         Color("myWhite")
                             .clipShape(CustomCurveShape())
                         //MARK: - SHADOW
@@ -99,6 +105,7 @@ struct BaseView: View {
             
         
     }
+ 
         @ViewBuilder
         func TabButton(Tab: Tab)-> some View {
             Button {

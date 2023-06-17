@@ -88,6 +88,7 @@ struct SettingsView: View {
                    alert = Alert(title: Text("Save!"), message: Text("All changes will be applied"), primaryButton: .default(Text("OK")) {
                         viewModel.saveCurrencyCode(code: selectedCode)
                         viewModel.saveAddress()
+                       presentationMode.wrappedValue.dismiss()
                     }, secondaryButton: .cancel(Text("Cancel")) {
                         print("Cancel button tapped")
                     })
