@@ -70,6 +70,7 @@
 		14F9B2852A2B9B38009C2611 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F9B2842A2B9B38009C2611 /* BaseViewModel.swift */; };
 		14FB09122A3A6BF3006F54F6 /* Admin.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 14FB09112A3A6BF3006F54F6 /* Admin.graphql */; };
 		14FB09182A3A77B1006F54F6 /* APIAdmin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FB09172A3A77B1006F54F6 /* APIAdmin.swift */; };
+		154AC67ABE782070327BB405 /* Pods_EasyBuyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BA8A10F2355D006D6A60EEA /* Pods_EasyBuyTests.framework */; };
 		171B14D42A2891B900851C67 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 171B14D32A2891B900851C67 /* Lottie */; };
 		171B14D92A28996C00851C67 /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171B14D82A28996C00851C67 /* NetworkReachability.swift */; };
 		171B14DC2A28A23E00851C67 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 171B14DB2A28A23E00851C67 /* Kingfisher */; };
@@ -86,6 +87,7 @@
 		17C9CF442A27E133004BCCC2 /* EasyBuyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C9CF432A27E133004BCCC2 /* EasyBuyUITests.swift */; };
 		17C9CF462A27E133004BCCC2 /* EasyBuyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C9CF452A27E133004BCCC2 /* EasyBuyUITestsLaunchTests.swift */; };
 		17C9CF7F2A27E1D3004BCCC2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C9CF7E2A27E1D3004BCCC2 /* Constants.swift */; };
+		31D52E42D25ED8AA642D669D /* Pods_EasyBuy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48EE76F4E1B41A917BCC5F54 /* Pods_EasyBuy.framework */; };
 		3F02F2A62A29E83E00FDE52E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F02F2A52A29E83E00FDE52E /* NetworkManager.swift */; };
 		3F02F2A82A29EA1A00FDE52E /* NetworkInterceptorProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F02F2A72A29EA1A00FDE52E /* NetworkInterceptorProvider.swift */; };
 		3F02F2B42A29F44700FDE52E /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 3F02F2B32A29F44700FDE52E /* loading.json */; };
@@ -108,9 +110,6 @@
 		3FE184582A3B3ADC009EBBB3 /* CheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE184572A3B3ADC009EBBB3 /* CheckoutView.swift */; };
 		3FE1845A2A3B3B1F009EBBB3 /* AddressCartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE184592A3B3B1F009EBBB3 /* AddressCartView.swift */; };
 		3FE1845C2A3B5C89009EBBB3 /* CheckoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE1845B2A3B5C89009EBBB3 /* CheckoutViewModel.swift */; };
-		3FFAC2142A379DF200A9F481 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3FFAC2132A379DF200A9F481 /* FirebaseAuth */; };
-		3FFAC2162A379DF200A9F481 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3FFAC2152A379DF200A9F481 /* FirebaseFirestore */; };
-		3FFAC2182A379DF200A9F481 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3FFAC2172A379DF200A9F481 /* FirebaseFirestoreSwift */; };
 		3FFAC21B2A379F6900A9F481 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 3FFAC21A2A379F6900A9F481 /* Apollo */; };
 		3FFAC21E2A37A87D00A9F481 /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = 3FFAC21D2A37A87D00A9F481 /* Cosmos */; };
 		3FFAC2212A37A9FB00A9F481 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3FFAC2202A37A9FB00A9F481 /* IQKeyboardManagerSwift */; };
@@ -121,6 +120,7 @@
 		3FFBDFF32A3CDEFF00ACC61E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFBDFF22A3CDEFF00ACC61E /* SettingsView.swift */; };
 		3FFBDFF52A3CDF5200ACC61E /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFBDFF42A3CDF5200ACC61E /* SettingsViewModel.swift */; };
 		3FFBDFF72A3E297B00ACC61E /* NotificationCenterBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFBDFF62A3E297B00ACC61E /* NotificationCenterBadge.swift */; };
+		701C16BD70E8419EF70EB226 /* Pods_EasyBuy_EasyBuyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DBDF3732B3F5772083A7F48 /* Pods_EasyBuy_EasyBuyUITests.framework */; };
 		EB4033412A3D1414003AA919 /* NoAccountLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4033402A3D1414003AA919 /* NoAccountLogoView.swift */; };
 		EB4033472A3D151A003AA919 /* NoAccountViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4033462A3D151A003AA919 /* NoAccountViewExtension.swift */; };
 		EB40334C2A3D1754003AA919 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB40334B2A3D1754003AA919 /* RoundedCorner.swift */; };
@@ -313,6 +313,15 @@
 		3FFBDFF22A3CDEFF00ACC61E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		3FFBDFF42A3CDF5200ACC61E /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		3FFBDFF62A3E297B00ACC61E /* NotificationCenterBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterBadge.swift; sourceTree = "<group>"; };
+		48EE76F4E1B41A917BCC5F54 /* Pods_EasyBuy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EasyBuy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		566A4FDB527862D49074451A /* Pods-EasyBuy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyBuy.debug.xcconfig"; path = "Target Support Files/Pods-EasyBuy/Pods-EasyBuy.debug.xcconfig"; sourceTree = "<group>"; };
+		6940AACB7952504362152E91 /* Pods-EasyBuy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyBuy.release.xcconfig"; path = "Target Support Files/Pods-EasyBuy/Pods-EasyBuy.release.xcconfig"; sourceTree = "<group>"; };
+		6BA8A10F2355D006D6A60EEA /* Pods_EasyBuyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EasyBuyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6DBDF3732B3F5772083A7F48 /* Pods_EasyBuy_EasyBuyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EasyBuy_EasyBuyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A57B5E3805403806305518C1 /* Pods-EasyBuyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyBuyTests.debug.xcconfig"; path = "Target Support Files/Pods-EasyBuyTests/Pods-EasyBuyTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CFCD4645CF8B908E91669D7C /* Pods-EasyBuy-EasyBuyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyBuy-EasyBuyUITests.release.xcconfig"; path = "Target Support Files/Pods-EasyBuy-EasyBuyUITests/Pods-EasyBuy-EasyBuyUITests.release.xcconfig"; sourceTree = "<group>"; };
+		D5FDC88F5DCC854955390825 /* Pods-EasyBuyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyBuyTests.release.xcconfig"; path = "Target Support Files/Pods-EasyBuyTests/Pods-EasyBuyTests.release.xcconfig"; sourceTree = "<group>"; };
+		DCF32E2B31F48EAC43BE4647 /* Pods-EasyBuy-EasyBuyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyBuy-EasyBuyUITests.debug.xcconfig"; path = "Target Support Files/Pods-EasyBuy-EasyBuyUITests/Pods-EasyBuy-EasyBuyUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		EB4033402A3D1414003AA919 /* NoAccountLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoAccountLogoView.swift; sourceTree = "<group>"; };
 		EB4033462A3D151A003AA919 /* NoAccountViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoAccountViewExtension.swift; sourceTree = "<group>"; };
 		EB40334B2A3D1754003AA919 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
@@ -382,14 +391,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				171B14DF2A28A34200851C67 /* Alamofire in Frameworks */,
-				3FFAC2142A379DF200A9F481 /* FirebaseAuth in Frameworks */,
 				3FFAC21E2A37A87D00A9F481 /* Cosmos in Frameworks */,
 				171B14DC2A28A23E00851C67 /* Kingfisher in Frameworks */,
-				3FFAC2182A379DF200A9F481 /* FirebaseFirestoreSwift in Frameworks */,
 				3FFAC2212A37A9FB00A9F481 /* IQKeyboardManagerSwift in Frameworks */,
 				3FFAC21B2A379F6900A9F481 /* Apollo in Frameworks */,
 				171B14D42A2891B900851C67 /* Lottie in Frameworks */,
-				3FFAC2162A379DF200A9F481 /* FirebaseFirestore in Frameworks */,
+				31D52E42D25ED8AA642D669D /* Pods_EasyBuy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,6 +404,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				154AC67ABE782070327BB405 /* Pods_EasyBuyTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,6 +412,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				701C16BD70E8419EF70EB226 /* Pods_EasyBuy_EasyBuyUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -602,6 +611,8 @@
 				17C9CF382A27E133004BCCC2 /* EasyBuyTests */,
 				17C9CF422A27E133004BCCC2 /* EasyBuyUITests */,
 				17C9CF212A27E12F004BCCC2 /* Products */,
+				955F50328B6BE6F3DE1491D7 /* Pods */,
+				D9CAC68BF114105FFC68A4E6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -915,6 +926,30 @@
 				3FFBDFF42A3CDF5200ACC61E /* SettingsViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		955F50328B6BE6F3DE1491D7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				566A4FDB527862D49074451A /* Pods-EasyBuy.debug.xcconfig */,
+				6940AACB7952504362152E91 /* Pods-EasyBuy.release.xcconfig */,
+				DCF32E2B31F48EAC43BE4647 /* Pods-EasyBuy-EasyBuyUITests.debug.xcconfig */,
+				CFCD4645CF8B908E91669D7C /* Pods-EasyBuy-EasyBuyUITests.release.xcconfig */,
+				A57B5E3805403806305518C1 /* Pods-EasyBuyTests.debug.xcconfig */,
+				D5FDC88F5DCC854955390825 /* Pods-EasyBuyTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		D9CAC68BF114105FFC68A4E6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				48EE76F4E1B41A917BCC5F54 /* Pods_EasyBuy.framework */,
+				6DBDF3732B3F5772083A7F48 /* Pods_EasyBuy_EasyBuyUITests.framework */,
+				6BA8A10F2355D006D6A60EEA /* Pods_EasyBuyTests.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		EB40333E2A3D13E8003AA919 /* NoAccount */ = {
@@ -1291,11 +1326,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 17C9CF492A27E133004BCCC2 /* Build configuration list for PBXNativeTarget "EasyBuy" */;
 			buildPhases = (
+				9BE6987FB17D74462537B7E3 /* [CP] Check Pods Manifest.lock */,
 				3F02F2C72A2BD27100FDE52E /* ShellScript */,
 				3F02F2AF2A29EC8400FDE52E /* ShellScript */,
 				17C9CF1C2A27E12F004BCCC2 /* Sources */,
 				17C9CF1D2A27E12F004BCCC2 /* Frameworks */,
 				17C9CF1E2A27E12F004BCCC2 /* Resources */,
+				9177248B79CF0770AC4060B7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1306,9 +1343,6 @@
 				171B14D32A2891B900851C67 /* Lottie */,
 				171B14DB2A28A23E00851C67 /* Kingfisher */,
 				171B14DE2A28A34200851C67 /* Alamofire */,
-				3FFAC2132A379DF200A9F481 /* FirebaseAuth */,
-				3FFAC2152A379DF200A9F481 /* FirebaseFirestore */,
-				3FFAC2172A379DF200A9F481 /* FirebaseFirestoreSwift */,
 				3FFAC21A2A379F6900A9F481 /* Apollo */,
 				3FFAC21D2A37A87D00A9F481 /* Cosmos */,
 				3FFAC2202A37A9FB00A9F481 /* IQKeyboardManagerSwift */,
@@ -1321,6 +1355,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 17C9CF4C2A27E133004BCCC2 /* Build configuration list for PBXNativeTarget "EasyBuyTests" */;
 			buildPhases = (
+				27AD4EBF2C346BB79C7733D9 /* [CP] Check Pods Manifest.lock */,
 				17C9CF312A27E133004BCCC2 /* Sources */,
 				17C9CF322A27E133004BCCC2 /* Frameworks */,
 				17C9CF332A27E133004BCCC2 /* Resources */,
@@ -1339,9 +1374,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 17C9CF4F2A27E133004BCCC2 /* Build configuration list for PBXNativeTarget "EasyBuyUITests" */;
 			buildPhases = (
+				123F3459061D2729D7A95038 /* [CP] Check Pods Manifest.lock */,
 				17C9CF3B2A27E133004BCCC2 /* Sources */,
 				17C9CF3C2A27E133004BCCC2 /* Frameworks */,
 				17C9CF3D2A27E133004BCCC2 /* Resources */,
+				EF8D847D2C754837045748FB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1387,12 +1424,11 @@
 			mainGroup = 17C9CF172A27E12F004BCCC2;
 			packageReferences = (
 				171B14D22A2891B900851C67 /* XCRemoteSwiftPackageReference "lottie-ios" */,
-				171B14DA2A28A23E00851C67 /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				171B14DD2A28A34200851C67 /* XCRemoteSwiftPackageReference "Alamofire" */,
-				3FFAC2122A379DF200A9F481 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				3FFAC2192A379F6900A9F481 /* XCRemoteSwiftPackageReference "apollo-ios" */,
-				3FFAC21C2A37A87D00A9F481 /* XCRemoteSwiftPackageReference "Cosmos" */,
-				3FFAC21F2A37A9FB00A9F481 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				171B14DA2A28A23E00851C67 /* XCRemoteSwiftPackageReference "Kingfisher.git" */,
+				171B14DD2A28A34200851C67 /* XCRemoteSwiftPackageReference "Alamofire.git" */,
+				3FFAC2192A379F6900A9F481 /* XCRemoteSwiftPackageReference "apollo-ios.git" */,
+				3FFAC21C2A37A87D00A9F481 /* XCRemoteSwiftPackageReference "Cosmos.git" */,
+				3FFAC21F2A37A9FB00A9F481 /* XCRemoteSwiftPackageReference "IQKeyboardManager.git" */,
 			);
 			productRefGroup = 17C9CF212A27E12F004BCCC2 /* Products */;
 			projectDirPath = "";
@@ -1446,6 +1482,50 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		123F3459061D2729D7A95038 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-EasyBuy-EasyBuyUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		27AD4EBF2C346BB79C7733D9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-EasyBuyTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		3F02F2AF2A29EC8400FDE52E /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 8;
@@ -1479,6 +1559,62 @@
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nSCRIPT_PATH=\"${PODS_ROOT}/Apollo/scripts\"\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/Admin.graphql --localSchemaFile=\"schemaAdmin.json\" APIAdmin.swift\n\n";
+		};
+		9177248B79CF0770AC4060B7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EasyBuy/Pods-EasyBuy-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EasyBuy/Pods-EasyBuy-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EasyBuy/Pods-EasyBuy-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9BE6987FB17D74462537B7E3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-EasyBuy-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EF8D847D2C754837045748FB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EasyBuy-EasyBuyUITests/Pods-EasyBuy-EasyBuyUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EasyBuy-EasyBuyUITests/Pods-EasyBuy-EasyBuyUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EasyBuy-EasyBuyUITests/Pods-EasyBuy-EasyBuyUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1794,6 +1930,7 @@
 		};
 		17C9CF4A2A27E133004BCCC2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 566A4FDB527862D49074451A /* Pods-EasyBuy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1825,6 +1962,7 @@
 		};
 		17C9CF4B2A27E133004BCCC2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6940AACB7952504362152E91 /* Pods-EasyBuy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1856,6 +1994,7 @@
 		};
 		17C9CF4D2A27E133004BCCC2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A57B5E3805403806305518C1 /* Pods-EasyBuyTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1876,6 +2015,7 @@
 		};
 		17C9CF4E2A27E133004BCCC2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D5FDC88F5DCC854955390825 /* Pods-EasyBuyTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1896,6 +2036,7 @@
 		};
 		17C9CF502A27E133004BCCC2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DCF32E2B31F48EAC43BE4647 /* Pods-EasyBuy-EasyBuyUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1914,6 +2055,7 @@
 		};
 		17C9CF512A27E133004BCCC2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CFCD4645CF8B908E91669D7C /* Pods-EasyBuy-EasyBuyUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1980,7 +2122,7 @@
 				minimumVersion = 4.0.0;
 			};
 		};
-		171B14DA2A28A23E00851C67 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+		171B14DA2A28A23E00851C67 /* XCRemoteSwiftPackageReference "Kingfisher.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
 			requirement = {
@@ -1988,7 +2130,7 @@
 				minimumVersion = 7.0.0;
 			};
 		};
-		171B14DD2A28A34200851C67 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+		171B14DD2A28A34200851C67 /* XCRemoteSwiftPackageReference "Alamofire.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
 			requirement = {
@@ -1996,15 +2138,7 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		3FFAC2122A379DF200A9F481 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 9.0.0;
-			};
-		};
-		3FFAC2192A379F6900A9F481 /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
+		3FFAC2192A379F6900A9F481 /* XCRemoteSwiftPackageReference "apollo-ios.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apollographql/apollo-ios.git";
 			requirement = {
@@ -2012,7 +2146,7 @@
 				version = 0.53.0;
 			};
 		};
-		3FFAC21C2A37A87D00A9F481 /* XCRemoteSwiftPackageReference "Cosmos" */ = {
+		3FFAC21C2A37A87D00A9F481 /* XCRemoteSwiftPackageReference "Cosmos.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/evgenyneu/Cosmos.git";
 			requirement = {
@@ -2020,7 +2154,7 @@
 				version = 23.0.0;
 			};
 		};
-		3FFAC21F2A37A9FB00A9F481 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+		3FFAC21F2A37A9FB00A9F481 /* XCRemoteSwiftPackageReference "IQKeyboardManager.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
 			requirement = {
@@ -2038,42 +2172,27 @@
 		};
 		171B14DB2A28A23E00851C67 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 171B14DA2A28A23E00851C67 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			package = 171B14DA2A28A23E00851C67 /* XCRemoteSwiftPackageReference "Kingfisher.git" */;
 			productName = Kingfisher;
 		};
 		171B14DE2A28A34200851C67 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 171B14DD2A28A34200851C67 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			package = 171B14DD2A28A34200851C67 /* XCRemoteSwiftPackageReference "Alamofire.git" */;
 			productName = Alamofire;
-		};
-		3FFAC2132A379DF200A9F481 /* FirebaseAuth */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3FFAC2122A379DF200A9F481 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAuth;
-		};
-		3FFAC2152A379DF200A9F481 /* FirebaseFirestore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3FFAC2122A379DF200A9F481 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseFirestore;
-		};
-		3FFAC2172A379DF200A9F481 /* FirebaseFirestoreSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3FFAC2122A379DF200A9F481 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseFirestoreSwift;
 		};
 		3FFAC21A2A379F6900A9F481 /* Apollo */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3FFAC2192A379F6900A9F481 /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			package = 3FFAC2192A379F6900A9F481 /* XCRemoteSwiftPackageReference "apollo-ios.git" */;
 			productName = Apollo;
 		};
 		3FFAC21D2A37A87D00A9F481 /* Cosmos */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3FFAC21C2A37A87D00A9F481 /* XCRemoteSwiftPackageReference "Cosmos" */;
+			package = 3FFAC21C2A37A87D00A9F481 /* XCRemoteSwiftPackageReference "Cosmos.git" */;
 			productName = Cosmos;
 		};
 		3FFAC2202A37A9FB00A9F481 /* IQKeyboardManagerSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3FFAC21F2A37A9FB00A9F481 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			package = 3FFAC21F2A37A9FB00A9F481 /* XCRemoteSwiftPackageReference "IQKeyboardManager.git" */;
 			productName = IQKeyboardManagerSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
