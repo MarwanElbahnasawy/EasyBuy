@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		140DEC292A3E8608009206D2 /* MockNetworkManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140DEC252A3E8607009206D2 /* MockNetworkManagerTest.swift */; };
+		140DEC2A2A3E8608009206D2 /* NetworkManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140DEC262A3E8607009206D2 /* NetworkManagerTest.swift */; };
+		140DEC2B2A3E8608009206D2 /* MockNetworkManagerResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140DEC282A3E8608009206D2 /* MockNetworkManagerResponses.swift */; };
+		140DEC2D2A3E8619009206D2 /* MockNetworkManagerMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140DEC2C2A3E8619009206D2 /* MockNetworkManagerMethods.swift */; };
 		141E43B62A3BACF9009EA9DB /* AddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141E43B52A3BACF9009EA9DB /* AddressView.swift */; };
 		141E43B92A3BAFA5009EA9DB /* AddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141E43B82A3BAFA5009EA9DB /* AddressCell.swift */; };
 		144FEAC22A2D0C670088F817 /* SwiftU.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144FEAC12A2D0C670088F817 /* SwiftU.swift */; };
@@ -202,6 +206,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		140DEC252A3E8607009206D2 /* MockNetworkManagerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockNetworkManagerTest.swift; sourceTree = "<group>"; };
+		140DEC262A3E8607009206D2 /* NetworkManagerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManagerTest.swift; sourceTree = "<group>"; };
+		140DEC282A3E8608009206D2 /* MockNetworkManagerResponses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockNetworkManagerResponses.swift; sourceTree = "<group>"; };
+		140DEC2C2A3E8619009206D2 /* MockNetworkManagerMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockNetworkManagerMethods.swift; sourceTree = "<group>"; };
 		141E43B52A3BACF9009EA9DB /* AddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressView.swift; sourceTree = "<group>"; };
 		141E43B82A3BAFA5009EA9DB /* AddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCell.swift; sourceTree = "<group>"; };
 		144FEAC12A2D0C670088F817 /* SwiftU.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftU.swift; sourceTree = "<group>"; };
@@ -419,6 +427,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		140DEC242A3E8607009206D2 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				140DEC252A3E8607009206D2 /* MockNetworkManagerTest.swift */,
+				140DEC262A3E8607009206D2 /* NetworkManagerTest.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		140DEC272A3E8608009206D2 /* Mock NetworkManager methods and responses */ = {
+			isa = PBXGroup;
+			children = (
+				140DEC2C2A3E8619009206D2 /* MockNetworkManagerMethods.swift */,
+				140DEC282A3E8608009206D2 /* MockNetworkManagerResponses.swift */,
+			);
+			path = "Mock NetworkManager methods and responses";
+			sourceTree = "<group>";
+		};
 		1486EB7E2A2B9F870029212B /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -657,6 +683,8 @@
 		17C9CF382A27E133004BCCC2 /* EasyBuyTests */ = {
 			isa = PBXGroup;
 			children = (
+				140DEC272A3E8608009206D2 /* Mock NetworkManager methods and responses */,
+				140DEC242A3E8607009206D2 /* Tests */,
 				17C9CF392A27E133004BCCC2 /* EasyBuyTests.swift */,
 			);
 			path = EasyBuyTests;
@@ -938,7 +966,6 @@
 				A57B5E3805403806305518C1 /* Pods-EasyBuyTests.debug.xcconfig */,
 				D5FDC88F5DCC854955390825 /* Pods-EasyBuyTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -1424,11 +1451,11 @@
 			mainGroup = 17C9CF172A27E12F004BCCC2;
 			packageReferences = (
 				171B14D22A2891B900851C67 /* XCRemoteSwiftPackageReference "lottie-ios" */,
-				171B14DA2A28A23E00851C67 /* XCRemoteSwiftPackageReference "Kingfisher.git" */,
-				171B14DD2A28A34200851C67 /* XCRemoteSwiftPackageReference "Alamofire.git" */,
-				3FFAC2192A379F6900A9F481 /* XCRemoteSwiftPackageReference "apollo-ios.git" */,
-				3FFAC21C2A37A87D00A9F481 /* XCRemoteSwiftPackageReference "Cosmos.git" */,
-				3FFAC21F2A37A9FB00A9F481 /* XCRemoteSwiftPackageReference "IQKeyboardManager.git" */,
+				171B14DA2A28A23E00851C67 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				171B14DD2A28A34200851C67 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				3FFAC2192A379F6900A9F481 /* XCRemoteSwiftPackageReference "apollo-ios" */,
+				3FFAC21C2A37A87D00A9F481 /* XCRemoteSwiftPackageReference "Cosmos" */,
+				3FFAC21F2A37A9FB00A9F481 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = 17C9CF212A27E12F004BCCC2 /* Products */;
 			projectDirPath = "";
@@ -1785,7 +1812,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				140DEC2A2A3E8608009206D2 /* NetworkManagerTest.swift in Sources */,
+				140DEC292A3E8608009206D2 /* MockNetworkManagerTest.swift in Sources */,
 				17C9CF3A2A27E133004BCCC2 /* EasyBuyTests.swift in Sources */,
+				140DEC2D2A3E8619009206D2 /* MockNetworkManagerMethods.swift in Sources */,
+				140DEC2B2A3E8608009206D2 /* MockNetworkManagerResponses.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2122,7 +2153,7 @@
 				minimumVersion = 4.0.0;
 			};
 		};
-		171B14DA2A28A23E00851C67 /* XCRemoteSwiftPackageReference "Kingfisher.git" */ = {
+		171B14DA2A28A23E00851C67 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
 			requirement = {
@@ -2130,7 +2161,7 @@
 				minimumVersion = 7.0.0;
 			};
 		};
-		171B14DD2A28A34200851C67 /* XCRemoteSwiftPackageReference "Alamofire.git" */ = {
+		171B14DD2A28A34200851C67 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
 			requirement = {
@@ -2138,7 +2169,7 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		3FFAC2192A379F6900A9F481 /* XCRemoteSwiftPackageReference "apollo-ios.git" */ = {
+		3FFAC2192A379F6900A9F481 /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apollographql/apollo-ios.git";
 			requirement = {
@@ -2146,7 +2177,7 @@
 				version = 0.53.0;
 			};
 		};
-		3FFAC21C2A37A87D00A9F481 /* XCRemoteSwiftPackageReference "Cosmos.git" */ = {
+		3FFAC21C2A37A87D00A9F481 /* XCRemoteSwiftPackageReference "Cosmos" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/evgenyneu/Cosmos.git";
 			requirement = {
@@ -2154,7 +2185,7 @@
 				version = 23.0.0;
 			};
 		};
-		3FFAC21F2A37A9FB00A9F481 /* XCRemoteSwiftPackageReference "IQKeyboardManager.git" */ = {
+		3FFAC21F2A37A9FB00A9F481 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
 			requirement = {
@@ -2172,27 +2203,27 @@
 		};
 		171B14DB2A28A23E00851C67 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 171B14DA2A28A23E00851C67 /* XCRemoteSwiftPackageReference "Kingfisher.git" */;
+			package = 171B14DA2A28A23E00851C67 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
 		};
 		171B14DE2A28A34200851C67 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 171B14DD2A28A34200851C67 /* XCRemoteSwiftPackageReference "Alamofire.git" */;
+			package = 171B14DD2A28A34200851C67 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
 		3FFAC21A2A379F6900A9F481 /* Apollo */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3FFAC2192A379F6900A9F481 /* XCRemoteSwiftPackageReference "apollo-ios.git" */;
+			package = 3FFAC2192A379F6900A9F481 /* XCRemoteSwiftPackageReference "apollo-ios" */;
 			productName = Apollo;
 		};
 		3FFAC21D2A37A87D00A9F481 /* Cosmos */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3FFAC21C2A37A87D00A9F481 /* XCRemoteSwiftPackageReference "Cosmos.git" */;
+			package = 3FFAC21C2A37A87D00A9F481 /* XCRemoteSwiftPackageReference "Cosmos" */;
 			productName = Cosmos;
 		};
 		3FFAC2202A37A9FB00A9F481 /* IQKeyboardManagerSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3FFAC21F2A37A9FB00A9F481 /* XCRemoteSwiftPackageReference "IQKeyboardManager.git" */;
+			package = 3FFAC21F2A37A9FB00A9F481 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
