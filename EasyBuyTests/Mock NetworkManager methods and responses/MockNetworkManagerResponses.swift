@@ -213,5 +213,181 @@ class MockNetworkManager{
   
 }
 """
-
+   static let discountCodesResponse = """
+ {
+     "data": {
+         "codeDiscountNodes": {
+             "nodes": [
+                 {
+                     "id": "gid://shopify/DiscountCodeNode/1388420661555",
+                     "codeDiscount": {
+                         "title": "25PercentOffEverything",
+                         "summary": "25% off entire order • One use per customer",
+                         "codeCount": 1,
+                         "usageLimit": null,
+                         "status": "ACTIVE",
+                         "customerGets": {
+                             "items": {
+                                 "__typename": "AllDiscountItems"
+                             },
+                             "value": {
+                                 "__typename": "DiscountPercentage"
+                             }
+                         },
+                         "codes": {
+                             "nodes": [
+                                 {
+                                     "code": "25OFFEVERYTHING",
+                                     "id": "gid://shopify/DiscountRedeemCode/20328401305907"
+                                 }
+                             ]
+                         }
+                     }
+                 },
+                 {
+                     "id": "gid://shopify/DiscountCodeNode/1388430885171",
+                     "codeDiscount": {
+                         "title": "Men 50%",
+                         "summary": "50% off MEN • One use per customer",
+                         "codeCount": 1,
+                         "usageLimit": null,
+                         "status": "ACTIVE",
+                         "customerGets": {
+                             "items": {
+                                 "__typename": "DiscountCollections"
+                             },
+                             "value": {
+                                 "__typename": "DiscountPercentage"
+                             }
+                         },
+                         "codes": {
+                             "nodes": [
+                                 {
+                                     "code": "MEN50OFF",
+                                     "id": "gid://shopify/DiscountRedeemCode/20328492564787"
+                                 }
+                             ]
+                         }
+                     }
+                 },
+                 {
+                     "id": "gid://shopify/DiscountCodeNode/1388494094643",
+                     "codeDiscount": {
+                         "title": "70 Percent Off Kids",
+                         "summary": "70% off KID • One use per customer",
+                         "codeCount": 1,
+                         "usageLimit": 5,
+                         "status": "ACTIVE",
+                         "customerGets": {
+                             "items": {
+                                 "__typename": "DiscountCollections"
+                             },
+                             "value": {
+                                 "__typename": "DiscountPercentage"
+                             }
+                         },
+                         "codes": {
+                             "nodes": [
+                                 {
+                                     "code": "70OFFKIDS",
+                                     "id": "gid://shopify/DiscountRedeemCode/20328928313651"
+                                 }
+                             ]
+                         }
+                     }
+                 },
+                 {
+                     "id": "gid://shopify/DiscountCodeNode/1388638306611",
+                     "codeDiscount": {
+                         "title": "Women 20% off",
+                         "summary": "20% off WOMEN • One use per customer",
+                         "codeCount": 1,
+                         "usageLimit": null,
+                         "status": "ACTIVE",
+                         "customerGets": {
+                             "items": {
+                                 "__typename": "DiscountCollections"
+                             },
+                             "value": {
+                                 "__typename": "DiscountPercentage"
+                             }
+                         },
+                         "codes": {
+                             "nodes": [
+                                 {
+                                     "code": "20PERCENTOFFWOMENITEMS",
+                                     "id": "gid://shopify/DiscountRedeemCode/20330180542771"
+                                 }
+                             ]
+                         }
+                     }
+                 }
+             ]
+         }
+     },
+     "extensions": {
+         "cost": {
+             "requestedQueryCost": 537,
+             "actualQueryCost": 31,
+             "throttleStatus": {
+                 "maximumAvailable": 1000.0,
+                 "currentlyAvailable": 969,
+                 "restoreRate": 50.0
+             }
+         }
+     }
+ }
+ """
+    static let draftOrderJson = """
+{
+    
+        "draftOrder": {
+            "id": "gid://shopify/DraftOrder/1120714129715",
+            "name": "#D273",
+            "email": "mamo2men@gmail.com",
+            "subtotalPrice": "29.00",
+            "note2": null,
+            "totalPrice": "33.06",
+            "lineItems": {
+                "nodes": [
+                    {
+                        "quantity": 1,
+                        "variant": {
+                            "id": "gid://shopify/ProductVariant/45253508006195",
+                            "price": "29.00",
+                            "availableForSale": true,
+                            "title": "4 / burgandy"
+                        },
+                        "product": {
+                            "id": "gid://shopify/Product/8311139107123",
+                            "priceRangeV2": {
+                                "maxVariantPrice": {
+                                    "amount": "29.0",
+                                    "currencyCode": "EGP"
+                                }
+                            },
+                            "title": "VANS |AUTHENTIC | LO PRO | BURGANDY/WHITE",
+                            "productType": "SHOES",
+                            "featuredImage": {
+                                "url": "https://cdn.shopify.com/s/files/1/0773/8789/0995/products/9f190cba7218c819c81566bca6298c6a.jpg?v=1685480862"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+   ,
+    "extensions": {
+        "cost": {
+            "requestedQueryCost": 503,
+            "actualQueryCost": 8,
+            "throttleStatus": {
+                "maximumAvailable": 1000.0,
+                "currentlyAvailable": 992,
+                "restoreRate": 50.0
+            }
+        }
+    }
+}
+"""
 }

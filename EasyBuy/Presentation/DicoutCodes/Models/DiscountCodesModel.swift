@@ -6,7 +6,11 @@
 //
 
 import Foundation
-
+// MARK: - Welcome
+struct RootDiscountCodes: Codable {
+    let data: DataDiscountCodes?
+    let extensions: Extensions?
+}
 // MARK: - DataClass
 struct DataDiscountCodes: Codable{
     let codeDiscountNodes: CodeDiscountNodes?

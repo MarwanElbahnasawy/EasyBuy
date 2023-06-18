@@ -5,7 +5,11 @@
 
 import Foundation
 
-
+// MARK: - Welcome
+struct RootDraftOrder: Codable {
+    let data: DraftOrderDataClass?
+    let extensions: Extensions?
+}
 // MARK: - DataClass
 struct DraftOrderDataClass: Codable {
     let draftOrderCreate: DraftOrderCreate?

@@ -63,7 +63,7 @@ final class NetworkManagerTest: XCTestCase {
         self.waitForExpectations(timeout: 5)
     }
 
-    func testCollectionsCount () {
+    func testCollectionsCountIsSix () {
         // Given: An API request to fetch all collections
         let expectation = expectation(description: "Waiting for the API")
 

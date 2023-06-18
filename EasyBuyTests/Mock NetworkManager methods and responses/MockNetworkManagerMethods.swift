@@ -53,6 +53,28 @@ extension MockNetworkManager: NetworkManagerProtocol {
                 }
             }
         }
+    func queryAllDiscountCodes(completion: @escaping (Result<RootDiscountCodes, Error>) -> Void) {
+            jsonResponse = Data(MockNetworkManager.discountCodesResponse.utf8)
+            MockNetworkManager.shared.queryGraphQLRequest(query: GetAllDiicountCodesQuery(first: 10), responseModel: RootDiscountCodes.self) { (result: Result<RootDiscountCodes, Error>) in
+                switch result {
+                case .success(let decodedData):
+                    completion(.success(decodedData))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+        }
+    func queryDraftOrder(id: String, completion: @escaping (Result<DraftOrderCreate, Error>) -> Void) {
+            jsonResponse = Data(MockNetworkManager.draftOrderJson.utf8)
+            MockNetworkManager.shared.queryGraphQLRequest(query: DraftOrderQuery(id: id), responseModel: DraftOrderCreate.self) { (result: Result<DraftOrderCreate, Error>) in
+                switch result {
+                case .success(let decodedData):
+                    completion(.success(decodedData))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+        }
 //
 //    func queryAllDiscountCodes(completion: @escaping (Result<AllDiscountCodesRoot, Error>) -> Void) {
 //        jsonResponse = Data(MockNetworkManager.allDiscountCodesResponse.utf8)
