@@ -1,26 +1,24 @@
-//
-//  DescriptionView.swift
-//  EasyBuy
-//
-//  Created by Ahmad Hemeda on 08/06/2023.
-//
-
 import SwiftUI
 
 struct DescriptionView: View {
     let product: DataClass?
     let viewModel: ProductViewModel?
-    
-    init(for product: DataClass?,viewModel: ProductViewModel) {
-        self.product = product
-        self.viewModel = viewModel
-    }
+    @Binding var isExist: Bool
     
     var body: some View {
         VStack (alignment: .leading) {
-            ProductTitleView(title: product?.product?.title ?? "", productType: product?.product?.productType ?? "") {
-                viewModel?.getFavoriteDraftOrder()
-            }
+            ProductTitleView(
+                isExist: $isExist,
+                title: product?.product?.title ?? "",
+                productType: product?.product?.productType ?? "",
+                action: {
+                    viewModel?.getFavoriteDraftOrder {
+                        isExist = viewModel!.isFavoriteExist
+                    }
+                })
+//            .onChange(of: viewModel?.isFavoriteExist ?? false) { newValue in
+//                isExist = newValue
+//            }
             
             RatingView(rating: 3.2)
             
