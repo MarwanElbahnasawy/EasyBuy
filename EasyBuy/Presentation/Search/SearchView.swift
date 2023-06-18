@@ -31,6 +31,8 @@ struct SearchView: View {
                         .padding()
                         .transition(.opacity)
                 }
+            }.onAppear{
+                viewModel.fetchProducts()
             }
         }
         .navigationBarBackButtonHidden(true)

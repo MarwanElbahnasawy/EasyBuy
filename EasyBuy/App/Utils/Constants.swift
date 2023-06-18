@@ -104,3 +104,5 @@ func formatPrice(price: String?) -> String{
     let formattedprice = String(format: "%.2f", priceCurrency) + " \(UserDefaults.standard.currency!)"
     return formattedprice
 }
+
+

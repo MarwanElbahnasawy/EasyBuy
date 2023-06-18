@@ -36,9 +36,15 @@ struct ProductCell: View {
                     if let title = product.title {
                     let parts = title.split (separator: "|")
                     if parts.count > 1 {
-                        Text (parts [1])
-                        .font (.system(size: 16,design: .rounded))
-                        .foregroundColor(Color("myblack"))
+                        if (parts [1] == " \nERA 59 MOROCCAN "){
+                            Text (parts [1])
+                            .font (.system(size: 10))
+                            .foregroundColor(Color("myblack"))
+                        }else{
+                            Text (parts [1])
+                                .font (.system(size: 16))
+                                .foregroundColor(Color("myblack"))
+                        }
                     } else {
                         Text (title)
                             . font (.system(size: 16))
