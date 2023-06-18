@@ -3,7 +3,6 @@ import SwiftUI
 struct SearchView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @ObservedObject var viewModel = HomeViewModel()
-    @State var products: [Product]?
     @State private var searchText = ""
     @State private var isSearching = false
 
@@ -16,31 +15,26 @@ struct SearchView: View {
 
                 Spacer()
 
-                var filteredProducts: [Product] {
-                    if searchText == " " {
-                        return []
-                    } else if searchText.isEmpty{
-                        return products ?? []
-                    } else {
-                        return products?.filter { product in
-                            guard let title = product.title else { return false }
-                            return title.lowercased().contains(searchText.lowercased())
-                        } ?? []
+                if viewModel.items?.isEmpty == false {
+                    LazyVGrid(columns: gridLayout, spacing: 15) {
+                        ForEach(viewModel.items?.filter {
+                            searchText.isEmpty ? true : $0.title!.lowercased().contains(searchText.lowercased())
+                        } ?? []) { product in
+                            ProductCell(product: product)
+                        }
                     }
-                }
-                
-                LazyVGrid(columns: gridLayout) {
-                    ForEach(filteredProducts) { product in
-                        ProductCell(product: product)
-                    }
+                    .padding(.horizontal, 15)
+                    .transition(.move(edge: .leading))
+                } else if !searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                    Text("No results found")
+                        .foregroundColor(.gray)
+                        .padding()
+                        .transition(.opacity)
                 }
             }.onAppear{
                 viewModel.fetchProducts()
             }
         }
-        .onAppear(perform: {
-            products = viewModel.items ?? []
-        })
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: BackButton(action: {presentationMode.wrappedValue.dismiss()}))
     }
