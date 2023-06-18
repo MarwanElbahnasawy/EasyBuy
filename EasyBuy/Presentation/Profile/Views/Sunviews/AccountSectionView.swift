@@ -15,6 +15,7 @@ struct AccountSectionView: View {
             
             Button {
                 confirmingSignOut = true
+                
             } label: {
                 SettingRowView(imageName: "arrow.left.circle.fill", title: "Sign Out", tintColor: .black)
             }

@@ -2,9 +2,12 @@ import SwiftUI
 
 struct GuestButtonView: View {
     @Binding var token: String?
+    @AppStorage("email") var email: String?
+    @AppStorage("displayName") var displayName: String?
     
     var body: some View {
         Button {
+            displayName = "Guest"
             token = "guest"
         } label: {
             HStack {

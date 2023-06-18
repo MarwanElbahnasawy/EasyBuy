@@ -26,13 +26,19 @@ struct BaseView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(Color.black.opacity(0.04))
                     .tag(Tab.Category)
-                
-                FavoriteProductsView(favoriteProductViewModel: FavoriteListViewModel())
-                    .environmentObject(baseData)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background(Color.black.opacity(0.04))
-                    .tag(Tab.Heart)
-                
+                if token == "guest" || token == "" {
+                    NoAccountView()
+                        .environmentObject(baseData)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .background(Color.black.opacity(0.04))
+                        .tag(Tab.Heart)
+                } else {
+                    FavoriteProductsView(favoriteProductViewModel: FavoriteListViewModel())
+                        .environmentObject(baseData)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .background(Color.black.opacity(0.04))
+                        .tag(Tab.Heart)
+                }
                 if token == "guest" || token == "" {
                     NoAccountView()
                         .environmentObject(baseData)
@@ -60,7 +66,15 @@ struct BaseView: View {
                         
                         // MARK: CURVED BUTTON
                         NavigationLink {
-                            ShopingCartListUIView(shopingCartViewModel: CartListViewModel())
+                            if token == "guest" || token == "" {
+                                NoAccountView()
+                                    .environmentObject(baseData)
+                                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                    .background(Color.black.opacity(0.04))
+                                    .tag(Tab.Person)
+                            } else {
+                                ShopingCartListUIView(shopingCartViewModel: CartListViewModel())
+                            }
                         } label: {
                             
                             Image("cart")

@@ -87,7 +87,7 @@
 		17C9CF2B2A27E132004BCCC2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17C9CF2A2A27E132004BCCC2 /* Preview Assets.xcassets */; };
 		17C9CF2D2A27E132004BCCC2 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C9CF2C2A27E132004BCCC2 /* Persistence.swift */; };
 		17C9CF302A27E132004BCCC2 /* EasyBuy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 17C9CF2E2A27E132004BCCC2 /* EasyBuy.xcdatamodeld */; };
-		17C9CF3A2A27E133004BCCC2 /* EasyBuyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C9CF392A27E133004BCCC2 /* EasyBuyTests.swift */; };
+		17C9CF3A2A27E133004BCCC2 /* ConstantsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C9CF392A27E133004BCCC2 /* ConstantsTests.swift */; };
 		17C9CF442A27E133004BCCC2 /* EasyBuyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C9CF432A27E133004BCCC2 /* EasyBuyUITests.swift */; };
 		17C9CF462A27E133004BCCC2 /* EasyBuyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C9CF452A27E133004BCCC2 /* EasyBuyUITestsLaunchTests.swift */; };
 		17C9CF7F2A27E1D3004BCCC2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C9CF7E2A27E1D3004BCCC2 /* Constants.swift */; };
@@ -299,7 +299,7 @@
 		17C9CF2C2A27E132004BCCC2 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		17C9CF2F2A27E132004BCCC2 /* EasyBuy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EasyBuy.xcdatamodel; sourceTree = "<group>"; };
 		17C9CF352A27E133004BCCC2 /* EasyBuyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EasyBuyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		17C9CF392A27E133004BCCC2 /* EasyBuyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyBuyTests.swift; sourceTree = "<group>"; };
+		17C9CF392A27E133004BCCC2 /* ConstantsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantsTests.swift; sourceTree = "<group>"; };
 		17C9CF3F2A27E133004BCCC2 /* EasyBuyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EasyBuyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		17C9CF432A27E133004BCCC2 /* EasyBuyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyBuyUITests.swift; sourceTree = "<group>"; };
 		17C9CF452A27E133004BCCC2 /* EasyBuyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyBuyUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -881,7 +881,7 @@
 				EBBEF1102A3E9A8000FB95CA /* Registration */,
 				140DEC272A3E8608009206D2 /* Mock NetworkManager methods and responses */,
 				140DEC242A3E8607009206D2 /* Tests */,
-				17C9CF392A27E133004BCCC2 /* EasyBuyTests.swift */,
+				17C9CF392A27E133004BCCC2 /* ConstantsTests.swift */,
 			);
 			path = EasyBuyTests;
 			sourceTree = "<group>";
@@ -2151,6 +2151,7 @@
 				EBBEF1292A3EAD6800FB95CA /* RegistrationMockNetworkManagerMethods.swift in Sources */,
 				EBBEF1132A3E9A9600FB95CA /* RegestrationViewModelTests.swift in Sources */,
 				17C9CF3A2A27E133004BCCC2 /* EasyBuyTests.swift in Sources */,
+				17C9CF3A2A27E133004BCCC2 /* ConstantsTests.swift in Sources */,
 				140DEC2D2A3E8619009206D2 /* MockNetworkManagerMethods.swift in Sources */,
 				3F9A0F8E2A3EA60500AB9D69 /* DraftOrdersMockTest.swift in Sources */,
 				EBBEF1172A3E9CDA00FB95CA /* LoginViewModelTests.swift in Sources */,

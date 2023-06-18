@@ -33,4 +33,37 @@ final class EasyBuyTests: XCTestCase {
         }
     }
 
+    func testGetTagsExample() throws {
+        // This is an example of a functional test case.
+        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let products = [Product]()
+        let tags = getTags(products: products)
+        XCTAssertEqual(tags.count, 3)
+    }
+    
+    func testGetType() throws {
+        let products = [Product(productType: "men"), Product(productType: "women"), Product(productType: "kid"), Product(productType: "men")]
+        let types = getType(products: products)
+        XCTAssertEqual(types.count, 3)
+    }
+    func testConvertDateToString() throws {
+        let date = Date()
+        let dateString = convertDateToString(date: date)
+        XCTAssertNotNil(dateString)
+    }
+    
+    func testFormatPrice10() {
+        let price = "10.0"
+        let expectedPrice = "10.00 USD"
+        XCTAssertEqual(formatPrice(price: price), expectedPrice)
+    }
+    
+    func testFormatPrice() throws {
+        UserDefaults.standard.numCurrency = 1.0
+        UserDefaults.standard.currency = "USD"
+        let formattedPrice = formatPrice(price: "100")
+        XCTAssertEqual(formattedPrice, "100.00 USD")
+    }
+    
+    
 }

@@ -34,6 +34,8 @@ struct SearchView: View {
                         ProductCell(product: product)
                     }
                 }
+            }.onAppear{
+                viewModel.fetchProducts()
             }
         }
         .onAppear(perform: {

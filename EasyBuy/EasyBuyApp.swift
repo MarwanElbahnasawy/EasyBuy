@@ -15,7 +15,7 @@ struct EasyBuyApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     let persistenceController = PersistenceController.shared
     @AppStorage("isOnboarding") var isOnboarding: Bool = true
-    @AppStorage("token") var token: String = ""
+    @AppStorage("token") var token: String?
 
     // @AppStorage("barIsShow") var barIsShow: Bool = true
     var body: some Scene {
@@ -24,10 +24,9 @@ struct EasyBuyApp: App {
                 if isOnboarding {
                     Onboarding()
                 } else {
-                    if token == ""{
+                    if token == "" || token == nil{
                         LoginView()
                     }else{
-                     // CodesView()
                         BaseView()
                     }
                 }
