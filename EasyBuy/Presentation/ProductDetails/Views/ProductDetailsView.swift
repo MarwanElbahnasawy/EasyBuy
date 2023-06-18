@@ -8,37 +8,48 @@ struct ProductDetailsView: View {
     let productId: GraphQLID
     
     var body: some View {
-        ZStack {
-            Color.white
-            
-            if viewModel.product == nil {
-                ProgressView()
-            } else {
-                ScrollView {
-                    ProductImagesView(images: viewModel.product?.product?.images?.edges?.map { $0.node! } ?? [])
+        VStack{
+            if(viewModel.isLoading){
+                if viewModel.iserror{
+                    LottieView(lottieFile: "error")
+                }else{
+                    LottieView(lottieFile: "loading")
+                }
                     
-                    DescriptionView(
-                        product: viewModel.product,
-                        viewModel: viewModel,
-                        isExist: $viewModel.isFavoriteExist
-                    )
+    
+            }else{
+                ZStack {
+                    Color.white
                     
-                    AddToCartView(price: viewModel.product?.product?.variants?.edges?.first?.node?.price?.amount) {
-                        print("pressed")
-                        viewModel.getDraftOrder()
-                    }.alert(isPresented: $viewModel.isExist) {
-                        Alert(title: Text("Already added"), message: Text("This product already exists in your shopping cart"))
+                    if viewModel.product == nil {
+                        ProgressView()
+                    } else {
+                        ScrollView {
+                            ProductImagesView(images: viewModel.product?.product?.images?.edges?.map { $0.node! } ?? [])
+                            
+                            DescriptionView(
+                                product: viewModel.product,
+                                viewModel: viewModel,
+                                isExist: $viewModel.isFavoriteExist
+                            )
+                            
+                            AddToCartView(price: viewModel.product?.product?.variants?.edges?.first?.node?.price?.amount) {
+                                print("pressed")
+                                viewModel.getDraftOrder()
+                            }.alert(isPresented: $viewModel.isExist) {
+                                Alert(title: Text("Already added"), message: Text("This product already exists in your shopping cart"))
+                            }
+                        }
                     }
                 }
             }
-        }
-        .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: BackButton(action: { presentationMode.wrappedValue.dismiss() }))
-        .onAppear(perform: {
-            viewModel.productId = productId
-            viewModel.fetchProductDetails()
-//            viewModel.getFavoriteDraftOrder()
-        })
+        }.navigationBarBackButtonHidden(true)
+            .navigationBarItems(leading: BackButton(action: { presentationMode.wrappedValue.dismiss() }))
+            .onAppear(perform: {
+                viewModel.productId = productId
+                viewModel.fetchProductDetails()
+                //            viewModel.getFavoriteDraftOrder()
+            })
     }
 }
 
