@@ -213,6 +213,7 @@ class MockNetworkManager{
   
 }
 """
+
    static let discountCodesResponse = """
  {
      "data": {
@@ -384,6 +385,83 @@ class MockNetworkManager{
             "throttleStatus": {
                 "maximumAvailable": 1000.0,
                 "currentlyAvailable": 992,
+=======
+    static let  allAddressCodesResponse = """
+{
+  
+    "customer": {
+      "addresses": {
+        "__typename": "MailingAddressConnection",
+        "nodes": [
+          {
+            "__typename": "MailingAddress",
+            "address1": "Apple Campus",
+            "address2": "",
+            "city": "Cupertino",
+            "country": "United States",
+            "id": "gid://shopify/MailingAddress/9216817168691?model_name=CustomerAddress&customer_access_token=LUbHxgc0_eagOo3H-Q81qFNHbHLF1zJEQtWNfHQP6tExtquH2pjH1US4mT8sQYYyEYvKVeZp2L7Bpd-16kXH4kzwjrysJRfG7BjXMRUfMNtwJ0L4UVGmprDTr18bikGrDsWwVP6MEtf92y3v9xKbyb97k3J8fJSYP77JPK6kc3Sd2Szn5LnpSGFN9brES28KXrWb0t-BVOsQOV6kg505qyLr6jhkcD5ECaCfwfrgqK0uhNRIkBlzQb1Jyys-tlnw",
+            "zip": "95014",
+            "phone": "01225024355"
+          }
+        ]
+      },
+      "__typename": "Customer",
+      "email": "draft@gmail.com",
+      "firstName": "lead",
+      "lastName": "dads",
+      "phone": "+201012345678",
+      "id": "gid://shopify/Customer/7023240511795",
+      "displayName": "lead dads"
+    }
+  
+}
+"""
+    
+    static let  allOrderCodesResponse = 
+    """
+{
+    
+        "orders": {
+            "__typename": "OrderConnection",
+            "edges": [
+                {
+                    "__typename": "OrderEdge",
+                    "node": {
+                        "__typename": "Order",
+                        "id": "gid://shopify/Order/5378473918771",
+                        "name": "#1021",
+                        "phone": "+15145676599",
+                        "createdAt": "2023-06-14T18:32:36Z",
+                        "displayFinancialStatus": "PAID",
+                        "displayFulfillmentStatus": "UNFULFILLED",
+                        "returnStatus": "NO_RETURN",
+                        "totalPriceSet": {
+                            "__typename": "MoneyBag",
+                            "presentmentMoney": {
+                                "__typename": "MoneyV2",
+                                "amount": "33.06",
+                                "currencyCode": "EGP"
+                            },
+                            "shopMoney": {
+                                "__typename": "MoneyV2",
+                                "amount": "33.06",
+                                "currencyCode": "EGP"
+                            }
+                        },
+                        "shippingAddress": null
+                    }
+                }
+            ]
+        
+    },
+    "extensions": {
+        "cost": {
+            "requestedQueryCost": 8,
+            "actualQueryCost": 5,
+            "throttleStatus": {
+                "maximumAvailable": 1000.0,
+                "currentlyAvailable": 995,
+
                 "restoreRate": 50.0
             }
         }

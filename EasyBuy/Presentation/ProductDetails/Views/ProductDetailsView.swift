@@ -17,7 +17,11 @@ struct ProductDetailsView: View {
                 ScrollView {
                     ProductImagesView(images: viewModel.product?.product?.images?.edges?.map { $0.node! } ?? [])
                     
-                    DescriptionView(for: viewModel.product, viewModel: viewModel)
+                    DescriptionView(
+                        product: viewModel.product,
+                        viewModel: viewModel,
+                        isExist: $viewModel.isFavoriteExist
+                    )
                     
                     AddToCartView(price: viewModel.product?.product?.variants?.edges?.first?.node?.price?.amount) {
                         print("pressed")
@@ -33,6 +37,7 @@ struct ProductDetailsView: View {
         .onAppear(perform: {
             viewModel.productId = productId
             viewModel.fetchProductDetails()
+//            viewModel.getFavoriteDraftOrder()
         })
     }
 }

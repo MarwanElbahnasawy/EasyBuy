@@ -157,6 +157,17 @@
 		EB90A61A2A2B384F00295296 /* CreateCustomerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB90A6192A2B384F00295296 /* CreateCustomerResponse.swift */; };
 		EB97BD5A2A2B851100D7016D /* CreateCustomerAccessTokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB97BD592A2B851100D7016D /* CreateCustomerAccessTokenResponse.swift */; };
 		EB9DF1422A2D445A000EDFDA /* NoAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9DF1412A2D445A000EDFDA /* NoAccountView.swift */; };
+		EBBEF1132A3E9A9600FB95CA /* RegestrationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBEF1122A3E9A9600FB95CA /* RegestrationViewModelTests.swift */; };
+		EBBEF1172A3E9CDA00FB95CA /* LoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBEF1162A3E9CDA00FB95CA /* LoginViewModelTests.swift */; };
+		EBBEF11F2A3EA26B00FB95CA /* LoginMockNetworkManagerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBEF11E2A3EA26B00FB95CA /* LoginMockNetworkManagerResponse.swift */; };
+		EBBEF1232A3EA59100FB95CA /* LoginMockNetworkManagerMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBEF1222A3EA59100FB95CA /* LoginMockNetworkManagerMethods.swift */; };
+		EBBEF1252A3EA8D100FB95CA /* LoginMockNetworkManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBEF1242A3EA8D100FB95CA /* LoginMockNetworkManagerTest.swift */; };
+		EBBEF1272A3EACD800FB95CA /* RegistrationMockNetworkManagerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBEF1262A3EACD800FB95CA /* RegistrationMockNetworkManagerResponse.swift */; };
+		EBBEF1292A3EAD6800FB95CA /* RegistrationMockNetworkManagerMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBEF1282A3EAD6800FB95CA /* RegistrationMockNetworkManagerMethods.swift */; };
+		EBBEF12B2A3EAF5F00FB95CA /* RegistrationMockNetworkManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBEF12A2A3EAF5F00FB95CA /* RegistrationMockNetworkManagerTest.swift */; };
+		EBBEF1312A3EB72F00FB95CA /* ProductDetailsMockNetworkManagerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBEF1302A3EB72F00FB95CA /* ProductDetailsMockNetworkManagerResponse.swift */; };
+		EBBEF1332A3EB89900FB95CA /* ProductDetailsMockNetworkManagerMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBEF1322A3EB89900FB95CA /* ProductDetailsMockNetworkManagerMethods.swift */; };
+		EBBEF1362A3EB9E400FB95CA /* ProductDetailsMockNetworkManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBEF1352A3EB9E400FB95CA /* ProductDetailsMockNetworkManagerTest.swift */; };
 		EBC6453A2A2C9418000FD6F5 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC645392A2C9418000FD6F5 /* ProfileView.swift */; };
 		EBC6453C2A2C947F000FD6F5 /* SettingRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC6453B2A2C947F000FD6F5 /* SettingRowView.swift */; };
 		EBC8D0E42A2AA930006DACFD /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC8D0E32A2AA930006DACFD /* Product.swift */; };
@@ -366,6 +377,17 @@
 		EB90A6192A2B384F00295296 /* CreateCustomerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCustomerResponse.swift; sourceTree = "<group>"; };
 		EB97BD592A2B851100D7016D /* CreateCustomerAccessTokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCustomerAccessTokenResponse.swift; sourceTree = "<group>"; };
 		EB9DF1412A2D445A000EDFDA /* NoAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoAccountView.swift; sourceTree = "<group>"; };
+		EBBEF1122A3E9A9600FB95CA /* RegestrationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegestrationViewModelTests.swift; sourceTree = "<group>"; };
+		EBBEF1162A3E9CDA00FB95CA /* LoginViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelTests.swift; sourceTree = "<group>"; };
+		EBBEF11E2A3EA26B00FB95CA /* LoginMockNetworkManagerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginMockNetworkManagerResponse.swift; sourceTree = "<group>"; };
+		EBBEF1222A3EA59100FB95CA /* LoginMockNetworkManagerMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginMockNetworkManagerMethods.swift; sourceTree = "<group>"; };
+		EBBEF1242A3EA8D100FB95CA /* LoginMockNetworkManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginMockNetworkManagerTest.swift; sourceTree = "<group>"; };
+		EBBEF1262A3EACD800FB95CA /* RegistrationMockNetworkManagerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationMockNetworkManagerResponse.swift; sourceTree = "<group>"; };
+		EBBEF1282A3EAD6800FB95CA /* RegistrationMockNetworkManagerMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationMockNetworkManagerMethods.swift; sourceTree = "<group>"; };
+		EBBEF12A2A3EAF5F00FB95CA /* RegistrationMockNetworkManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationMockNetworkManagerTest.swift; sourceTree = "<group>"; };
+		EBBEF1302A3EB72F00FB95CA /* ProductDetailsMockNetworkManagerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsMockNetworkManagerResponse.swift; sourceTree = "<group>"; };
+		EBBEF1322A3EB89900FB95CA /* ProductDetailsMockNetworkManagerMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsMockNetworkManagerMethods.swift; sourceTree = "<group>"; };
+		EBBEF1352A3EB9E400FB95CA /* ProductDetailsMockNetworkManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsMockNetworkManagerTest.swift; sourceTree = "<group>"; };
 		EBC645392A2C9418000FD6F5 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		EBC6453B2A2C947F000FD6F5 /* SettingRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRowView.swift; sourceTree = "<group>"; };
 		EBC8D0E32A2AA930006DACFD /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
@@ -854,6 +876,9 @@
 		17C9CF382A27E133004BCCC2 /* EasyBuyTests */ = {
 			isa = PBXGroup;
 			children = (
+				EBBEF12E2A3EB70300FB95CA /* Product Details */,
+				EBBEF1142A3E9C4000FB95CA /* Login */,
+				EBBEF1102A3E9A8000FB95CA /* Registration */,
 				140DEC272A3E8608009206D2 /* Mock NetworkManager methods and responses */,
 				140DEC242A3E8607009206D2 /* Tests */,
 				17C9CF392A27E133004BCCC2 /* EasyBuyTests.swift */,
@@ -1337,6 +1362,86 @@
 			children = (
 			);
 			path = GraphQl;
+			sourceTree = "<group>";
+		};
+		EBBEF1102A3E9A8000FB95CA /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				EBBEF11C2A3EA21A00FB95CA /* Mock */,
+				EBBEF1112A3E9A8800FB95CA /* Test */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
+		EBBEF1112A3E9A8800FB95CA /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				EBBEF1122A3E9A9600FB95CA /* RegestrationViewModelTests.swift */,
+				EBBEF12A2A3EAF5F00FB95CA /* RegistrationMockNetworkManagerTest.swift */,
+			);
+			path = Test;
+			sourceTree = "<group>";
+		};
+		EBBEF1142A3E9C4000FB95CA /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				EBBEF1202A3EA55400FB95CA /* Mock */,
+				EBBEF1152A3E9C4400FB95CA /* Test */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		EBBEF1152A3E9C4400FB95CA /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				EBBEF1162A3E9CDA00FB95CA /* LoginViewModelTests.swift */,
+				EBBEF1242A3EA8D100FB95CA /* LoginMockNetworkManagerTest.swift */,
+			);
+			path = Test;
+			sourceTree = "<group>";
+		};
+		EBBEF11C2A3EA21A00FB95CA /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				EBBEF1262A3EACD800FB95CA /* RegistrationMockNetworkManagerResponse.swift */,
+				EBBEF1282A3EAD6800FB95CA /* RegistrationMockNetworkManagerMethods.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
+		EBBEF1202A3EA55400FB95CA /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				EBBEF11E2A3EA26B00FB95CA /* LoginMockNetworkManagerResponse.swift */,
+				EBBEF1222A3EA59100FB95CA /* LoginMockNetworkManagerMethods.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
+		EBBEF12E2A3EB70300FB95CA /* Product Details */ = {
+			isa = PBXGroup;
+			children = (
+				EBBEF1342A3EB9C300FB95CA /* Test */,
+				EBBEF12F2A3EB71900FB95CA /* Mock */,
+			);
+			path = "Product Details";
+			sourceTree = "<group>";
+		};
+		EBBEF12F2A3EB71900FB95CA /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				EBBEF1302A3EB72F00FB95CA /* ProductDetailsMockNetworkManagerResponse.swift */,
+				EBBEF1322A3EB89900FB95CA /* ProductDetailsMockNetworkManagerMethods.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
+		EBBEF1342A3EB9C300FB95CA /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				EBBEF1352A3EB9E400FB95CA /* ProductDetailsMockNetworkManagerTest.swift */,
+			);
+			path = Test;
 			sourceTree = "<group>";
 		};
 		EBC645352A2C93DD000FD6F5 /* Profile */ = {
@@ -2033,15 +2138,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+
 				3F9A0F8B2A3EA2D900AB9D69 /* DiscountCodesApiTest.swift in Sources */,
 				3F9A0F902A3EA61B00AB9D69 /* DraftOrdersApiTest.swift in Sources */,
+				EBBEF1252A3EA8D100FB95CA /* LoginMockNetworkManagerTest.swift in Sources */,
+				EBBEF1312A3EB72F00FB95CA /* ProductDetailsMockNetworkManagerResponse.swift in Sources */,
+				EBBEF11F2A3EA26B00FB95CA /* LoginMockNetworkManagerResponse.swift in Sources */,
 				140DEC2A2A3E8608009206D2 /* NetworkManagerTest.swift in Sources */,
 				3F9A0F862A3E99A300AB9D69 /* DiscountCodesMock.swift in Sources */,
 				140DEC292A3E8608009206D2 /* MockNetworkManagerTest.swift in Sources */,
+				EBBEF1332A3EB89900FB95CA /* ProductDetailsMockNetworkManagerMethods.swift in Sources */,
+				EBBEF1292A3EAD6800FB95CA /* RegistrationMockNetworkManagerMethods.swift in Sources */,
+				EBBEF1132A3E9A9600FB95CA /* RegestrationViewModelTests.swift in Sources */,
 				17C9CF3A2A27E133004BCCC2 /* EasyBuyTests.swift in Sources */,
 				140DEC2D2A3E8619009206D2 /* MockNetworkManagerMethods.swift in Sources */,
 				3F9A0F8E2A3EA60500AB9D69 /* DraftOrdersMockTest.swift in Sources */,
+				EBBEF1172A3E9CDA00FB95CA /* LoginViewModelTests.swift in Sources */,
+				EBBEF1362A3EB9E400FB95CA /* ProductDetailsMockNetworkManagerTest.swift in Sources */,
 				140DEC2B2A3E8608009206D2 /* MockNetworkManagerResponses.swift in Sources */,
+				EBBEF12B2A3EAF5F00FB95CA /* RegistrationMockNetworkManagerTest.swift in Sources */,
+				EBBEF1272A3EACD800FB95CA /* RegistrationMockNetworkManagerResponse.swift in Sources */,
+				EBBEF1232A3EA59100FB95CA /* LoginMockNetworkManagerMethods.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
