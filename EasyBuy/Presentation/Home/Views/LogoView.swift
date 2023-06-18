@@ -15,7 +15,7 @@ struct LogoView: View {
         .fontWeight(.black)
 
       
-      Image("logo-dark")
+      Image("ecommerce-logo")
         .resizable()
         .scaledToFit()
         .frame(width: 30, height: 30, alignment: .center)

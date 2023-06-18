@@ -1,6 +1,9 @@
 import SwiftUI
 
 struct ProfileSectionView: View {
+    @AppStorage("email") var email: String?
+    @AppStorage("displayName") var displayName: String?
+  
     var body: some View {
         Section {
             HStack {
@@ -13,12 +16,12 @@ struct ProfileSectionView: View {
                     .clipShape(Circle())
                 
                 VStack {
-                    Text("Name")
+                    Text(displayName ?? "")
                         .font(.subheadline)
                         .fontWeight(.semibold)
                         .padding(.top, 4)
                     
-                    Text("Email")
+                    Text(email ?? "")
                         .font(.footnote)
                         .foregroundColor(.gray)
                 }
