@@ -97,6 +97,7 @@ class ProductViewModel: ObservableObject {
             switch result {
             case .success(let success):
                 self?.cart = success
+                UserDefaults.standard.set(success.draftOrderCreate?.draftOrder?.lineItems?.nodes?.count, forKey: "count")
                 FireBaseManager.shared.saveCustomerDiscountCodes(customerDiscountCodes: CustomerDiscountCodes(id: self?.customerID,discountCodes: discountCodes, draftOrders: DraftOrders(favoriteDraftorder: self?.favorite, cartDraftOrder: success)))
             case .failure(let failure):
                 print(failure)
@@ -108,6 +109,7 @@ class ProductViewModel: ObservableObject {
         NetworkManager.getInstance(requestType: .admin).performGraphQLRequest(mutation: DraftOrderUpdateMutation(id: id, input: draftOrderInput), responseModel: UpdateDraftOrderDataClass.self) { res in
             switch res {
             case .success(let success):
+                UserDefaults.standard.set(success.draftOrderUpdate?.draftOrder?.lineItems?.nodes?.count, forKey: "count")
                 FireBaseManager.shared.saveCustomerDiscountCodes(customerDiscountCodes: CustomerDiscountCodes(id: customerDiscountCodes.id,discountCodes: customerDiscountCodes.discountCodes,draftOrders: DraftOrders(favoriteDraftorder: self.favorite, cartDraftOrder: DraftOrderDataClass(draftOrderCreate: DraftOrderCreate(draftOrder: success.draftOrderUpdate?.draftOrder)))))
             case .failure(let failure):
                 print(failure)
@@ -119,10 +121,10 @@ class ProductViewModel: ObservableObject {
         
     }
     
-    func getFavoriteDraftOrder(onCompleted: @escaping () -> Void) {
+    func getFavoriteDraftOrder() {
+        isFavoriteExist = true
       Task {
         await getFavoriteDraftOrderAsync()
-        onCompleted()
       }
     }
     

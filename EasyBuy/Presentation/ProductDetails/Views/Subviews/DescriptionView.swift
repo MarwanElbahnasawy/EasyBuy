@@ -12,9 +12,9 @@ struct DescriptionView: View {
                 title: product?.product?.title ?? "",
                 productType: product?.product?.productType ?? "",
                 action: {
-                    viewModel?.getFavoriteDraftOrder {
-                        isExist = viewModel!.isFavoriteExist
-                    }
+                    viewModel?.getFavoriteDraftOrder()
+                        
+                    
                 })
 //            .onChange(of: viewModel?.isFavoriteExist ?? false) { newValue in
 //                isExist = newValue

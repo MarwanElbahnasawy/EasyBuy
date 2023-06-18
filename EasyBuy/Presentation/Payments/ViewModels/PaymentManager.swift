@@ -53,8 +53,8 @@ class PaymentManager: NSObject , PKPaymentAuthorizationControllerDelegate{
         paymentController?.present()
     }
     func paymentAuthorizationControllerDidFinish(_ controller: PKPaymentAuthorizationController) {
-        completeOrder()
         draftOrderDelete()
+        completeOrder()
         controller.dismiss()
     }
     func paymentAuthorizationController(_ controller: PKPaymentAuthorizationController, didAuthorizePayment payment: PKPayment) async -> PKPaymentAuthorizationResult {
@@ -78,24 +78,18 @@ class PaymentManager: NSObject , PKPaymentAuthorizationControllerDelegate{
     }
     func completeOrder(){
         print("the draft order is \(draftOrderID)")
-        NetworkManager.getInstance(requestType: .admin).performGraphQLRequest(mutation: DraftOrderCompleteMutation(id: draftOrderID), responseModel: DraftOrderCompleteDataClass.self) { result in
+        NetworkManager.getInstance(requestType: .admin).performGraphQLRequest(mutation: DraftOrderCompleteMutation(id: draftOrderID), responseModel: DraftOrderCompleteDataClass.self) {[weak self] result in
             switch result {
             case .success(let success):
                 print(success)
+                
             case .failure(let failure):
                 print(failure)
             }
         }
     }
     func draftOrderDelete(){
-        NetworkManager.getInstance(requestType: .admin).performGraphQLRequest(mutation: DraftOrderDeleteMutation(input: DraftOrderDeleteInput(id: draftOrderID)), responseModel: DeleteDraftOrderDataClass.self) { result in
-            switch result {
-            case .success(let success):
-                print(success)
-                // delete from fire base
-            case .failure(let failure):
-                print(failure)
-            }
-        }
+        UserDefaults.standard.set(0, forKey: "count")
+        FireBaseManager.shared.removeCartFromFireBase()
     }
 }

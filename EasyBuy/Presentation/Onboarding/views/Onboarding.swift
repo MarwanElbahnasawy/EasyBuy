@@ -8,6 +8,7 @@ import SwiftUI
 
 @available(iOS 15.0, *)
 struct Onboarding: View {
+    @AppStorage("token") var token: String?
     @AppStorage("isOnboarding") var isOnboarding: Bool?
     var viewModel = OnboardingViewModel()
     // MARK: - GESTURE PROPERTIES
@@ -50,6 +51,8 @@ struct Onboarding: View {
             .padding()
             .padding(.horizontal)
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
+        }.onAppear{
+            token = ""
         }
         .overlay(
             

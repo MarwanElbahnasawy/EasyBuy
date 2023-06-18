@@ -14,9 +14,9 @@ class OnboardingViewModel: ObservableObject {
         HomeViewModel().getCurrency()
     }
     @Published  var intros: [Intro] = [
-        Intro(title: "InStock App", subTitle: "Take Deep Breaths", description: "All That you need , All That you want just Hello at InStock .", img: "scrn1", color: Color("Intro1")),
+        Intro(title: "EasyBuy App", subTitle: "Take Deep Breaths", description: "All That you need , All That you want just Hello at EasyBuy .", img: "scrn1", color: Color("Intro1")),
         
-        Intro(title: "Stay Creative", subTitle: "To Discover more Feature", description: "just Join InStock .", img: "scrn2", color: Color("Intro2")),
+        Intro(title: "Stay Creative", subTitle: "To Discover more Feature", description: "just Join EasyBuy .", img: "scrn2", color: Color("Intro2")),
         
         Intro(title: "Add Payment Way", subTitle: "Create Task List", description: "You can use Apple Pay Or In Cash.", img: "scrn3", color: Color("Intro3")),
     ]

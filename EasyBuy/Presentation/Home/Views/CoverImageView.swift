@@ -34,7 +34,7 @@ struct CoverImageView: View {
                             proxy.scrollTo(coverImages[selectedIndex])
                         }
                     }
-                    .onReceive(timer ??  Timer.publish(every: 3, on: .main, in: .common)
+                    .onReceive(timer ??  Timer.publish(every: 5, on: .main, in: .common)
                         .autoconnect()) { _ in
                         withAnimation {
                             if selectedIndex < coverImages.count - 1 {

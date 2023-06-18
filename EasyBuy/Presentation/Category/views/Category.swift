@@ -15,7 +15,7 @@ struct Category: View {
    
     var body: some View {
       
-        NavigationView{
+     //   NavigationView{
             if(viewModel.isLoading){
                 if viewModel.iserror{
                     LottieView(lottieFile: "error")
@@ -109,7 +109,7 @@ struct Category: View {
                         }.frame(height: 350)
                     }
             }
-        }.navigationViewStyle(StackNavigationViewStyle())
+      //  }.navigationViewStyle(StackNavigationViewStyle())
     }
     
     /// Tags View

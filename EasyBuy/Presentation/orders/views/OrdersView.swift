@@ -41,8 +41,8 @@ struct OrdersView: View {
                     NavigationBarView()
                     Picker("", selection: $selectorIndex) {
                         Text("Delivered").tag(0)
-                        Text("Processing").tag(1)
-                        Text("Cancelled").tag(2)
+                       // Text("Processing").tag(1)
+                        Text("Processing").tag(2)
                     }
                     .pickerStyle(.segmented)
                     .padding([.horizontal, .vertical], 10)
