@@ -109,6 +109,10 @@
 		3F25A1C12A315DE3009614A8 /* DiscounCodeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F25A1C02A315DE3009614A8 /* DiscounCodeCellViewModel.swift */; };
 		3F25A1C92A316719009614A8 /* DiscountCodeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F25A1C82A316719009614A8 /* DiscountCodeList.swift */; };
 		3F25A1CB2A31681C009614A8 /* DiscountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F25A1CA2A31681C009614A8 /* DiscountCell.swift */; };
+		3F9A0F862A3E99A300AB9D69 /* DiscountCodesMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9A0F852A3E99A300AB9D69 /* DiscountCodesMock.swift */; };
+		3F9A0F8B2A3EA2D900AB9D69 /* DiscountCodesApiTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9A0F8A2A3EA2D900AB9D69 /* DiscountCodesApiTest.swift */; };
+		3F9A0F8E2A3EA60500AB9D69 /* DraftOrdersMockTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9A0F8D2A3EA60500AB9D69 /* DraftOrdersMockTest.swift */; };
+		3F9A0F902A3EA61B00AB9D69 /* DraftOrdersApiTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9A0F8F2A3EA61B00AB9D69 /* DraftOrdersApiTest.swift */; };
 		3FE184422A385329009EBBB3 /* ShopingCartListUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE184412A385329009EBBB3 /* ShopingCartListUIView.swift */; };
 		3FE184442A385349009EBBB3 /* CartListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE184432A385349009EBBB3 /* CartListViewModel.swift */; };
 		3FE184582A3B3ADC009EBBB3 /* CheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE184572A3B3ADC009EBBB3 /* CheckoutView.swift */; };
@@ -319,6 +323,10 @@
 		3F25A1C02A315DE3009614A8 /* DiscounCodeCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscounCodeCellViewModel.swift; sourceTree = "<group>"; };
 		3F25A1C82A316719009614A8 /* DiscountCodeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountCodeList.swift; sourceTree = "<group>"; };
 		3F25A1CA2A31681C009614A8 /* DiscountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountCell.swift; sourceTree = "<group>"; };
+		3F9A0F852A3E99A300AB9D69 /* DiscountCodesMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountCodesMock.swift; sourceTree = "<group>"; };
+		3F9A0F8A2A3EA2D900AB9D69 /* DiscountCodesApiTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountCodesApiTest.swift; sourceTree = "<group>"; };
+		3F9A0F8D2A3EA60500AB9D69 /* DraftOrdersMockTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftOrdersMockTest.swift; sourceTree = "<group>"; };
+		3F9A0F8F2A3EA61B00AB9D69 /* DraftOrdersApiTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftOrdersApiTest.swift; sourceTree = "<group>"; };
 		3FE184412A385329009EBBB3 /* ShopingCartListUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopingCartListUIView.swift; sourceTree = "<group>"; };
 		3FE184432A385349009EBBB3 /* CartListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartListViewModel.swift; sourceTree = "<group>"; };
 		3FE184512A3B237D009EBBB3 /* EasyBuy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EasyBuy.entitlements; sourceTree = "<group>"; };
@@ -452,6 +460,8 @@
 		140DEC242A3E8607009206D2 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				3F9A0F8C2A3EA5DD00AB9D69 /* DraftOrders */,
+				3F9A0F872A3E99A900AB9D69 /* DiscountCodesTest */,
 				140DEC252A3E8607009206D2 /* MockNetworkManagerTest.swift */,
 				140DEC262A3E8607009206D2 /* NetworkManagerTest.swift */,
 			);
@@ -1004,6 +1014,56 @@
 				3F25A1B42A3152AD009614A8 /* FireBaseManager.swift */,
 			);
 			path = FireBase;
+			sourceTree = "<group>";
+		};
+		3F9A0F872A3E99A900AB9D69 /* DiscountCodesTest */ = {
+			isa = PBXGroup;
+			children = (
+				3F9A0F882A3EA2B400AB9D69 /* ApiTest */,
+				3F9A0F892A3EA2BE00AB9D69 /* MockTest */,
+			);
+			path = DiscountCodesTest;
+			sourceTree = "<group>";
+		};
+		3F9A0F882A3EA2B400AB9D69 /* ApiTest */ = {
+			isa = PBXGroup;
+			children = (
+				3F9A0F8A2A3EA2D900AB9D69 /* DiscountCodesApiTest.swift */,
+			);
+			path = ApiTest;
+			sourceTree = "<group>";
+		};
+		3F9A0F892A3EA2BE00AB9D69 /* MockTest */ = {
+			isa = PBXGroup;
+			children = (
+				3F9A0F852A3E99A300AB9D69 /* DiscountCodesMock.swift */,
+			);
+			path = MockTest;
+			sourceTree = "<group>";
+		};
+		3F9A0F8C2A3EA5DD00AB9D69 /* DraftOrders */ = {
+			isa = PBXGroup;
+			children = (
+				3F9A0F922A3EA62900AB9D69 /* ApiTest */,
+				3F9A0F912A3EA62000AB9D69 /* MockTest */,
+			);
+			path = DraftOrders;
+			sourceTree = "<group>";
+		};
+		3F9A0F912A3EA62000AB9D69 /* MockTest */ = {
+			isa = PBXGroup;
+			children = (
+				3F9A0F8D2A3EA60500AB9D69 /* DraftOrdersMockTest.swift */,
+			);
+			path = MockTest;
+			sourceTree = "<group>";
+		};
+		3F9A0F922A3EA62900AB9D69 /* ApiTest */ = {
+			isa = PBXGroup;
+			children = (
+				3F9A0F8F2A3EA61B00AB9D69 /* DraftOrdersApiTest.swift */,
+			);
+			path = ApiTest;
 			sourceTree = "<group>";
 		};
 		3FE1843D2A38525D009EBBB3 /* Shoping Cart */ = {
@@ -2078,16 +2138,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+
+				3F9A0F8B2A3EA2D900AB9D69 /* DiscountCodesApiTest.swift in Sources */,
+				3F9A0F902A3EA61B00AB9D69 /* DraftOrdersApiTest.swift in Sources */,
 				EBBEF1252A3EA8D100FB95CA /* LoginMockNetworkManagerTest.swift in Sources */,
 				EBBEF1312A3EB72F00FB95CA /* ProductDetailsMockNetworkManagerResponse.swift in Sources */,
 				EBBEF11F2A3EA26B00FB95CA /* LoginMockNetworkManagerResponse.swift in Sources */,
 				140DEC2A2A3E8608009206D2 /* NetworkManagerTest.swift in Sources */,
+				3F9A0F862A3E99A300AB9D69 /* DiscountCodesMock.swift in Sources */,
 				140DEC292A3E8608009206D2 /* MockNetworkManagerTest.swift in Sources */,
 				EBBEF1332A3EB89900FB95CA /* ProductDetailsMockNetworkManagerMethods.swift in Sources */,
 				EBBEF1292A3EAD6800FB95CA /* RegistrationMockNetworkManagerMethods.swift in Sources */,
 				EBBEF1132A3E9A9600FB95CA /* RegestrationViewModelTests.swift in Sources */,
 				17C9CF3A2A27E133004BCCC2 /* EasyBuyTests.swift in Sources */,
 				140DEC2D2A3E8619009206D2 /* MockNetworkManagerMethods.swift in Sources */,
+				3F9A0F8E2A3EA60500AB9D69 /* DraftOrdersMockTest.swift in Sources */,
 				EBBEF1172A3E9CDA00FB95CA /* LoginViewModelTests.swift in Sources */,
 				EBBEF1362A3EB9E400FB95CA /* ProductDetailsMockNetworkManagerTest.swift in Sources */,
 				140DEC2B2A3E8608009206D2 /* MockNetworkManagerResponses.swift in Sources */,

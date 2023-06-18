@@ -53,10 +53,12 @@ extension MockNetworkManager: NetworkManagerProtocol {
                 }
             }
         }
+
     
         func queryAllAddress(completion: @escaping (Result<DataClassAddress, Error>) -> Void) {
             jsonResponse = Data(MockNetworkManager.allAddressCodesResponse.utf8)
             MockNetworkManager.shared.queryGraphQLRequest(query: QueryGetAddressQuery(customerAccessToken: "token",first: 20), responseModel: DataClassAddress.self) { (result: Result<DataClassAddress, Error>) in
+
                 switch result {
                 case .success(let decodedData):
                     completion(.success(decodedData))
@@ -65,6 +67,20 @@ extension MockNetworkManager: NetworkManagerProtocol {
                 }
             }
         }
+
+    func queryDraftOrder(id: String, completion: @escaping (Result<DraftOrderCreate, Error>) -> Void) {
+            jsonResponse = Data(MockNetworkManager.draftOrderJson.utf8)
+            MockNetworkManager.shared.queryGraphQLRequest(query: DraftOrderQuery(id: id), responseModel: DraftOrderCreate.self) { (result: Result<DraftOrderCreate, Error>) in
+                switch result {
+                case .success(let decodedData):
+                    completion(.success(decodedData))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+        }
+//
+
     
     func queryAllOrders(completion: @escaping (Result<ResOrder, Error>) -> Void) {
         jsonResponse = Data(MockNetworkManager.allOrderCodesResponse.utf8)
@@ -79,6 +95,7 @@ extension MockNetworkManager: NetworkManagerProtocol {
     }
     
 //queryGraphQLRequest(query:GetOrdersQuery(first: 10,query: mail)  ResOrder
+
 //    func queryAllDiscountCodes(completion: @escaping (Result<AllDiscountCodesRoot, Error>) -> Void) {
 //        jsonResponse = Data(MockNetworkManager.allDiscountCodesResponse.utf8)
 //        MockNetworkManager.shared.queryGraphQLRequest(query: GetAllDiscountCodesQuery(), responseModel: AllDiscountCodesRoot.self) { (result: Result<AllDiscountCodesRoot, Error>) in
