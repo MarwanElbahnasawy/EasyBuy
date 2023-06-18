@@ -9,6 +9,8 @@ class ProductViewModel: ObservableObject {
     @Published var varaintID: String?
     @Published var favoriteVaraintID: String?
     @Published var isExist = false
+    @Published var isLoading: Bool = true
+    @Published var iserror: Bool = false
     @Published var isFavoriteExist = false
     @Published var quantity: Int = 1
     @Published var availableQuantity: Int = 1
@@ -23,6 +25,7 @@ class ProductViewModel: ObservableObject {
     }
     
     func fetchProductDetails() {
+        checkFavoriteDraftOrder()
         print("isFavoriteExist initially: \(isFavoriteExist)")
         guard let productId = productId else { return }
         let query = ProductDetailsQuery(productId: productId, imageFirst: 10, variantsFirst: 10)
@@ -96,7 +99,6 @@ class ProductViewModel: ObservableObject {
         })
     }
     
-  
     func createDraftOrder(discountCodes: [String]){
 
         // change variant with the choice of size
@@ -137,14 +139,59 @@ class ProductViewModel: ObservableObject {
         
     }
     
-    func getFavoriteDraftOrder() {
-        isFavoriteExist = true
-      Task {
-        await getFavoriteDraftOrderAsync()
-      }
+    
+    func checkFavoriteDraftOrder() {
+        FireBaseManager.shared.retriveCustomerDiscountCodes()?.getDocument(completion: { [weak self] snapshot, error in
+            
+            if let error = error {
+                print("Failed to fetch current user:", error)
+                return
+            }
+            guard let data = snapshot?.data() else {
+                print("no data found")
+                return
+            }
+            
+            let objFireBase = FireBaseManager.shared.mapFireBaseObject(data: data)
+            self?.favorite = objFireBase?.draftOrders?.favoriteDraftorder
+            self?.cart = objFireBase?.draftOrders?.cartDraftOrder
+            
+            if self?.favorite == nil{
+                return
+            }
+            else{
+                if let draftOrderID = objFireBase?.draftOrders?.favoriteDraftorder?.draftOrderCreate?.draftOrder?.id{
+                    print((objFireBase?.draftOrders?.favoriteDraftorder?.draftOrderCreate?.draftOrder?.id)!)
+                    NetworkManager.getInstance(requestType: .admin).queryGraphQLRequest(
+                        query: DraftOrderQuery(id: draftOrderID),
+                        responseModel: DraftOrderCreate.self
+                    ) {[weak self] res in
+                        switch res {
+                        case .success(let success):
+                            var  lineItems: [DraftOrderLineItemInput] = []
+                            lineItems = mapLineItemsToDratOrderLineItems(lineItems: success.draftOrder?.lineItems?.nodes ?? [])
+                            if lineItems.contains(where: {$0.variantId == self?.favoriteVaraintID}){
+                                self?.isFavoriteExist = true
+                                self?.isLoading = false
+                                print("isFavoriteExist after call: \(String(describing: self?.isFavoriteExist))")
+                            }
+                            else {
+                                self?.isLoading = false
+                                print("isFavoriteExist after call: false")
+                            }
+                        case .failure(let failure):
+                            print(failure)
+                        }
+                        }
+                    }
+                
+                
+            }//
+        })
     }
     
-    func getFavoriteDraftOrderAsync() async {
+    func getFavoriteDraftOrder()  {
+        isFavoriteExist = true
         FireBaseManager.shared.retriveCustomerDiscountCodes()?.getDocument(completion: { [weak self] snapshot, error in
             
             if let error = error {
@@ -186,10 +233,11 @@ class ProductViewModel: ObservableObject {
                             lineItems = mapLineItemsToDratOrderLineItems(lineItems: success.draftOrder?.lineItems?.nodes ?? [])
                             if lineItems.contains(where: {$0.variantId == self?.favoriteVaraintID}){
                                 self?.isFavoriteExist = true
+                              
                                 print("isFavoriteExist after call: \(String(describing: self?.isFavoriteExist))")
                             }
                             else {
-                                self?.isFavoriteExist = false
+                               // self?.isFavoriteExist = false
                                 lineItems.append(DraftOrderLineItemInput(
                                     quantity: 1,
                                     variantId:  self?.favoriteVaraintID
