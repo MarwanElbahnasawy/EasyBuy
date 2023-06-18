@@ -119,6 +119,14 @@ import LocalAuthentication
             switch result {
             case .success(let success):
                 self.address = success.customer?.addresses?.nodes ?? []
+                let customerIDOj = (success.customer?.displayName ?? "") + (success.customer?.phone ?? "")
+                let customerID = success.customer?.id
+                let email = success.customer?.email
+                let customerDisplayName = success.customer?.displayName
+                UserDefaults.standard.set(customerIDOj, forKey: "customerID")
+                UserDefaults.standard.set(customerID, forKey: "shopifyCustomerID")
+                UserDefaults.standard.set(email, forKey: "email")
+                UserDefaults.standard.set(customerDisplayName, forKey: "displayName")
                 self.isLoading = false
             case .failure(let failure):
                 print(failure)

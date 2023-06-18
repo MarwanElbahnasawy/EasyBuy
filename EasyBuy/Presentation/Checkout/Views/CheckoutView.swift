@@ -20,8 +20,11 @@ struct CheckoutView: View {
                     if #available(iOS 16.0, *) {
                         Text("Delivery Address").frame(maxWidth: .infinity, alignment: .leading).padding(.leading,10).fontWeight(.bold).font(Font.system(size: 22))
                     }
-                    AddressCell(address: viewModel.customerAddress ?? CustomerAddress())
-                        .padding(.leading,10).padding(.top,10)
+                    if let customerAddress = viewModel.customerAddress{
+                        AddressCell(address: customerAddress )
+                            .padding(.leading,10).padding(.top,10)
+                    }
+                   
                     NavigationLink(destination: {
                         AddressView(checkOutViewMode: viewModel,isComingFromPayment: true)
                     }, label: {

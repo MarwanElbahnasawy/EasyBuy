@@ -24,6 +24,8 @@ struct DataClassAddress: Codable {
 // MARK: - Customer
 struct CustomAddress: Codable {
     var addresses: Addresses?
+    var __typename, email, firstName, lastName: String?
+        var phone, id, displayName: String?
 }
 
 // MARK: - Addresses

@@ -4,6 +4,8 @@
 import Apollo
 import Foundation
 
+/// The three-letter currency codes that represent the world currencies used in stores. These include standard ISO 4217 codes, legacy codes,
+/// and non-standard codes.
 
 /// The input fields to create a new customer.
 public struct CustomerCreateInput: GraphQLMapConvertible {
@@ -14,7 +16,7 @@ public struct CustomerCreateInput: GraphQLMapConvertible {
   ///   - lastName: The customer’s last name.
   ///   - email: The customer’s email.
   ///   - phone: A unique phone number for the customer.
-  ///
+  /// 
   /// Formatted using E.164 standard. For example, _+16135551111_.
   ///   - password: The login password used by the customer.
   ///   - acceptsMarketing: Indicates whether the customer has consented to be sent marketing material via email.
@@ -53,7 +55,7 @@ public struct CustomerCreateInput: GraphQLMapConvertible {
   }
 
   /// A unique phone number for the customer.
-  ///
+  /// 
   /// Formatted using E.164 standard. For example, _+16135551111_.
   public var phone: Swift.Optional<String?> {
     get {
@@ -251,7 +253,7 @@ public struct MailingAddressInput: GraphQLMapConvertible {
   ///   - firstName: The first name of the customer.
   ///   - lastName: The last name of the customer.
   ///   - phone: A unique phone number for the customer.
-  ///
+  /// 
   /// Formatted using E.164 standard. For example, _+16135551111_.
   ///   - province: The region of the address, such as the province, state, or district.
   ///   - zip: The zip or postal code of the address.
@@ -330,7 +332,7 @@ public struct MailingAddressInput: GraphQLMapConvertible {
   }
 
   /// A unique phone number for the customer.
-  ///
+  /// 
   /// Formatted using E.164 standard. For example, _+16135551111_.
   public var phone: Swift.Optional<String?> {
     get {
@@ -570,7 +572,7 @@ public final class ProductDetailsQuery: GraphQLQuery {
       }
 
       /// The featured image for the product.
-      ///
+      /// 
       /// This field is functionally equivalent to `images(first: 1)`.
       public var featuredImage: FeaturedImage? {
         get {
@@ -898,11 +900,11 @@ public final class ProductDetailsQuery: GraphQLQuery {
         }
 
         /// The location of the image as a URL.
-        ///
+        /// 
         /// If no transform options are specified, then the original image will be preserved including any pre-applied transforms.
-        ///
+        /// 
         /// All transformation options are considered "best-effort". Any transformation that the original image type doesn't support will be ignored.
-        ///
+        /// 
         /// If you need multiple variations of the same image, then you can use [GraphQL aliases](https://graphql.org/learn/queries/#aliases).
         public var url: String {
           get {
@@ -1033,11 +1035,11 @@ public final class ProductDetailsQuery: GraphQLQuery {
             }
 
             /// The location of the image as a URL.
-            ///
+            /// 
             /// If no transform options are specified, then the original image will be preserved including any pre-applied transforms.
-            ///
+            /// 
             /// All transformation options are considered "best-effort". Any transformation that the original image type doesn't support will be ignored.
-            ///
+            /// 
             /// If you need multiple variations of the same image, then you can use [GraphQL aliases](https://graphql.org/learn/queries/#aliases).
             public var url: String {
               get {
@@ -1258,11 +1260,11 @@ public final class CollectionsQuery: GraphQLQuery {
           }
 
           /// The location of the image as a URL.
-          ///
+          /// 
           /// If no transform options are specified, then the original image will be preserved including any pre-applied transforms.
-          ///
+          /// 
           /// All transformation options are considered "best-effort". Any transformation that the original image type doesn't support will be ignored.
-          ///
+          /// 
           /// If you need multiple variations of the same image, then you can use [GraphQL aliases](https://graphql.org/learn/queries/#aliases).
           public var url: String {
             get {
@@ -1540,7 +1542,7 @@ public final class GetAllProductsQuery: GraphQLQuery {
         }
 
         /// The featured image for the product.
-        ///
+        /// 
         /// This field is functionally equivalent to `images(first: 1)`.
         public var featuredImage: FeaturedImage? {
           get {
@@ -1857,11 +1859,11 @@ public final class GetAllProductsQuery: GraphQLQuery {
           }
 
           /// The location of the image as a URL.
-          ///
+          /// 
           /// If no transform options are specified, then the original image will be preserved including any pre-applied transforms.
-          ///
+          /// 
           /// All transformation options are considered "best-effort". Any transformation that the original image type doesn't support will be ignored.
-          ///
+          /// 
           /// If you need multiple variations of the same image, then you can use [GraphQL aliases](https://graphql.org/learn/queries/#aliases).
           public var url: String {
             get {
@@ -1992,11 +1994,11 @@ public final class GetAllProductsQuery: GraphQLQuery {
               }
 
               /// The location of the image as a URL.
-              ///
+              /// 
               /// If no transform options are specified, then the original image will be preserved including any pre-applied transforms.
-              ///
+              /// 
               /// All transformation options are considered "best-effort". Any transformation that the original image type doesn't support will be ignored.
-              ///
+              /// 
               /// If you need multiple variations of the same image, then you can use [GraphQL aliases](https://graphql.org/learn/queries/#aliases).
               public var url: String {
                 get {
@@ -2332,7 +2334,7 @@ public final class CollectionProductsQuery: GraphQLQuery {
           }
 
           /// The featured image for the product.
-          ///
+          /// 
           /// This field is functionally equivalent to `images(first: 1)`.
           public var featuredImage: FeaturedImage? {
             get {
@@ -2649,11 +2651,11 @@ public final class CollectionProductsQuery: GraphQLQuery {
             }
 
             /// The location of the image as a URL.
-            ///
+            /// 
             /// If no transform options are specified, then the original image will be preserved including any pre-applied transforms.
-            ///
+            /// 
             /// All transformation options are considered "best-effort". Any transformation that the original image type doesn't support will be ignored.
-            ///
+            /// 
             /// If you need multiple variations of the same image, then you can use [GraphQL aliases](https://graphql.org/learn/queries/#aliases).
             public var url: String {
               get {
@@ -2784,11 +2786,11 @@ public final class CollectionProductsQuery: GraphQLQuery {
                 }
 
                 /// The location of the image as a URL.
-                ///
+                /// 
                 /// If no transform options are specified, then the original image will be preserved including any pre-applied transforms.
-                ///
+                /// 
                 /// All transformation options are considered "best-effort". Any transformation that the original image type doesn't support will be ignored.
-                ///
+                /// 
                 /// If you need multiple variations of the same image, then you can use [GraphQL aliases](https://graphql.org/learn/queries/#aliases).
                 public var url: String {
                   get {
@@ -3446,7 +3448,7 @@ public final class CustomerAddressCreateMutation: GraphQLMutation {
         }
 
         /// A unique phone number for the customer.
-        ///
+        /// 
         /// Formatted using E.164 standard. For example, _+16135551111_.
         public var phone: String? {
           get {
@@ -3491,6 +3493,12 @@ public final class QueryGetAddressQuery: GraphQLQuery {
             phone
           }
         }
+        email
+        firstName
+        lastName
+        phone
+        id
+        displayName
       }
     }
     """
@@ -3546,6 +3554,12 @@ public final class QueryGetAddressQuery: GraphQLQuery {
         return [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("addresses", arguments: ["first": GraphQLVariable("first")], type: .nonNull(.object(Address.selections))),
+          GraphQLField("email", type: .scalar(String.self)),
+          GraphQLField("firstName", type: .scalar(String.self)),
+          GraphQLField("lastName", type: .scalar(String.self)),
+          GraphQLField("phone", type: .scalar(String.self)),
+          GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+          GraphQLField("displayName", type: .nonNull(.scalar(String.self))),
         ]
       }
 
@@ -3555,8 +3569,8 @@ public final class QueryGetAddressQuery: GraphQLQuery {
         self.resultMap = unsafeResultMap
       }
 
-      public init(addresses: Address) {
-        self.init(unsafeResultMap: ["__typename": "Customer", "addresses": addresses.resultMap])
+      public init(addresses: Address, email: String? = nil, firstName: String? = nil, lastName: String? = nil, phone: String? = nil, id: GraphQLID, displayName: String) {
+        self.init(unsafeResultMap: ["__typename": "Customer", "addresses": addresses.resultMap, "email": email, "firstName": firstName, "lastName": lastName, "phone": phone, "id": id, "displayName": displayName])
       }
 
       public var __typename: String {
@@ -3575,6 +3589,66 @@ public final class QueryGetAddressQuery: GraphQLQuery {
         }
         set {
           resultMap.updateValue(newValue.resultMap, forKey: "addresses")
+        }
+      }
+
+      /// The customer’s email address.
+      public var email: String? {
+        get {
+          return resultMap["email"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "email")
+        }
+      }
+
+      /// The customer’s first name.
+      public var firstName: String? {
+        get {
+          return resultMap["firstName"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "firstName")
+        }
+      }
+
+      /// The customer’s last name.
+      public var lastName: String? {
+        get {
+          return resultMap["lastName"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "lastName")
+        }
+      }
+
+      /// The customer’s phone number.
+      public var phone: String? {
+        get {
+          return resultMap["phone"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "phone")
+        }
+      }
+
+      /// A unique ID for the customer.
+      public var id: GraphQLID {
+        get {
+          return resultMap["id"]! as! GraphQLID
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "id")
+        }
+      }
+
+      /// The customer’s name, email or phone number.
+      public var displayName: String {
+        get {
+          return resultMap["displayName"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "displayName")
         }
       }
 
@@ -3713,7 +3787,7 @@ public final class QueryGetAddressQuery: GraphQLQuery {
           }
 
           /// A unique phone number for the customer.
-          ///
+          /// 
           /// Formatted using E.164 standard. For example, _+16135551111_.
           public var phone: String? {
             get {

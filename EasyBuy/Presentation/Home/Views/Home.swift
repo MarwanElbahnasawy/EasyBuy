@@ -10,7 +10,7 @@ import SwiftUI
 struct Home: View {
     @ObservedObject var viewModel = HomeViewModel()
     @State var isGrid = true
-    
+    @AppStorage("displayName") var displayName: String?
     // MARK: - Func
     
     fileprivate func TrendingView() -> some View {
@@ -79,7 +79,8 @@ struct Home: View {
                             
                             HStack {
                                 VStack(alignment: .leading) {
-                                    Text("Welcome,")
+                                    let welcome = "Welcome,\(displayName ?? "Guest")"
+                                    Text(welcome)
                                         .font(.custom(Constants.AppFont.extraBoldFont, size: UIScreen.main.bounds.width * 0.07))
                                         .padding(.bottom, 2)
                                     Text("Our EasyBuy App")
