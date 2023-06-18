@@ -16,10 +16,10 @@ class OrdersViewModel: ObservableObject  {
     @Published var ordersInLine : [Order] = []
     
     init() {
-        fetchProducts()
+        fetchOrders()
     }
     
-    func fetchProducts(){
+    func fetchOrders(){
         guard let email = UserDefaults.standard.string(forKey: "email") else { return }
         let mail = "email:\(email)"
         NetworkManager.getInstance(requestType: .admin).queryGraphQLRequest(query:GetOrdersQuery(first: 10,query: mail) , responseModel: ResOrder.self, completion: { result in

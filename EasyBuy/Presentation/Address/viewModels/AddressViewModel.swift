@@ -66,7 +66,8 @@ import LocalAuthentication
         location = locations.first?.coordinate
         let geoCoder = CLGeocoder()
         let location = CLLocation(latitude: location!.latitude, longitude: location!.longitude)
-        geoCoder.reverseGeocodeLocation(location) { (placemarks, error) -> Void in
+        geoCoder.reverseGeocodeLocation(location) {[weak self] (placemarks, error) -> Void in
+            guard let self = self else { return }
             guard let placeMark = placemarks?.first else { return }
             self.placemark = placeMark
           
@@ -85,7 +86,8 @@ import LocalAuthentication
         let newLocation = Location(id: UUID(), name: "location", description: "", latitude: mapRegion.center.latitude, longitude: mapRegion.center.longitude)
         let geoCoder = CLGeocoder()
         let location = CLLocation(latitude: newLocation.latitude, longitude: newLocation.longitude)
-        geoCoder.reverseGeocodeLocation(location) { (placemarks, error) -> Void in
+        geoCoder.reverseGeocodeLocation(location) {[weak self] (placemarks, error) -> Void in
+            guard let self = self else { return }
             guard let placeMark = placemarks?.first else { return }
             self.placemark = placeMark
             
@@ -103,7 +105,8 @@ import LocalAuthentication
     }
     func addAddress(address1: String,address2: String,city: String,country: String,phone: String,zip: String ){
         guard let token = UserDefaults.standard.string(forKey: "accessToken") else { return }
-        NetworkManager.getInstance(requestType: .storeFront).performGraphQLRequest(mutation:  CustomerAddressCreateMutation(customerAccessToken: token, address: MailingAddressInput(address1: address1, address2: address2, city: city, country: country , phone: phone, zip: zip)), responseModel: ResAddress.self, completion: { result in
+        NetworkManager.getInstance(requestType: .storeFront).performGraphQLRequest(mutation:  CustomerAddressCreateMutation(customerAccessToken: token, address: MailingAddressInput(address1: address1, address2: address2, city: city, country: country , phone: phone, zip: zip)), responseModel: ResAddress.self, completion: { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success(let response):
                 self.featchAddress()
@@ -115,7 +118,8 @@ import LocalAuthentication
     }
     func featchAddress(){
         guard let token = UserDefaults.standard.string(forKey: "accessToken") else { return }
-        NetworkManager.getInstance(requestType: .storeFront).queryGraphQLRequest(query:QueryGetAddressQuery(customerAccessToken: token,first: 20) , responseModel: DataClassAddress.self, completion: { result in
+        NetworkManager.getInstance(requestType: .storeFront).queryGraphQLRequest(query:QueryGetAddressQuery(customerAccessToken: token,first: 20) , responseModel: DataClassAddress.self, completion: { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success(let success):
                 self.address = success.customer?.addresses?.nodes ?? []
@@ -136,7 +140,8 @@ import LocalAuthentication
     }
     func deleteAddress(id : String){
         guard let token = UserDefaults.standard.string(forKey: "accessToken") else { return }
-        NetworkManager.getInstance(requestType: .storeFront).performGraphQLRequest(mutation: MutationDeleteAddressMutation(customerAddressDeleteId: id, customerAccessToken: token) , responseModel: DataClassDeletedCustomer.self, completion: { result in
+        NetworkManager.getInstance(requestType: .storeFront).performGraphQLRequest(mutation: MutationDeleteAddressMutation(customerAddressDeleteId: id, customerAccessToken: token) , responseModel: DataClassDeletedCustomer.self, completion: { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success( _):
                 self.featchAddress()

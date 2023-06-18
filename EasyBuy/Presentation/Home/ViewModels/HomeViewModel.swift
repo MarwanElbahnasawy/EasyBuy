@@ -22,7 +22,8 @@ class HomeViewModel: ObservableObject {
     }
     
     func fetchBrands(){
-        NetworkManager.getInstance(requestType: .storeFront).queryGraphQLRequest(query:CollectionsQuery(first: 100) , responseModel: Res_Collection.self, completion: { result in
+        NetworkManager.getInstance(requestType: .storeFront).queryGraphQLRequest(query:CollectionsQuery(first: 100) , responseModel: Res_Collection.self, completion: { [weak self] result in
+            guard let self = self else { return }
                             switch result {
                             case .success(let success):
                                 self.brands = success.collections?.nodes
