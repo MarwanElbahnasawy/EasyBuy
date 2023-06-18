@@ -85,5 +85,27 @@ final class NetworkManagerTest: XCTestCase {
 
         self.waitForExpectations(timeout: 5)
     }
+    
+    func testAddressCount () {
+        // Given: An API request to fetch all collections
+        let expectation = expectation(description: "Waiting for the API")
+
+        NetworkManager.shared?.queryGraphQLRequest(query: QueryGetAddressQuery(customerAccessToken: "87169899dfeebbd0b776e9d6c8d4aaf9",first: 1), responseModel: DataClassAddress.self)  { result in
+            // When: The response is received
+            switch result {
+            case .success(let data):
+                if let Address = data.customer?.addresses {
+                    let Addresses = Address.nodes?.count
+                    // Then: The number of collections should be greater than 10
+                    XCTAssertGreaterThan(Addresses!, 0)
+                    expectation.fulfill()
+                }
+            case .failure(_):
+                XCTFail("Error fetching collections")
+                expectation.fulfill()
+            }
+        }
+        self.waitForExpectations(timeout: 5)
+    }
 
 }
