@@ -53,7 +53,32 @@ extension MockNetworkManager: NetworkManagerProtocol {
                 }
             }
         }
-//
+    
+        func queryAllAddress(completion: @escaping (Result<DataClassAddress, Error>) -> Void) {
+            jsonResponse = Data(MockNetworkManager.allAddressCodesResponse.utf8)
+            MockNetworkManager.shared.queryGraphQLRequest(query: QueryGetAddressQuery(customerAccessToken: "token",first: 20), responseModel: DataClassAddress.self) { (result: Result<DataClassAddress, Error>) in
+                switch result {
+                case .success(let decodedData):
+                    completion(.success(decodedData))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+        }
+    
+    func queryAllOrders(completion: @escaping (Result<ResOrder, Error>) -> Void) {
+        jsonResponse = Data(MockNetworkManager.allOrderCodesResponse.utf8)
+        MockNetworkManager.shared.queryGraphQLRequest(query:GetOrdersQuery(first: 10,query: "fathy.gmal.com"), responseModel: ResOrder.self) { (result: Result<ResOrder, Error>) in
+            switch result {
+            case .success(let decodedData):
+                completion(.success(decodedData))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+//queryGraphQLRequest(query:GetOrdersQuery(first: 10,query: mail)  ResOrder
 //    func queryAllDiscountCodes(completion: @escaping (Result<AllDiscountCodesRoot, Error>) -> Void) {
 //        jsonResponse = Data(MockNetworkManager.allDiscountCodesResponse.utf8)
 //        MockNetworkManager.shared.queryGraphQLRequest(query: GetAllDiscountCodesQuery(), responseModel: AllDiscountCodesRoot.self) { (result: Result<AllDiscountCodesRoot, Error>) in

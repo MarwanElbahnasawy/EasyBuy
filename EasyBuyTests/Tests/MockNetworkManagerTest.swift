@@ -73,35 +73,55 @@ final class MockNetworkManagerTest: XCTestCase {
             }
             
         }
-//    func testDecodeDiscountCodesData() {
-//        // Given: A request to fetch all discount codes
-//        MockNetworkManager.shared.queryAllDiscountCodes { result in
-//            // When: The response is received
-//
-//            // Then: The result should not be nil
-//            XCTAssertNotNil(result)
-//        }
-//
-//    }
-//
-//    func testDiscountCodesCountIs3() {
-//        // Given: A request to fetch all products
-//
-//        MockNetworkManager.shared.queryAllDiscountCodes { result in
-//            switch result {
-//            case .success(let root):
-//                if let codeDiscountNodes = root.data?.codeDiscountNodes?.nodes {
-//                        let discountCodesCount = codeDiscountNodes.count
-//                    // Then: The number of discount codes should be 3
-//                    XCTAssertEqual(discountCodesCount, 3)
-//                } else {
-//                    XCTFail("Error: discount codes not found in response")
-//                }
-//            case .failure(_):
-//                XCTFail("Error fetching products")
-//            }
-//        }
-//
-//    }
+    func testDecodeAddressCodesData() {
+        // Given: A request to fetch all discount codes
+        MockNetworkManager.shared.queryAllAddress{ result in
+            // When: The response is received
+
+            // Then: The result should not be nil
+            XCTAssertNotNil(result)
+        }
+
+    }
+
+    func testAddressCodesCountIs1() {
+        // Given: A request to fetch all Address
+
+        MockNetworkManager.shared.queryAllAddress { result in
+            switch result {
+            case .success(let root):
+                if let codeDiscountNodes = root.customer?.addresses?.nodes {
+                        let discountCodesCount = codeDiscountNodes.count
+                    // Then: The number of discount codes should be 3
+                    XCTAssertEqual(discountCodesCount, 1)
+                } else {
+                    XCTFail("Error: discount codes not found in response")
+                }
+            case .failure(_):
+                XCTFail("Error fetching products")
+            }
+        }
+
+    }
+    
+    func testOrderCodesCountIs1() {
+        // Given: A request to fetch all Address
+
+        MockNetworkManager.shared.queryAllOrders { result in
+            switch result {
+            case .success(let root):
+                if let OrderNodes = root.orders?.edges {
+                        let OrderCount = OrderNodes.count
+                    // Then: The number of discount codes should be 3
+                    XCTAssertEqual(OrderCount, 1)
+                } else {
+                    XCTFail("Error: discount codes not found in response")
+                }
+            case .failure(_):
+                XCTFail("Error fetching products")
+            }
+        }
+
+    }
 
 }
