@@ -39,6 +39,7 @@ final class DraftOrderApiTest: XCTestCase {
                     XCTAssertEqual(draftOrder, "gid://shopify/DraftOrder/1120714129715")
                     expectation.fulfill()
                 }
+                expectation.fulfill()
             case .failure(_):
                 XCTFail("Error fetching products")
                 expectation.fulfill()

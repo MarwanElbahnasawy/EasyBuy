@@ -340,55 +340,57 @@ class MockNetworkManager{
  }
  """
     static let draftOrderJson = """
-{
-    
-        "draftOrder": {
-            "id": "gid://shopify/DraftOrder/1120714129715",
-            "name": "#D273",
-            "email": "mamo2men@gmail.com",
-            "subtotalPrice": "29.00",
-            "note2": null,
-            "totalPrice": "33.06",
-            "lineItems": {
-                "nodes": [
-                    {
-                        "quantity": 1,
-                        "variant": {
-                            "id": "gid://shopify/ProductVariant/45253508006195",
-                            "price": "29.00",
-                            "availableForSale": true,
-                            "title": "4 / burgandy"
-                        },
-                        "product": {
-                            "id": "gid://shopify/Product/8311139107123",
-                            "priceRangeV2": {
-                                "maxVariantPrice": {
-                                    "amount": "29.0",
-                                    "currencyCode": "EGP"
+        {
+                "draftOrder": {
+                    "id": "gid://shopify/DraftOrder/1120714129715",
+                    "name": "#D273",
+                    "email": "mamo2men@gmail.com",
+                    "subtotalPrice": "29.00",
+                    "note2": null,
+                    "totalPrice": "33.06",
+                    "lineItems": {
+                        "nodes": [
+                            {
+                                "quantity": 1,
+                                "variant": {
+                                    "id": "gid://shopify/ProductVariant/45253508006195",
+                                    "price": "29.00",
+                                    "availableForSale": true,
+                                    "title": "4 / burgandy"
+                                },
+                                "product": {
+                                    "id": "gid://shopify/Product/8311139107123",
+                                    "priceRangeV2": {
+                                        "maxVariantPrice": {
+                                            "amount": "29.0",
+                                            "currencyCode": "EGP"
+                                        }
+                                    },
+                                    "title": "VANS |AUTHENTIC | LO PRO | BURGANDY/WHITE",
+                                    "productType": "SHOES",
+                                    "featuredImage": {
+                                        "url": "https://cdn.shopify.com/s/files/1/0773/8789/0995/products/9f190cba7218c819c81566bca6298c6a.jpg?v=1685480862"
+                                    }
                                 }
-                            },
-                            "title": "VANS |AUTHENTIC | LO PRO | BURGANDY/WHITE",
-                            "productType": "SHOES",
-                            "featuredImage": {
-                                "url": "https://cdn.shopify.com/s/files/1/0773/8789/0995/products/9f190cba7218c819c81566bca6298c6a.jpg?v=1685480862"
                             }
-                        }
+                        ]
                     }
-                ]
+                },
+            "extensions": {
+                "cost": {
+                    "requestedQueryCost": 503,
+                    "actualQueryCost": 8,
+                    "throttleStatus": {
+                        "maximumAvailable": 1000.0,
+                        "currentlyAvailable": 992,
+                        "restoreRate": 50.0
+                    }
+                }
             }
         }
-   ,
-    "extensions": {
-        "cost": {
-            "requestedQueryCost": 503,
-            "actualQueryCost": 8,
-            "throttleStatus": {
-                "maximumAvailable": 1000.0,
-                "currentlyAvailable": 992,
-=======
+        """
     static let  allAddressCodesResponse = """
 {
-  
     "customer": {
       "addresses": {
         "__typename": "MailingAddressConnection",

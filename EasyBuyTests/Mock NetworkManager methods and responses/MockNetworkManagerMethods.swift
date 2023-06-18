@@ -96,16 +96,16 @@ extension MockNetworkManager: NetworkManagerProtocol {
     
 //queryGraphQLRequest(query:GetOrdersQuery(first: 10,query: mail)  ResOrder
 
-//    func queryAllDiscountCodes(completion: @escaping (Result<AllDiscountCodesRoot, Error>) -> Void) {
-//        jsonResponse = Data(MockNetworkManager.allDiscountCodesResponse.utf8)
-//        MockNetworkManager.shared.queryGraphQLRequest(query: GetAllDiscountCodesQuery(), responseModel: AllDiscountCodesRoot.self) { (result: Result<AllDiscountCodesRoot, Error>) in
-//            switch result {
-//            case .success(let decodedData):
-//                completion(.success(decodedData))
-//            case .failure(let error):
-//                completion(.failure(error))
-//            }
-//        }
-//    }
+    func queryAllDiscountCodes(completion: @escaping (Result<RootDiscountCodes, Error>) -> Void) {
+        jsonResponse = Data(MockNetworkManager.discountCodesResponse.utf8)
+        MockNetworkManager.shared.queryGraphQLRequest(query: GetAllDiicountCodesQuery(first: 10), responseModel: RootDiscountCodes.self) { (result: Result<RootDiscountCodes, Error>) in
+            switch result {
+            case .success(let decodedData):
+                completion(.success(decodedData))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
 }
 
