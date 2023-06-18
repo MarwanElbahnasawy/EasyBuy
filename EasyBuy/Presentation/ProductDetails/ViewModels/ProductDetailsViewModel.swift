@@ -7,8 +7,11 @@ class ProductViewModel: ObservableObject {
     @Published var cart: DraftOrderDataClass?
     @Published var favorite: DraftOrderDataClass?
     @Published var varaintID: String?
+    @Published var favoriteVaraintID: String?
     @Published var isExist = false
     @Published var isFavoriteExist = false
+    
+//    @Published var favoriteProductID = ""
     let customerID = UserDefaults.standard.string(forKey:"shopifyCustomerID")
     let email = UserDefaults.standard.string(forKey:"email")
     
@@ -17,13 +20,15 @@ class ProductViewModel: ObservableObject {
     }
     
     func fetchProductDetails() {
-       
+        print("isFavoriteExist initially: \(isFavoriteExist)")
         guard let productId = productId else { return }
         let query = ProductDetailsQuery(productId: productId, imageFirst: 10, variantsFirst: 10)
         NetworkManager.getInstance(requestType: .storeFront).queryGraphQLRequest(query: query, responseModel: DataClass.self) { [weak self] result in
             switch result {
             case .success(let data):
                 self?.product = data
+                self?.favoriteVaraintID = data.product?.variants?.edges?.first?.node?.id
+//                self?.favoriteProductID = data.product?.id ?? ""
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -79,9 +84,9 @@ class ProductViewModel: ObservableObject {
         })
     }
     
-
+  
     func createDraftOrder(discountCodes: [String]){
- 
+
         // change variant with the choice of size
 
         let linesItems = DraftOrderInput(email: email, lineItems:
@@ -92,7 +97,6 @@ class ProductViewModel: ObservableObject {
             switch result {
             case .success(let success):
                 self?.cart = success
-                UserDefaults.standard.set(success.draftOrderCreate?.draftOrder?.lineItems?.nodes?.count, forKey: "count")
                 FireBaseManager.shared.saveCustomerDiscountCodes(customerDiscountCodes: CustomerDiscountCodes(id: self?.customerID,discountCodes: discountCodes, draftOrders: DraftOrders(favoriteDraftorder: self?.favorite, cartDraftOrder: success)))
             case .failure(let failure):
                 print(failure)
@@ -104,7 +108,6 @@ class ProductViewModel: ObservableObject {
         NetworkManager.getInstance(requestType: .admin).performGraphQLRequest(mutation: DraftOrderUpdateMutation(id: id, input: draftOrderInput), responseModel: UpdateDraftOrderDataClass.self) { res in
             switch res {
             case .success(let success):
-                UserDefaults.standard.set(success.draftOrderUpdate?.draftOrder?.lineItems?.nodes?.count, forKey: "count")
                 FireBaseManager.shared.saveCustomerDiscountCodes(customerDiscountCodes: CustomerDiscountCodes(id: customerDiscountCodes.id,discountCodes: customerDiscountCodes.discountCodes,draftOrders: DraftOrders(favoriteDraftorder: self.favorite, cartDraftOrder: DraftOrderDataClass(draftOrderCreate: DraftOrderCreate(draftOrder: success.draftOrderUpdate?.draftOrder)))))
             case .failure(let failure):
                 print(failure)
@@ -116,7 +119,14 @@ class ProductViewModel: ObservableObject {
         
     }
     
-    func getFavoriteDraftOrder() {
+    func getFavoriteDraftOrder(onCompleted: @escaping () -> Void) {
+      Task {
+        await getFavoriteDraftOrderAsync()
+        onCompleted()
+      }
+    }
+    
+    func getFavoriteDraftOrderAsync() async {
         FireBaseManager.shared.retriveCustomerDiscountCodes()?.getDocument(completion: { [weak self] snapshot, error in
             
             if let error = error {
@@ -132,6 +142,16 @@ class ProductViewModel: ObservableObject {
             let objFireBase = FireBaseManager.shared.mapFireBaseObject(data: data)
             self?.favorite = objFireBase?.draftOrders?.favoriteDraftorder
             self?.cart = objFireBase?.draftOrders?.cartDraftOrder
+            
+//            if let products = objFireBase?.draftOrders?.favoriteDraftorder?.draftOrderCreate?.draftOrder?.lineItems?.nodes {
+//                for product in products {
+//                    if product.id == self?.product?.product?.id {
+//                        self?.isFavoriteExist = true
+//                        break
+//                    }
+//                }
+//            }
+            
             if self?.favorite == nil{
                 self?.createFavoriteDraftOrder(discountCodes: objFireBase?.discountCodes ?? [])
             }
@@ -146,14 +166,15 @@ class ProductViewModel: ObservableObject {
                         case .success(let success):
                             var  lineItems: [DraftOrderLineItemInput] = []
                             lineItems = mapLineItemsToDratOrderLineItems(lineItems: success.draftOrder?.lineItems?.nodes ?? [])
-                            if lineItems.contains(where: {$0.variantId == self?.varaintID}){
+                            if lineItems.contains(where: {$0.variantId == self?.favoriteVaraintID}){
                                 self?.isFavoriteExist = true
+                                print("isFavoriteExist after call: \(String(describing: self?.isFavoriteExist))")
                             }
                             else {
                                 self?.isFavoriteExist = false
                                 lineItems.append(DraftOrderLineItemInput(
                                     quantity: 1,
-                                    variantId:  self?.varaintID
+                                    variantId:  self?.favoriteVaraintID
                                 ))
                                 print("products in lines items id \(String(describing: lineItems))")
                                 self?.updateFvoriteDraftOrder (
@@ -175,7 +196,7 @@ class ProductViewModel: ObservableObject {
     
     func createFavoriteDraftOrder(discountCodes: [String]) {
         let linesItems = DraftOrderInput(
-            lineItems: [DraftOrderLineItemInput(quantity: 1,variantId: varaintID)]
+            lineItems: [DraftOrderLineItemInput(quantity: 1,variantId: favoriteVaraintID)]
         )
         
         NetworkManager.getInstance(requestType: .admin).performGraphQLRequest(
@@ -231,47 +252,4 @@ class ProductViewModel: ObservableObject {
             }
         }
     }
-    
-//    func updateFavoriteDraftOrder(id: String, draftOrderInput: DraftOrderInput, customerDiscountCodes: CustomerDiscountCodes) {
-//        FireBaseManager.shared.retriveCustomerDiscountCodes()?.getDocument(completion: { [weak self] snapshot, error in
-//            if let error = error {
-//                print("Failed to fetch current user:", error)
-//                return
-//            }
-//            guard let data = snapshot?.data() else {
-//                print("no data found")
-//                self?.createFavoriteDraftOrder(discountCodes: [])
-//                return
-//            }
-//            let objFireBase = FireBaseManager.shared.mapFireBaseObject(data: data)
-//            if let cartDraftOrder = objFireBase?.draftOrders?.cartDraftOrder {
-//                let updatedDraftOrders = DraftOrders(favoriteDraftorder: self?.favorite, cartDraftOrder: cartDraftOrder)
-//                let customerDiscountCodes = CustomerDiscountCodes(
-//                    id: customerDiscountCodes.id,
-//                    discountCodes: customerDiscountCodes.discountCodes,
-//                    draftOrders: updatedDraftOrders
-//                )
-//                FireBaseManager.shared.saveCustomerDiscountCodes(customerDiscountCodes: customerDiscountCodes)
-//            } else {
-//                NetworkManager.getInstance(requestType: .admin).performGraphQLRequest(mutation: DraftOrderUpdateMutation(id: id, input: draftOrderInput), responseModel: UpdateDraftOrderDataClass.self) { res in
-//                    switch res {
-//                    case .success(let success):
-//                        FireBaseManager.shared.saveCustomerDiscountCodes(
-//                            customerDiscountCodes: CustomerDiscountCodes(
-//                                id: customerDiscountCodes.id,
-//                                discountCodes: customerDiscountCodes.discountCodes,
-//                                draftOrders: DraftOrders(
-//                                    favoriteDraftorder: DraftOrderDataClass(
-//                                        draftOrderCreate: DraftOrderCreate(draftOrder: success.draftOrderUpdate?.draftOrder)
-//                                    )
-//                                )
-//                            )
-//                        )
-//                    case .failure(let failure):
-//                        print(failure)
-//                    }
-//                }
-//            }
-//        })
-//    }
 }
