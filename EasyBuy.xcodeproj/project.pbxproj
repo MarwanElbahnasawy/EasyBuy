@@ -109,6 +109,7 @@
 		3F25A1C12A315DE3009614A8 /* DiscounCodeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F25A1C02A315DE3009614A8 /* DiscounCodeCellViewModel.swift */; };
 		3F25A1C92A316719009614A8 /* DiscountCodeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F25A1C82A316719009614A8 /* DiscountCodeList.swift */; };
 		3F25A1CB2A31681C009614A8 /* DiscountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F25A1CA2A31681C009614A8 /* DiscountCell.swift */; };
+		3F76882F2A40EA830089C73B /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = 3F76882E2A40EA830089C73B /* AlertToast */; };
 		3F9A0F862A3E99A300AB9D69 /* DiscountCodesMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9A0F852A3E99A300AB9D69 /* DiscountCodesMock.swift */; };
 		3F9A0F8B2A3EA2D900AB9D69 /* DiscountCodesApiTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9A0F8A2A3EA2D900AB9D69 /* DiscountCodesApiTest.swift */; };
 		3F9A0F8E2A3EA60500AB9D69 /* DraftOrdersMockTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9A0F8D2A3EA60500AB9D69 /* DraftOrdersMockTest.swift */; };
@@ -433,6 +434,7 @@
 				171B14DC2A28A23E00851C67 /* Kingfisher in Frameworks */,
 				3FFAC2212A37A9FB00A9F481 /* IQKeyboardManagerSwift in Frameworks */,
 				3FFAC21B2A379F6900A9F481 /* Apollo in Frameworks */,
+				3F76882F2A40EA830089C73B /* AlertToast in Frameworks */,
 				171B14D42A2891B900851C67 /* Lottie in Frameworks */,
 				31D52E42D25ED8AA642D669D /* Pods_EasyBuy.framework in Frameworks */,
 			);
@@ -1699,6 +1701,7 @@
 				3FFAC21A2A379F6900A9F481 /* Apollo */,
 				3FFAC21D2A37A87D00A9F481 /* Cosmos */,
 				3FFAC2202A37A9FB00A9F481 /* IQKeyboardManagerSwift */,
+				3F76882E2A40EA830089C73B /* AlertToast */,
 			);
 			productName = EasyBuy;
 			productReference = 17C9CF202A27E12F004BCCC2 /* EasyBuy.app */;
@@ -1782,6 +1785,7 @@
 				3FFAC2192A379F6900A9F481 /* XCRemoteSwiftPackageReference "apollo-ios" */,
 				3FFAC21C2A37A87D00A9F481 /* XCRemoteSwiftPackageReference "Cosmos" */,
 				3FFAC21F2A37A9FB00A9F481 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				3F76882D2A40EA830089C73B /* XCRemoteSwiftPackageReference "AlertToast" */,
 			);
 			productRefGroup = 17C9CF212A27E12F004BCCC2 /* Products */;
 			projectDirPath = "";
@@ -2138,7 +2142,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-
 				3F9A0F8B2A3EA2D900AB9D69 /* DiscountCodesApiTest.swift in Sources */,
 				3F9A0F902A3EA61B00AB9D69 /* DraftOrdersApiTest.swift in Sources */,
 				EBBEF1252A3EA8D100FB95CA /* LoginMockNetworkManagerTest.swift in Sources */,
@@ -2150,7 +2153,7 @@
 				EBBEF1332A3EB89900FB95CA /* ProductDetailsMockNetworkManagerMethods.swift in Sources */,
 				EBBEF1292A3EAD6800FB95CA /* RegistrationMockNetworkManagerMethods.swift in Sources */,
 				EBBEF1132A3E9A9600FB95CA /* RegestrationViewModelTests.swift in Sources */,
-				17C9CF3A2A27E133004BCCC2 /* EasyBuyTests.swift in Sources */,
+				17C9CF3A2A27E133004BCCC2 /* ConstantsTests.swift in Sources */,
 				17C9CF3A2A27E133004BCCC2 /* ConstantsTests.swift in Sources */,
 				140DEC2D2A3E8619009206D2 /* MockNetworkManagerMethods.swift in Sources */,
 				3F9A0F8E2A3EA60500AB9D69 /* DraftOrdersMockTest.swift in Sources */,
@@ -2512,6 +2515,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		3F76882D2A40EA830089C73B /* XCRemoteSwiftPackageReference "AlertToast" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/elai950/AlertToast.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		3FFAC2192A379F6900A9F481 /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apollographql/apollo-ios.git";
@@ -2553,6 +2564,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 171B14DD2A28A34200851C67 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		3F76882E2A40EA830089C73B /* AlertToast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F76882D2A40EA830089C73B /* XCRemoteSwiftPackageReference "AlertToast" */;
+			productName = AlertToast;
 		};
 		3FFAC21A2A379F6900A9F481 /* Apollo */ = {
 			isa = XCSwiftPackageProductDependency;
