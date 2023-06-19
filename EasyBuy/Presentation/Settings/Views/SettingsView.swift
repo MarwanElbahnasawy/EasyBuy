@@ -26,7 +26,8 @@ struct SettingsView: View {
             }
             AddressCell(address: viewModel.customerAddress ?? CustomerAddress())
                 .padding(.horizontal,10).padding(.top,10).onAppear{
-                    viewModel.getAddress()
+                    viewModel.customerAddress = viewModel.getAddress()
+                    print(viewModel.customerAddress ?? "no address found")
                 }
             
             NavigationLink(destination: {
@@ -85,12 +86,14 @@ struct SettingsView: View {
             } .alert(isPresented: $showAlert) {
                 var alert: Alert
                 if isSave{
-                   alert = Alert(title: Text("Save!"), message: Text("All changes will be applied"), primaryButton: .default(Text("OK")) {
-                       viewModel.saveCurrencyCode(code: selectedCode)
-                       print("selected code is \(selectedCode)")
-                        viewModel.saveAddress()
-                       print("in settings \(viewModel.selectedCodeValue)")
-                       presentationMode.wrappedValue.dismiss()
+                    alert = Alert(title: Text("Save!"), message: Text("All changes will be applied"), primaryButton: .default(Text("OK")) {
+                        viewModel.saveCurrencyCode(code: selectedCode)
+                        print("selected code is \(selectedCode)")
+                        viewModel.saveAddress(address: viewModel.customerAddress ?? CustomerAddress())
+                        print("in settings \(viewModel.selectedCodeValue)")
+                        DispatchQueue.main.asyncAfter(deadline: .now()+1){
+                            presentationMode.wrappedValue.dismiss()
+                        }
                     }, secondaryButton: .cancel(Text("Cancel")) {
                         print("Cancel button tapped")
                     })
