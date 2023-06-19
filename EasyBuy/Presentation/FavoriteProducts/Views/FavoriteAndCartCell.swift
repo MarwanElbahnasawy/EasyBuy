@@ -43,6 +43,7 @@ struct FavoriteAndCartCell: View {
 
                     }
                 }
+                Spacer()
              
             }
             .padding()

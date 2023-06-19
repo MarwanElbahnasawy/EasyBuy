@@ -15,9 +15,8 @@ class ProductViewModel: ObservableObject {
     @Published var quantity: Int = 1
     @Published var availableQuantity: Int = 1
     @Published var price: String = "100"
-    
     @Published var isComplete = false
-    @Published var isLoading = false
+    @Published var isLoadingCart = false
     @Published var isShowAlet = false
     
 //    @Published var favoriteProductID = ""
@@ -38,6 +37,7 @@ class ProductViewModel: ObservableObject {
             case .success(let data):
                 self?.product = data
                 self?.favoriteVaraintID = data.product?.variants?.edges?.first?.node?.id
+                self?.isLoading = false
 //                self?.favoriteProductID = data.product?.id ?? ""
                 self?.price = data.product?.variants?.edges?.first?.node?.price?.amount ?? "Not available"
                 if (self?.product?.product?.variants?.edges?.first?.node?.quantityAvailable ?? 3)/3  < 1{
@@ -117,7 +117,7 @@ class ProductViewModel: ObservableObject {
                 self?.cart = success
                 UserDefaults.standard.set(success.draftOrderCreate?.draftOrder?.lineItems?.nodes?.count, forKey: "count")
                 self?.isComplete = true
-                self?.isLoading = false
+                self?.isLoadingCart = false
                 DispatchQueue.main.asyncAfter(deadline: .now()+2){
                     self?.isShowAlet = false
                 }
@@ -136,7 +136,7 @@ class ProductViewModel: ObservableObject {
             case .success(let success):
                 UserDefaults.standard.set(success.draftOrderUpdate?.draftOrder?.lineItems?.nodes?.count, forKey: "count")
                 self?.isComplete = true
-                self?.isLoading = false
+                self?.isLoadingCart = false
                 DispatchQueue.main.asyncAfter(deadline: .now()+2){
                     self?.isShowAlet = false
                 }

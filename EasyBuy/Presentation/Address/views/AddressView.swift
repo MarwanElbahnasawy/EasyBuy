@@ -90,7 +90,7 @@ struct AddressView: View {
                                             self.presentationMode.wrappedValue.dismiss()
                                         }
                                         if isComingFromSettings{
-                                            settingsViewModel.customerAddress = address
+                                            settingsViewModel.saveAddress(address: address)
                                             self.presentationMode.wrappedValue.dismiss()
                                         }
                                     }
