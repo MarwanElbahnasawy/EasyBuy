@@ -23,7 +23,7 @@ struct ProductDetailsView: View {
                         isExist: $viewModel.isFavoriteExist
                     )
                     
-                    AddToCartView(price: viewModel.product?.product?.variants?.edges?.first?.node?.price?.amount) {
+                    AddToCartView(price: viewModel.price) {
                         print("pressed")
                         viewModel.getDraftOrder()
                     }.alert(isPresented: $viewModel.isExist) {
@@ -37,6 +37,7 @@ struct ProductDetailsView: View {
         .onAppear(perform: {
             viewModel.productId = productId
             viewModel.fetchProductDetails()
+          
 //            viewModel.getFavoriteDraftOrder()
         })
     }

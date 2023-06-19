@@ -2,9 +2,8 @@ import SwiftUI
 
 struct DescriptionView: View {
     let product: DataClass?
-    let viewModel: ProductViewModel?
+    @ObservedObject var viewModel: ProductViewModel
     @Binding var isExist: Bool
-    
     var body: some View {
         VStack (alignment: .leading) {
             ProductTitleView(
@@ -12,7 +11,7 @@ struct DescriptionView: View {
                 title: product?.product?.title ?? "",
                 productType: product?.product?.productType ?? "",
                 action: {
-                    viewModel?.getFavoriteDraftOrder()
+                    viewModel.getFavoriteDraftOrder()
                         
                     
                 })
@@ -25,12 +24,19 @@ struct DescriptionView: View {
             Text("Description")
                 .fontWeight(.medium)
                 .padding(.vertical, 8)
-            
+            Stepper(value: $viewModel.quantity, in: 1...viewModel.availableQuantity) {
+                Text("Quantity : \( viewModel.quantity)")
+            }.onChange(of:  viewModel.quantity) { newValue in
+                viewModel.quantity = newValue
+                let price = Double(product?.product?.variants?.edges?.first?.node?.price?.amount ?? "1.0")
+                viewModel.price = "\(Double(newValue) * (price ?? 100))"
+                
+            }
             Text(product?.product?.description ?? "")
                 .lineSpacing(8.0)
                 .opacity(0.6)
             
-            SizesView(variants: product?.product?.variants?.edges,viewModel: viewModel ?? ProductViewModel(productId: nil))
+            SizesView(variants: product?.product?.variants?.edges,viewModel: viewModel )
         }
         .padding()
         .padding(.top)

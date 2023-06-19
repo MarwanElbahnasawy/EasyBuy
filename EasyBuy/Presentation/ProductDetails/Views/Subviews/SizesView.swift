@@ -39,12 +39,15 @@ struct SizesView: View {
                                 .onTapGesture {
                                     selectedItem = sizeOption
                                     viewModel.varaintID = selectedItem?.node?.id
+                                    viewModel.getAvailableQuantityForProduct()
+                                    viewModel.quantity = 1
                                 }
                         }
                     }
                 }
                 .onAppear{
                     selectedItem = variants.first
+                    
                 }
             }
             .padding(.horizontal, 8)

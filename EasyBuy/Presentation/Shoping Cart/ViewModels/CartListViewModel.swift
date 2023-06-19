@@ -13,6 +13,7 @@ class CartListViewModel: ObservableObject{
     @Published var customerDiscountCodes: CustomerDiscountCodes?
     var draftOrderDataClass: DraftOrderDataClass?
     @Published var totalPrice: String = ""
+    @Published var quantity: Int = 1
     func getCartItems(){
         FireBaseManager.shared.retriveCustomerDiscountCodes()?.getDocument(completion: {[weak self] snapshot, error in
             
@@ -41,6 +42,8 @@ class CartListViewModel: ObservableObject{
                 self?.products = success.draftOrder?.lineItems?.nodes
                 UserDefaults.standard.set(self?.products?.count, forKey: "count")
                 self?.totalPrice = success.draftOrder?.totalPrice ?? ""
+                print("total price is \(self?.totalPrice)")
+                
             case .failure(let failure):
                 print(failure)
                 self?.products = []
@@ -89,5 +92,16 @@ class CartListViewModel: ObservableObject{
         return IndexSet(integer: unwrappedIndex)
     }
   
+    func getItemSize(item: String?) -> String{
+        var size = "1"
+        if let sizeString = item?.split(separator: "/").first{
+            size = String(sizeString)
+        }
+        else{
+            size = "1"
+        }
+        print("size in cell is \(size)")
+        return size
+    }
 }
 

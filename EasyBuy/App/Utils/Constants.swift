@@ -93,15 +93,16 @@ func mapLineItemsToDratOrderLineItems(lineItems: [LinesItemNode]?) -> [DraftOrde
   
     var draftOrderLineItemInputs: [DraftOrderLineItemInput] = []
     for item in lineItems ?? []{
-        let draftLineItem = DraftOrderLineItemInput(quantity: 1,variantId: item.variant?.id)
+        let draftLineItem = DraftOrderLineItemInput(quantity: item.quantity ?? 1,variantId: item.variant?.id)
         draftOrderLineItemInputs.append(draftLineItem)
     }
     return draftOrderLineItemInputs
 }
 func formatPrice(price: String?) -> String{
-    let priceDoubleValue: Double = Double( price ?? "0.0") ?? 0.0
+    let priceDoubleValue: Double = Double( price ?? "1.0") ?? 1.0
     let priceCurrency = priceDoubleValue * (UserDefaults.standard.numCurrency ?? 1.0)
     let formattedprice = String(format: "%.2f", priceCurrency) + " \(UserDefaults.standard.currency!)"
+    print("currency value is \(UserDefaults.standard.numCurrency)")
     return formattedprice
 }
 
