@@ -1,4 +1,5 @@
 import SwiftUI
+import AlertToast
 import Apollo
 import Kingfisher
 
@@ -21,6 +22,15 @@ struct ProductDetailsView: View {
                 ZStack {
                     Color.white
                     
+
+                    AddToCartView(price: viewModel.price) {
+                        print("pressed")
+                        viewModel.isShowAlet = true
+                        viewModel.isLoading = true
+                        viewModel.getDraftOrder()
+                    }.alert(isPresented: $viewModel.isExist) {
+                        Alert(title: Text("Already added"), message: Text("This product already exists in your shopping cart"))
+
                     if viewModel.product == nil {
                         ProgressView()
                     } else {
@@ -40,7 +50,17 @@ struct ProductDetailsView: View {
                                 Alert(title: Text("Already added"), message: Text("This product already exists in your shopping cart"))
                             }
                         }
+
                     }
+                }.toast(isPresenting: $viewModel.isShowAlet){
+                    var alertToast: AlertToast?
+                    if viewModel.isLoading{
+                      alertToast = AlertToast(type: .loading, title: "Please wait...")
+                    }
+                    if viewModel.isComplete{
+                        alertToast = AlertToast(type: .complete(.green), title: "Added ",subTitle: "Item added successfully to your shopping cart")
+                    }
+                    return alertToast ?? AlertToast(type: .loading , title: "Please wait...")
                 }
             }
         }.navigationBarBackButtonHidden(true)

@@ -16,6 +16,10 @@ class ProductViewModel: ObservableObject {
     @Published var availableQuantity: Int = 1
     @Published var price: String = "100"
     
+    @Published var isComplete = false
+    @Published var isLoading = false
+    @Published var isShowAlet = false
+    
 //    @Published var favoriteProductID = ""
     let customerID = UserDefaults.standard.string(forKey:"shopifyCustomerID")
     let email = UserDefaults.standard.string(forKey:"email")
@@ -112,7 +116,12 @@ class ProductViewModel: ObservableObject {
             case .success(let success):
                 self?.cart = success
                 UserDefaults.standard.set(success.draftOrderCreate?.draftOrder?.lineItems?.nodes?.count, forKey: "count")
-
+                self?.isComplete = true
+                self?.isLoading = false
+                DispatchQueue.main.asyncAfter(deadline: .now()+2){
+                    self?.isShowAlet = false
+                }
+            
                 FireBaseManager.shared.saveCustomerDiscountCodes(customerDiscountCodes: CustomerDiscountCodes(id: self?.customerID,discountCodes: discountCodes, draftOrders: DraftOrders(favoriteDraftorder: self?.favorite, cartDraftOrder: success)))
                 print("succes is \(success)")
             case .failure(let failure):
@@ -126,8 +135,12 @@ class ProductViewModel: ObservableObject {
             switch res {
             case .success(let success):
                 UserDefaults.standard.set(success.draftOrderUpdate?.draftOrder?.lineItems?.nodes?.count, forKey: "count")
-
-                
+                self?.isComplete = true
+                self?.isLoading = false
+                DispatchQueue.main.asyncAfter(deadline: .now()+2){
+                    self?.isShowAlet = false
+                }
+    
                 FireBaseManager.shared.saveCustomerDiscountCodes(customerDiscountCodes: CustomerDiscountCodes(id: customerDiscountCodes.id,discountCodes: customerDiscountCodes.discountCodes,draftOrders: DraftOrders(favoriteDraftorder: self?.favorite, cartDraftOrder: DraftOrderDataClass(draftOrderCreate: DraftOrderCreate(draftOrder: success.draftOrderUpdate?.draftOrder)))))
             case .failure(let failure):
                 print(failure)
@@ -135,9 +148,6 @@ class ProductViewModel: ObservableObject {
         }
     }
 
-    func addToCart(){
-        
-    }
     
     
     func checkFavoriteDraftOrder() {

@@ -10,7 +10,6 @@ import SwiftUI
 struct AddToCartView: View {
     let price: String?
     let action: () -> Void
-    
     var body: some View {
        HStack {
             VStack {
