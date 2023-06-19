@@ -72,6 +72,7 @@ struct VariantsEdge: Codable {
 struct Nodes: Codable {
     let id, title: String?
     let price: Price?
+    let quantityAvailable: Int?
     let availableForSale: Bool?
 }
 

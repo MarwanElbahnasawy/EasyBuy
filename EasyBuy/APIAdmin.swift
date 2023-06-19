@@ -1100,7 +1100,6 @@ public enum DraftOrderAppliedDiscountType: RawRepresentable, Equatable, Hashable
 
 
 
-
 /// The code designating a country/region, which generally follows ISO 3166-1 alpha-2 guidelines.
 /// If a territory doesn't have a country code value in the `CountryCode` enum, then it might be considered a subdivision
 /// of another country. For example, the territories associated with Spain are represented by the country code `ES`,
@@ -6552,12 +6551,14 @@ public final class DraftOrderQuery: GraphQLQuery {
               __typename
               id
               price
+              inventoryQuantity
               availableForSale
               title
             }
             product {
               __typename
               id
+              totalInventory
               priceRangeV2 {
                 __typename
                 maxVariantPrice {
@@ -6833,6 +6834,7 @@ public final class DraftOrderQuery: GraphQLQuery {
                 GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
                 GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
                 GraphQLField("price", type: .nonNull(.scalar(String.self))),
+                GraphQLField("inventoryQuantity", type: .scalar(Int.self)),
                 GraphQLField("availableForSale", type: .nonNull(.scalar(Bool.self))),
                 GraphQLField("title", type: .nonNull(.scalar(String.self))),
               ]
@@ -6844,8 +6846,8 @@ public final class DraftOrderQuery: GraphQLQuery {
               self.resultMap = unsafeResultMap
             }
 
-            public init(id: GraphQLID, price: String, availableForSale: Bool, title: String) {
-              self.init(unsafeResultMap: ["__typename": "ProductVariant", "id": id, "price": price, "availableForSale": availableForSale, "title": title])
+            public init(id: GraphQLID, price: String, inventoryQuantity: Int? = nil, availableForSale: Bool, title: String) {
+              self.init(unsafeResultMap: ["__typename": "ProductVariant", "id": id, "price": price, "inventoryQuantity": inventoryQuantity, "availableForSale": availableForSale, "title": title])
             }
 
             public var __typename: String {
@@ -6877,6 +6879,16 @@ public final class DraftOrderQuery: GraphQLQuery {
               }
             }
 
+            /// The total sellable quantity of the variant.
+            public var inventoryQuantity: Int? {
+              get {
+                return resultMap["inventoryQuantity"] as? Int
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "inventoryQuantity")
+              }
+            }
+
             /// Whether the product variant is available for sale.
             public var availableForSale: Bool {
               get {
@@ -6905,6 +6917,7 @@ public final class DraftOrderQuery: GraphQLQuery {
               return [
                 GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
                 GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+                GraphQLField("totalInventory", type: .nonNull(.scalar(Int.self))),
                 GraphQLField("priceRangeV2", type: .nonNull(.object(PriceRangeV2.selections))),
                 GraphQLField("title", type: .nonNull(.scalar(String.self))),
                 GraphQLField("productType", type: .nonNull(.scalar(String.self))),
@@ -6918,8 +6931,8 @@ public final class DraftOrderQuery: GraphQLQuery {
               self.resultMap = unsafeResultMap
             }
 
-            public init(id: GraphQLID, priceRangeV2: PriceRangeV2, title: String, productType: String, featuredImage: FeaturedImage? = nil) {
-              self.init(unsafeResultMap: ["__typename": "Product", "id": id, "priceRangeV2": priceRangeV2.resultMap, "title": title, "productType": productType, "featuredImage": featuredImage.flatMap { (value: FeaturedImage) -> ResultMap in value.resultMap }])
+            public init(id: GraphQLID, totalInventory: Int, priceRangeV2: PriceRangeV2, title: String, productType: String, featuredImage: FeaturedImage? = nil) {
+              self.init(unsafeResultMap: ["__typename": "Product", "id": id, "totalInventory": totalInventory, "priceRangeV2": priceRangeV2.resultMap, "title": title, "productType": productType, "featuredImage": featuredImage.flatMap { (value: FeaturedImage) -> ResultMap in value.resultMap }])
             }
 
             public var __typename: String {
@@ -6938,6 +6951,16 @@ public final class DraftOrderQuery: GraphQLQuery {
               }
               set {
                 resultMap.updateValue(newValue, forKey: "id")
+              }
+            }
+
+            /// The quantity of inventory in stock.
+            public var totalInventory: Int {
+              get {
+                return resultMap["totalInventory"]! as! Int
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "totalInventory")
               }
             }
 

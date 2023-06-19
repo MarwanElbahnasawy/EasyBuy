@@ -36,7 +36,7 @@ struct LineItems: Codable {
 struct LinesItemNode: Codable,Identifiable {
     var id: String?
     let quantity: Int?
-    let variant: Variant?
+    var variant: Variant?
     let product: DrafrtOrderProduct?
 }
 
@@ -44,6 +44,7 @@ struct LinesItemNode: Codable,Identifiable {
 struct DrafrtOrderProduct: Codable {
     let id: String?
     let priceRangeV2: PriceRangeV2?
+    let totalInventory: Int?
     let title, productType: String?
     let featuredImage: FeaturedImage?
 }
@@ -62,6 +63,7 @@ struct MaxVariantPrice: Codable {
 // MARK: - Variant
 struct Variant: Codable {
     let id, price: String?
+    let inventoryQuantity: Int?
     let availableForSale: Bool?
     let title: String?
 }

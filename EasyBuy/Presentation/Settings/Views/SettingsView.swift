@@ -63,8 +63,8 @@ struct SettingsView: View {
                         .foregroundColor(.white)
                         .cornerRadius(5)
                 }.onAppear{
+                    selectedCode = UserDefaults.standard.currency ?? "USD"
                     viewModel.getCurrency()
-                    selectedCode = viewModel.currencyCode
                 }
                 Spacer()
             }.padding(.all,10)
@@ -86,8 +86,10 @@ struct SettingsView: View {
                 var alert: Alert
                 if isSave{
                    alert = Alert(title: Text("Save!"), message: Text("All changes will be applied"), primaryButton: .default(Text("OK")) {
-                        viewModel.saveCurrencyCode(code: selectedCode)
+                       viewModel.saveCurrencyCode(code: selectedCode)
+                       print("selected code is \(selectedCode)")
                         viewModel.saveAddress()
+                       print("in settings \(viewModel.selectedCodeValue)")
                        presentationMode.wrappedValue.dismiss()
                     }, secondaryButton: .cancel(Text("Cancel")) {
                         print("Cancel button tapped")

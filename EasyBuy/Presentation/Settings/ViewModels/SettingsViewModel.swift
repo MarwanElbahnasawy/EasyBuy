@@ -30,7 +30,7 @@ class SettingsViewModel: ObservableObject{
         let address = (try? decoder.decode(CustomerAddress.self, from: data)) ?? CustomerAddress()
         customerAddress = address
     }
-    func getCurrency(base :String = UserDefaults.standard.currency ?? "USD"){
+    func getCurrency(base :String = "USD"){
         let param : [String: String] = ["base": base]
         APIServices.instance.getDataAll(route: .typy, method: .get, params: param, encoding: URLEncoding.default, headers: nil) { [weak self] (dataurl: Root?, error) in
             self?.rates = dataurl?.rates ?? [:]
