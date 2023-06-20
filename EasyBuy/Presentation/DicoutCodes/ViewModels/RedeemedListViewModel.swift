@@ -21,15 +21,15 @@ class RedeemedListViewModel: ObservableObject{
                 return
             }
             self?.codes = FireBaseManager.shared.mapFireBaseObject(data: data)
-
                 print(self?.codes?.discountCodes ?? "default")
         }
     }
-    func deleteDiscountCode(index: String) {
-        let discountCodes: [String] = codes?.discountCodes ?? []
-        codes?.discountCodes = discountCodes.filter { $0 != index }
-        print(discountCodes)
-        FireBaseManager.shared.saveCustomerDiscountCodes(customerDiscountCodes: codes ?? CustomerDiscountCodes())
-        
-    }
+    
+//    func deleteDiscountCode(index: String) {
+//        let discountCodes: [String] = codes?.discountCodes ?? []
+//        codes?.discountCodes = discountCodes.filter { $0 != index }
+//        print(discountCodes)
+//        FireBaseManager.shared.saveCustomerDiscountCodes(customerDiscountCodes: codes ?? CustomerDiscountCodes())
+//    }
+    
 }

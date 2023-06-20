@@ -17,13 +17,14 @@ struct DiscountCodeCell: View {
         ZStack(alignment: .center) {
             Image(cellViewModel.getImageName())
                 .resizable()
-                .scaledToFill()
                 .overlay(
                     LinearGradient(gradient: Gradient(colors: [Color.white.opacity(0.3), Color.clear]), startPoint: .leading, endPoint: .trailing)
                        
                 ) .cornerRadius(16)
-                .frame(height: 120)
+                .frame(width: UIScreen.main.bounds.width-20, height: UIScreen.main.bounds.height/4)
+                .scaledToFit()
                 .contentShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                .shadow(radius: 16)
             VStack(alignment: .leading) {
                 Text(cellViewModel.title )
                     .font(Font.system(size: 18)).fontWeight(.bold)
@@ -44,8 +45,7 @@ struct DiscountCodeCell: View {
                     print("customer id is : \(String(describing: customerID))")
                     cellViewModel.isExist(id: customerID!,customerCode: cellViewModel.code)
                     self.animationAmount = 1.1
-                }
-                    .padding(10)
+                }.padding(10)
                     .background(cellViewModel.isUsed ?.gray : Color.black)
                     .foregroundColor(Color.white)
                     .cornerRadius(10)

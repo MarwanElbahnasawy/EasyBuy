@@ -73,7 +73,7 @@ class CartListViewModel: ObservableObject{
                     UserDefaults.standard.set(success.draftOrderUpdate?.draftOrder?.lineItems?.nodes?.count, forKey: "count")
                     FireBaseManager.shared.saveCustomerDiscountCodes(customerDiscountCodes: CustomerDiscountCodes(id: self?.customerDiscountCodes?.id,
                                                                                                                   discountCodes: self?.customerDiscountCodes?.discountCodes
-                                                                                                                  ,                                draftOrders: DraftOrders(favoriteDraftorder: self?.draftOrderDataClass, cartDraftOrder: DraftOrderDataClass(draftOrderCreate: DraftOrderCreate(draftOrder: success.draftOrderUpdate?.draftOrder)))))
+                                                                                                                  , usedDiscountCodes: self?.customerDiscountCodes?.usedDiscountCodes                               ,                   draftOrders: DraftOrders(favoriteDraftorder: self?.draftOrderDataClass, cartDraftOrder: DraftOrderDataClass(draftOrderCreate: DraftOrderCreate(draftOrder: success.draftOrderUpdate?.draftOrder)))))
                 case .failure(let failure):
                     print(failure)
                 }

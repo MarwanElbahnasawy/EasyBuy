@@ -107,14 +107,16 @@ struct CheckoutView: View {
                 NavigationLink {
                     PaymentMethodView(totalPrice:$viewModel.priceAfterDiscounts , products: viewModel.products ?? [],draftOrderID: viewModel.cartDraftOrderID ?? " ")
                 } label: {
-                    Text("Go To Payment")
-                        .font(.title3)
-                        .fontWeight(.semibold)
-                        .foregroundColor(Color.white)
-                        .padding()
-                        .padding(.horizontal, 8)
-                        .background(Color.black)
-                        .cornerRadius(10.0)
+
+                        Text("Go To Payment")
+                            .font(.title3)
+                            .fontWeight(.semibold)
+                            .foregroundColor(Color.white)
+                            .padding()
+                            .padding(.horizontal, 8)
+                            .background(Color.black)
+                            .cornerRadius(10.0)
+
                     
                 }.disabled(viewModel.customerAddress?.address1?.isEmpty == true || viewModel.customerAddress?.address1 == nil).onDisappear{
                     print("disappearing....")

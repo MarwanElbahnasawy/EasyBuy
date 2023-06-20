@@ -9,10 +9,9 @@ import Foundation
 
 class DiscountCodesListViewModel: ObservableObject{
     @Published var discountCodes: DataDiscountCodes?
-   
-
+    @Published var notUsedDiscountCodes: [CodeDiscountNodesNode] = []
     func getDiscountCodesForListView(adType: AdType)-> [CodeDiscountNodesNode]?{
-        let filteredArray: [CodeDiscountNodesNode] = discountCodes?.codeDiscountNodes?.nodes ?? []
+        let filteredArray: [CodeDiscountNodesNode] = notUsedDiscountCodes
         var resultArray: [CodeDiscountNodesNode] = []
         switch adType {
         case .men:
@@ -31,11 +30,35 @@ class DiscountCodesListViewModel: ObservableObject{
             switch result {
             case .success(let res):
                 self?.discountCodes = res
+                self?.returnUnusedArray()
                 print(res)
             case .failure(let failure):
                 print(failure)
             }
         }
+    }
+    func returnUnusedArray(){
+        FireBaseManager.shared.retriveCustomerDiscountCodes()?.getDocument {[weak self] snapshot, error in
+              if let error = error {
+                  print("Failed to fetch current user:", error)
+                  return
+              }
+
+              guard let data = snapshot?.data() else {
+                      print("No data found")
+                  return
+              }
+            let objFromFireBase = FireBaseManager.shared.mapFireBaseObject(data: data)
+            if let usedCodes = objFromFireBase?.usedDiscountCodes{
+                self?.notUsedDiscountCodes = self?.discountCodes?.codeDiscountNodes?.nodes?.filter({ node in
+                    !usedCodes.contains(node.codeDiscount?.codes?.nodes?.first?.code ?? "")
+                }) ?? []
+            }
+            else{
+                self?.notUsedDiscountCodes = self?.discountCodes?.codeDiscountNodes?.nodes ?? []
+            }
+          
+          }
     }
 }
 enum AdType{

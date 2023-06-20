@@ -16,13 +16,14 @@ struct DiscountCodesList: View {
             if #available(iOS 16.0, *) {
                 Text("Discounts Offer").frame(maxWidth: .infinity, alignment: .leading).padding(.leading,10).fontWeight(.bold).font(Font.system(size: 22))
             }
-            
-            List(discountCodesViewModel.getDiscountCodesForListView(adType: adType) ?? []){ discountCode in
-                DiscountCodeCell(discountCode: discountCode, cellViewModel: DiscountCodeViewModel(discountCode: discountCode ,adType: adType)).listRowBackground(Color.clear)   .listRowSeparator(.hidden).clipped().cornerRadius(10)
-
-            }.onAppear {
-                discountCodesViewModel.getDiscountCodes(first: 20)
-            }
+            ScrollView{
+                LazyVStack {
+                    ForEach(discountCodesViewModel.getDiscountCodesForListView(adType: adType) ?? []){ discountCode in
+                        DiscountCodeCell(discountCode: discountCode, cellViewModel: DiscountCodeViewModel(discountCode: discountCode ,adType: adType)).frame(height: UIScreen.main.bounds.height/4).padding(.all,20).listRowBackground(Color.clear)   .listRowSeparator(.hidden).clipped().cornerRadius(10)
+                        
+                    }
+                }
+                }
         }
     }
 }

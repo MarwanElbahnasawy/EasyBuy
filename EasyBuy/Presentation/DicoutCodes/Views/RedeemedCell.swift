@@ -32,7 +32,6 @@ struct RedeemedCell: View {
                         .shadow(radius: 5)
                         .onTapGesture {
                             checkoutViewModel?.discountCodes = code
-                            redeemedViewMode.deleteDiscountCode(index: code)
                             dismiss()
                             isUseable = false
                             print("press in redeemed")

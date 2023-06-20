@@ -18,7 +18,7 @@ class CheckoutViewModel: ObservableObject{
     @Published var settingsViewModel = SettingsViewModel()
     @Published var taxFees = ""
     init() {
-      getProducts()
+        getProducts()
         customerAddress = settingsViewModel.getAddress()
     }
     func getProducts(){
@@ -48,7 +48,7 @@ class CheckoutViewModel: ObservableObject{
                 self?.totalPrice = success.draftOrder?.subtotalPrice ?? "0"
                 self?.priceAfterDiscounts = success.draftOrder?.subtotalPrice ?? "0"
                 if let totalPrice = success.draftOrder?.totalPrice{
-                   let totalPriceDoubleValue = (totalPrice as NSString).doubleValue
+                    let totalPriceDoubleValue = (totalPrice as NSString).doubleValue
                     if let subtotal = success.draftOrder?.subtotalPrice{
                         let subtotalPrice = (subtotal as NSString).doubleValue
                         let taxFees = totalPriceDoubleValue - subtotalPrice
@@ -72,11 +72,11 @@ class CheckoutViewModel: ObservableObject{
             let billingAdress = MailingAddressInput(address1: customerAddress?.address1, address2: customerAddress?.address2, city: customerAddress?.city, country: customerAddress?.country, phone: customerAddress?.phone, zip: customerAddress?.zip )
             let appliedDiscountCodes = DraftOrderAppliedDiscountInput(title: discountCodes, value:precentageValue , valueType: .percentage)
             let draftOrderInput = DraftOrderInput(appliedDiscount: appliedDiscountCodes, billingAddress: billingAdress, lineItems: lineItems)
-            UpdateDraftOrder(id: cartDraftOrderID ?? "", draftOrderInput: draftOrderInput, customerDiscountCodes: customerDiscountCodes ?? CustomerDiscountCodes())
+            UpdateDraftOrder(id: cartDraftOrderID ?? "", draftOrderInput: draftOrderInput, customerDiscountCodes: customerDiscountCodes ?? CustomerDiscountCodes(),isApplyDiscountCode: true)
         }
         
     }
-    func UpdateDraftOrder(id: String,draftOrderInput: DraftOrderInput,customerDiscountCodes: CustomerDiscountCodes){
+    func UpdateDraftOrder(id: String,draftOrderInput: DraftOrderInput,customerDiscountCodes: CustomerDiscountCodes,isApplyDiscountCode: Bool){
         print("id is \(id)")
         print("draftOrderInput is \(draftOrderInput)")
         print("customerDiscountCodes is \(customerDiscountCodes)")
@@ -84,17 +84,20 @@ class CheckoutViewModel: ObservableObject{
             switch res {
             case .success(let success):
                 print(success)
+                if isApplyDiscountCode{
+                    self?.applyDiscountCodeForUser()
+                    FireBaseManager.shared.saveCustomerDiscountCodes(customerDiscountCodes: CustomerDiscountCodes(id: customerDiscountCodes.id,discountCodes: customerDiscountCodes.discountCodes, usedDiscountCodes: customerDiscountCodes.usedDiscountCodes,draftOrders: DraftOrders(favoriteDraftorder: customerDiscountCodes.draftOrders?.favoriteDraftorder, cartDraftOrder: DraftOrderDataClass(draftOrderCreate: DraftOrderCreate(draftOrder: success.draftOrderUpdate?.draftOrder)))))
+                }
                 self?.priceAfterDiscounts = success.draftOrderUpdate?.draftOrder?.subtotalPrice ?? "0"
                 if let totalPrice = self?.totalPrice{
-                   let totalPriceDoubleValue = (totalPrice as NSString).doubleValue
+                    let totalPriceDoubleValue = (totalPrice as NSString).doubleValue
                     if let subtotal = success.draftOrderUpdate?.draftOrder?.subtotalPrice{
                         let subtotalPrice = (subtotal as NSString).doubleValue
                         let taxFees = totalPriceDoubleValue - subtotalPrice
                         self?.taxFees = taxFees.description
                     }
                 }
-                FireBaseManager.shared.saveCustomerDiscountCodes(customerDiscountCodes: CustomerDiscountCodes(id: customerDiscountCodes.id,discountCodes: customerDiscountCodes.discountCodes,draftOrders: DraftOrders(favoriteDraftorder: customerDiscountCodes.draftOrders?.favoriteDraftorder, cartDraftOrder: DraftOrderDataClass(draftOrderCreate: DraftOrderCreate(draftOrder: success.draftOrderUpdate?.draftOrder)))))
-                
+
             case .failure(let failure):
                 print(failure)
             }
@@ -106,8 +109,48 @@ class CheckoutViewModel: ObservableObject{
         let billingAdress = MailingAddressInput(address1: customerAddress?.address1, address2: customerAddress?.address2, city: customerAddress?.city, country: customerAddress?.country, phone: customerAddress?.phone, zip: customerAddress?.zip )
         print(billingAdress)
         let draftOrderInput = DraftOrderInput( billingAddress: billingAdress, lineItems: lineItems)
-        UpdateDraftOrder(id: cartDraftOrderID ?? "", draftOrderInput: draftOrderInput, customerDiscountCodes: customerDiscountCodes ?? CustomerDiscountCodes())
-     
-    }
 
+        UpdateDraftOrder(id: cartDraftOrderID ?? "", draftOrderInput: draftOrderInput, customerDiscountCodes: customerDiscountCodes ?? CustomerDiscountCodes(), isApplyDiscountCode: false)
+
+    }
+    
+    func applyDiscountCodeForUser(){
+        
+        FireBaseManager.shared.retriveCustomerDiscountCodes()?.getDocument(completion:
+        {[weak self] snapshot, error in
+            
+            if let error = error {
+                print("Failed to fetch current user:", error)
+                return
+            }
+            guard let data = snapshot?.data() else {
+                print("no data found")
+                self?.products = []
+                return
+            }
+            
+            let objFireBase = FireBaseManager.shared.mapFireBaseObject(data: data)
+            self?.customerDiscountCodes = objFireBase
+            var usedDiscountCodes = objFireBase?.usedDiscountCodes ?? []
+            usedDiscountCodes.append(self?.discountCodes ?? "")
+            let UnusedDiscountCodes = objFireBase?.discountCodes?.filter({$0 != self?.discountCodes})
+            var filterUnused: [String] = []
+            for code in usedDiscountCodes{
+                filterUnused = UnusedDiscountCodes?.filter({$0 != code}) ?? []
+            }
+            let favDraftOrder = self?.customerDiscountCodes?.draftOrders?.favoriteDraftorder
+            let cartDraftORder = self?.customerDiscountCodes?.draftOrders?.cartDraftOrder
+            let customerDiscountCodesFireBase =
+            CustomerDiscountCodes(id: self?.customerDiscountCodes?.id,
+                                  discountCodes: filterUnused,
+                                  usedDiscountCodes: usedDiscountCodes,
+                                  draftOrders: DraftOrders(favoriteDraftorder: favDraftOrder,
+                                                           cartDraftOrder: cartDraftORder))
+            FireBaseManager.shared.saveCustomerDiscountCodes(customerDiscountCodes: customerDiscountCodesFireBase)
+            
+        })
+        
+        
+    }
+    
 }
