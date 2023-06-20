@@ -16,6 +16,7 @@ class CheckoutViewModel: ObservableObject{
     @Published var customerDiscountCodes: CustomerDiscountCodes?
     @Published var customerAddress: CustomerAddress?
     @Published var settingsViewModel = SettingsViewModel()
+    @Published var taxFees = ""
     init() {
       getProducts()
         customerAddress = settingsViewModel.getAddress()
@@ -46,6 +47,14 @@ class CheckoutViewModel: ObservableObject{
                 self?.products = success.draftOrder?.lineItems?.nodes
                 self?.totalPrice = success.draftOrder?.subtotalPrice ?? "0"
                 self?.priceAfterDiscounts = success.draftOrder?.subtotalPrice ?? "0"
+                if let totalPrice = success.draftOrder?.totalPrice{
+                   let totalPriceDoubleValue = (totalPrice as NSString).doubleValue
+                    if let subtotal = success.draftOrder?.subtotalPrice{
+                        let subtotalPrice = (subtotal as NSString).doubleValue
+                        let taxFees = totalPriceDoubleValue - subtotalPrice
+                        self?.taxFees = taxFees.description
+                    }
+                }
             case .failure(let failure):
                 print(failure)
                 self?.products = []
@@ -55,14 +64,17 @@ class CheckoutViewModel: ObservableObject{
     func applyDiscountCode(){
         let precentage = discountCodes.split(separator: "O").first
         print(precentage ?? "default")
-        let precentageValue = (precentage as! NSString).doubleValue
-        var  lineItems: [DraftOrderLineItemInput] = []
-        lineItems = mapLineItemsToDratOrderLineItems(lineItems: customerDiscountCodes?.draftOrders?.cartDraftOrder?.draftOrderCreate?.draftOrder?.lineItems?.nodes)
-        print("lines items \(lineItems)")
+        if let percentage = precentage{
+            let precentageValue = (percentage as NSString).doubleValue
+            var  lineItems: [DraftOrderLineItemInput] = []
+            lineItems = mapLineItemsToDratOrderLineItems(lineItems: customerDiscountCodes?.draftOrders?.cartDraftOrder?.draftOrderCreate?.draftOrder?.lineItems?.nodes)
+            print("lines items \(lineItems)")
+            let billingAdress = MailingAddressInput(address1: customerAddress?.address1, address2: customerAddress?.address2, city: customerAddress?.city, country: customerAddress?.country, phone: customerAddress?.phone, zip: customerAddress?.zip )
+            let appliedDiscountCodes = DraftOrderAppliedDiscountInput(title: discountCodes, value:precentageValue , valueType: .percentage)
+            let draftOrderInput = DraftOrderInput(appliedDiscount: appliedDiscountCodes, billingAddress: billingAdress, lineItems: lineItems)
+            UpdateDraftOrder(id: cartDraftOrderID ?? "", draftOrderInput: draftOrderInput, customerDiscountCodes: customerDiscountCodes ?? CustomerDiscountCodes())
+        }
         
-        let appliedDiscountCodes = DraftOrderAppliedDiscountInput(title: discountCodes, value:precentageValue , valueType: .percentage)
-        let draftOrderInput = DraftOrderInput(appliedDiscount: appliedDiscountCodes, billingAddress: nil, lineItems: lineItems)
-        UpdateDraftOrder(id: cartDraftOrderID ?? "", draftOrderInput: draftOrderInput, customerDiscountCodes: customerDiscountCodes ?? CustomerDiscountCodes())
     }
     func UpdateDraftOrder(id: String,draftOrderInput: DraftOrderInput,customerDiscountCodes: CustomerDiscountCodes){
         print("id is \(id)")
@@ -72,13 +84,28 @@ class CheckoutViewModel: ObservableObject{
             switch res {
             case .success(let success):
                 print(success)
-                self?.priceAfterDiscounts = success.draftOrderUpdate?.draftOrder?.subtotalPrice ?? ""
+                self?.priceAfterDiscounts = success.draftOrderUpdate?.draftOrder?.subtotalPrice ?? "0"
+                if let totalPrice = self?.totalPrice{
+                   let totalPriceDoubleValue = (totalPrice as NSString).doubleValue
+                    if let subtotal = success.draftOrderUpdate?.draftOrder?.subtotalPrice{
+                        let subtotalPrice = (subtotal as NSString).doubleValue
+                        let taxFees = totalPriceDoubleValue - subtotalPrice
+                        self?.taxFees = taxFees.description
+                    }
+                }
                 FireBaseManager.shared.saveCustomerDiscountCodes(customerDiscountCodes: CustomerDiscountCodes(id: customerDiscountCodes.id,discountCodes: customerDiscountCodes.discountCodes,draftOrders: DraftOrders(favoriteDraftorder: customerDiscountCodes.draftOrders?.favoriteDraftorder, cartDraftOrder: DraftOrderDataClass(draftOrderCreate: DraftOrderCreate(draftOrder: success.draftOrderUpdate?.draftOrder)))))
                 
             case .failure(let failure):
                 print(failure)
             }
         }
+    }
+    func updateAdrees(){
+        var  lineItems: [DraftOrderLineItemInput] = []
+        lineItems = mapLineItemsToDratOrderLineItems(lineItems: customerDiscountCodes?.draftOrders?.cartDraftOrder?.draftOrderCreate?.draftOrder?.lineItems?.nodes)
+        let billingAdress = MailingAddressInput(address1: customerAddress?.address1, address2: customerAddress?.address2, city: customerAddress?.city, country: customerAddress?.country, phone: customerAddress?.phone, zip: customerAddress?.zip )
+        let draftOrderInput = DraftOrderInput( billingAddress: billingAdress, lineItems: lineItems)
+        UpdateDraftOrder(id: cartDraftOrderID ?? "", draftOrderInput: draftOrderInput, customerDiscountCodes: customerDiscountCodes ?? CustomerDiscountCodes())
     }
 
 }
