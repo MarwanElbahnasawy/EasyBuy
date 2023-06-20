@@ -40,6 +40,7 @@ struct AddToCartView: View {
         .cornerRadius(60.0, corners: .topLeft)
         .frame(maxHeight: .infinity, alignment: .bottom)
         .edgesIgnoringSafeArea(.bottom)
+        .background(Color("itemcolor"))
     }
 }
 

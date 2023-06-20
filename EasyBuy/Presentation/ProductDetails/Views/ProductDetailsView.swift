@@ -38,7 +38,8 @@ struct ProductDetailsView: View {
                             }.alert(isPresented: $viewModel.isExist) {
                     Alert(title: Text("Already added"), message: Text("This product already exists in your shopping cart"))
                             }
-                        }.toast(isPresenting: $viewModel.isShowAlet){
+                        }.background(Color("itemcolor"))
+                        .toast(isPresenting: $viewModel.isShowAlet){
                             var alertToast: AlertToast?
                             if viewModel.isLoadingCart{
                                 alertToast = AlertToast(type: .loading, title: "Please wait...")

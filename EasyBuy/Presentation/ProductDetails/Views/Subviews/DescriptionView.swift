@@ -26,6 +26,8 @@ struct DescriptionView: View {
             Text("Description")
                 .fontWeight(.medium)
                 .padding(.vertical, 8)
+            Text("Available Quantity : \(viewModel.availableQuantity)")
+                .padding(.vertical, 8)
             Stepper {
                 Text("Quantity : \(viewModel.quantity)")
             } onIncrement: {
@@ -54,7 +56,7 @@ struct DescriptionView: View {
         }
         .padding()
         .padding(.top)
-        .background(Color.gray)
+        .background(Color("itemcolor"))
         .cornerRadius(30, corners: [.topLeft, .topRight])
     }
 }
