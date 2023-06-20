@@ -44,7 +44,7 @@ extension MockNetworkManager: NetworkManagerProtocol {
 //
     func queryAllCollections(completion: @escaping (Result<Res_Collection, Error>) -> Void) {
             jsonResponse = Data(MockNetworkManager.allCollectionsResponse.utf8)
-            MockNetworkManager.shared.queryGraphQLRequest(query: CollectionsQuery(first: 100), responseModel: Res_Collection.self) { (result: Result<Res_Collection, Error>) in
+            MockNetworkManager.shared.queryGraphQLRequest(query: CollectionsQuery(first: 40), responseModel: Res_Collection.self) { (result: Result<Res_Collection, Error>) in
                 switch result {
                 case .success(let decodedData):
                     completion(.success(decodedData))
