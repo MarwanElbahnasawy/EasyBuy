@@ -48,6 +48,7 @@ struct ProductCell: View {
                     } else {
                         Text (title)
                             . font (.system(size: 16))
+                            .foregroundColor(Color("myblack"))
                     }
                     } else {
                         Text ( "Unknown" )
