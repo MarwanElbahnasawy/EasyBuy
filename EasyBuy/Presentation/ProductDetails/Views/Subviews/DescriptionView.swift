@@ -26,20 +26,22 @@ struct DescriptionView: View {
             Text("Description")
                 .fontWeight(.medium)
                 .padding(.vertical, 8)
-            Stepper(value: $viewModel.quantity, in: 1...viewModel.availableQuantity) {
-                Text("Quantity : \( viewModel.quantity)")
-            }.onChange(of:  viewModel.quantity) { newValue in
-             
-                    viewModel.quantity = newValue
-                    let price = Double(product?.product?.variants?.edges?.first?.node?.price?.amount ?? "1.0")
-                    viewModel.price = "\(Double(newValue) * (price ?? 100))"
-                
-            }.onTapGesture {
+            Stepper {
+                Text("Quantity : \(viewModel.quantity)")
+            } onIncrement: {
                 if viewModel.quantity == viewModel.availableQuantity{
                     showToast.toggle()
                 }
                 else{
                     viewModel.quantity += 1
+                    let price = Double(product?.product?.variants?.edges?.first?.node?.price?.amount ?? "1.0")
+                    viewModel.price = "\(Double(viewModel.quantity) * (price ?? 100))"
+                }
+            } onDecrement: {
+                if viewModel.quantity > 1{
+                    viewModel.quantity -= 1
+                    let price = Double(product?.product?.variants?.edges?.first?.node?.price?.amount ?? "1.0")
+                    viewModel.price = "\(Double(viewModel.quantity) * (price ?? 100))"
                 }
             }.toast(isPresenting: $showToast){
                 AlertToast(type: .error(.red), title: "Sorry 🙋‍♂️",subTitle: "No more item available 🙋‍♂️" )

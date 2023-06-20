@@ -17,6 +17,7 @@ class ProductViewModel: ObservableObject {
     @Published var price: String = "100"
     @Published var isComplete = false
     @Published var isLoadingCart = false
+    @Published var isfailedCart = false
     @Published var isShowAlet = false
     
 //    @Published var favoriteProductID = ""
@@ -86,10 +87,11 @@ class ProductViewModel: ObservableObject {
                             }
                             else{
                                 self?.isExist = false
-                                         
-                                lineItems.append(DraftOrderLineItemInput(quantity: self?.quantity ?? 1,variantId:  self?.varaintID))
-                                print("products in lines items id \(String(describing: lineItems))")
-                                self?.UpdateDraftOrder(id: objFireBase?.draftOrders?.cartDraftOrder?.draftOrderCreate?.draftOrder?.id ?? "", draftOrderInput: DraftOrderInput(lineItems: lineItems), customerDiscountCodes: objFireBase ?? CustomerDiscountCodes())
+                                if self?.varaintID?.isEmpty == true || self?.varaintID != nil{
+                                    lineItems.append(DraftOrderLineItemInput(quantity: self?.quantity ?? 1,variantId:  self?.varaintID))
+                                    print("products in lines items id \(String(describing: lineItems))")
+                                    self?.UpdateDraftOrder(id: objFireBase?.draftOrders?.cartDraftOrder?.draftOrderCreate?.draftOrder?.id ?? "", draftOrderInput: DraftOrderInput(lineItems: lineItems), customerDiscountCodes: objFireBase ?? CustomerDiscountCodes())
+                                }
                             }
                          
                         case .failure(let failure):
@@ -114,16 +116,29 @@ class ProductViewModel: ObservableObject {
             print(result)
             switch result {
             case .success(let success):
-                self?.cart = success
-                UserDefaults.standard.set(success.draftOrderCreate?.draftOrder?.lineItems?.nodes?.count, forKey: "count")
-                self?.isComplete = true
-                self?.isLoadingCart = false
-                DispatchQueue.main.asyncAfter(deadline: .now()+2){
-                    self?.isShowAlet = false
+                if let lineItemsCount = success.draftOrderCreate?.draftOrder?.lineItems?.nodes?.count{
+                    self?.cart = success
+                    UserDefaults.standard.set(lineItemsCount, forKey: "count")
+                    self?.isComplete = true
+                    self?.isLoadingCart = false
+                    self?.isfailedCart = false
+                    DispatchQueue.main.asyncAfter(deadline: .now()+2){
+                        self?.isShowAlet = false
+                    }
+                    
+                    FireBaseManager.shared.saveCustomerDiscountCodes(customerDiscountCodes: CustomerDiscountCodes(id: self?.customerID,discountCodes: discountCodes, draftOrders: DraftOrders(favoriteDraftorder: self?.favorite, cartDraftOrder: success)))
+             
                 }
-            
-                FireBaseManager.shared.saveCustomerDiscountCodes(customerDiscountCodes: CustomerDiscountCodes(id: self?.customerID,discountCodes: discountCodes, draftOrders: DraftOrders(favoriteDraftorder: self?.favorite, cartDraftOrder: success)))
-                print("succes is \(success)")
+                else{
+                    self?.isComplete = false
+                    self?.isLoadingCart = false
+                    self?.isfailedCart = true
+                    DispatchQueue.main.asyncAfter(deadline: .now()+2){
+                        self?.isShowAlet = false
+                    }
+                    print("no line items")
+                    
+                }
             case .failure(let failure):
                 print(failure)
             }
@@ -134,14 +149,26 @@ class ProductViewModel: ObservableObject {
         NetworkManager.getInstance(requestType: .admin).performGraphQLRequest(mutation: DraftOrderUpdateMutation(id: id, input: draftOrderInput), responseModel: UpdateDraftOrderDataClass.self) {[weak self] res in
             switch res {
             case .success(let success):
-                UserDefaults.standard.set(success.draftOrderUpdate?.draftOrder?.lineItems?.nodes?.count, forKey: "count")
-                self?.isComplete = true
-                self?.isLoadingCart = false
-                DispatchQueue.main.asyncAfter(deadline: .now()+2){
-                    self?.isShowAlet = false
+                if let lineItemsCount = success.draftOrderUpdate?.draftOrder?.lineItems?.nodes?.count{
+                    UserDefaults.standard.set(lineItemsCount, forKey: "count")
+                    self?.isComplete = true
+                    self?.isLoadingCart = false
+                    self?.isfailedCart = false
+                    DispatchQueue.main.asyncAfter(deadline: .now()+2){
+                        self?.isShowAlet = false
+                    }
+                    
+                    FireBaseManager.shared.saveCustomerDiscountCodes(customerDiscountCodes: CustomerDiscountCodes(id: customerDiscountCodes.id,discountCodes: customerDiscountCodes.discountCodes,draftOrders: DraftOrders(favoriteDraftorder: self?.favorite, cartDraftOrder: DraftOrderDataClass(draftOrderCreate: DraftOrderCreate(draftOrder: success.draftOrderUpdate?.draftOrder)))))
                 }
-    
-                FireBaseManager.shared.saveCustomerDiscountCodes(customerDiscountCodes: CustomerDiscountCodes(id: customerDiscountCodes.id,discountCodes: customerDiscountCodes.discountCodes,draftOrders: DraftOrders(favoriteDraftorder: self?.favorite, cartDraftOrder: DraftOrderDataClass(draftOrderCreate: DraftOrderCreate(draftOrder: success.draftOrderUpdate?.draftOrder)))))
+                else{
+                    self?.isComplete = false
+                    self?.isLoadingCart = false
+                    self?.isfailedCart = true
+                    DispatchQueue.main.asyncAfter(deadline: .now()+2){
+                        self?.isShowAlet = false
+                    }
+                    print("no line items")
+                }
             case .failure(let failure):
                 print(failure)
             }

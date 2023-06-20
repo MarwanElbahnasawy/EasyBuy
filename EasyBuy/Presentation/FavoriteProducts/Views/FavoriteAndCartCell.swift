@@ -10,7 +10,7 @@ struct FavoriteAndCartCell: View {
     @State var viewModel: CartListViewModel?
     @State var size: String?
     @State var quantity: Int?
-    
+    @State var isCheckout = false
     var body: some View {
         ZStack(alignment: .topTrailing) {
             HStack {
@@ -61,8 +61,13 @@ struct FavoriteAndCartCell: View {
             Button(action: {
                 onDelete?()
             }) {
-                Image(systemName: "minus.circle.fill")
-                    .foregroundColor(.black)
+                if isCheckout{
+                    EmptyView()
+                }
+                else{
+                    Image(systemName: "minus.circle.fill")
+                        .foregroundColor(.black)
+                }
             }
             .padding(8)
         }

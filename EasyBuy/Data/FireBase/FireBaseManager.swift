@@ -15,6 +15,7 @@ class FireBaseManager{
     private init(){
     }
     func saveCustomerDiscountCodes(customerDiscountCodes: CustomerDiscountCodes){
+        print("customer firebase id is \(firebaseCustomerID)")
         let customer = db.collection(NetworkConstants.CustomerDiscountCodes).document(firebaseCustomerID!)
         let encoder = JSONEncoder()
         do{
@@ -27,6 +28,7 @@ class FireBaseManager{
         
     }
     func retriveCustomerDiscountCodes() -> DocumentReference? {
+        print("customer firebase id is \(firebaseCustomerID)")
         let customer = db.collection(NetworkConstants.CustomerDiscountCodes).document(firebaseCustomerID ?? "")
         return customer
     }

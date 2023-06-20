@@ -46,6 +46,10 @@ struct ProductDetailsView: View {
                             if viewModel.isComplete{
                                 alertToast = AlertToast(type: .complete(.green), title: "Added ",subTitle: "Item added successfully to your shopping cart")
                             }
+                            if viewModel.isfailedCart
+                            {
+                                alertToast = AlertToast(type: .error(.red), title: "Sorry ",subTitle: "Item can not be inserted")
+                            }
                             return alertToast ?? AlertToast(type: .loading , title: "Please wait...")
                         }
                         
