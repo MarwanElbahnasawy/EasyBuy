@@ -11,11 +11,9 @@ struct Category: View {
     @ObservedObject var viewModel = CategoryViewModel()
     @Namespace private var animation
     @State private var isModalPresented: Bool = false
-    @State var isGrid = false
+    @AppStorage("isGridCat") var isGrid = true
    
     var body: some View {
-      
-     //   NavigationView{
             if(viewModel.isLoading){
                 if viewModel.iserror{
                     LottieView(lottieFile: "error")
@@ -51,34 +49,31 @@ struct Category: View {
                             }) {
                                 Image(systemName:  isGrid ? "square.fill.text.grid.1x2" : "square.grid.2x2")
                                     .font(.title2).padding(.trailing , 10).foregroundColor(Color("myblack"))
-                            
                             }
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        
                         .padding(.horizontal, 15)
-                        
                         TagsView()
                     }.padding(.leading)
                     ScrollView(.vertical, showsIndicators: false, content: {
-                        
                         VStack(spacing: 0) {
-                            LazyVGrid(columns: isGrid ? gridLayout : lineLayout, spacing: 15, content: {
-                                ForEach(viewModel.products ) { product in
-                                    if isGrid { ProductCell(product: product)
-                                    }else {
-                                        ProductRow(product: product)
-                                    }
-                                } //: LOOP
-                            })//: GRID
-                            .padding(15)
+                            if(viewModel.products.count == 0){
+                                NoProducts()
+                            }else{
+                                LazyVGrid(columns: isGrid ? gridLayout : lineLayout, spacing: 15, content: {
+                                    ForEach(viewModel.products ) { product in
+                                        if isGrid { ProductCell(product: product)
+                                        }else {
+                                            ProductRow(product: product)
+                                        }
+                                    } //: LOOP
+                                })//: GRID
+                                .padding(15)
+                            }
                         }
                     }
                     )}.ignoresSafeArea(.all, edges: .top)
                     .padding(.bottom, 65)
-                //                .navigationBarTitle(Text(""), displayMode: .inline)
-                //                .navigationBarHidden(true)
-                //                .navigationBarBackButtonHidden(true)
                     .partialSheet(presented: $isModalPresented) {
                         VStack {
                             Text("Filter By")
@@ -92,8 +87,6 @@ struct Category: View {
                                             self.isModalPresented = false
                                             viewModel.filterBy = value
                                             viewModel.filterTag()
-                                            
-                                            
                                         }) {
                                             Text(value)
                                                 .font(.custom(Constants.AppFont.semiBoldFont, size: 15))
@@ -109,7 +102,6 @@ struct Category: View {
                         }.frame(height: 350)
                     }
             }
-      //  }.navigationViewStyle(StackNavigationViewStyle())
     }
     
     /// Tags View

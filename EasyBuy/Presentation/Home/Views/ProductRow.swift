@@ -44,7 +44,7 @@ struct ProductRow: View {
                         . font (.system(size: 16))
                         .foregroundColor(Color("myblack"))
                         } else {
-                            Text (title).font (.system(size: 16))
+                            Text (title).font (.system(size: 16)).foregroundColor(Color("myblack"))
                         }
                         } else {
                             Text ( "Unknown" )
@@ -69,8 +69,8 @@ struct ProductRow: View {
                     Spacer()
                     
                     
-                } 
-            }
+                } .padding(.leading,10)
+            }.background(Color("myWhite")).cornerRadius(25)
         }
     }
 }

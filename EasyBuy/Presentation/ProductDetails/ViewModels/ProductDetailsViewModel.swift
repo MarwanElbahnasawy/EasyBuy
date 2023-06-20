@@ -228,56 +228,56 @@ class ProductViewModel: ObservableObject {
     }
     
     
-    func checkFavoriteDraftOrder() {
-        FireBaseManager.shared.retriveCustomerDiscountCodes()?.getDocument(completion: { [weak self] snapshot, error in
-            
-            if let error = error {
-                print("Failed to fetch current user:", error)
-                return
-            }
-            guard let data = snapshot?.data() else {
-                print("no data found")
-                return
-            }
-            
-            let objFireBase = FireBaseManager.shared.mapFireBaseObject(data: data)
-            self?.favorite = objFireBase?.draftOrders?.favoriteDraftorder
-            self?.cart = objFireBase?.draftOrders?.cartDraftOrder
-            
-            if self?.favorite == nil{
-                return
-            }
-            else{
-                if let draftOrderID = objFireBase?.draftOrders?.favoriteDraftorder?.draftOrderCreate?.draftOrder?.id{
-                    print((objFireBase?.draftOrders?.favoriteDraftorder?.draftOrderCreate?.draftOrder?.id)!)
-                    NetworkManager.getInstance(requestType: .admin).queryGraphQLRequest(
-                        query: DraftOrderQuery(id: draftOrderID),
-                        responseModel: DraftOrderCreate.self
-                    ) {[weak self] res in
-                        switch res {
-                        case .success(let success):
-                            var  lineItems: [DraftOrderLineItemInput] = []
-                            lineItems = mapLineItemsToDratOrderLineItems(lineItems: success.draftOrder?.lineItems?.nodes ?? [])
-                            if lineItems.contains(where: {$0.variantId == self?.favoriteVaraintID}){
-                                self?.isFavoriteExist = true
-                                self?.isLoading = false
-                                print("isFavoriteExist after call: \(String(describing: self?.isFavoriteExist))")
-                            }
-                            else {
-                                self?.isLoading = false
-                                print("isFavoriteExist after call: false")
-                            }
-                        case .failure(let failure):
-                            print(failure)
-                        }
-                        }
-                    }
-                
-                
-            }//
-        })
-    }
-    
+//    func checkFavoriteDraftOrder() {
+//        FireBaseManager.shared.retriveCustomerDiscountCodes()?.getDocument(completion: { [weak self] snapshot, error in
+//
+//            if let error = error {
+//                print("Failed to fetch current user:", error)
+//                return
+//            }
+//            guard let data = snapshot?.data() else {
+//                print("no data found")
+//                return
+//            }
+//
+//            let objFireBase = FireBaseManager.shared.mapFireBaseObject(data: data)
+//            self?.favorite = objFireBase?.draftOrders?.favoriteDraftorder
+//            self?.cart = objFireBase?.draftOrders?.cartDraftOrder
+//
+//            if self?.favorite == nil{
+//                return
+//            }
+//            else{
+//                if let draftOrderID = objFireBase?.draftOrders?.favoriteDraftorder?.draftOrderCreate?.draftOrder?.id{
+//                    print((objFireBase?.draftOrders?.favoriteDraftorder?.draftOrderCreate?.draftOrder?.id)!)
+//                    NetworkManager.getInstance(requestType: .admin).queryGraphQLRequest(
+//                        query: DraftOrderQuery(id: draftOrderID),
+//                        responseModel: DraftOrderCreate.self
+//                    ) {[weak self] res in
+//                        switch res {
+//                        case .success(let success):
+//                            var  lineItems: [DraftOrderLineItemInput] = []
+//                            lineItems = mapLineItemsToDratOrderLineItems(lineItems: success.draftOrder?.lineItems?.nodes ?? [])
+//                            if lineItems.contains(where: {$0.variantId == self?.favoriteVaraintID}){
+//                                self?.isFavoriteExist = true
+//                                self?.isLoading = false
+//                                print("isFavoriteExist after call: \(String(describing: self?.isFavoriteExist))")
+//                            }
+//                            else {
+//                                self?.isLoading = false
+//                                print("isFavoriteExist after call: false")
+//                            }
+//                        case .failure(let failure):
+//                            print(failure)
+//                        }
+//                        }
+//                    }
+//
+//
+//            }//
+//        })
+//    }
+//
     func getFavoriteDraftOrder()  {
         isFavoriteExist = true
         FireBaseManager.shared.retriveCustomerDiscountCodes()?.getDocument(completion: { [weak self] snapshot, error in
