@@ -19,7 +19,7 @@ class ProductViewModel: ObservableObject {
     @Published var isLoadingCart = false
     @Published var isfailedCart = false
     @Published var isShowAlet = false
-    
+    @Published var usedDiscountCodes: [String]?
 //    @Published var favoriteProductID = ""
     let customerID = UserDefaults.standard.string(forKey:"shopifyCustomerID")
     let email = UserDefaults.standard.string(forKey:"email")
@@ -70,7 +70,7 @@ class ProductViewModel: ObservableObject {
             let objFireBase = FireBaseManager.shared.mapFireBaseObject(data: data)
             self?.cart = objFireBase?.draftOrders?.cartDraftOrder
             self?.favorite = objFireBase?.draftOrders?.favoriteDraftorder
-            
+            self?.usedDiscountCodes = objFireBase?.usedDiscountCodes
             if self?.cart == nil{
                 self?.createDraftOrder(discountCodes: objFireBase?.discountCodes ?? [])
             }
@@ -126,7 +126,7 @@ class ProductViewModel: ObservableObject {
                         self?.isShowAlet = false
                     }
                     
-                    FireBaseManager.shared.saveCustomerDiscountCodes(customerDiscountCodes: CustomerDiscountCodes(id: self?.customerID,discountCodes: discountCodes, draftOrders: DraftOrders(favoriteDraftorder: self?.favorite, cartDraftOrder: success)))
+                    FireBaseManager.shared.saveCustomerDiscountCodes(customerDiscountCodes: CustomerDiscountCodes(id: self?.customerID,discountCodes: discountCodes, usedDiscountCodes: self?.usedDiscountCodes, draftOrders: DraftOrders(favoriteDraftorder: self?.favorite, cartDraftOrder: success)))
              
                 }
                 else{
@@ -158,7 +158,7 @@ class ProductViewModel: ObservableObject {
                         self?.isShowAlet = false
                     }
                     
-                    FireBaseManager.shared.saveCustomerDiscountCodes(customerDiscountCodes: CustomerDiscountCodes(id: customerDiscountCodes.id,discountCodes: customerDiscountCodes.discountCodes,draftOrders: DraftOrders(favoriteDraftorder: self?.favorite, cartDraftOrder: DraftOrderDataClass(draftOrderCreate: DraftOrderCreate(draftOrder: success.draftOrderUpdate?.draftOrder)))))
+                    FireBaseManager.shared.saveCustomerDiscountCodes(customerDiscountCodes: CustomerDiscountCodes(id: customerDiscountCodes.id,discountCodes: customerDiscountCodes.discountCodes, usedDiscountCodes: customerDiscountCodes.usedDiscountCodes,draftOrders: DraftOrders(favoriteDraftorder: self?.favorite, cartDraftOrder: DraftOrderDataClass(draftOrderCreate: DraftOrderCreate(draftOrder: success.draftOrderUpdate?.draftOrder)))))
                 }
                 else{
                     self?.isComplete = false
@@ -314,6 +314,7 @@ class ProductViewModel: ObservableObject {
                     customerDiscountCodes: CustomerDiscountCodes(
                         id: self?.customerID,
                         discountCodes: discountCodes,
+                        usedDiscountCodes: self?.usedDiscountCodes,
                         draftOrders: DraftOrders(
                             favoriteDraftorder: success,
                             cartDraftOrder: self?.cart
@@ -340,6 +341,7 @@ class ProductViewModel: ObservableObject {
                     customerDiscountCodes: CustomerDiscountCodes(
                         id: customerDiscountCodes.id,
                         discountCodes: customerDiscountCodes.discountCodes,
+                        usedDiscountCodes: customerDiscountCodes.usedDiscountCodes,
                         draftOrders: DraftOrders(
                             favoriteDraftorder: DraftOrderDataClass(
                                 draftOrderCreate: DraftOrderCreate(

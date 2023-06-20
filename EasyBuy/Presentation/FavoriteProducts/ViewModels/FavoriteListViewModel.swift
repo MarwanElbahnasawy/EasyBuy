@@ -77,6 +77,7 @@ class FavoriteListViewModel : ObservableObject {
                         customerDiscountCodes: CustomerDiscountCodes(
                             id: self?.customerDiscountCodes?.id,
                             discountCodes: self?.customerDiscountCodes?.discountCodes,
+                            usedDiscountCodes: self?.customerDiscountCodes?.usedDiscountCodes,
                             draftOrders: DraftOrders(
                                 favoriteDraftorder: DraftOrderDataClass(
                                     draftOrderCreate: DraftOrderCreate(

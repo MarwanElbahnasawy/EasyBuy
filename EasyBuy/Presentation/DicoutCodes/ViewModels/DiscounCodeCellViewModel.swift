@@ -51,6 +51,7 @@ class DiscountCodeViewModel : ObservableObject{
     
     func saveCodeForCustomer(id: String,customerCode: String){
         isUsed = true
+        print("customer code is \(customerCode)")
       FireBaseManager.shared.retriveCustomerDiscountCodes()?.getDocument { snapshot, error in
             if let error = error {
                 print("Failed to fetch current user:", error)
@@ -60,16 +61,24 @@ class DiscountCodeViewModel : ObservableObject{
             guard let data = snapshot?.data() else {
                     print("No data found")
                 FireBaseManager.shared.saveCustomerDiscountCodes(customerDiscountCodes: CustomerDiscountCodes(id: id, discountCodes: [customerCode]))
-                
                 return
             }
           var objFromFireBase = FireBaseManager.shared.mapFireBaseObject(data: data)
-          if objFromFireBase?.discountCodes?.contains(customerCode) == false{
-              objFromFireBase?.discountCodes?.append(customerCode)
-              let codes = CustomerDiscountCodes(id: id, discountCodes: objFromFireBase?.discountCodes, draftOrders: DraftOrders(favoriteDraftorder: objFromFireBase?.draftOrders?.favoriteDraftorder, cartDraftOrder: objFromFireBase?.draftOrders?.cartDraftOrder))
+          if let discountCodesInFireBase = objFromFireBase?.discountCodes{
+              if discountCodesInFireBase.contains(customerCode) == false{
+                  objFromFireBase?.discountCodes?.append(customerCode)
+                  let codes = CustomerDiscountCodes(id: id, discountCodes: objFromFireBase?.discountCodes, usedDiscountCodes: objFromFireBase?.usedDiscountCodes, draftOrders: DraftOrders(favoriteDraftorder: objFromFireBase?.draftOrders?.favoriteDraftorder, cartDraftOrder: objFromFireBase?.draftOrders?.cartDraftOrder))
+                  FireBaseManager.shared.saveCustomerDiscountCodes(customerDiscountCodes: codes)
+                  print("pressed")
+              }
+          }
+          else
+          {
+              let codes = CustomerDiscountCodes(id: id, discountCodes: [customerCode], usedDiscountCodes: objFromFireBase?.usedDiscountCodes, draftOrders: DraftOrders(favoriteDraftorder: objFromFireBase?.draftOrders?.favoriteDraftorder, cartDraftOrder: objFromFireBase?.draftOrders?.cartDraftOrder))
               FireBaseManager.shared.saveCustomerDiscountCodes(customerDiscountCodes: codes)
-              print("pressed")
+          }
+              
           }
         }
     }
-}
+

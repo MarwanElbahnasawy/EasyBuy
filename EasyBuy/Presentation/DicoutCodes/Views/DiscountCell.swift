@@ -44,8 +44,7 @@ struct DiscountCodeCell: View {
                     print("customer id is : \(String(describing: customerID))")
                     cellViewModel.isExist(id: customerID!,customerCode: cellViewModel.code)
                     self.animationAmount = 1.1
-                }
-                    .padding(10)
+                }.padding(10)
                     .background(cellViewModel.isUsed ?.gray : Color.black)
                     .foregroundColor(Color.white)
                     .cornerRadius(10)
