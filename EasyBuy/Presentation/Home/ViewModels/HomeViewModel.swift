@@ -15,6 +15,12 @@ class HomeViewModel: ObservableObject {
     @Published var iserror: Bool = false
     @Published var isLoading: Bool = true
     var rates: [String: Double]?
+    var randomNumberFiftyToEighty: Int {
+        return Int.random(in: 50...80)
+    }
+    var randomNumberFourToSeven: Int {
+        return Int.random(in: 4...7)
+    }
     
     init(){
 
@@ -22,7 +28,7 @@ class HomeViewModel: ObservableObject {
     }
     
     func fetchBrands(){
-        NetworkManager.getInstance(requestType: .storeFront).queryGraphQLRequest(query:CollectionsQuery(first: 40) , responseModel: Res_Collection.self, completion: { [weak self] result in
+        NetworkManager.getInstance(requestType: .storeFront).queryGraphQLRequest(query:CollectionsQuery(first: randomNumberFiftyToEighty) , responseModel: Res_Collection.self, completion: { [weak self] result in
             guard let self = self else { return }
                             switch result {
                             case .success(let success):
@@ -34,7 +40,7 @@ class HomeViewModel: ObservableObject {
     }
     
     func fetchProducts(){
-        NetworkManager.getInstance(requestType: .storeFront).queryGraphQLRequest(query:GetAllProductsQuery(first: 40,imageFirst: 5, variantsFirst: 5) , responseModel: DataClassProdcuts.self, completion: { [weak self] result in
+        NetworkManager.getInstance(requestType: .storeFront).queryGraphQLRequest(query:GetAllProductsQuery(first: randomNumberFiftyToEighty,imageFirst: randomNumberFourToSeven, variantsFirst: randomNumberFourToSeven) , responseModel: DataClassProdcuts.self, completion: { [weak self] result in
             guard let self = self else { return }
                             switch result {
                             case .success(let success):
