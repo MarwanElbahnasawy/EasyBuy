@@ -62,8 +62,7 @@ final class NetworkManager: NetworkManagerProtocol {
     }
     
     func queryGraphQLRequest<T, K>(query: T, responseModel: K.Type, completion: @escaping ((Result<K, Error>) -> Void)) where T : Apollo.GraphQLQuery, K : Decodable, K : Encodable {
-        
-        
+        NetworkManager.shared?.service.store.clearCache()
         NetworkManager.getInstance(requestType: requestType).service.fetch(query: query) { result in
              
              switch result {
@@ -82,7 +81,7 @@ final class NetworkManager: NetworkManagerProtocol {
          }
      }
     func performGraphQLRequest<T, K>(mutation: T, responseModel: K.Type, completion: @escaping ((Result<K, Error>) -> Void)) where T : Apollo.GraphQLMutation, K : Decodable, K : Encodable {
-        
+        NetworkManager.shared?.service.store.clearCache()
         NetworkManager.getInstance(requestType: requestType).service.perform(mutation: mutation) { result in
             switch result {
             case .success(let apolloResponse):

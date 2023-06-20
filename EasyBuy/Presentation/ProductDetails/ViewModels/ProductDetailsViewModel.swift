@@ -19,6 +19,9 @@ class ProductViewModel: ObservableObject {
     @Published var isLoadingCart = false
     @Published var isfailedCart = false
     @Published var isShowAlet = false
+    var randomNumberTenToTwenty: Int {
+        return Int.random(in: 10...20)
+    }
     
 //    @Published var favoriteProductID = ""
     let customerID = UserDefaults.standard.string(forKey:"shopifyCustomerID")
@@ -32,7 +35,7 @@ class ProductViewModel: ObservableObject {
         checkFavoriteDraftOrder()
         print("isFavoriteExist initially: \(isFavoriteExist)")
         guard let productId = productId else { return }
-        let query = ProductDetailsQuery(productId: productId, imageFirst: 10, variantsFirst: 10)
+        let query = ProductDetailsQuery(productId: productId, imageFirst: randomNumberTenToTwenty, variantsFirst: randomNumberTenToTwenty)
         NetworkManager.getInstance(requestType: .storeFront).queryGraphQLRequest(query: query, responseModel: DataClass.self) { [weak self] result in
             switch result {
             case .success(let data):
