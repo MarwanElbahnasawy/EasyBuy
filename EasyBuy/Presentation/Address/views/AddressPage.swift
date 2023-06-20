@@ -144,7 +144,6 @@ struct AddressPage: View {
                     }
                     Spacer(minLength: UIScreen.main.bounds.width * 0.15)
                 }
-                
             }
             
         }.background(Color("addressPageColor"))
