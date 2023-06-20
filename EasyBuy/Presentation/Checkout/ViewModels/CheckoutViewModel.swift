@@ -107,8 +107,11 @@ class CheckoutViewModel: ObservableObject{
         var  lineItems: [DraftOrderLineItemInput] = []
         lineItems = mapLineItemsToDratOrderLineItems(lineItems: customerDiscountCodes?.draftOrders?.cartDraftOrder?.draftOrderCreate?.draftOrder?.lineItems?.nodes)
         let billingAdress = MailingAddressInput(address1: customerAddress?.address1, address2: customerAddress?.address2, city: customerAddress?.city, country: customerAddress?.country, phone: customerAddress?.phone, zip: customerAddress?.zip )
+        print(billingAdress)
         let draftOrderInput = DraftOrderInput( billingAddress: billingAdress, lineItems: lineItems)
+
         UpdateDraftOrder(id: cartDraftOrderID ?? "", draftOrderInput: draftOrderInput, customerDiscountCodes: customerDiscountCodes ?? CustomerDiscountCodes(), isApplyDiscountCode: false)
+
     }
     
     func applyDiscountCodeForUser(){

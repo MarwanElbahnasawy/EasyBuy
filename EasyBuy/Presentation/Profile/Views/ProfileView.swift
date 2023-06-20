@@ -7,16 +7,18 @@ struct ProfileView: View {
     @AppStorage("token") var token: String?
     
     var body: some View {
-        List {
-            ProfileSectionView()
-            
-            GeneralSectionView()
-            
-            OrdersSectionView()
-            
-            AccountSectionView(confirmingSignOut: $confirmingSignOut)
-            
-            PolicySectionView(isShowingFAQs: $isShowingFAQs, isShowingAboutUs: $isShowingAboutUs)
+        NavigationView{
+            List {
+                ProfileSectionView()
+                
+                GeneralSectionView()
+                
+                OrdersSectionView()
+                
+                AccountSectionView(confirmingSignOut: $confirmingSignOut)
+                
+                PolicySectionView(isShowingFAQs: $isShowingFAQs, isShowingAboutUs: $isShowingAboutUs)
+            }
         }
         .padding(.bottom, 50)
         .onAppear(perform: {

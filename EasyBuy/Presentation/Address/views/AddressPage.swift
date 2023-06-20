@@ -116,7 +116,6 @@ struct AddressPage: View {
                             zip = viewModel.placemark?.postalCode ?? ""
                             city = viewModel.placemark?.locality ?? ""
                         }
-                        
                     }
                     Button {
                         if (viewModel.validatePhoneNumber(value: phone)){
@@ -143,12 +142,13 @@ struct AddressPage: View {
                             .frame(width: 300, height: 50,alignment: .center)
                             
                     }
-                   
+                    Spacer(minLength: UIScreen.main.bounds.width * 0.15)
                 }
                 
             }
             
-        }.onAppear{
+        }.background(Color("addressPageColor"))
+        .onAppear{
             viewModel.manager.requestWhenInUseAuthorization()
             viewModel.bindResultToViewController = {() in
                 print ("done" )

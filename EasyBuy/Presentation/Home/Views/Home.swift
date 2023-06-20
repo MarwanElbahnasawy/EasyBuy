@@ -9,8 +9,9 @@ import SwiftUI
 
 struct Home: View {
     @ObservedObject var viewModel = HomeViewModel()
-    @State var isGrid = true
+    @AppStorage("isGridHome")  var isGrid = true
     @AppStorage("displayName") var displayName: String?
+    
     // MARK: - Func
     
     fileprivate func TrendingView() -> some View {
@@ -107,16 +108,12 @@ struct Home: View {
         } //: ZSTACK
         .ignoresSafeArea(.all, edges: .top)
         .padding(.bottom, 65)
-
                 .onAppear(perform: {
                     viewModel.getCurrency()
                     viewModel.fetchBrands()
                     viewModel.fetchProducts()
+                    
                 })
-    
-
-        
-        
     }
 }
 

@@ -32,7 +32,7 @@ struct Order: Codable, Identifiable {
     var number, orderNumber: Int?
     var token, totalDiscounts: String?
     var totalPrice: String?
-    var shippingAddress: Address?
+    var billingAddress: Address?
  //   var fulfillments: [Fulfillment]?
     var displayFulfillmentStatus, displayFinancialStatus, returnStatus: String?
 }
@@ -50,15 +50,9 @@ struct Money: Codable {
 // MARK: - Address
 
 struct Address: Codable {
-    var first_name: String?
-    var address1, phone, city, zip: String?
-    var province, country: String?
-    var last_name: String?
-    var address2: String?
-    var latitude, longitude: Double?
-    var name, country_code, province_code: String?
-    var id, customer_id: Int?
-    var country_name: String?
+    var address1: String?
+       var lastName, city, country, zip: String?
+       var phone, id: String?
 }
 
 

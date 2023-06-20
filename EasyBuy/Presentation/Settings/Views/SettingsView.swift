@@ -106,7 +106,7 @@ struct SettingsView: View {
                 }
                 return alert
             }
-            
+            Spacer(minLength: UIScreen.main.bounds.width * 0.15)
             
         }.navigationBarBackButtonHidden(true)
             .navigationBarItems(leading: BackButton(action: {

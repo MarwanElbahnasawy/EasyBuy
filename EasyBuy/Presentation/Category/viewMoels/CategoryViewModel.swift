@@ -17,6 +17,9 @@ class CategoryViewModel: ObservableObject {
     @Published var arrFilter: [String] = []
     @Published var tags: [String] = []
     @Published var products :[Product] = []
+    var randomNumberFiftyToTwoHundredFifty: Int {
+        return Int.random(in: 50...250)
+    }
     
     init(){
         fetchProducts()
@@ -24,7 +27,7 @@ class CategoryViewModel: ObservableObject {
     
     
     func fetchProducts(){
-        NetworkManager.getInstance(requestType: .storeFront).queryGraphQLRequest(query:GetAllProductsQuery(first: 40,imageFirst: 5, variantsFirst: 5) , responseModel: DataClassProdcuts.self, completion: { [weak self] result in
+        NetworkManager.getInstance(requestType: .storeFront).queryGraphQLRequest(query:GetAllProductsQuery(first: randomNumberFiftyToTwoHundredFifty,imageFirst: randomNumberFiftyToTwoHundredFifty, variantsFirst: randomNumberFiftyToTwoHundredFifty) , responseModel: DataClassProdcuts.self, completion: { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let success):

@@ -28,7 +28,8 @@ struct BrandProducts: View {
                 }
                 ProductCatalog(products:viewModel.items ?? [])
             }
-        }.navigationBarBackButtonHidden(true)
+        }.background(Color("catPageColor"))
+        .navigationBarBackButtonHidden(true)
             .navigationBarItems(leading: BackButton(action: {presentationMode.wrappedValue.dismiss()}), trailing: Image("threeDot"))
         
             .onAppear(){

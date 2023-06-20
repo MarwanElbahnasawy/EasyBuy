@@ -1099,7 +1099,6 @@ public enum DraftOrderAppliedDiscountType: RawRepresentable, Equatable, Hashable
 }
 
 
-
 /// The code designating a country/region, which generally follows ISO 3166-1 alpha-2 guidelines.
 /// If a territory doesn't have a country code value in the `CountryCode` enum, then it might be considered a subdivision
 /// of another country. For example, the territories associated with Spain are represented by the country code `ES`,
@@ -2855,32 +2854,32 @@ public struct MetafieldInput: GraphQLMapConvertible {
 
   /// - Parameters:
   ///   - id: The unique ID of the metafield.
-  ///
+  /// 
   /// Required when updating a metafield, but should not be included when creating as it's created automatically.
   ///   - namespace: The container for a group of metafields that the metafield is or will be associated with. Used in tandem with
   /// `key` to lookup a metafield on a resource, preventing conflicts with other metafields with the same `key`.
-  ///
+  /// 
   /// Required when creating a metafield, but optional when updating. Used to help identify the metafield when
   /// updating, but cannot be updated itself.
-  ///
+  /// 
   /// Must be 3-255 characters long and can contain alphanumeric, hyphen, and underscore characters.
   ///   - key: The unique identifier for a metafield within its namespace.
-  ///
+  /// 
   /// Required when creating a metafield, but optional when updating. Used to help identify the metafield when
   /// updating, but cannot be updated itself.
-  ///
+  /// 
   /// Must be 3-64 characters long and can contain alphanumeric, hyphen, and underscore characters.
   ///   - value: The data stored in the metafield. Always stored as a string, regardless of the metafield's type.
   ///   - type: The type of data that is stored in the metafield.
   /// Refer to the list of [supported types](https://shopify.dev/apps/metafields/types).
-  ///
+  /// 
   /// Required when creating a metafield, but optional when updating.
   public init(id: Swift.Optional<GraphQLID?> = nil, namespace: Swift.Optional<String?> = nil, key: Swift.Optional<String?> = nil, value: Swift.Optional<String?> = nil, type: Swift.Optional<String?> = nil) {
     graphQLMap = ["id": id, "namespace": namespace, "key": key, "value": value, "type": type]
   }
 
   /// The unique ID of the metafield.
-  ///
+  /// 
   /// Required when updating a metafield, but should not be included when creating as it's created automatically.
   public var id: Swift.Optional<GraphQLID?> {
     get {
@@ -2893,10 +2892,10 @@ public struct MetafieldInput: GraphQLMapConvertible {
 
   /// The container for a group of metafields that the metafield is or will be associated with. Used in tandem with
   /// `key` to lookup a metafield on a resource, preventing conflicts with other metafields with the same `key`.
-  ///
+  /// 
   /// Required when creating a metafield, but optional when updating. Used to help identify the metafield when
   /// updating, but cannot be updated itself.
-  ///
+  /// 
   /// Must be 3-255 characters long and can contain alphanumeric, hyphen, and underscore characters.
   public var namespace: Swift.Optional<String?> {
     get {
@@ -2908,10 +2907,10 @@ public struct MetafieldInput: GraphQLMapConvertible {
   }
 
   /// The unique identifier for a metafield within its namespace.
-  ///
+  /// 
   /// Required when creating a metafield, but optional when updating. Used to help identify the metafield when
   /// updating, but cannot be updated itself.
-  ///
+  /// 
   /// Must be 3-64 characters long and can contain alphanumeric, hyphen, and underscore characters.
   public var key: Swift.Optional<String?> {
     get {
@@ -2934,7 +2933,7 @@ public struct MetafieldInput: GraphQLMapConvertible {
 
   /// The type of data that is stored in the metafield.
   /// Refer to the list of [supported types](https://shopify.dev/apps/metafields/types).
-  ///
+  /// 
   /// Required when creating a metafield, but optional when updating.
   public var type: Swift.Optional<String?> {
     get {
@@ -5860,11 +5859,11 @@ public final class DraftOrderCreateMutation: GraphQLMutation {
                 }
 
                 /// The location of the image as a URL.
-                ///
+                /// 
                 /// If no transform options are specified, then the original image will be preserved including any pre-applied transforms.
-                ///
+                /// 
                 /// All transformation options are considered "best-effort". Any transformation that the original image type doesn't support will be ignored.
-                ///
+                /// 
                 /// If you need multiple variations of the same image, then you can use [GraphQL aliases](https://graphql.org/learn/queries/#aliases).
                 public var url: String {
                   get {
@@ -5969,7 +5968,7 @@ public final class DraftOrderUpdateMutation: GraphQLMutation {
     }
 
     /// Updates a draft order.
-    ///
+    /// 
     /// If a checkout has been started for a draft order, any update to the draft will unlink the checkout. Checkouts
     /// are created but not immediately completed when opening the merchant credit card modal in the admin, and when a
     /// buyer opens the invoice URL. This is usually fine, but there is an edge case where a checkout is in progress
@@ -6506,11 +6505,11 @@ public final class DraftOrderUpdateMutation: GraphQLMutation {
                 }
 
                 /// The location of the image as a URL.
-                ///
+                /// 
                 /// If no transform options are specified, then the original image will be preserved including any pre-applied transforms.
-                ///
+                /// 
                 /// All transformation options are considered "best-effort". Any transformation that the original image type doesn't support will be ignored.
-                ///
+                /// 
                 /// If you need multiple variations of the same image, then you can use [GraphQL aliases](https://graphql.org/learn/queries/#aliases).
                 public var url: String {
                   get {
@@ -7125,11 +7124,11 @@ public final class DraftOrderQuery: GraphQLQuery {
               }
 
               /// The location of the image as a URL.
-              ///
+              /// 
               /// If no transform options are specified, then the original image will be preserved including any pre-applied transforms.
-              ///
+              /// 
               /// All transformation options are considered "best-effort". Any transformation that the original image type doesn't support will be ignored.
-              ///
+              /// 
               /// If you need multiple variations of the same image, then you can use [GraphQL aliases](https://graphql.org/learn/queries/#aliases).
               public var url: String {
                 get {
@@ -7274,7 +7273,7 @@ public final class GetOrdersQuery: GraphQLQuery {
                 currencyCode
               }
             }
-            shippingAddress {
+            billingAddress {
               __typename
               address1
               firstName
@@ -7427,7 +7426,7 @@ public final class GetOrdersQuery: GraphQLQuery {
               GraphQLField("returnStatus", type: .nonNull(.scalar(OrderReturnStatus.self))),
               GraphQLField("phone", type: .scalar(String.self)),
               GraphQLField("totalPriceSet", type: .nonNull(.object(TotalPriceSet.selections))),
-              GraphQLField("shippingAddress", type: .object(ShippingAddress.selections)),
+              GraphQLField("billingAddress", type: .object(BillingAddress.selections)),
             ]
           }
 
@@ -7437,8 +7436,8 @@ public final class GetOrdersQuery: GraphQLQuery {
             self.resultMap = unsafeResultMap
           }
 
-          public init(id: GraphQLID, name: String, phone: String? = nil, createdAt: String, displayFinancialStatus: OrderDisplayFinancialStatus? = nil, displayFulfillmentStatus: OrderDisplayFulfillmentStatus, returnStatus: OrderReturnStatus, totalPriceSet: TotalPriceSet, shippingAddress: ShippingAddress? = nil) {
-            self.init(unsafeResultMap: ["__typename": "Order", "id": id, "name": name, "phone": phone, "createdAt": createdAt, "displayFinancialStatus": displayFinancialStatus, "displayFulfillmentStatus": displayFulfillmentStatus, "returnStatus": returnStatus, "totalPriceSet": totalPriceSet.resultMap, "shippingAddress": shippingAddress.flatMap { (value: ShippingAddress) -> ResultMap in value.resultMap }])
+          public init(id: GraphQLID, name: String, phone: String? = nil, createdAt: String, displayFinancialStatus: OrderDisplayFinancialStatus? = nil, displayFulfillmentStatus: OrderDisplayFulfillmentStatus, returnStatus: OrderReturnStatus, totalPriceSet: TotalPriceSet, billingAddress: BillingAddress? = nil) {
+            self.init(unsafeResultMap: ["__typename": "Order", "id": id, "name": name, "phone": phone, "createdAt": createdAt, "displayFinancialStatus": displayFinancialStatus, "displayFulfillmentStatus": displayFulfillmentStatus, "returnStatus": returnStatus, "totalPriceSet": totalPriceSet.resultMap, "billingAddress": billingAddress.flatMap { (value: BillingAddress) -> ResultMap in value.resultMap }])
           }
 
           public var __typename: String {
@@ -7536,13 +7535,13 @@ public final class GetOrdersQuery: GraphQLQuery {
             }
           }
 
-          /// The mailing address of the customer.
-          public var shippingAddress: ShippingAddress? {
+          /// The billing address of the customer.
+          public var billingAddress: BillingAddress? {
             get {
-              return (resultMap["shippingAddress"] as? ResultMap).flatMap { ShippingAddress(unsafeResultMap: $0) }
+              return (resultMap["billingAddress"] as? ResultMap).flatMap { BillingAddress(unsafeResultMap: $0) }
             }
             set {
-              resultMap.updateValue(newValue?.resultMap, forKey: "shippingAddress")
+              resultMap.updateValue(newValue?.resultMap, forKey: "billingAddress")
             }
           }
 
@@ -7699,7 +7698,7 @@ public final class GetOrdersQuery: GraphQLQuery {
             }
           }
 
-          public struct ShippingAddress: GraphQLSelectionSet {
+          public struct BillingAddress: GraphQLSelectionSet {
             public static let possibleTypes: [String] = ["MailingAddress"]
 
             public static var selections: [GraphQLSelection] {
@@ -7796,7 +7795,7 @@ public final class GetOrdersQuery: GraphQLQuery {
             }
 
             /// A unique phone number for the customer.
-            ///
+            /// 
             /// Formatted using E.164 standard. For example, _+16135551111_.
             public var phone: String? {
               get {

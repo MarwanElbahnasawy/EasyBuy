@@ -185,7 +185,7 @@ query getOrders($first: Int , $query: String){
               currencyCode
           }
       }
-      shippingAddress{
+      billingAddress{
           address1
           firstName
           lastName
