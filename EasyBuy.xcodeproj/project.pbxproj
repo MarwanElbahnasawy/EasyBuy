@@ -49,6 +49,7 @@
 		14B1383B2A3B932B00F33395 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B1383A2A3B932B00F33395 /* Address.swift */; };
 		14BC9B412A2CE69D00D7FD4B /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BC9B402A2CE69D00D7FD4B /* Category.swift */; };
 		14BC9B432A2CE6D300D7FD4B /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BC9B422A2CE6D300D7FD4B /* CategoryViewModel.swift */; };
+		14DD15182A41E1B400831C48 /* APIAdmin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DD15172A41E1B300831C48 /* APIAdmin.swift */; };
 		14E54EE52A2DA16A00635F72 /* error.json in Resources */ = {isa = PBXBuildFile; fileRef = 14E54EE42A2DA16900635F72 /* error.json */; };
 		14E54EE72A2E10B100635F72 /* OrdersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E54EE62A2E10B100635F72 /* OrdersView.swift */; };
 		14E54EE92A2E1FA500635F72 /* OrderRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E54EE82A2E1FA400635F72 /* OrderRow.swift */; };
@@ -73,7 +74,6 @@
 		14F9B2832A2B9B25009C2611 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F9B2822A2B9B25009C2611 /* BaseView.swift */; };
 		14F9B2852A2B9B38009C2611 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F9B2842A2B9B38009C2611 /* BaseViewModel.swift */; };
 		14FB09122A3A6BF3006F54F6 /* Admin.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 14FB09112A3A6BF3006F54F6 /* Admin.graphql */; };
-		14FB09182A3A77B1006F54F6 /* APIAdmin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FB09172A3A77B1006F54F6 /* APIAdmin.swift */; };
 		154AC67ABE782070327BB405 /* Pods_EasyBuyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BA8A10F2355D006D6A60EEA /* Pods_EasyBuyTests.framework */; };
 		171B14D42A2891B900851C67 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 171B14D32A2891B900851C67 /* Lottie */; };
 		171B14D92A28996C00851C67 /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171B14D82A28996C00851C67 /* NetworkReachability.swift */; };
@@ -264,6 +264,7 @@
 		14B1383A2A3B932B00F33395 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		14BC9B402A2CE69D00D7FD4B /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		14BC9B422A2CE6D300D7FD4B /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
+		14DD15172A41E1B300831C48 /* APIAdmin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIAdmin.swift; sourceTree = "<group>"; };
 		14E54EE42A2DA16900635F72 /* error.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = error.json; sourceTree = "<group>"; };
 		14E54EE62A2E10B100635F72 /* OrdersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrdersView.swift; sourceTree = "<group>"; };
 		14E54EE82A2E1FA400635F72 /* OrderRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderRow.swift; sourceTree = "<group>"; };
@@ -288,7 +289,6 @@
 		14F9B2822A2B9B25009C2611 /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		14F9B2842A2B9B38009C2611 /* BaseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		14FB09112A3A6BF3006F54F6 /* Admin.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Admin.graphql; sourceTree = "<group>"; };
-		14FB09172A3A77B1006F54F6 /* APIAdmin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIAdmin.swift; sourceTree = "<group>"; };
 		171B14D82A28996C00851C67 /* NetworkReachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReachability.swift; sourceTree = "<group>"; };
 		171B15162A28FC7F00851C67 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		171B151D2A28FCCF00851C67 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -852,7 +852,7 @@
 			children = (
 				3FE184512A3B237D009EBBB3 /* EasyBuy.entitlements */,
 				3F25A1AD2A31521C009614A8 /* GoogleService-Info.plist */,
-				14FB09172A3A77B1006F54F6 /* APIAdmin.swift */,
+				14DD15172A41E1B300831C48 /* APIAdmin.swift */,
 				147695C82A3E931C007DA9B9 /* API.swift */,
 				17C9CF232A27E12F004BCCC2 /* EasyBuyApp.swift */,
 				3F02F2C32A2BCEC900FDE52E /* schemaAdmin.json */,
@@ -2032,6 +2032,7 @@
 				1486EBA22A2BA0F10029212B /* View + partialSheet.swift in Sources */,
 				EB40336A2A3D2EBB003AA919 /* AccountSectionView.swift in Sources */,
 				EBC8D0E42A2AA930006DACFD /* Product.swift in Sources */,
+				14DD15182A41E1B400831C48 /* APIAdmin.swift in Sources */,
 				EBCEFB9A2A31D74B00042B62 /* FeaturedImageView.swift in Sources */,
 				14AC6C7E2A37D2DC00371D34 /* OnboardingViewModel.swift in Sources */,
 				147695C92A3E931C007DA9B9 /* API.swift in Sources */,
@@ -2069,7 +2070,6 @@
 				EBCEFBA82A31D85700042B62 /* BackButtonView.swift in Sources */,
 				EBC6453C2A2C947F000FD6F5 /* SettingRowView.swift in Sources */,
 				3F02F2E62A2DECFC00FDE52E /* RedeemedCodesList.swift in Sources */,
-				14FB09182A3A77B1006F54F6 /* APIAdmin.swift in Sources */,
 				3F02F2A62A29E83E00FDE52E /* NetworkManager.swift in Sources */,
 				3FFBDFF52A3CDF5200ACC61E /* SettingsViewModel.swift in Sources */,
 				EBF685282A3C843F00A276D8 /* AboutUsView.swift in Sources */,

@@ -112,6 +112,7 @@ struct Home: View {
                     viewModel.getCurrency()
                     viewModel.fetchBrands()
                     viewModel.fetchProducts()
+                    
                 })
     }
 }

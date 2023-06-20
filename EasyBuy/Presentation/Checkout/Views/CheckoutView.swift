@@ -11,7 +11,7 @@ import Combine
 struct CheckoutView: View {
     @ObservedObject var viewModel: CheckoutViewModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-
+    
     var body: some View {
         
         ScrollView(.vertical, showsIndicators: false, content: {
@@ -24,7 +24,7 @@ struct CheckoutView: View {
                         AddressCell(address: customerAddress )
                             .padding(.horizontal,10).padding(.top,10)
                     }
-                   
+                    
                     NavigationLink(destination: {
                         AddressView(checkOutViewMode: viewModel,isComingFromPayment: true)
                     }, label: {
@@ -64,8 +64,8 @@ struct CheckoutView: View {
                             .border(Color.gray, width: 1).disabled(true)
                         
                         NavigationLink(destination: {
-                         CodesView(selectedValue: 1,isUseable: true,checkoutViewModel: viewModel)
-                    
+                            CodesView(selectedValue: 1,isUseable: true,checkoutViewModel: viewModel)
+                            
                             
                         }, label: {
                             Text("Get Code")
@@ -87,7 +87,7 @@ struct CheckoutView: View {
                             .foregroundColor(.white)
                             .cornerRadius(5)
                     }.disabled(viewModel.discountCodes.isEmpty)
-
+                    
                     HStack{
                         Text("Total Price:").fontWeight(.semibold)
                         Text("\(formatPrice(price: viewModel.totalPrice))").fontWeight(.thin)
@@ -105,9 +105,7 @@ struct CheckoutView: View {
                     }.padding(.leading,10).padding(.top,30)
                 }
                 NavigationLink {
-                   
                     PaymentMethodView(totalPrice:$viewModel.priceAfterDiscounts , products: viewModel.products ?? [],draftOrderID: viewModel.cartDraftOrderID ?? " ")
-                    
                 } label: {
                     Text("Go To Payment")
                         .font(.title3)
@@ -116,10 +114,11 @@ struct CheckoutView: View {
                         .padding()
                         .padding(.horizontal, 8)
                         .background(Color.black)
-                        .cornerRadius(10.0).onTapGesture {
-                            print("pressed")
-                            viewModel.updateAdrees()
-                        }
+                        .cornerRadius(10.0)
+                    
+                }.disabled(viewModel.customerAddress?.address1?.isEmpty == true || viewModel.customerAddress?.address1 == nil).onDisappear{
+                    print("disappearing....")
+                    viewModel.updateAdrees()
                 }
             }
         }).onAppear{
