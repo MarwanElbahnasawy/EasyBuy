@@ -14,7 +14,7 @@ struct AddToCartView: View {
        HStack {
             VStack {
                 Text("Total price")
-                Text("$\(price ?? "")")
+                Text("\(formatPrice(price: price))")
                     .font(.title)
                     .foregroundColor(.black)
             }
@@ -32,7 +32,9 @@ struct AddToCartView: View {
                     .cornerRadius(10.0)
             }
             
-        }
+       }.onAppear{
+           SettingsViewModel().getCurrency()
+       }
         .padding()
         .padding(.horizontal)
         .cornerRadius(60.0, corners: .topLeft)

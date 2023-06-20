@@ -41,6 +41,8 @@ struct SizesView: View {
                                     viewModel.varaintID = selectedItem?.node?.id
                                     viewModel.getAvailableQuantityForProduct()
                                     viewModel.quantity = 1
+                                    let price = Double(viewModel.product?.product?.variants?.edges?.first?.node?.price?.amount ?? "1.0")
+                                    viewModel.price = "\(Double(viewModel.quantity) * (price ?? 100))"
                                 }
                         }
                     }
