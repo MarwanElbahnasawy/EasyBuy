@@ -10,7 +10,6 @@ import Foundation
 class DiscountCodesListViewModel: ObservableObject{
     @Published var discountCodes: DataDiscountCodes?
     @Published var notUsedDiscountCodes: [CodeDiscountNodesNode] = []
-
     func getDiscountCodesForListView(adType: AdType)-> [CodeDiscountNodesNode]?{
         let filteredArray: [CodeDiscountNodesNode] = notUsedDiscountCodes
         var resultArray: [CodeDiscountNodesNode] = []
@@ -58,29 +57,6 @@ class DiscountCodesListViewModel: ObservableObject{
             else{
                 self?.notUsedDiscountCodes = self?.discountCodes?.codeDiscountNodes?.nodes ?? []
             }
-//            if let unusedCodes = self?.discountCodes?.codeDiscountNodes?.nodes{
-//
-//                for unusedCode in unusedCodes{
-//                    if let code =  unusedCode.codeDiscount?.codes?.nodes?.first?.code {
-//                        if let usedCodes = objFromFireBase?.usedDiscountCodes{
-//                            for usedCode in usedCodes {
-//                                if code != usedCode {
-//                                    self?.notUsedDiscountCodes.append(unusedCode)
-//                                }
-//                            }
-//                        }
-//                        else{
-//                            self?.notUsedDiscountCodes = unusedCodes
-//                            return
-//                        }
-//                    }
-//                }
-//                print(" self?.notUsedDiscountCodes is \(self?.notUsedDiscountCodes ?? [])")
-//            }
-//            else{
-//                self?.notUsedDiscountCodes =  self?.discountCodes?.codeDiscountNodes?.nodes ?? []
-//            }
-
           
           }
     }
