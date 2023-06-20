@@ -10,12 +10,11 @@ import SwiftUI
 struct AddToCartView: View {
     let price: String?
     let action: () -> Void
-    
     var body: some View {
        HStack {
             VStack {
                 Text("Total price")
-                Text("$\(price ?? "")")
+                Text("\(formatPrice(price: price))")
                     .font(.title)
                     .foregroundColor(.black)
             }
@@ -33,7 +32,9 @@ struct AddToCartView: View {
                     .cornerRadius(10.0)
             }
             
-        }
+       }.onAppear{
+           SettingsViewModel().getCurrency()
+       }
         .padding()
         .padding(.horizontal)
         .cornerRadius(60.0, corners: .topLeft)

@@ -10,7 +10,7 @@ import Combine
 
 struct CheckoutView: View {
     @ObservedObject var viewModel: CheckoutViewModel
-    
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
     var body: some View {
         
@@ -22,7 +22,7 @@ struct CheckoutView: View {
                     }
                     if let customerAddress = viewModel.customerAddress{
                         AddressCell(address: customerAddress )
-                            .padding(.leading,10).padding(.top,10)
+                            .padding(.horizontal,10).padding(.top,10)
                     }
                    
                     NavigationLink(destination: {
@@ -37,30 +37,34 @@ struct CheckoutView: View {
                     })
                     
                 }
-                .frame(height: 300)
+                .frame(height: UIScreen.main.bounds.height/2)
                 .shadow(radius: 20)
                 .cornerRadius(20)
                 VStack{
                     if #available(iOS 16.0, *) {
                         Text("Products List").frame(maxWidth: .infinity, alignment: .leading).padding(.leading,10).fontWeight(.bold).font(Font.system(size: 22))
                     }
-                    List {
-                        ForEach(viewModel.products ?? [], id: \.variant?.id) { item in
-                            FavoriteAndCartCell(imageUrl: URL(string: item.product?.featuredImage?.url ?? "not available"), title: item.product?.title,
-                                                type: item.product?.productType,
-                                                price: item.product?.priceRangeV2?.maxVariantPrice?.amount)
+                    ScrollView{
+                        LazyVStack {
+                            ForEach(viewModel.products ?? [], id: \.variant?.id) { item in
+                                FavoriteAndCartCell(imageUrl: URL(string: item.product?.featuredImage?.url ?? "not available"), title: item.product?.title,
+                                                    type: item.product?.productType,
+                                                    price:formatPrice(price: item.product?.priceRangeV2?.maxVariantPrice?.amount),size: CartListViewModel().getItemSize(item: item.variant?.title),quantity: Int(item.quantity ?? 1), isCheckout: true).padding()
+                            }
+                            
                         }
                         
-                    }.frame(height: 180, alignment: .center).onAppear{
-                        viewModel.getProducts()
-                    }
+                    }.onAppear{
+                        
+                        viewModel.settingsViewModel.getCurrency()
+                    }.background(Color("itemcolor")).frame(height: UIScreen.main.bounds.height/6, alignment: .center).padding()
                 }
                 Spacer()
                 VStack{
                     HStack{
                         TextField("Enter Discount code here", text: $viewModel.discountCodes)
                             .padding(10)
-                            .border(Color.gray, width: 1)
+                            .border(Color.gray, width: 1).disabled(true)
                         
                         NavigationLink(destination: {
                          CodesView(selectedValue: 1,isUseable: true,checkoutViewModel: viewModel)
@@ -75,7 +79,7 @@ struct CheckoutView: View {
                                 .cornerRadius(5)
                         })
                         
-                    }.padding(.horizontal,10)
+                    }.padding(.all,10)
                     Button {
                         viewModel.applyDiscountCode()
                     } label: {
@@ -85,7 +89,7 @@ struct CheckoutView: View {
                             .background(Color.black)
                             .foregroundColor(.white)
                             .cornerRadius(5)
-                    }
+                    }.disabled(!viewModel.discountCodes.isEmpty)
 
                     HStack{
                         Text("Total Price:").fontWeight(.semibold)
@@ -113,7 +117,8 @@ struct CheckoutView: View {
                         .cornerRadius(10.0)
                 }
             }
-        })
+        }).navigationBarBackButtonHidden(true)
+            .navigationBarItems(leading: BackButton(action: { presentationMode.wrappedValue.dismiss() })).background(Color("itemcolor"))
     }
 }
 

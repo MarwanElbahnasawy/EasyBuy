@@ -13,6 +13,7 @@ struct ShopingCartListUIView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State private var showAlert = false
     @State private var indexSet: IndexSet?
+ 
     var body: some View {
         VStack{
             if #available(iOS 16.0, *) {
@@ -21,8 +22,8 @@ struct ShopingCartListUIView: View {
             ScrollView{
                 LazyVStack {
                     ForEach(shopingCartViewModel.products ?? [], id: \.variant?.id) { item in
-
-                        FavoriteAndCartCell(imageUrl: URL(string: item.product?.featuredImage?.url ?? "not available"),
+                        
+                       FavoriteAndCartCell(imageUrl: URL(string: item.product?.featuredImage?.url ?? "not available"),
                                             title: item.product?.title,
                                             type: item.product?.productType,
                                             price: formatPrice(price: item.product?.priceRangeV2?.maxVariantPrice?.amount),
@@ -31,8 +32,10 @@ struct ShopingCartListUIView: View {
                             self.indexSet = shopingCartViewModel.indexSet(for: item)
                             
                         },
-                                            availableQuantity: item.quantity ?? 10)
-                        
+                                           viewModel: shopingCartViewModel,
+                                           size: shopingCartViewModel.getItemSize(item: item.variant?.title),
+                                           quantity: Int(item.quantity ?? 1))
+                      
                     }.alert(isPresented: $showAlert){
                         Alert(title: Text("Delete ?"),message: Text("Do you want to delete this product from your cart ?") ,
                               primaryButton: .destructive(Text("OK"),action: {
@@ -49,7 +52,8 @@ struct ShopingCartListUIView: View {
             }
             if shopingCartViewModel.products?.isEmpty == false{
                 HStack{
-                    Text("Total Price : \(formatPrice(price: shopingCartViewModel.totalPrice))")
+//                    formatPrice(price: shopingCartViewModel.totalPriceWithQuantity(totalPrice: shopingCartViewModel.totalPrice)
+                    Text("Total Price : \(formatPrice(price:shopingCartViewModel.totalPrice))")
                     
                     NavigationLink(destination: CheckoutView(viewModel: CheckoutViewModel())) {
                         Text("Checkout")

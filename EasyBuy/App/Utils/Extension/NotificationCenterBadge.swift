@@ -6,7 +6,7 @@ struct NotificationCountView : View {
   @State var foreground: Color = .white
   @State var background: Color = .red
   
-  private let size = 16.0
+    private let size = 24.0
   private let x = 20.0
   private let y = 0.0
   

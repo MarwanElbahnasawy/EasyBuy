@@ -135,12 +135,13 @@ query draftOrder($id: ID!) {
               variant{
                   id
                   price
+                  inventoryQuantity
                   availableForSale
                   title
               }
               product {
-                  
                 id
+                totalInventory
                  priceRangeV2{
                       maxVariantPrice{
                           amount

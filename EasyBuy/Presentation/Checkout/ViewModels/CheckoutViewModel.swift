@@ -15,6 +15,11 @@ class CheckoutViewModel: ObservableObject{
     @Published var cartDraftOrderID: String?
     @Published var customerDiscountCodes: CustomerDiscountCodes?
     @Published var customerAddress: CustomerAddress?
+    @Published var settingsViewModel = SettingsViewModel()
+    init() {
+      getProducts()
+        customerAddress = settingsViewModel.getAddress()
+    }
     func getProducts(){
         FireBaseManager.shared.retriveCustomerDiscountCodes()?.getDocument(completion: {[weak self] snapshot, error in
             
@@ -39,7 +44,7 @@ class CheckoutViewModel: ObservableObject{
             switch res {
             case .success(let success):
                 self?.products = success.draftOrder?.lineItems?.nodes
-                self?.totalPrice = success.draftOrder?.totalPrice ?? "0"
+                self?.totalPrice = success.draftOrder?.subtotalPrice ?? "0"
                 self?.priceAfterDiscounts = success.draftOrder?.subtotalPrice ?? "0"
             case .failure(let failure):
                 print(failure)

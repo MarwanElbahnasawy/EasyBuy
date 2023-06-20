@@ -7,9 +7,10 @@ struct FavoriteAndCartCell: View {
     @State var type: String?
     @State var price: String?
     var onDelete: (() -> Void)?
-    @State var quantity: Int = 1
-    @State var availableQuantity = 10
-    
+    @State var viewModel: CartListViewModel?
+    @State var size: String?
+    @State var quantity: Int?
+    @State var isCheckout = false
     var body: some View {
         ZStack(alignment: .topTrailing) {
             HStack {
@@ -25,14 +26,25 @@ struct FavoriteAndCartCell: View {
                         Text(type ?? "not available")
                             .font(.system(size: 10))
                             .foregroundColor(.gray)
-                    Spacer()
-                    Stepper(value: $quantity, in: 1...availableQuantity) {
-                                   Text("Quantity : \(quantity)")
-                               }
-                    Text(price ?? "not available")
-                        .font(.system(size: 16, weight: .bold))
+                    HStack{
+                        Text("Quantity :").font(.system(size: 16, weight: .bold))
+                        Text("\(quantity ?? 1)").font(.system(size: 14))
+                        
+                    }
+                    HStack{
+                        Text("Size :").font(.system(size: 16, weight: .bold))
+                        Text("\(size ?? "4")").font(.system(size: 14))
+                         
+                    }
+
+                    HStack{
+                        Text("Item price:").font(.system(size: 16, weight: .bold))
+                        Text(price ?? "not available").font(.system(size: 14))
+
+                    }
                 }
                 Spacer()
+             
             }
             .padding()
             .frame(maxWidth: .infinity)
@@ -49,8 +61,13 @@ struct FavoriteAndCartCell: View {
             Button(action: {
                 onDelete?()
             }) {
-                Image(systemName: "minus.circle.fill")
-                    .foregroundColor(.black)
+                if isCheckout{
+                    EmptyView()
+                }
+                else{
+                    Image(systemName: "minus.circle.fill")
+                        .foregroundColor(.black)
+                }
             }
             .padding(8)
         }
