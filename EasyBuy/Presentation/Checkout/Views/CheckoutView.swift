@@ -10,7 +10,7 @@ import Combine
 
 struct CheckoutView: View {
     @ObservedObject var viewModel: CheckoutViewModel
-    
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
     var body: some View {
         
@@ -22,7 +22,7 @@ struct CheckoutView: View {
                     }
                     if let customerAddress = viewModel.customerAddress{
                         AddressCell(address: customerAddress )
-                            .padding(.leading,10).padding(.top,10)
+                            .padding(.horizontal,10).padding(.top,10)
                     }
                    
                     NavigationLink(destination: {
@@ -37,7 +37,7 @@ struct CheckoutView: View {
                     })
                     
                 }
-                .frame(height: 300)
+                .frame(height: UIScreen.main.bounds.height/2)
                 .shadow(radius: 20)
                 .cornerRadius(20)
                 VStack{
@@ -48,12 +48,12 @@ struct CheckoutView: View {
                         ForEach(viewModel.products ?? [], id: \.variant?.id) { item in
                             FavoriteAndCartCell(imageUrl: URL(string: item.product?.featuredImage?.url ?? "not available"), title: item.product?.title,
                                                 type: item.product?.productType,
-                                                price: item.product?.priceRangeV2?.maxVariantPrice?.amount)
+                                                price:formatPrice(price: item.product?.priceRangeV2?.maxVariantPrice?.amount) )
                         }
                         
-                    }.frame(height: 180, alignment: .center).onAppear{
-                        viewModel.getProducts()
-                    }
+                    }.onAppear{
+                        viewModel.settingsViewModel.getCurrency()
+                    }.frame(height: 180, alignment: .center)
                 }
                 Spacer()
                 VStack{
@@ -113,7 +113,8 @@ struct CheckoutView: View {
                         .cornerRadius(10.0)
                 }
             }
-        })
+        }).navigationBarBackButtonHidden(true)
+            .navigationBarItems(leading: BackButton(action: { presentationMode.wrappedValue.dismiss() })).background(Color("itemcolor"))
     }
 }
 
