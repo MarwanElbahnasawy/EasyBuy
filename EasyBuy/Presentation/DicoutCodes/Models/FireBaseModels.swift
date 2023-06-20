@@ -10,6 +10,7 @@ import Foundation
 struct CustomerDiscountCodes: Codable{
     var id: String?
     var discountCodes: [String]?
+    var usedDiscountCodes: [String]?
     var draftOrders: DraftOrders?
 }
 struct DraftOrders: Codable{

@@ -105,21 +105,20 @@ struct CheckoutView: View {
                     }.padding(.leading,10).padding(.top,30)
                 }
                 NavigationLink {
-                   
                     PaymentMethodView(totalPrice:$viewModel.priceAfterDiscounts , products: viewModel.products ?? [],draftOrderID: viewModel.cartDraftOrderID ?? " ")
-                    
                 } label: {
-                    Text("Go To Payment")
-                        .font(.title3)
-                        .fontWeight(.semibold)
-                        .foregroundColor(Color.white)
-                        .padding()
-                        .padding(.horizontal, 8)
-                        .background(Color.black)
-                        .cornerRadius(10.0).onTapGesture {
-                            print("pressed")
-                            viewModel.updateAdrees()
-                        }
+                        Text("Go To Payment")
+                            .font(.title3)
+                            .fontWeight(.semibold)
+                            .foregroundColor(Color.white)
+                            .padding()
+                            .padding(.horizontal, 8)
+                            .background(Color.black)
+                            .cornerRadius(10.0)
+                    
+                }.disabled(viewModel.customerAddress?.address1?.isEmpty == true || viewModel.customerAddress?.address1 == nil).onDisappear{
+                    print("disappearing....")
+                    viewModel.updateAdrees()
                 }
             }
         }).onAppear{

@@ -78,11 +78,10 @@ class PaymentManager: NSObject , PKPaymentAuthorizationControllerDelegate{
     }
     func completeOrder(){
         print("the draft order is \(draftOrderID)")
-        NetworkManager.getInstance(requestType: .admin).performGraphQLRequest(mutation: DraftOrderCompleteMutation(id: draftOrderID), responseModel: DraftOrderCompleteDataClass.self) {[weak self] result in
+        NetworkManager.getInstance(requestType: .admin).performGraphQLRequest(mutation: DraftOrderCompleteMutation(id: draftOrderID), responseModel: DraftOrderCompleteDataClass.self) {result in
             switch result {
             case .success(let success):
                 print(success)
-                
             case .failure(let failure):
                 print(failure)
             }
