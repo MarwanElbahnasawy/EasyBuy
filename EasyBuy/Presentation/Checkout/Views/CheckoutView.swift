@@ -49,15 +49,12 @@ struct CheckoutView: View {
                             ForEach(viewModel.products ?? [], id: \.variant?.id) { item in
                                 FavoriteAndCartCell(imageUrl: URL(string: item.product?.featuredImage?.url ?? "not available"), title: item.product?.title,
                                                     type: item.product?.productType,
-                                                    price:formatPrice(price: item.product?.priceRangeV2?.maxVariantPrice?.amount),size: CartListViewModel().getItemSize(item: item.variant?.title),quantity: Int(item.quantity ?? 1), isCheckout: true).padding()
+                                                    price:formatPrice(price: item.product?.priceRangeV2?.maxVariantPrice?.amount),size: CartListViewModel().getItemSize(item: item.variant?.title),quantity: Int(item.quantity ?? 1), isCheckout: true).padding(.all,10)
                             }
                             
                         }
                         
-                    }.onAppear{
-                        
-                        viewModel.settingsViewModel.getCurrency()
-                    }.background(Color("itemcolor")).frame(height: UIScreen.main.bounds.height/6, alignment: .center).padding()
+                    }.background(Color("itemcolor")).frame(height: 20+UIScreen.main.bounds.height/6, alignment: .center).padding()
                 }
                 Spacer()
                 VStack{
@@ -89,16 +86,21 @@ struct CheckoutView: View {
                             .background(Color.black)
                             .foregroundColor(.white)
                             .cornerRadius(5)
-                    }.disabled(!viewModel.discountCodes.isEmpty)
+                    }.disabled(viewModel.discountCodes.isEmpty)
 
                     HStack{
                         Text("Total Price:").fontWeight(.semibold)
-                        Text("\(viewModel.totalPrice)").fontWeight(.thin)
+                        Text("\(formatPrice(price: viewModel.totalPrice))").fontWeight(.thin)
+                        Spacer()
+                    }.padding(.leading,10).padding(.top,30)
+                    HStack{
+                        Text("Discount Amount :").fontWeight(.semibold)
+                        Text("\(formatPrice(price: viewModel.taxFees))").fontWeight(.thin)
                         Spacer()
                     }.padding(.leading,10).padding(.top,30)
                     HStack{
                         Text("Price After Discounts :").fontWeight(.semibold)
-                        Text("\(viewModel.priceAfterDiscounts)").fontWeight(.thin)
+                        Text("\(formatPrice(price: viewModel.priceAfterDiscounts))").fontWeight(.thin)
                         Spacer()
                     }.padding(.leading,10).padding(.top,30)
                 }
@@ -114,10 +116,16 @@ struct CheckoutView: View {
                         .padding()
                         .padding(.horizontal, 8)
                         .background(Color.black)
-                        .cornerRadius(10.0)
+                        .cornerRadius(10.0).onTapGesture {
+                            print("pressed")
+                            viewModel.updateAdrees()
+                        }
                 }
             }
-        }).navigationBarBackButtonHidden(true)
+        }).onAppear{
+            
+            viewModel.settingsViewModel.getCurrency()
+        }.navigationBarBackButtonHidden(true)
             .navigationBarItems(leading: BackButton(action: { presentationMode.wrappedValue.dismiss() })).background(Color("itemcolor"))
     }
 }
