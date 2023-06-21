@@ -34,7 +34,7 @@ struct PaymentMethodView: View {
             }
             Spacer()
             NavigationLink {
-                BaseView()
+                BaseView().navigationBarBackButtonHidden(true)
             } label: {
                 Text("Go TO Home")
                     .frame(minWidth: 100, maxWidth:
