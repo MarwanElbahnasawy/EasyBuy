@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct Home: View {
-    @ObservedObject var viewModel = HomeViewModel()
+    @StateObject var viewModel = HomeViewModel()
     @AppStorage("isGridHome")  var isGrid = true
     @AppStorage("displayName") var displayName: String?
     

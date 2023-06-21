@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ShopingCartListUIView: View {
     @StateObject var shopingCartViewModel: CartListViewModel
-    @ObservedObject var settingsViewModel = SettingsViewModel()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State private var showAlert = false
     @State private var indexSet: IndexSet?
@@ -44,7 +43,7 @@ struct ShopingCartListUIView: View {
                                 Alert(title: Text("Delete ?"),message: Text("Do you want to delete this product from your cart ?") ,
                                       primaryButton: .destructive(Text("OK"),action: {
                                     shopingCartViewModel.deletProduct(indexSet: self.indexSet!)
-                                    
+                                   
                                 }),
                                       secondaryButton: .cancel())
                             }
@@ -81,7 +80,6 @@ struct ShopingCartListUIView: View {
                 presentationMode.wrappedValue.dismiss()
             })).background(Color("itemcolor")).onAppear(){
                 shopingCartViewModel.getCartItems()
-                settingsViewModel.getCurrency()
             }
    
     }

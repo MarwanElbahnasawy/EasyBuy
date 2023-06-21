@@ -88,6 +88,16 @@ mutation draftOrderUpdate($id: ID!, $input: DraftOrderInput!) {
       name
       email
       subtotalPrice
+    lineItemsSubtotalPrice{
+          presentmentMoney{
+              amount
+              currencyCode
+          }
+          shopMoney{
+                amount
+              currencyCode
+          }
+      }
       note2
       totalPrice
       lineItems(first: 100) {
@@ -128,6 +138,16 @@ query draftOrder($id: ID!) {
       subtotalPrice
       note2
       totalPrice
+lineItemsSubtotalPrice{
+    presentmentMoney{
+        amount
+        currencyCode
+          }
+    shopMoney{
+            amount
+            currencyCode
+          }
+      }
       lineItems(first: 100) {
           
           nodes {

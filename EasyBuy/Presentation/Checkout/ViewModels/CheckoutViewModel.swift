@@ -46,7 +46,7 @@ class CheckoutViewModel: ObservableObject{
             switch res {
             case .success(let success):
                 self?.products = success.draftOrder?.lineItems?.nodes
-                self?.totalPrice = success.draftOrder?.subtotalPrice ?? "0"
+                self?.totalPrice = success.draftOrder?.lineItemsSubtotalPrice?.presentmentMoney?.amount ?? "0"
                 self?.priceAfterDiscounts = success.draftOrder?.subtotalPrice ?? "0"
                 if let totalPrice = success.draftOrder?.totalPrice{
                     let totalPriceDoubleValue = (totalPrice as NSString).doubleValue

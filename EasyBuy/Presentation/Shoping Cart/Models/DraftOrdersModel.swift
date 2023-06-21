@@ -24,12 +24,18 @@ struct DraftOrderCreate: Codable {
 struct DraftOrder: Codable {
     let id, name, email, subtotalPrice: String?
     let note2, totalPrice: String?
+    let lineItemsSubtotalPrice: LineItemsSubtotalPrice?
     let lineItems: LineItems?
 }
 
 // MARK: - LineItems
 struct LineItems: Codable {
     let nodes: [LinesItemNode]?
+}
+
+// MARK: - LineItemsSubtotalPrice
+struct LineItemsSubtotalPrice: Codable {
+    let presentmentMoney, shopMoney: MaxVariantPrice?
 }
 
 // MARK: - Node

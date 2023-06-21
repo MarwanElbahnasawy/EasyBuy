@@ -15,6 +15,7 @@ struct CheckoutView: View {
     @State private var showAlertPayment = false
     @State private var isApply = false
     @State private var isNotApply = false
+    @State private var goToPayment = false
     var body: some View {
         if viewModel.isLoading{
             LottieView(lottieFile: "loading")
@@ -119,16 +120,13 @@ struct CheckoutView: View {
                     }
                     Button {
                         if viewModel.customerAddress?.address1?.isEmpty == true || viewModel.customerAddress?.address1 == nil{
-                            showAlert = true
+                            showAlertPayment = true
                         }
                         else{
                             viewModel.updateAdrees()
+                            goToPayment = true
                         }
                     } label: {
-                        NavigationLink {
-                            PaymentMethodView(totalPrice: formatPrice(price: viewModel.priceAfterDiscounts)  , products: viewModel.products ?? [],draftOrderID: viewModel.cartDraftOrderID ?? " ")
-                        } label: {
-            
                                 Text("Go To Payment")
                                     .font(.title3)
                                     .fontWeight(.semibold)
@@ -137,19 +135,20 @@ struct CheckoutView: View {
                                     .padding(.horizontal, 8)
                                     .background(Color.black)
                                     .cornerRadius(10.0)
-                           
-
-                        }.onDisappear{
-                            print("disappearing....")
-                           
-                        }
                     }.alert (isPresented: $showAlertPayment) {
                         Alert(title: Text("Warning"), message: Text("Please choose address"))
                     }
+                    if goToPayment {
+                                      NavigationLink(
+                                          destination:                            PaymentMethodView(totalPrice: formatPrice(price: viewModel.priceAfterDiscounts)  , products: viewModel.products ?? [],draftOrderID: viewModel.cartDraftOrderID ?? " "),
+                                          isActive: $goToPayment,
+                                          label: {
+                                              EmptyView()
+                                          })
+                                  }
                 }
             })
             .onAppear{
-                
                 viewModel.settingsViewModel.getCurrency()
             }.navigationBarBackButtonHidden(true)
                 .navigationBarItems(leading: BackButton(action: { presentationMode.wrappedValue.dismiss() })).background(Color("itemcolor"))

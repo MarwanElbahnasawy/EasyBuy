@@ -15,13 +15,15 @@ class PaymentManager: NSObject , PKPaymentAuthorizationControllerDelegate{
     var currencyCode: String
     var draftOrderID: String
     var isFinished: Bool = false
+    var isSuccess: SuccessPayment
     var button = PKPaymentButton.init(paymentButtonType: .checkout, paymentButtonStyle: .automatic)
     
-    init(items: [LinesItemNode], totalPrice: String, currencyCode: String, draftOrderId: String) {
+    init(items: [LinesItemNode], totalPrice: String, currencyCode: String, draftOrderId: String, isSuccess: SuccessPayment) {
         self.items = items
         self.totalPrice = totalPrice
         self.currencyCode = currencyCode
         self.draftOrderID = draftOrderId
+        self.isSuccess = isSuccess
         super.init()
         button.addTarget(self, action: #selector(callBack), for: .touchUpInside)
     }
@@ -33,7 +35,7 @@ class PaymentManager: NSObject , PKPaymentAuthorizationControllerDelegate{
         var paymentsummaryItems = [PKPaymentSummaryItem] ()
         items.forEach { product in
             if let price = product.variant?.price {
-                let item = PKPaymentSummaryItem(label: product.product?.title ?? "not availabel", amount:NSDecimalNumber(string: "\(String(describing: price))"))
+                let item = PKPaymentSummaryItem(label: product.product?.title ?? "not availabel", amount:NSDecimalNumber(string: "\(String(describing: formatPrice(price: price)))"))
                 paymentsummaryItems.append(item)
             }
         }
@@ -56,16 +58,21 @@ class PaymentManager: NSObject , PKPaymentAuthorizationControllerDelegate{
     }
     func paymentAuthorizationControllerDidFinish(_ controller: PKPaymentAuthorizationController) {
      
-        draftOrderDelete()
-        completeOrder()
+
+       
         
         controller.dismiss()
     }
     func paymentAuthorizationController(_ controller: PKPaymentAuthorizationController, didAuthorizePayment payment: PKPayment) async -> PKPaymentAuthorizationResult {
         
         let result = PKPaymentAuthorizationResult(status: .success, errors: nil)
-       
-        
+        Task{
+          await completeOrder()
+           draftOrderDelete()
+            DispatchQueue.main.asyncAfter(deadline: .now()+1){[weak self] in
+                self?.isSuccess.isSuccess = true
+            }
+        }
         return result
     }
     func shippingMethodCaculator () -> [PKShippingMethod] {
@@ -84,13 +91,14 @@ class PaymentManager: NSObject , PKPaymentAuthorizationControllerDelegate{
         }
         return []
     }
-    func completeOrder(){
+    func completeOrder() async{
         print("the draft order is \(draftOrderID)")
         NetworkManager.getInstance(requestType: .admin).performGraphQLRequest(mutation: DraftOrderCompleteMutation(id: draftOrderID), responseModel: DraftOrderCompleteDataClass.self) {[weak self]result in
             switch result {
             case .success(let success):
                 print(success)
                 self?.isFinished = false
+               
             case .failure(let failure):
                 print(failure)
                 self?.isFinished = false
@@ -99,6 +107,7 @@ class PaymentManager: NSObject , PKPaymentAuthorizationControllerDelegate{
     }
     func draftOrderDelete(){
         UserDefaults.standard.set(0, forKey: "count")
+        UserDefaults.standard.synchronize()
         FireBaseManager.shared.removeCartFromFireBase()
     }
 }

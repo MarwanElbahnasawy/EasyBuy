@@ -11,7 +11,7 @@ class CartListViewModel: ObservableObject{
     @Published var products: [LinesItemNode]?
     @Published var draftOrderID: String?
     @Published var customerDiscountCodes: CustomerDiscountCodes?
-    var draftOrderDataClass: DraftOrderDataClass?
+    @Published var draftOrderDataClass: DraftOrderDataClass?
     @Published var totalPrice: String = ""
     @Published var quantity: Int = 1
     @Published var isLoading = true
@@ -50,7 +50,7 @@ class CartListViewModel: ObservableObject{
             case .success(let success):
                 self?.products = success.draftOrder?.lineItems?.nodes
                 UserDefaults.standard.set(self?.products?.count, forKey: "count")
-                self?.totalPrice = success.draftOrder?.subtotalPrice ?? ""
+                self?.totalPrice = success.draftOrder?.lineItemsSubtotalPrice?.presentmentMoney?.amount ?? ""
                 print("total price is \(self?.totalPrice)")
                 self?.isLoading = false
             case .failure(let failure):
@@ -60,7 +60,7 @@ class CartListViewModel: ObservableObject{
             }
         }
     }
-    func deletProduct(indexSet: IndexSet){
+    func deletProduct(indexSet: IndexSet) {
         products?.remove(atOffsets: indexSet)
         let lineItems = mapLineItemsToDratOrderLineItems(lineItems: products)
         if lineItems.isEmpty{
@@ -82,7 +82,9 @@ class CartListViewModel: ObservableObject{
             NetworkManager.getInstance(requestType: .admin).performGraphQLRequest(mutation: DraftOrderUpdateMutation(id: draftOrderID ?? " ", input: DraftOrderInput(lineItems: lineItems)), responseModel: UpdateDraftOrderDataClass.self) {[weak self] res in
                 switch res {
                 case .success(let success):
-                    self?.totalPrice = success.draftOrderUpdate?.draftOrder?.totalPrice ?? ""
+
+                        self?.totalPrice = success.draftOrderUpdate?.draftOrder?.lineItemsSubtotalPrice?.presentmentMoney?.amount ?? ""
+
                     UserDefaults.standard.set(success.draftOrderUpdate?.draftOrder?.lineItems?.nodes?.count, forKey: "count")
                     FireBaseManager.shared.saveCustomerDiscountCodes(customerDiscountCodes: CustomerDiscountCodes(id: self?.customerDiscountCodes?.id,
                                                                                                                   discountCodes: self?.customerDiscountCodes?.discountCodes
@@ -116,5 +118,6 @@ class CartListViewModel: ObservableObject{
         print("size in cell is \(size)")
         return size
     }
+
 }
 
