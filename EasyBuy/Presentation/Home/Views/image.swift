@@ -10,34 +10,39 @@ import SwiftUI
 struct image: View {
     var CoverImage: CoverImage
     @State var  isGoingTONextView = false
+    @AppStorage("token") var token: String?
     @State var isPresented = false
     var body: some View {
-            ZStack{
-                Image(CoverImage.name)
-                    .resizable()
-                    .frame(width: UIScreen.main.bounds.width * 0.95 ,height: UIScreen.main.bounds.width * 0.40 )
-                    .scaledToFill()
-                    .cornerRadius(25)
-                VStack{
-                    HStack{
-                        Text(CoverImage.title)
-                            .font(.custom(Constants.AppFont.boldFont, size: 30))
-                        Spacer()
-                    }.padding(.leading,24)
-                    HStack{
-                        Text(CoverImage.des)
-                            .font(.custom(Constants.AppFont.regularFont, size: 20))
-                        Spacer()
-                    }.padding(.leading,20)
-                    HStack{
-                        Text("With code:")
-                            .font(.custom(Constants.AppFont.lightFont, size: 15))
-                        Text(CoverImage.code)
-                            .font(.custom(Constants.AppFont.lightFont, size: 15))
-                        Spacer()
-                    }.padding(.leading,26)
-                    HStack{
-                        NavigationLink {
+        ZStack{
+            Image(CoverImage.name)
+                .resizable()
+                .frame(width: UIScreen.main.bounds.width * 0.95 ,height: UIScreen.main.bounds.width * 0.40 )
+                .scaledToFill()
+                .cornerRadius(25)
+            VStack{
+                HStack{
+                    Text(CoverImage.title)
+                        .font(.custom(Constants.AppFont.boldFont, size: 30))
+                    Spacer()
+                }.padding(.leading,24)
+                HStack{
+                    Text(CoverImage.des)
+                        .font(.custom(Constants.AppFont.regularFont, size: 20))
+                    Spacer()
+                }.padding(.leading,20)
+                HStack{
+                    Text("With code:")
+                        .font(.custom(Constants.AppFont.lightFont, size: 15))
+                    Text(CoverImage.code)
+                        .font(.custom(Constants.AppFont.lightFont, size: 15))
+                    Spacer()
+                }.padding(.leading,26)
+                HStack{
+                    NavigationLink {
+                        
+                        if token == "guest" || token == "" {
+                            NoAccountView()
+                        } else {
                             switch CoverImage.name{
                             case "Everything":
                                 CodesView(adType: .all)
@@ -45,27 +50,28 @@ struct image: View {
                                 CodesView(adType: .men)
                             case "image cop":
                                 CodesView(adType: .women)
-                             case "SHOES":
+                            case "SHOES":
                                 CodesView(adType: .shoes)
                             default:
                                 CodesView()
                             }
-                        } label: {
-                             
-                                Text("Click Me")
-                                    .foregroundColor(.white)
-                                    .padding()
-                                    .background(Color.black)
-                                    .cornerRadius(25)
-                                    .frame(width: 150, height: 50)
-                                    .padding(.trailing,120)
-                           
                         }
-                       
-                        Spacer()
+                    } label: {
+                        
+                        Text("Click Me")
+                            .foregroundColor(.white)
+                            .padding()
+                            .background(Color.black)
+                            .cornerRadius(25)
+                            .frame(width: 150, height: 50)
+                            .padding(.trailing,120)
+                        
                     }
+                    
+                    Spacer()
                 }
             }
+        }
     }
 }
 
@@ -74,5 +80,5 @@ struct image_Previews: PreviewProvider {
         
         image(CoverImage: CoverImage(id: 1, name: "image cop", title: "50% Off", des: " On everything today", code: "FSCREATION")).frame(width: 200, height: 200)
     }
-
+    
 }
