@@ -99,10 +99,11 @@ struct RegisterationView: View {
         }
         .alert(isPresented: $signUpSuccess) {
             Alert(title: Text("SignUp success"), message: Text("Please login to use EasyBuy app!"), dismissButton: .default(Text("Ok")){
-                if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
-                    scene.windows.first?.rootViewController = UIHostingController(rootView:_NavigationView()
-                    )
-                }
+//                if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+//                    scene.windows.first?.rootViewController = UIHostingController(rootView:_NavigationView()
+//                    )
+//                }
+                dismiss()
             })
         }
     }
