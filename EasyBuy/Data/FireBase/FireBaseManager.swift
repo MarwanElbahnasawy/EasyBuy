@@ -11,7 +11,7 @@ import FirebaseFirestore
 class FireBaseManager{
     let db = Firestore.firestore()
     static let shared = FireBaseManager()
-    let firebaseCustomerID = UserDefaults.standard.string(forKey:"customerID")
+    var firebaseCustomerID = UserDefaults.standard.string(forKey:"customerID")
     private init(){
     }
     func saveCustomerDiscountCodes(customerDiscountCodes: CustomerDiscountCodes){

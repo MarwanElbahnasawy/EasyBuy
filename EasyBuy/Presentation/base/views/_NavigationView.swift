@@ -15,7 +15,7 @@ struct _NavigationView: View {
         if isOnboarding {
             Onboarding()
         } else {
-            if token == "" || token == nil{
+            if token == "" || token == "iNeedSign"{
                 LoginView()
             }else{
                 BaseView()

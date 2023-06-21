@@ -104,7 +104,11 @@ struct AddressView: View {
             }.background(MotionAnimationView()).navigationBarBackButtonHidden(true)
         }
         }.onAppear{
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                viewModel.featchAddress()
+            }
             viewModel.featchAddress()
+            viewModel.isLoading = true
         }
         .alert(isPresented: $showAlert) {
                     Alert(title: Text("Important message"), message: Text("Do You Want To Delete This Address"), primaryButton: .destructive(Text("Cancel")), secondaryButton: .default(Text("OK"), action: {

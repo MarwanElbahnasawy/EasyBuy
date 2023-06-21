@@ -6,7 +6,6 @@ struct OrdersSectionView: View {
             VStack{
                 HStack{
                     NavigationLink(destination: OrdersView()){
-                        Spacer(minLength: UIScreen.main.bounds.width * 0.6)
                         Text("VIEW ALL")
                             .font(.custom(Constants.AppFont.semiBoldFont, size: 12))
                             .foregroundColor(.red)

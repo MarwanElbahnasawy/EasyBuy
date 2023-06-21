@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct NoAccountView: View {
+    @AppStorage("token") var token: String?
     var body: some View {
         VStack {
             Spacer()
@@ -19,11 +20,13 @@ struct NoAccountView: View {
                 .padding(.bottom, 30)
             
             VStack(spacing: 30) {
-                NavigationLinkView(destination: RegisterationView(), label: "Sign Up")
-                    .buttonStyle(RoundedButtonStyle())
                 
-                NavigationLinkView(destination: LoginView(), label: "Sign In")
-                    .buttonStyle(RoundedButtonStyle())
+                Button {
+                    token = "iNeedSign"
+                } label:{
+                    Text("Sign In")
+                }.buttonStyle(RoundedButtonStyle())
+
             }
             
             Spacer()

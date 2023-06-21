@@ -14,8 +14,6 @@ struct DescriptionView: View {
                 productType: product?.product?.productType ?? "",
                 action: {
                     viewModel.getFavoriteDraftOrder()
-                        
-                    
                 })
 //            .onChange(of: viewModel?.isFavoriteExist ?? false) { newValue in
 //                isExist = newValue

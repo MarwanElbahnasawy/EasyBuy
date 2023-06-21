@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AddToCartView: View {
+    @AppStorage("token") var token: String?
     let price: String?
     let action: () -> Void
     var body: some View {
@@ -20,18 +21,18 @@ struct AddToCartView: View {
             }
             
             Spacer()
-            
-            Button(action: action) {
-                Text("Add to Cart")
-                    .font(.title3)
-                    .fontWeight(.semibold)
-                    .foregroundColor(Color.white)
-                    .padding()
-                    .padding(.horizontal, 8)
-                    .background(Color.black)
-                    .cornerRadius(10.0)
-            }
-            
+           if token != "guest"{
+               Button(action: action) {
+                   Text("Add to Cart")
+                       .font(.title3)
+                       .fontWeight(.semibold)
+                       .foregroundColor(Color.white)
+                       .padding()
+                       .padding(.horizontal, 8)
+                       .background(Color.black)
+                       .cornerRadius(10.0)
+               }
+           }
        }.onAppear{
            SettingsViewModel().getCurrency()
        }
