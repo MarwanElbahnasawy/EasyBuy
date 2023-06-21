@@ -19,7 +19,7 @@ struct ProfileView: View {
                 
                 PolicySectionView(isShowingFAQs: $isShowingFAQs, isShowingAboutUs: $isShowingAboutUs)
             }
-        }//.navigationViewStyle(StackNavigationViewStyle())
+        }.navigationViewStyle(StackNavigationViewStyle())
         .padding(.bottom, 50)
         .onAppear(perform: {
             // Fetch customer details

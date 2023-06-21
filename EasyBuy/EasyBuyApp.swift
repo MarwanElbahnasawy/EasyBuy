@@ -14,17 +14,19 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct EasyBuyApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     let persistenceController = PersistenceController.shared
-  @StateObject var networkChecker = NetworkReachability()
 
+  @StateObject var networkChecker = NetworkReachability()
     var body: some Scene {
         WindowGroup {
             NavigationView{
-//                if !networkChecker.reachable{
-//                    Loading( error: true )
-//                }else{
-                    _NavigationView()
+                ZStack{
+                    if !networkChecker.reachable{
+                        Loading( error: true )
+                    }else{
+                        _NavigationView()
+                    }
                 }
-        //    }.navigationViewStyle(StackNavigationViewStyle())
+            }.navigationViewStyle(StackNavigationViewStyle())
         }
     }
 }

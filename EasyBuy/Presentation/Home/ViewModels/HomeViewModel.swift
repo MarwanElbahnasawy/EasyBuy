@@ -20,7 +20,7 @@ class HomeViewModel: ObservableObject {
     }
     
     init(){
-        var viewModel = AddressViewModel()
+  
     }
     
     func fetchBrands(){
