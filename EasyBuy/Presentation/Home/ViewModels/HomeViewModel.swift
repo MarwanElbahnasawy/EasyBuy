@@ -20,8 +20,7 @@ class HomeViewModel: ObservableObject {
     }
     
     init(){
-
-
+  
     }
     
     func fetchBrands(){
@@ -58,8 +57,6 @@ class HomeViewModel: ObservableObject {
             self?.rates = dataurl?.rates
             dataurl?.rates.forEach({ (key: String, value: Double) in
                 if(key == UserDefaults.standard.currency){
-//                    print(key)
-//                    print(value)
                     UserDefaults.standard.numCurrency = value
                 }
             })

@@ -14,20 +14,16 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct EasyBuyApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     let persistenceController = PersistenceController.shared
-    @AppStorage("isOnboarding") var isOnboarding: Bool = true
-    @AppStorage("token") var token: String?
 
-    // @AppStorage("barIsShow") var barIsShow: Bool = true
+  @StateObject var networkChecker = NetworkReachability()
     var body: some Scene {
         WindowGroup {
             NavigationView{
-                if isOnboarding {
-                    Onboarding()
-                } else {
-                    if token == "" || token == nil{
-                        LoginView()
+                ZStack{
+                    if !networkChecker.reachable{
+                        Loading( error: true )
                     }else{
-                        BaseView()
+                        _NavigationView()
                     }
                 }
             }.navigationViewStyle(StackNavigationViewStyle())

@@ -104,6 +104,7 @@ import LocalAuthentication
         return result
     }
     func addAddress(address1: String,address2: String,city: String,country: String,phone: String,zip: String ){
+  
         guard let token = UserDefaults.standard.string(forKey: "accessToken") else { return }
         NetworkManager.getInstance(requestType: .storeFront).performGraphQLRequest(mutation:  CustomerAddressCreateMutation(customerAccessToken: token, address: MailingAddressInput(address1: address1, address2: address2, city: city, country: country , phone: phone, zip: zip)), responseModel: ResAddress.self, completion: { [weak self] result in
             guard let self = self else { return }

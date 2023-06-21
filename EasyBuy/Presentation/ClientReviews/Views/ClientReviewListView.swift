@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct ClientReviewListView: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @ObservedObject var viewModel = ClientReviewViewModel()
     
     var body: some View {
@@ -24,12 +25,22 @@ struct ClientReviewListView: View {
                     }) {
                         Text("See More")
                             .font(.headline)
-                            .foregroundColor(.blue)
+                            .foregroundColor(.white)
+                            .padding(.vertical, 10)
+                            .padding(.horizontal, 20)
+                            .background(Color.black)
+                            .cornerRadius(8)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .stroke(Color.white, lineWidth: 2)
+                            )
                     }
                 }
             }
             .padding()
         }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: BackButton(action: { presentationMode.wrappedValue.dismiss()}))
     }
 }
 

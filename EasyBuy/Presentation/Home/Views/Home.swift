@@ -59,8 +59,7 @@ struct Home: View {
                 }else{
                     LottieView(lottieFile: "loading")
                 }
-                    
-    
+
             }else{
                 VStack(spacing: 0) {
                     HStack{

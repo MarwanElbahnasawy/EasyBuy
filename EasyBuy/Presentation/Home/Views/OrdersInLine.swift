@@ -14,13 +14,17 @@ struct OrdersInLine: View {
     ]
     var body: some View {
         VStack{
-            ScrollView(.horizontal, showsIndicators: false) {
-                LazyHGrid(rows:rows , alignment: .center, spacing: 4, pinnedViews: [], content: {
-                    ForEach(viewModel.ordersInLine) { item in
-                        OrderRow(order: item)
-                    }
-                })
-           }
+            if viewModel.ordersInLine.count == 0 {
+                
+            }else{
+                ScrollView(.horizontal, showsIndicators: false) {
+                    LazyHGrid(rows:rows , alignment: .center, spacing: 4, pinnedViews: [], content: {
+                        ForEach(viewModel.ordersInLine) { item in
+                            OrderRow(order: item)
+                        }
+                    })
+                }
+            }
         }
     }
 }
