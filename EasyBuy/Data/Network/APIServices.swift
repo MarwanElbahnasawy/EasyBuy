@@ -14,12 +14,12 @@ import Foundation
 
 enum Route {
     static let baseUrl = "https://api.apilayer.com/exchangerates_data/latest"
-    static let APIkey = "GS1QR1cPzYBY5jt29rX1oaAi2c0UK9Oj"
+    static let APIkey = "0858PNrHpNqUKrU5v3WyTq74lEOvbom8"
     case typy
     var description: String {
         switch self {
         case .typy:
-            return"https://api.apilayer.com/exchangerates_data/latest?apikey=GS1QR1cPzYBY5jt29rX1oaAi2c0UK9Oj"
+            return"https://api.apilayer.com/exchangerates_data/latest?apikey=\(Route.APIkey)"
         }
     }
 }

@@ -14,8 +14,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct EasyBuyApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     let persistenceController = PersistenceController.shared
-
-  @StateObject var networkChecker = NetworkReachability()
+    @ObservedObject var viewModel = HomeViewModel()
+    @StateObject var networkChecker = NetworkReachability()
     var body: some Scene {
         WindowGroup {
             NavigationView{
@@ -27,6 +27,9 @@ struct EasyBuyApp: App {
                     }
                 }
             }.navigationViewStyle(StackNavigationViewStyle())
+                .onAppear(){
+                    viewModel.getCurrency()
+                }
         }
     }
 }

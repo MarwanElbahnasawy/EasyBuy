@@ -108,7 +108,7 @@ struct Home: View {
         .ignoresSafeArea(.all, edges: .top)
         .padding(.bottom, 65)
                 .onAppear(perform: {
-                    viewModel.getCurrency()
+                  //  viewModel.getCurrency()
                     viewModel.fetchBrands()
                     viewModel.fetchProducts()
                     
