@@ -11,6 +11,8 @@ struct FavoriteAndCartCell: View {
     @State var size: String?
     @State var quantity: Int?
     @State var isCheckout = false
+    @State var isFavorite = false
+
     var body: some View {
         ZStack(alignment: .topTrailing) {
             HStack {
@@ -20,31 +22,49 @@ struct FavoriteAndCartCell: View {
                     .cornerRadius(10)
                     .shadow(radius: 4)
                 VStack(alignment: .leading) {
-                    Text(title ?? "not available")
-                        .font(.system(size: 12, weight: .bold)).lineLimit(0)
-               
-                        Text(type ?? "not available")
-                            .font(.system(size: 10))
-                            .foregroundColor(.gray)
-                    HStack{
-                        Text("Quantity :").font(.system(size: 16, weight: .bold))
-                        Text("\(quantity ?? 1)").font(.system(size: 14))
+                    let titleParts = title?.components(separatedBy: "|")
+                    let productName = (titleParts?[0] ?? "") + (isFavorite ? "" : " ") + (titleParts?[1] ?? "")
+                    
+                    Text(productName)
+                        .font(.system(size: 15, weight: .bold))
+                        .lineLimit(0)
+                        .padding(.top, 10)
+                    
+                    Text(type ?? "not available")
+                        .font(.system(size: 10))
+                        .foregroundColor(.gray)
+                    
+                    if !isFavorite {
+                        HStack{
+                            Text("Quantity :").font(.system(size: 16, weight: .bold))
+                            Text("\(quantity ?? 1)").font(.system(size: 14))
+                        }
                         
+                        HStack{
+                            Text("Size :").font(.system(size: 16, weight: .bold))
+                            Text("\(size ?? "4")").font(.system(size: 14))
+                        }
                     }
-                    HStack{
-                        Text("Size :").font(.system(size: 16, weight: .bold))
-                        Text("\(size ?? "4")").font(.system(size: 14))
-                         
-                    }
-
-                    HStack{
-                        Text("Item price:").font(.system(size: 16, weight: .bold))
-                        Text(price ?? "not available").font(.system(size: 14))
-
+                    
+                    if !isFavorite {
+                        HStack{
+                            Text("Item price:").font(.system(size: 16, weight: .bold))
+                            Text(price ?? "not available").font(.system(size: 14))
+                        }
+                        
+                        Spacer()
+                    } else {
+                        Spacer()
+                        
+                        HStack{
+                            Text("Item price:").font(.system(size: 16, weight: .bold))
+                            Text(price ?? "not available").font(.system(size: 14))
+                        }
+                        .padding(.bottom, 10)
                     }
                 }
+                
                 Spacer()
-             
             }
             .padding()
             .frame(maxWidth: .infinity)
@@ -55,7 +75,7 @@ struct FavoriteAndCartCell: View {
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(Color.gray.opacity(0.5), lineWidth: 1)
-              
+                
             )
 
             Button(action: {
