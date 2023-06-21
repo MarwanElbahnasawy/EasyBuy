@@ -18,11 +18,22 @@ struct AboutUsView: View {
                 ForEach(viewModel.developers, id: \.name) { developer in
                     DeveloperView(developer: developer)
                 }
+                
+                Text(viewModel.contactInfo)
+                    .font(.body)
+                    .multilineTextAlignment(.center)
+                    .padding()
+                
+                Text(viewModel.services)
+                    .font(.body)
+                    .multilineTextAlignment(.center)
+                    .padding()
             }
             .padding()
         }
     }
 }
+
 
 struct AboutUsView_Previews: PreviewProvider {
     static var previews: some View {
