@@ -82,7 +82,7 @@ class CartListViewModel: ObservableObject{
             NetworkManager.getInstance(requestType: .admin).performGraphQLRequest(mutation: DraftOrderUpdateMutation(id: draftOrderID ?? " ", input: DraftOrderInput(lineItems: lineItems)), responseModel: UpdateDraftOrderDataClass.self) {[weak self] res in
                 switch res {
                 case .success(let success):
-                    self?.totalPrice = success.draftOrderUpdate?.draftOrder?.totalPrice ?? ""
+                    self?.totalPrice = success.draftOrderUpdate?.draftOrder?.subtotalPrice ?? ""
                     UserDefaults.standard.set(success.draftOrderUpdate?.draftOrder?.lineItems?.nodes?.count, forKey: "count")
                     FireBaseManager.shared.saveCustomerDiscountCodes(customerDiscountCodes: CustomerDiscountCodes(id: self?.customerDiscountCodes?.id,
                                                                                                                   discountCodes: self?.customerDiscountCodes?.discountCodes

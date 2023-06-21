@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AlertToast
 
 struct PaymentMethodView: View {
     @State var totalPrice: String = ""
@@ -22,7 +23,13 @@ struct PaymentMethodView: View {
                     .infinity, maxHeight: 45)
             .padding()
             Button {
-                // action here
+                isSuccess.showAlert = true
+                isSuccess.isLoading = true
+                Task{
+                    await isSuccess.completeOrder(draftOrderID: draftOrderID)
+                    isSuccess.draftOrderDelete()
+                  
+                }
             } label: {
                 Text("Cash On Delivery")
                     .frame(minWidth: 100, maxWidth:
@@ -43,7 +50,18 @@ struct PaymentMethodView: View {
                                   })
                           }
 
-        }.navigationBarBackButtonHidden(true).navigationBarItems(leading: BackButton(action: { presentationMode.wrappedValue.dismiss() }))
+        }.toast(isPresenting: $isSuccess.showAlert){
+            var alertToast: AlertToast?
+            if isSuccess.isLoading{
+                alertToast = AlertToast(type: .loading, title: "Please wait...")
+            }
+            if isSuccess.isComplete{
+                alertToast = AlertToast(type: .complete(.green), title: "Completed ",subTitle: "Congrats your order completed")
+            }
+          
+            return alertToast ?? AlertToast(type: .loading , title: "Please wait...")
+        }
+.navigationBarBackButtonHidden(true).navigationBarItems(leading: BackButton(action: { presentationMode.wrappedValue.dismiss() }))
            .background(Color("itemcolor"))
       
     }

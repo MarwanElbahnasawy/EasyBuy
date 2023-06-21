@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ShopingCartListUIView: View {
     @StateObject var shopingCartViewModel: CartListViewModel
-    @ObservedObject var settingsViewModel = SettingsViewModel()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State private var showAlert = false
     @State private var indexSet: IndexSet?
@@ -81,7 +80,6 @@ struct ShopingCartListUIView: View {
                 presentationMode.wrappedValue.dismiss()
             })).background(Color("itemcolor")).onAppear(){
                 shopingCartViewModel.getCartItems()
-                settingsViewModel.getCurrency()
             }
    
     }
