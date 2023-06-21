@@ -30,7 +30,7 @@ struct EasyBuyApp: App {
                         BaseView()
                     }
                 }
-            }
+            }.navigationViewStyle(StackNavigationViewStyle())
         }
     }
 }

@@ -13,7 +13,7 @@ struct RedeemedCell: View {
     @Environment(\.dismiss) var dismiss
     var checkoutViewModel: CheckoutViewModel?
     var index: Int?
-    @State var redeemedViewMode: RedeemedListViewModel = RedeemedListViewModel()
+    @StateObject var redeemedViewMode: RedeemedListViewModel 
     var body: some View {
         if isUseable{
             ZStack{

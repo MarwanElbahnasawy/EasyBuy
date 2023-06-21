@@ -9,8 +9,7 @@ struct BaseView: View {
     // MARK: - HIDE TAB BAR
     init() {
         UITabBar.appearance().isHidden = true
-       
-          
+        
     }
     
     var body: some View {
@@ -52,6 +51,8 @@ struct BaseView: View {
                         .background(Color.black.opacity(0.04))
                         .tag(Tab.Person)
                 }
+            }.onAppear{
+                unreadNotifications = UserDefaults.standard.integer(forKey: "count")
             }
             .overlay(
                 // MARK: - CUSTOM TAB BAR

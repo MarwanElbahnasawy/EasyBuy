@@ -10,6 +10,8 @@ import Foundation
 class DiscountCodesListViewModel: ObservableObject{
     @Published var discountCodes: DataDiscountCodes?
     @Published var notUsedDiscountCodes: [CodeDiscountNodesNode] = []
+    @Published var isLoading = true
+  
     func getDiscountCodesForListView(adType: AdType)-> [CodeDiscountNodesNode]?{
         let filteredArray: [CodeDiscountNodesNode] = notUsedDiscountCodes
         var resultArray: [CodeDiscountNodesNode] = []
@@ -31,14 +33,17 @@ class DiscountCodesListViewModel: ObservableObject{
             case .success(let res):
                 self?.discountCodes = res
                 self?.returnUnusedArray()
+                
                 print(res)
             case .failure(let failure):
+                self?.isLoading = false
                 print(failure)
             }
         }
     }
     func returnUnusedArray(){
         FireBaseManager.shared.retriveCustomerDiscountCodes()?.getDocument {[weak self] snapshot, error in
+            self?.isLoading = false
               if let error = error {
                   print("Failed to fetch current user:", error)
                   return

@@ -14,21 +14,30 @@ class CartListViewModel: ObservableObject{
     var draftOrderDataClass: DraftOrderDataClass?
     @Published var totalPrice: String = ""
     @Published var quantity: Int = 1
+    @Published var isLoading = true
     func getCartItems(){
         FireBaseManager.shared.retriveCustomerDiscountCodes()?.getDocument(completion: {[weak self] snapshot, error in
             
             if let error = error {
                 print("Failed to fetch current user:", error)
+                self?.isLoading = false
                 return
             }
             guard let data = snapshot?.data() else {
                 print("no data found")
                 self?.products = []
+                self?.isLoading = false
                 return
             }
             
             let objFireBase = FireBaseManager.shared.mapFireBaseObject(data: data)
-            self?.draftOrderID = objFireBase?.draftOrders?.cartDraftOrder?.draftOrderCreate?.draftOrder?.id ?? ""
+            if let id = objFireBase?.draftOrders?.cartDraftOrder?.draftOrderCreate?.draftOrder?.id {
+                self?.draftOrderID = id
+            }
+            else{
+                self?.isLoading = false
+            }
+            
             self?.customerDiscountCodes = objFireBase ?? CustomerDiscountCodes()
             self?.getDraftOrders(id: self?.draftOrderID ?? "")
             self?.draftOrderDataClass = objFireBase?.draftOrders?.favoriteDraftorder
@@ -41,12 +50,13 @@ class CartListViewModel: ObservableObject{
             case .success(let success):
                 self?.products = success.draftOrder?.lineItems?.nodes
                 UserDefaults.standard.set(self?.products?.count, forKey: "count")
-                self?.totalPrice = success.draftOrder?.totalPrice ?? ""
+                self?.totalPrice = success.draftOrder?.subtotalPrice ?? ""
                 print("total price is \(self?.totalPrice)")
-                
+                self?.isLoading = false
             case .failure(let failure):
                 print(failure)
                 self?.products = []
+                self?.isLoading = false
             }
         }
     }
@@ -54,11 +64,13 @@ class CartListViewModel: ObservableObject{
         products?.remove(atOffsets: indexSet)
         let lineItems = mapLineItemsToDratOrderLineItems(lineItems: products)
         if lineItems.isEmpty{
+
             UserDefaults.standard.set(0, forKey: "count")
             NetworkManager.getInstance(requestType: .admin).performGraphQLRequest(mutation: DraftOrderDeleteMutation(input: DraftOrderDeleteInput(id: draftOrderID ?? "")), responseModel: DeleteDraftOrderDataClass.self) { res in
                 switch res{
                 case .success(let success):
                     print(success)
+                    
                     FireBaseManager.shared.removeCartFromFireBase()
                 case .failure(let failure):
                     print(failure)
@@ -66,6 +78,7 @@ class CartListViewModel: ObservableObject{
             }
         }
         else{
+      
             NetworkManager.getInstance(requestType: .admin).performGraphQLRequest(mutation: DraftOrderUpdateMutation(id: draftOrderID ?? " ", input: DraftOrderInput(lineItems: lineItems)), responseModel: UpdateDraftOrderDataClass.self) {[weak self] res in
                 switch res {
                 case .success(let success):
