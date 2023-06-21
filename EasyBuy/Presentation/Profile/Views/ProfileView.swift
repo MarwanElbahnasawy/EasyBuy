@@ -36,7 +36,7 @@ struct ProfileView: View {
                   primaryButton: .destructive(Text("Sign Out")) {
                 token = ""
                 UserDefaults.standard.removeObject(forKey: "accessToken")
-                UserDefaults.standard.removeObject(forKey: "customerID")
+//                UserDefaults.standard.removeObject(forKey: "customerID")
                 UserDefaults.standard.removeObject(forKey: "shopifyCustomerID")
                 UserDefaults.standard.removeObject(forKey: "email")
                 UserDefaults.standard.removeObject(forKey: "displayName")
