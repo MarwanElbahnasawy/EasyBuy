@@ -32,7 +32,7 @@ struct RegisterationView: View {
                     
                     InputView(text: $regestrationViewModel.password,
                               title: "Password",
-                              placeholder: "Enter your password",
+                              placeholder: "Enter your password (At least 6 characters)",
                               isSecuredField: true)
                     
                     InputView(text: $regestrationViewModel.confirmPassword,

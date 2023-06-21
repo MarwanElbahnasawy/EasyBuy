@@ -6,10 +6,21 @@ struct InputView: View {
     let placeholder: String
     var isSecuredField = false
     
-    @State private var passwordsMatch = false
     @State private var showPassword = false
     @State private var isValid = false
     @State private var hint: String?
+    
+    private var passwordsMatch: Bool {
+        if title == "Confirm Password" {
+            return text == password
+        } else {
+            return true
+        }
+    }
+    
+    private var password: String {
+        return UserDefaults.standard.string(forKey: "password") ?? ""
+    }
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -69,9 +80,18 @@ struct InputView: View {
                     .font(.footnote)
                     .foregroundColor(.gray)
             }
+            
+            if title == "Confirm Password" && !text.isEmpty && !passwordsMatch {
+                Text("Passwords do not match")
+                    .foregroundColor(.red)
+                    .font(.footnote)
+            }
         }
         .onChange(of: text) { newValue in
             isValid = validate(newValue)
+            if title == "Password" {
+                UserDefaults.standard.set(newValue, forKey: "password")
+            }
         }
     }
     
@@ -84,7 +104,7 @@ struct InputView: View {
         case "Password":
             return ValidationUtils.isValidPassword(password: input)
         case "Confirm Password":
-            return ValidationUtils.passwordsMatch(password: text, confirmPassword: input)
+            return passwordsMatch
         case "Phone Number":
             return ValidationUtils.isValidPhoneNumber(phoneNumber: input)
         default:
@@ -99,7 +119,7 @@ struct InputView: View {
         case "First Name", "Last Name":
             return "Only alphabetical characters are allowed"
         case "Password":
-            return "At least 6 characters with at least one lowercase letter, one uppercase letter, and one digit."
+            return "At least 6 characters"
         case "Confirm Password":
             return "Should match the password"
         case "Phone Number":
@@ -109,7 +129,6 @@ struct InputView: View {
         }
     }
 }
-
 struct InputView_Previews: PreviewProvider {
     static var previews: some View {
         InputView(text: .constant(""), title: "Email Address", placeholder: "name@example.com")
