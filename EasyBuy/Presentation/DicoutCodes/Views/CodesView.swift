@@ -11,7 +11,6 @@ struct CodesView: View {
     @State var selectedValue = 0
     @State var adType: AdType = .all
     @State var isUseable = false
-    @ObservedObject var viewMdoel = DiscountCodesListViewModel()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var checkoutViewModel: CheckoutViewModel?
     var body: some View {
@@ -24,12 +23,11 @@ struct CodesView: View {
             }.padding()
             VStack{
                 if selectedValue == 0 {
-                    DiscountCodesList(discountCodesViewModel: viewMdoel, adType: adType).onAppear{
-                        viewMdoel.getDiscountCodes(first: 20)
+                    DiscountCodesList(adType: adType)
                     }
-                }
+                
                 else{
-                    RedeemedCodesList(redeemedViewModel: RedeemedListViewModel(),isUseable: isUseable,checkoutViewModel: checkoutViewModel)
+                    RedeemedCodesList(redeemedViewModel: RedeemedListViewModel(), isUseable: isUseable,checkoutViewModel: checkoutViewModel)
                 }
             }
         }.navigationBarBackButtonHidden(true)

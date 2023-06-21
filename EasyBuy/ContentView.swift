@@ -61,7 +61,7 @@ struct ContentView: View {
                 }
             }
             Text("Select an item")
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
         //For Network Connectivity
         .overlay(
             Group {

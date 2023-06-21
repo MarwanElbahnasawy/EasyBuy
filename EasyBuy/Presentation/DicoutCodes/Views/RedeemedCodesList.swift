@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RedeemedCodesList: View {
-    @ObservedObject var redeemedViewModel: RedeemedListViewModel
+    @StateObject var redeemedViewModel: RedeemedListViewModel
     @State var isUseable = false
     var checkoutViewModel: CheckoutViewModel?
     var body: some View {
@@ -22,11 +22,11 @@ struct RedeemedCodesList: View {
                             
                             RedeemedCell(code: code, isUseable: isUseable, checkoutViewModel: checkoutViewModel, redeemedViewMode: redeemedViewModel).padding(.all,10).listRowBackground(Color.clear)   .listRowSeparator(.hidden).clipped().cornerRadius(16)
                         }
+                    }.onAppear(){
+                        let customerID = UserDefaults.standard.string(forKey: "customerID")
+                        redeemedViewModel.getRedeemedCode(id: customerID!)
+                        
                     }
-                    
-                }.onAppear(){
-                    let customerID = UserDefaults.standard.string(forKey: "customerID")
-                    redeemedViewModel.getRedeemedCode(id: customerID!)
                     
                 }
             }

@@ -14,6 +14,7 @@ class PaymentManager: NSObject , PKPaymentAuthorizationControllerDelegate{
     var totalPrice: String
     var currencyCode: String
     var draftOrderID: String
+    var isFinished: Bool = false
     var button = PKPaymentButton.init(paymentButtonType: .checkout, paymentButtonStyle: .automatic)
     
     init(items: [LinesItemNode], totalPrice: String, currencyCode: String, draftOrderId: String) {
@@ -36,6 +37,7 @@ class PaymentManager: NSObject , PKPaymentAuthorizationControllerDelegate{
                 paymentsummaryItems.append(item)
             }
         }
+        print("total price \(totalPrice)")
         let total = PKPaymentSummaryItem(label:"Total", amount:NSDecimalNumber(string: totalPrice))
         paymentsummaryItems.append(total)
         let paymentRequest = PKPaymentRequest()
@@ -53,12 +55,18 @@ class PaymentManager: NSObject , PKPaymentAuthorizationControllerDelegate{
         paymentController?.present()
     }
     func paymentAuthorizationControllerDidFinish(_ controller: PKPaymentAuthorizationController) {
+     
         draftOrderDelete()
         completeOrder()
+        
         controller.dismiss()
     }
     func paymentAuthorizationController(_ controller: PKPaymentAuthorizationController, didAuthorizePayment payment: PKPayment) async -> PKPaymentAuthorizationResult {
-        .init(status: .success, errors: nil)
+        
+        let result = PKPaymentAuthorizationResult(status: .success, errors: nil)
+       
+        
+        return result
     }
     func shippingMethodCaculator () -> [PKShippingMethod] {
         let today = Date()
@@ -78,12 +86,14 @@ class PaymentManager: NSObject , PKPaymentAuthorizationControllerDelegate{
     }
     func completeOrder(){
         print("the draft order is \(draftOrderID)")
-        NetworkManager.getInstance(requestType: .admin).performGraphQLRequest(mutation: DraftOrderCompleteMutation(id: draftOrderID), responseModel: DraftOrderCompleteDataClass.self) {result in
+        NetworkManager.getInstance(requestType: .admin).performGraphQLRequest(mutation: DraftOrderCompleteMutation(id: draftOrderID), responseModel: DraftOrderCompleteDataClass.self) {[weak self]result in
             switch result {
             case .success(let success):
                 print(success)
+                self?.isFinished = false
             case .failure(let failure):
                 print(failure)
+                self?.isFinished = false
             }
         }
     }

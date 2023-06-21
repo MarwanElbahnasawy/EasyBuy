@@ -13,8 +13,9 @@ struct PaymentButton: UIViewRepresentable {
     var totalPrice: String
     var currrencyCode: String
     var draftOrderID: String
+ 
     func makeCoordinator () -> PaymentManager {
-        PaymentManager(items: products, totalPrice: totalPrice , currencyCode: currrencyCode,draftOrderId: draftOrderID)
+      PaymentManager(items: products, totalPrice: totalPrice , currencyCode: currrencyCode,draftOrderId: draftOrderID)
     }
     func makeUIView(context: Context) -> some UIView {
         context.coordinator.button

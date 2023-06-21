@@ -17,6 +17,7 @@ class CheckoutViewModel: ObservableObject{
     @Published var customerAddress: CustomerAddress?
     @Published var settingsViewModel = SettingsViewModel()
     @Published var taxFees = ""
+    @Published var isLoading = true
     init() {
         getProducts()
         customerAddress = settingsViewModel.getAddress()
@@ -55,9 +56,11 @@ class CheckoutViewModel: ObservableObject{
                         self?.taxFees = taxFees.description
                     }
                 }
+                self?.isLoading = false
             case .failure(let failure):
                 print(failure)
                 self?.products = []
+                self?.isLoading = false
             }
         }
     }
@@ -89,14 +92,14 @@ class CheckoutViewModel: ObservableObject{
                     FireBaseManager.shared.saveCustomerDiscountCodes(customerDiscountCodes: CustomerDiscountCodes(id: customerDiscountCodes.id,discountCodes: customerDiscountCodes.discountCodes, usedDiscountCodes: customerDiscountCodes.usedDiscountCodes,draftOrders: DraftOrders(favoriteDraftorder: customerDiscountCodes.draftOrders?.favoriteDraftorder, cartDraftOrder: DraftOrderDataClass(draftOrderCreate: DraftOrderCreate(draftOrder: success.draftOrderUpdate?.draftOrder)))))
                 }
                 self?.priceAfterDiscounts = success.draftOrderUpdate?.draftOrder?.subtotalPrice ?? "0"
-                if let totalPrice = self?.totalPrice{
-                    let totalPriceDoubleValue = (totalPrice as NSString).doubleValue
-                    if let subtotal = success.draftOrderUpdate?.draftOrder?.subtotalPrice{
-                        let subtotalPrice = (subtotal as NSString).doubleValue
-                        let taxFees = totalPriceDoubleValue - subtotalPrice
-                        self?.taxFees = taxFees.description
-                    }
-                }
+//                if let totalPrice = self?.totalPrice{
+//                    let totalPriceDoubleValue = (totalPrice as NSString).doubleValue
+//                    if let subtotal = success.draftOrderUpdate?.draftOrder?.subtotalPrice{
+//                        let subtotalPrice = (subtotal as NSString).doubleValue
+//                        let taxFees = totalPriceDoubleValue - subtotalPrice
+//                        self?.taxFees = taxFees.description
+//                    }
+//                }
 
             case .failure(let failure):
                 print(failure)
