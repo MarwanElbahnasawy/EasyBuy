@@ -36,7 +36,7 @@ class ProductViewModel: ObservableObject {
     }
     
     func fetchProductDetails() {
-        if token == "" || token == "guest"{
+        if token != "" || token != "guest"{
            checkFavoriteDraftOrder()
         }
         print("isFavoriteExist initially: \(isFavoriteExist)")
