@@ -37,6 +37,7 @@ class DiscountCodesListViewModel: ObservableObject{
                 print(res)
             case .failure(let failure):
                 self?.isLoading = false
+                
                 print(failure)
             }
         }
@@ -46,11 +47,13 @@ class DiscountCodesListViewModel: ObservableObject{
             self?.isLoading = false
               if let error = error {
                   print("Failed to fetch current user:", error)
+                  self?.notUsedDiscountCodes = self?.discountCodes?.codeDiscountNodes?.nodes ?? []
                   return
               }
 
               guard let data = snapshot?.data() else {
                       print("No data found")
+                  self?.notUsedDiscountCodes = self?.discountCodes?.codeDiscountNodes?.nodes ?? []
                   return
               }
             let objFromFireBase = FireBaseManager.shared.mapFireBaseObject(data: data)
