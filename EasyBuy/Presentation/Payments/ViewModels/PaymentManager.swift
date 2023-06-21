@@ -35,7 +35,7 @@ class PaymentManager: NSObject , PKPaymentAuthorizationControllerDelegate{
         var paymentsummaryItems = [PKPaymentSummaryItem] ()
         items.forEach { product in
             if let price = product.variant?.price {
-                let item = PKPaymentSummaryItem(label: product.product?.title ?? "not availabel", amount:NSDecimalNumber(string: "\(String(describing: price))"))
+                let item = PKPaymentSummaryItem(label: product.product?.title ?? "not availabel", amount:NSDecimalNumber(string: "\(String(describing: formatPrice(price: price)))"))
                 paymentsummaryItems.append(item)
             }
         }
