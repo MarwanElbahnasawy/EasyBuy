@@ -466,6 +466,7 @@
 		140DEC242A3E8607009206D2 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				14AA61A62A42CD3F00EDE9DC /* Constants */,
 				3F9A0F8C2A3EA5DD00AB9D69 /* DraftOrders */,
 				3F9A0F872A3E99A900AB9D69 /* DiscountCodesTest */,
 				140DEC252A3E8607009206D2 /* MockNetworkManagerTest.swift */,
@@ -650,6 +651,7 @@
 			isa = PBXGroup;
 			children = (
 				14E54EE82A2E1FA400635F72 /* OrderRow.swift */,
+				14E649002A2E9B0D00EB5CC2 /* OrdersInLine.swift */,
 				14E54EE62A2E10B100635F72 /* OrdersView.swift */,
 			);
 			path = views;
@@ -702,6 +704,14 @@
 				3FFBDFF62A3E297B00ACC61E /* NotificationCenterBadge.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		14AA61A62A42CD3F00EDE9DC /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				17C9CF392A27E133004BCCC2 /* ConstantsTests.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 		14B1382C2A3B88D300F33395 /* Address */ = {
@@ -762,7 +772,6 @@
 				14F9B2632A2B949B009C2611 /* LineView.swift */,
 				148580162A2BEE6800D33591 /* image.swift */,
 				14E648FE2A2E95F500EB5CC2 /* NoProducts.swift */,
-				14E649002A2E9B0D00EB5CC2 /* OrdersInLine.swift */,
 				1483C0262A39854F00FA013F /* Loading.swift */,
 			);
 			path = Views;
@@ -888,7 +897,6 @@
 				EBBEF1102A3E9A8000FB95CA /* Registration */,
 				140DEC272A3E8608009206D2 /* Mock NetworkManager methods and responses */,
 				140DEC242A3E8607009206D2 /* Tests */,
-				17C9CF392A27E133004BCCC2 /* ConstantsTests.swift */,
 			);
 			path = EasyBuyTests;
 			sourceTree = "<group>";

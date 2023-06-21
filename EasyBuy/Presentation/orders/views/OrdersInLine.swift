@@ -15,7 +15,7 @@ struct OrdersInLine: View {
     var body: some View {
         VStack{
             if viewModel.ordersInLine.count == 0 {
-                
+                Text("No Orders Yet")
             }else{
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHGrid(rows:rows , alignment: .center, spacing: 4, pinnedViews: [], content: {

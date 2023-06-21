@@ -6,7 +6,7 @@ struct AccountSectionView: View {
     var body: some View {
         Section("Account") {
             NavigationLink(destination: AddressView()) {
-                SettingRowView(imageName: "bag.circle.fill", title: "My Address", tintColor: .black)
+                SettingRowView(imageName: "location.circle.fill", title: "My Address", tintColor: .black)
             }
             
             NavigationLink(destination: SettingsView()) {
