@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ShopingCartListUIView: View {
     @StateObject var shopingCartViewModel: CartListViewModel
-    @ObservedObject var settingsViewModel = SettingsViewModel()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State private var showAlert = false
     @State private var indexSet: IndexSet?
@@ -19,7 +18,9 @@ struct ShopingCartListUIView: View {
                 Text("Shopping Cart").frame(maxWidth: .infinity, alignment: .leading).padding(.leading,10).fontWeight(.bold).font(Font.system(size: 22))
             }
             if shopingCartViewModel.isLoading{
-                LottieView(lottieFile: "loading")
+                LottieView(lottieFile: "loading").onAppear(){
+                    shopingCartViewModel.getCartItems()
+                }
             }
             else{
                 if shopingCartViewModel.products?.isEmpty == false{
@@ -44,7 +45,7 @@ struct ShopingCartListUIView: View {
                                 Alert(title: Text("Delete ?"),message: Text("Do you want to delete this product from your cart ?") ,
                                       primaryButton: .destructive(Text("OK"),action: {
                                     shopingCartViewModel.deletProduct(indexSet: self.indexSet!)
-                                    
+                                   
                                 }),
                                       secondaryButton: .cancel())
                             }
@@ -52,7 +53,6 @@ struct ShopingCartListUIView: View {
                     }
                    
                     HStack{
-    //                    formatPrice(price: shopingCartViewModel.totalPriceWithQuantity(totalPrice: shopingCartViewModel.totalPrice)
                         Text("Total Price : \(formatPrice(price:shopingCartViewModel.totalPrice))")
                         
                         NavigationLink(destination: CheckoutView(viewModel: CheckoutViewModel())) {
@@ -79,10 +79,7 @@ struct ShopingCartListUIView: View {
         }.navigationBarBackButtonHidden(true)
             .navigationBarItems(leading: BackButton(action: {
                 presentationMode.wrappedValue.dismiss()
-            })).background(Color("itemcolor")).onAppear(){
-                shopingCartViewModel.getCartItems()
-                settingsViewModel.getCurrency()
-            }
+            })).background(Color("itemcolor"))
    
     }
   

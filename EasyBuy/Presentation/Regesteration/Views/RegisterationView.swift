@@ -97,6 +97,14 @@ struct RegisterationView: View {
                 }
             }
         }
+        .onDisappear {
+            regestrationViewModel.email = ""
+            regestrationViewModel.firstName = ""
+            regestrationViewModel.lastName = ""
+            regestrationViewModel.password = ""
+            regestrationViewModel.confirmPassword = ""
+            regestrationViewModel.phoneNumber = ""
+        }
         .alert(isPresented: $signUpSuccess) {
             Alert(title: Text("SignUp success"), message: Text("Please login to use EasyBuy app!"), dismissButton: .default(Text("Ok")){
 //                if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {

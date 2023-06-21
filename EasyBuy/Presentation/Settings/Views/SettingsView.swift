@@ -99,9 +99,10 @@ struct SettingsView: View {
                     })
                 }
                 else{
-                   alert = Alert(title: Text("Warning"), message: Text("Data will not be saved"), dismissButton: .default(Text("OK")) {
-                       presentationMode.wrappedValue.dismiss()
-                       print("OK button tapped")
+                   alert = Alert(title: Text("Warning!"), message: Text("All changes will be lost"), primaryButton: .default(Text("OK")) {
+                           presentationMode.wrappedValue.dismiss()
+                   }, secondaryButton: .cancel(Text("Cancel")) {
+                       print("Cancel button tapped")
                    })
                 }
                 return alert

@@ -5,6 +5,7 @@ class FavoriteListViewModel : ObservableObject {
     @Published var products: [LinesItemNode]?
     @Published var draftOrderID: String?
     @Published var customerDiscountCodes: CustomerDiscountCodes?
+    @Published var isLoading = true
     var draftOrderDataClass: DraftOrderDataClass?
     
     func getFavoriteProducts() {
@@ -12,17 +13,23 @@ class FavoriteListViewModel : ObservableObject {
             
             if let error = error {
                 print("Failed to fetch current user:", error)
+                self?.isLoading = false
                 return
             }
             
             guard let data = snapshot?.data() else {
                 print("no data found")
                 self?.products = []
+                self?.isLoading = false
                 return
             }
             
             let objFireBase = FireBaseManager.shared.mapFireBaseObject(data: data)
-            self?.draftOrderID = objFireBase?.draftOrders?.favoriteDraftorder?.draftOrderCreate?.draftOrder?.id ?? ""
+            if let id = objFireBase?.draftOrders?.favoriteDraftorder?.draftOrderCreate?.draftOrder?.id {
+                self?.draftOrderID = id
+            } else {
+                self?.isLoading = false
+            }
             self?.customerDiscountCodes = objFireBase ?? CustomerDiscountCodes()
             self?.getDraftOrders(id: self?.draftOrderID ?? "")
             self?.draftOrderDataClass = objFireBase?.draftOrders?.cartDraftOrder
@@ -37,9 +44,11 @@ class FavoriteListViewModel : ObservableObject {
             switch res {
             case .success(let success):
                 self?.products = success.draftOrder?.lineItems?.nodes
+                self?.isLoading = false
             case .failure(let failure):
                 print(failure)
                 self?.products = []
+                self?.isLoading = false
             }
         }
     }

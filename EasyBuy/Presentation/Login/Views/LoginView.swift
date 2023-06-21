@@ -24,11 +24,7 @@ struct LoginView: View {
                 SignUpButtonView()
             }.navigationViewStyle(StackNavigationViewStyle())
             .alert(isPresented: $signInSuccess) {
-                Alert(title: Text("SignIn success"), message: Text("Enjoy using EasyBuy!"), dismissButton: .default(Text("Ok")) {
-//                    if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-//                       let window = windowScene.windows.first {
-//                        window.rootViewController = UIHostingController(rootView: Home())
-//                    }
+                Alert(title: Text("Sign In success"), message: Text("Enjoy using EasyBuy!"), dismissButton: .default(Text("Ok")) {
                     token = loginViewModel.tokenString
                     Useremail = email
                 })

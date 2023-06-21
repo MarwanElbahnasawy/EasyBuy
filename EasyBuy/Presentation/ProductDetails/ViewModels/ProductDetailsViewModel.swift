@@ -93,6 +93,12 @@ class ProductViewModel: ObservableObject {
                             lineItems = mapLineItemsToDratOrderLineItems(lineItems: success.draftOrder?.lineItems?.nodes ?? [])
                             if lineItems.contains(where: {$0.variantId == self?.varaintID}){
                                 self?.isExist = true
+                                self?.isComplete = false
+                                self?.isLoadingCart = false
+                                self?.isfailedCart = false
+                                DispatchQueue.main.asyncAfter(deadline: .now()+2){
+                                    self?.isShowAlet = false
+                                }
                             }
                             else{
                                 self?.isExist = false
@@ -149,6 +155,12 @@ class ProductViewModel: ObservableObject {
                     
                 }
             case .failure(let failure):
+                self?.isComplete = false
+                self?.isLoadingCart = false
+                self?.isfailedCart = true
+                DispatchQueue.main.asyncAfter(deadline: .now()+2){
+                    self?.isShowAlet = false
+                }
                 print(failure)
             }
         }
@@ -179,6 +191,12 @@ class ProductViewModel: ObservableObject {
                     print("no line items")
                 }
             case .failure(let failure):
+                self?.isComplete = false
+                self?.isLoadingCart = false
+                self?.isfailedCart = true
+                DispatchQueue.main.asyncAfter(deadline: .now()+2){
+                    self?.isShowAlet = false
+                }
                 print(failure)
             }
         }
