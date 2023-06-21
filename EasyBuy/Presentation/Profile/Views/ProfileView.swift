@@ -34,8 +34,14 @@ struct ProfileView: View {
             Alert(title: Text("Sign out?"),
                   message: Text("Are you sure you want to sign out?"),
                   primaryButton: .destructive(Text("Sign Out")) {
-                UserDefaults.standard.removeObject(forKey: "accessToken")
                 token = ""
+                UserDefaults.standard.removeObject(forKey: "accessToken")
+                UserDefaults.standard.removeObject(forKey: "customerID")
+                UserDefaults.standard.removeObject(forKey: "shopifyCustomerID")
+                UserDefaults.standard.removeObject(forKey: "email")
+                UserDefaults.standard.removeObject(forKey: "displayName")
+                UserDefaults.standard.removeObject(forKey: "Address")
+                UserDefaults.standard.removeObject(forKey: "count")
             },
                   secondaryButton: .cancel()
             )
