@@ -1099,6 +1099,7 @@ public enum DraftOrderAppliedDiscountType: RawRepresentable, Equatable, Hashable
 }
 
 
+
 /// The code designating a country/region, which generally follows ISO 3166-1 alpha-2 guidelines.
 /// If a territory doesn't have a country code value in the `CountryCode` enum, then it might be considered a subdivision
 /// of another country. For example, the territories associated with Spain are represented by the country code `ES`,
@@ -2854,32 +2855,32 @@ public struct MetafieldInput: GraphQLMapConvertible {
 
   /// - Parameters:
   ///   - id: The unique ID of the metafield.
-  /// 
+  ///
   /// Required when updating a metafield, but should not be included when creating as it's created automatically.
   ///   - namespace: The container for a group of metafields that the metafield is or will be associated with. Used in tandem with
   /// `key` to lookup a metafield on a resource, preventing conflicts with other metafields with the same `key`.
-  /// 
+  ///
   /// Required when creating a metafield, but optional when updating. Used to help identify the metafield when
   /// updating, but cannot be updated itself.
-  /// 
+  ///
   /// Must be 3-255 characters long and can contain alphanumeric, hyphen, and underscore characters.
   ///   - key: The unique identifier for a metafield within its namespace.
-  /// 
+  ///
   /// Required when creating a metafield, but optional when updating. Used to help identify the metafield when
   /// updating, but cannot be updated itself.
-  /// 
+  ///
   /// Must be 3-64 characters long and can contain alphanumeric, hyphen, and underscore characters.
   ///   - value: The data stored in the metafield. Always stored as a string, regardless of the metafield's type.
   ///   - type: The type of data that is stored in the metafield.
   /// Refer to the list of [supported types](https://shopify.dev/apps/metafields/types).
-  /// 
+  ///
   /// Required when creating a metafield, but optional when updating.
   public init(id: Swift.Optional<GraphQLID?> = nil, namespace: Swift.Optional<String?> = nil, key: Swift.Optional<String?> = nil, value: Swift.Optional<String?> = nil, type: Swift.Optional<String?> = nil) {
     graphQLMap = ["id": id, "namespace": namespace, "key": key, "value": value, "type": type]
   }
 
   /// The unique ID of the metafield.
-  /// 
+  ///
   /// Required when updating a metafield, but should not be included when creating as it's created automatically.
   public var id: Swift.Optional<GraphQLID?> {
     get {
@@ -2892,10 +2893,10 @@ public struct MetafieldInput: GraphQLMapConvertible {
 
   /// The container for a group of metafields that the metafield is or will be associated with. Used in tandem with
   /// `key` to lookup a metafield on a resource, preventing conflicts with other metafields with the same `key`.
-  /// 
+  ///
   /// Required when creating a metafield, but optional when updating. Used to help identify the metafield when
   /// updating, but cannot be updated itself.
-  /// 
+  ///
   /// Must be 3-255 characters long and can contain alphanumeric, hyphen, and underscore characters.
   public var namespace: Swift.Optional<String?> {
     get {
@@ -2907,10 +2908,10 @@ public struct MetafieldInput: GraphQLMapConvertible {
   }
 
   /// The unique identifier for a metafield within its namespace.
-  /// 
+  ///
   /// Required when creating a metafield, but optional when updating. Used to help identify the metafield when
   /// updating, but cannot be updated itself.
-  /// 
+  ///
   /// Must be 3-64 characters long and can contain alphanumeric, hyphen, and underscore characters.
   public var key: Swift.Optional<String?> {
     get {
@@ -2933,7 +2934,7 @@ public struct MetafieldInput: GraphQLMapConvertible {
 
   /// The type of data that is stored in the metafield.
   /// Refer to the list of [supported types](https://shopify.dev/apps/metafields/types).
-  /// 
+  ///
   /// Required when creating a metafield, but optional when updating.
   public var type: Swift.Optional<String?> {
     get {
@@ -5859,11 +5860,11 @@ public final class DraftOrderCreateMutation: GraphQLMutation {
                 }
 
                 /// The location of the image as a URL.
-                /// 
+                ///
                 /// If no transform options are specified, then the original image will be preserved including any pre-applied transforms.
-                /// 
+                ///
                 /// All transformation options are considered "best-effort". Any transformation that the original image type doesn't support will be ignored.
-                /// 
+                ///
                 /// If you need multiple variations of the same image, then you can use [GraphQL aliases](https://graphql.org/learn/queries/#aliases).
                 public var url: String {
                   get {
@@ -5895,6 +5896,19 @@ public final class DraftOrderUpdateMutation: GraphQLMutation {
           name
           email
           subtotalPrice
+          lineItemsSubtotalPrice {
+            __typename
+            presentmentMoney {
+              __typename
+              amount
+              currencyCode
+            }
+            shopMoney {
+              __typename
+              amount
+              currencyCode
+            }
+          }
           note2
           totalPrice
           lineItems(first: 100) {
@@ -5968,7 +5982,7 @@ public final class DraftOrderUpdateMutation: GraphQLMutation {
     }
 
     /// Updates a draft order.
-    /// 
+    ///
     /// If a checkout has been started for a draft order, any update to the draft will unlink the checkout. Checkouts
     /// are created but not immediately completed when opening the merchant credit card modal in the admin, and when a
     /// buyer opens the invoice URL. This is usually fine, but there is an edge case where a checkout is in progress
@@ -6033,6 +6047,7 @@ public final class DraftOrderUpdateMutation: GraphQLMutation {
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
             GraphQLField("email", type: .scalar(String.self)),
             GraphQLField("subtotalPrice", type: .nonNull(.scalar(String.self))),
+            GraphQLField("lineItemsSubtotalPrice", type: .nonNull(.object(LineItemsSubtotalPrice.selections))),
             GraphQLField("note2", type: .scalar(String.self)),
             GraphQLField("totalPrice", type: .nonNull(.scalar(String.self))),
             GraphQLField("lineItems", arguments: ["first": 100], type: .nonNull(.object(LineItem.selections))),
@@ -6045,8 +6060,8 @@ public final class DraftOrderUpdateMutation: GraphQLMutation {
           self.resultMap = unsafeResultMap
         }
 
-        public init(id: GraphQLID, name: String, email: String? = nil, subtotalPrice: String, note2: String? = nil, totalPrice: String, lineItems: LineItem) {
-          self.init(unsafeResultMap: ["__typename": "DraftOrder", "id": id, "name": name, "email": email, "subtotalPrice": subtotalPrice, "note2": note2, "totalPrice": totalPrice, "lineItems": lineItems.resultMap])
+        public init(id: GraphQLID, name: String, email: String? = nil, subtotalPrice: String, lineItemsSubtotalPrice: LineItemsSubtotalPrice, note2: String? = nil, totalPrice: String, lineItems: LineItem) {
+          self.init(unsafeResultMap: ["__typename": "DraftOrder", "id": id, "name": name, "email": email, "subtotalPrice": subtotalPrice, "lineItemsSubtotalPrice": lineItemsSubtotalPrice.resultMap, "note2": note2, "totalPrice": totalPrice, "lineItems": lineItems.resultMap])
         }
 
         public var __typename: String {
@@ -6098,6 +6113,16 @@ public final class DraftOrderUpdateMutation: GraphQLMutation {
           }
         }
 
+        /// The subtotal of the line items and corresponding discounts. The subtotal doesn't include shipping charges, shipping discounts, taxes, or order discounts.
+        public var lineItemsSubtotalPrice: LineItemsSubtotalPrice {
+          get {
+            return LineItemsSubtotalPrice(unsafeResultMap: resultMap["lineItemsSubtotalPrice"]! as! ResultMap)
+          }
+          set {
+            resultMap.updateValue(newValue.resultMap, forKey: "lineItemsSubtotalPrice")
+          }
+        }
+
         /// The text from an optional note attached to the draft order.
         public var note2: String? {
           get {
@@ -6125,6 +6150,159 @@ public final class DraftOrderUpdateMutation: GraphQLMutation {
           }
           set {
             resultMap.updateValue(newValue.resultMap, forKey: "lineItems")
+          }
+        }
+
+        public struct LineItemsSubtotalPrice: GraphQLSelectionSet {
+          public static let possibleTypes: [String] = ["MoneyBag"]
+
+          public static var selections: [GraphQLSelection] {
+            return [
+              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLField("presentmentMoney", type: .nonNull(.object(PresentmentMoney.selections))),
+              GraphQLField("shopMoney", type: .nonNull(.object(ShopMoney.selections))),
+            ]
+          }
+
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public init(presentmentMoney: PresentmentMoney, shopMoney: ShopMoney) {
+            self.init(unsafeResultMap: ["__typename": "MoneyBag", "presentmentMoney": presentmentMoney.resultMap, "shopMoney": shopMoney.resultMap])
+          }
+
+          public var __typename: String {
+            get {
+              return resultMap["__typename"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          /// Amount in presentment currency.
+          public var presentmentMoney: PresentmentMoney {
+            get {
+              return PresentmentMoney(unsafeResultMap: resultMap["presentmentMoney"]! as! ResultMap)
+            }
+            set {
+              resultMap.updateValue(newValue.resultMap, forKey: "presentmentMoney")
+            }
+          }
+
+          /// Amount in shop currency.
+          public var shopMoney: ShopMoney {
+            get {
+              return ShopMoney(unsafeResultMap: resultMap["shopMoney"]! as! ResultMap)
+            }
+            set {
+              resultMap.updateValue(newValue.resultMap, forKey: "shopMoney")
+            }
+          }
+
+          public struct PresentmentMoney: GraphQLSelectionSet {
+            public static let possibleTypes: [String] = ["MoneyV2"]
+
+            public static var selections: [GraphQLSelection] {
+              return [
+                GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+                GraphQLField("amount", type: .nonNull(.scalar(String.self))),
+                GraphQLField("currencyCode", type: .nonNull(.scalar(CurrencyCode.self))),
+              ]
+            }
+
+            public private(set) var resultMap: ResultMap
+
+            public init(unsafeResultMap: ResultMap) {
+              self.resultMap = unsafeResultMap
+            }
+
+            public init(amount: String, currencyCode: CurrencyCode) {
+              self.init(unsafeResultMap: ["__typename": "MoneyV2", "amount": amount, "currencyCode": currencyCode])
+            }
+
+            public var __typename: String {
+              get {
+                return resultMap["__typename"]! as! String
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "__typename")
+              }
+            }
+
+            /// Decimal money amount.
+            public var amount: String {
+              get {
+                return resultMap["amount"]! as! String
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "amount")
+              }
+            }
+
+            /// Currency of the money.
+            public var currencyCode: CurrencyCode {
+              get {
+                return resultMap["currencyCode"]! as! CurrencyCode
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "currencyCode")
+              }
+            }
+          }
+
+          public struct ShopMoney: GraphQLSelectionSet {
+            public static let possibleTypes: [String] = ["MoneyV2"]
+
+            public static var selections: [GraphQLSelection] {
+              return [
+                GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+                GraphQLField("amount", type: .nonNull(.scalar(String.self))),
+                GraphQLField("currencyCode", type: .nonNull(.scalar(CurrencyCode.self))),
+              ]
+            }
+
+            public private(set) var resultMap: ResultMap
+
+            public init(unsafeResultMap: ResultMap) {
+              self.resultMap = unsafeResultMap
+            }
+
+            public init(amount: String, currencyCode: CurrencyCode) {
+              self.init(unsafeResultMap: ["__typename": "MoneyV2", "amount": amount, "currencyCode": currencyCode])
+            }
+
+            public var __typename: String {
+              get {
+                return resultMap["__typename"]! as! String
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "__typename")
+              }
+            }
+
+            /// Decimal money amount.
+            public var amount: String {
+              get {
+                return resultMap["amount"]! as! String
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "amount")
+              }
+            }
+
+            /// Currency of the money.
+            public var currencyCode: CurrencyCode {
+              get {
+                return resultMap["currencyCode"]! as! CurrencyCode
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "currencyCode")
+              }
+            }
           }
         }
 
@@ -6505,11 +6683,11 @@ public final class DraftOrderUpdateMutation: GraphQLMutation {
                 }
 
                 /// The location of the image as a URL.
-                /// 
+                ///
                 /// If no transform options are specified, then the original image will be preserved including any pre-applied transforms.
-                /// 
+                ///
                 /// All transformation options are considered "best-effort". Any transformation that the original image type doesn't support will be ignored.
-                /// 
+                ///
                 /// If you need multiple variations of the same image, then you can use [GraphQL aliases](https://graphql.org/learn/queries/#aliases).
                 public var url: String {
                   get {
@@ -6541,6 +6719,19 @@ public final class DraftOrderQuery: GraphQLQuery {
         subtotalPrice
         note2
         totalPrice
+        lineItemsSubtotalPrice {
+          __typename
+          presentmentMoney {
+            __typename
+            amount
+            currencyCode
+          }
+          shopMoney {
+            __typename
+            amount
+            currencyCode
+          }
+        }
         lineItems(first: 100) {
           __typename
           nodes {
@@ -6632,6 +6823,7 @@ public final class DraftOrderQuery: GraphQLQuery {
           GraphQLField("subtotalPrice", type: .nonNull(.scalar(String.self))),
           GraphQLField("note2", type: .scalar(String.self)),
           GraphQLField("totalPrice", type: .nonNull(.scalar(String.self))),
+          GraphQLField("lineItemsSubtotalPrice", type: .nonNull(.object(LineItemsSubtotalPrice.selections))),
           GraphQLField("lineItems", arguments: ["first": 100], type: .nonNull(.object(LineItem.selections))),
         ]
       }
@@ -6642,8 +6834,8 @@ public final class DraftOrderQuery: GraphQLQuery {
         self.resultMap = unsafeResultMap
       }
 
-      public init(id: GraphQLID, name: String, email: String? = nil, subtotalPrice: String, note2: String? = nil, totalPrice: String, lineItems: LineItem) {
-        self.init(unsafeResultMap: ["__typename": "DraftOrder", "id": id, "name": name, "email": email, "subtotalPrice": subtotalPrice, "note2": note2, "totalPrice": totalPrice, "lineItems": lineItems.resultMap])
+      public init(id: GraphQLID, name: String, email: String? = nil, subtotalPrice: String, note2: String? = nil, totalPrice: String, lineItemsSubtotalPrice: LineItemsSubtotalPrice, lineItems: LineItem) {
+        self.init(unsafeResultMap: ["__typename": "DraftOrder", "id": id, "name": name, "email": email, "subtotalPrice": subtotalPrice, "note2": note2, "totalPrice": totalPrice, "lineItemsSubtotalPrice": lineItemsSubtotalPrice.resultMap, "lineItems": lineItems.resultMap])
       }
 
       public var __typename: String {
@@ -6715,6 +6907,16 @@ public final class DraftOrderQuery: GraphQLQuery {
         }
       }
 
+      /// The subtotal of the line items and corresponding discounts. The subtotal doesn't include shipping charges, shipping discounts, taxes, or order discounts.
+      public var lineItemsSubtotalPrice: LineItemsSubtotalPrice {
+        get {
+          return LineItemsSubtotalPrice(unsafeResultMap: resultMap["lineItemsSubtotalPrice"]! as! ResultMap)
+        }
+        set {
+          resultMap.updateValue(newValue.resultMap, forKey: "lineItemsSubtotalPrice")
+        }
+      }
+
       /// The list of the line items in the draft order.
       public var lineItems: LineItem {
         get {
@@ -6722,6 +6924,159 @@ public final class DraftOrderQuery: GraphQLQuery {
         }
         set {
           resultMap.updateValue(newValue.resultMap, forKey: "lineItems")
+        }
+      }
+
+      public struct LineItemsSubtotalPrice: GraphQLSelectionSet {
+        public static let possibleTypes: [String] = ["MoneyBag"]
+
+        public static var selections: [GraphQLSelection] {
+          return [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("presentmentMoney", type: .nonNull(.object(PresentmentMoney.selections))),
+            GraphQLField("shopMoney", type: .nonNull(.object(ShopMoney.selections))),
+          ]
+        }
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(presentmentMoney: PresentmentMoney, shopMoney: ShopMoney) {
+          self.init(unsafeResultMap: ["__typename": "MoneyBag", "presentmentMoney": presentmentMoney.resultMap, "shopMoney": shopMoney.resultMap])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        /// Amount in presentment currency.
+        public var presentmentMoney: PresentmentMoney {
+          get {
+            return PresentmentMoney(unsafeResultMap: resultMap["presentmentMoney"]! as! ResultMap)
+          }
+          set {
+            resultMap.updateValue(newValue.resultMap, forKey: "presentmentMoney")
+          }
+        }
+
+        /// Amount in shop currency.
+        public var shopMoney: ShopMoney {
+          get {
+            return ShopMoney(unsafeResultMap: resultMap["shopMoney"]! as! ResultMap)
+          }
+          set {
+            resultMap.updateValue(newValue.resultMap, forKey: "shopMoney")
+          }
+        }
+
+        public struct PresentmentMoney: GraphQLSelectionSet {
+          public static let possibleTypes: [String] = ["MoneyV2"]
+
+          public static var selections: [GraphQLSelection] {
+            return [
+              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLField("amount", type: .nonNull(.scalar(String.self))),
+              GraphQLField("currencyCode", type: .nonNull(.scalar(CurrencyCode.self))),
+            ]
+          }
+
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public init(amount: String, currencyCode: CurrencyCode) {
+            self.init(unsafeResultMap: ["__typename": "MoneyV2", "amount": amount, "currencyCode": currencyCode])
+          }
+
+          public var __typename: String {
+            get {
+              return resultMap["__typename"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          /// Decimal money amount.
+          public var amount: String {
+            get {
+              return resultMap["amount"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "amount")
+            }
+          }
+
+          /// Currency of the money.
+          public var currencyCode: CurrencyCode {
+            get {
+              return resultMap["currencyCode"]! as! CurrencyCode
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "currencyCode")
+            }
+          }
+        }
+
+        public struct ShopMoney: GraphQLSelectionSet {
+          public static let possibleTypes: [String] = ["MoneyV2"]
+
+          public static var selections: [GraphQLSelection] {
+            return [
+              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLField("amount", type: .nonNull(.scalar(String.self))),
+              GraphQLField("currencyCode", type: .nonNull(.scalar(CurrencyCode.self))),
+            ]
+          }
+
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public init(amount: String, currencyCode: CurrencyCode) {
+            self.init(unsafeResultMap: ["__typename": "MoneyV2", "amount": amount, "currencyCode": currencyCode])
+          }
+
+          public var __typename: String {
+            get {
+              return resultMap["__typename"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          /// Decimal money amount.
+          public var amount: String {
+            get {
+              return resultMap["amount"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "amount")
+            }
+          }
+
+          /// Currency of the money.
+          public var currencyCode: CurrencyCode {
+            get {
+              return resultMap["currencyCode"]! as! CurrencyCode
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "currencyCode")
+            }
+          }
         }
       }
 
@@ -7124,11 +7479,11 @@ public final class DraftOrderQuery: GraphQLQuery {
               }
 
               /// The location of the image as a URL.
-              /// 
+              ///
               /// If no transform options are specified, then the original image will be preserved including any pre-applied transforms.
-              /// 
+              ///
               /// All transformation options are considered "best-effort". Any transformation that the original image type doesn't support will be ignored.
-              /// 
+              ///
               /// If you need multiple variations of the same image, then you can use [GraphQL aliases](https://graphql.org/learn/queries/#aliases).
               public var url: String {
                 get {
@@ -7795,7 +8150,7 @@ public final class GetOrdersQuery: GraphQLQuery {
             }
 
             /// A unique phone number for the customer.
-            /// 
+            ///
             /// Formatted using E.164 standard. For example, _+16135551111_.
             public var phone: String? {
               get {

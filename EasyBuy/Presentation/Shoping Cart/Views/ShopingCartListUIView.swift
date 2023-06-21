@@ -43,7 +43,7 @@ struct ShopingCartListUIView: View {
                                 Alert(title: Text("Delete ?"),message: Text("Do you want to delete this product from your cart ?") ,
                                       primaryButton: .destructive(Text("OK"),action: {
                                     shopingCartViewModel.deletProduct(indexSet: self.indexSet!)
-                                    
+                                   
                                 }),
                                       secondaryButton: .cancel())
                             }
