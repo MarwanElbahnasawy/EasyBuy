@@ -103,7 +103,7 @@ struct InputView: View {
         case "Confirm Password":
             return "Should match the password"
         case "Phone Number":
-            return "Must start with a '+' followed by at least 11 digits"
+            return "Must start with a '+2' followed by at least 11 digits"
         default:
             return nil
         }
