@@ -16,14 +16,9 @@ class DiscountCodesListViewModel: ObservableObject{
         let filteredArray: [CodeDiscountNodesNode] = notUsedDiscountCodes
         var resultArray: [CodeDiscountNodesNode] = []
         switch adType {
-        case .men:
-            resultArray =  filteredArray.filter({($0.codeDiscount?.codes?.nodes?.first?.code?.contains("MEN"))!})
-        case .women:
-            resultArray =  filteredArray.filter({($0.codeDiscount?.codes?.nodes?.first?.code?.contains("WOMEN"))!})
-        case .all:
+        case .men,.women,.all:
            resultArray =  filteredArray.filter({($0.codeDiscount?.codes?.nodes?.first?.code?.contains("EVERYTHING"))!})
-        case .shoes:
-            resultArray =  filteredArray.filter({($0.codeDiscount?.codes?.nodes?.first?.code?.contains("ADIDAS"))!})
+
         }
         return resultArray
     }
@@ -73,5 +68,4 @@ enum AdType{
     case men
     case women
     case all
-    case shoes
 }

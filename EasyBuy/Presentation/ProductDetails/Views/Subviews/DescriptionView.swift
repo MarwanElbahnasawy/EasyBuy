@@ -15,10 +15,6 @@ struct DescriptionView: View {
                 action: {
                     viewModel.getFavoriteDraftOrder()
                 })
-//            .onChange(of: viewModel?.isFavoriteExist ?? false) { newValue in
-//                isExist = newValue
-//            }
-            
             RatingView(rating: 3.2)
             
             Text("Description")
@@ -44,7 +40,7 @@ struct DescriptionView: View {
                     viewModel.price = "\(Double(viewModel.quantity) * (price ?? 100))"
                 }
             }.toast(isPresenting: $showToast){
-                AlertToast(type: .error(.red), title: "Sorry 🙋‍♂️",subTitle: "No more item available 🙋‍♂️" )
+                AlertToast(type: .error(.red), title: "Sorry",subTitle: "No more item available" )
             }
             Text(product?.product?.description ?? "")
                 .lineSpacing(8.0)
