@@ -19,7 +19,7 @@ enum Route {
     var description: String {
         switch self {
         case .typy:
-            return"https://api.apilayer.com/exchangerates_data/latest?apikey=\(Route.APIkey)"
+            return"https://api.apilayer.com/exchangerates_data/latest?apikey=0858PNrHpNqUKrU5v3WyTq74lEOvbom8"
         }
     }
 }
