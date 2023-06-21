@@ -9,9 +9,8 @@ class ValidationUtils {
     }
     
     static func isValidPassword(password: String) -> Bool {
-        let passwordRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{6,}$"
-        let passwordPredicate = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
-        return passwordPredicate.evaluate(with: password)
+        let minimumLength = 6
+        return password.count >= minimumLength
     }
     
     static func passwordsMatch(password: String, confirmPassword: String) -> Bool {
