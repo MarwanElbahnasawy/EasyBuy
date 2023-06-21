@@ -50,8 +50,6 @@ struct image: View {
                                 CodesView(adType: .men)
                             case "image cop":
                                 CodesView(adType: .women)
-                            case "SHOES":
-                                CodesView(adType: .shoes)
                             default:
                                 CodesView()
                             }
