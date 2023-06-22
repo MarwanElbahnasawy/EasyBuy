@@ -30,14 +30,16 @@ class ProductViewModel: ObservableObject {
 //    @Published var favoriteProductID = ""
     let customerID = UserDefaults.standard.string(forKey:"shopifyCustomerID")
     let email = UserDefaults.standard.string(forKey:"email")
-    let token = UserDefaults.standard.string(forKey:"email")
+    let token = UserDefaults.standard.string(forKey:"token")
     init(productId: GraphQLID?) {
         self.productId = productId
     }
     
     func fetchProductDetails() {
-        if token != "" || token != "guest"{
-           checkFavoriteDraftOrder()
+        if token == "" || token == "guest"{
+           
+        }else{
+            checkFavoriteDraftOrder()
         }
         print("isFavoriteExist initially: \(isFavoriteExist)")
         guard let productId = productId else { return }
