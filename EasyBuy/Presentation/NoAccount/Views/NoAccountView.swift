@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct NoAccountView: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @AppStorage("token") var token: String?
     var body: some View {
         VStack {
@@ -31,6 +32,8 @@ struct NoAccountView: View {
             
             Spacer()
         }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: BackButton(action: { presentationMode.wrappedValue.dismiss()}))
         .background(
             Image("Register-Background")
                 .resizable()
