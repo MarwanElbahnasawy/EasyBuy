@@ -14,7 +14,6 @@ struct RegisterationView: View {
                     .resizable()
                     .scaledToFit()
                     .padding(.vertical, 32)
-                    .padding(.horizontal, 30)
                 
                 // Form fields
                 VStack(spacing: 24) {
