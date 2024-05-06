@@ -1,3 +1,35 @@
+Introduction
+
+In today's fast-paced world, online shopping has become an essential part of our daily lives. With the increase in mobile device usage, mobile-commerce (m-Commerce) applications have gained significant popularity. The EasyBuy App is designed to cater to this growing need for efficient and user-friendly m-Commerce solutions. This app aims to improve the online shopping experience by showcasing products from different vendors, enabling authenticated users to manage their shopping carts, and completing the purchase cycle online. This report will provide an in-depth look into the app's structure, features, and the objectives it aims to achieve.
+
+Objectives
+
+1.	Provide a seamless and user-friendly online shopping experience on mobile devices.
+2.	Aggregate products from multiple vendors to offer a diverse range of options.
+3.	Enable users to easily browse, search, and manage their shopping carts.
+4.	Streamline the entire shopping process, from product discovery to payment, within the app.
+
+Features 
+
+•	User can browse and search for product.
+
+•	User can navigate through 4 main tabs: Home, Categories, Favorites, and Account.
+
+•	User can add/remove products to/from their favorites and shopping bag.
+
+•	User can filter and sort products by brand.
+
+•	User can view detailed product information, including images, sizes, price, rating, reviews, and description.
+
+•	User can sign in/register to access shopping bag and wish list features.
+
+•	User can manage their shopping bag, including deleting products, and proceeding to checkout.
+
+•	User can make payments and apply discount codes within the app.
+
+•	User can access and modify settings, such as currency and address.
+
+
 
 
 <p align="center">
